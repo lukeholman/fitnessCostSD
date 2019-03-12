@@ -812,7 +812,7 @@ fig_S1 <- make_expt2_multiplot(
   plot_expt2(model_list[[3]]) + ylab(NULL))
 
 fig_S1 %>% ggsave(file = "output/fig_S1.pdf", height = 10, width = 9)
-fig_S1
+fig_S1 %>% grid::grid.draw()
 ```
 <br></br>
 **Figure S1**: Equivalent plots to Figure 2, under the assumption that meiosis is fair ($k$ = 0.5, top row, same as Figure 2), slightly biased ($k$ = 0.6, middle row), and more strongly biased ($k$ = 0.7, bottom row). Note that the significant results for Figure 2 mostly stay the same or increase in magnitude, suggesting that they are genuine and are not sensitive to our assumptions about the data.
