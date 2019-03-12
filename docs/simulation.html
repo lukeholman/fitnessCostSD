@@ -1,0 +1,2110 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="Luke Holman and Heidi Wong" />
+
+<meta name="date" content="2019-03-12" />
+
+<title>Fitness costs of SD chromosomes in _Drosophila melanogaster_</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/font-awesome-5.0.13/css/fa-svg-with-js.css" rel="stylesheet" />
+<script src="site_libs/font-awesome-5.0.13/js/fontawesome-all.min.js"></script>
+<script src="site_libs/font-awesome-5.0.13/js/fa-v4-shims.min.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">fitnessCostSD</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+<li>
+  <a href="license.html">License</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/lukeholman/fitnessCostSD">
+    <span class="fa fa-github"></span>
+     
+    Source code
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<!-- Add a small amount of space between sections. -->
+<style type="text/css">
+div.section {
+  padding-top: 12px;
+}
+</style>
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Fitness costs of SD chromosomes in <em>Drosophila melanogaster</em></h1>
+<h4 class="author"><em>Luke Holman and Heidi Wong</em></h4>
+<h4 class="date"><em>2019-03-12</em></h4>
+
+</div>
+
+
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+</button>
+</p>
+<div id="workflowr-report" class="collapse">
+<ul class="nav nav-tabs">
+<li class="active">
+<a data-toggle="tab" href="#summary">Summary</a>
+</li>
+<li>
+<a data-toggle="tab" href="#report"> Report <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> </a>
+</li>
+<li>
+<a data-toggle="tab" href="#versions">Past versions</a>
+</li>
+</ul>
+<div class="tab-content">
+<div id="summary" class="tab-pane fade in active">
+<p>
+<strong>Last updated:</strong> 2019-03-12
+</p>
+<p>
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
+</p>
+<p>
+<strong>Knit directory:</strong> <code>fitnessCostSD/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
+</p>
+<p>
+This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis was created with <a
+  href="https://github.com/jdblischak/workflowr">workflowr</a> (version 1.2.0). The <em>Report</em> tab describes the reproducibility checks that were applied when the results were created. The <em>Past versions</em> tab lists the development history.
+</p>
+<hr>
+</div>
+<div id="report" class="tab-pane fade">
+<div id="workflowr-checks" class="panel-group">
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date </a>
+</p>
+</div>
+<div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Environment:</strong> empty </a>
+</p>
+</div>
+<div id="strongEnvironmentstrongempty" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! The global environment was empty. Objects defined in the global environment can affect the analysis in your R Markdown file in unknown ways. For reproduciblity it’s best to always run the code in an empty environment.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed20190312code"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Seed:</strong> <code>set.seed(20190312)</code> </a>
+</p>
+</div>
+<div id="strongSeedstrongcodesetseed20190312code" class="panel-collapse collapse">
+<div class="panel-body">
+<p>The command <code>set.seed(20190312)</code> was run prior to running the code in the R Markdown file. Setting a seed ensures that any results that rely on randomness, e.g. subsampling or permutations, are reproducible.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Session information:</strong> recorded </a>
+</p>
+</div>
+<div id="strongSessioninformationstrongrecorded" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Recording the operating system, R version, and package versions is critical for reproducibility.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Cache:</strong> none </a>
+</p>
+</div>
+<div id="strongCachestrongnone" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Nice! There were no cached chunks for this analysis, so you can be confident that you successfully produced the results during this run.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtree2bc25a0a4f0d83af98831f95269829bee789571atargetblank2bc25a0a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/fitnessCostSD/tree/2bc25a0a4f0d83af98831f95269829bee789571a" target="_blank">2bc25a0</a> </a>
+</p>
+</div>
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtree2bc25a0a4f0d83af98831f95269829bee789571atargetblank2bc25a0a" class="panel-collapse collapse">
+<div class="panel-body">
+<p>
+Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
+</p>
+<pre><code>
+Ignored files:
+    Ignored:    .DS_Store
+    Ignored:    .Rproj.user/
+    Ignored:    data/.DS_Store
+    Ignored:    docs/.DS_Store
+
+Untracked files:
+    Untracked:  data/SD_k tests_2018_04_05.xlsx
+    Untracked:  data/clean_data/
+    Untracked:  data/data collection sheet - follow up looking at sex ratio.xlsx
+    Untracked:  data/data collection sheet from Heidi.xlsx
+    Untracked:  data/messy_data/
+    Untracked:  data/model_output/
+    Untracked:  data/simulation_output.rds
+    Untracked:  docs/figure/
+    Untracked:  figures/
+    Untracked:  manuscript/
+
+</code></pre>
+<p>
+Note that any generated files, e.g. HTML, png, CSS, etc., are not included in this status report because it is ok for generated content to have uncommitted changes.
+</p>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</div>
+<div id="versions" class="tab-pane fade">
+
+<p>
+These are the previous versions of the R Markdown and HTML files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view them.
+</p>
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+File
+</th>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+<th>
+Message
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/lukeholman/fitnessCostSD/blob/2bc25a0a4f0d83af98831f95269829bee789571a/analysis/simulation.Rmd" target="_blank">2bc25a0</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2019-03-12
+</td>
+<td>
+Added main pages
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<pre class="r"><code>library(purrr)
+library(dplyr)
+library(future)
+library(future.apply)
+library(kableExtra)
+library(ggplot2)</code></pre>
+<div id="function-to-make-the-mating-table" class="section level2">
+<h2>Function to make the mating table</h2>
+<p>The “mating table” is list of all the possible mating types (e.g. wild-type mother with a SD-heterozygote father, etc etc), which lists the possible offspring genotypes and their associated frequencies. The precise values in the mating table are a function of <span class="math inline">\(k\)</span> (i.e. the strength of segregation distortion) and the sex ratio bias in heterozygote males. We assume that the meiosis is Mendelian except in SD-heterozygote males, and that all cross except those with a SD-heterozygote father produce a 50:50 sex ratio.</p>
+<pre class="r"><code>make_mating_table &lt;- function(k, mating_types, SR_bias_in_hetero_males){
+
+  offspring &lt;- vector(mode = &quot;list&quot;, nrow(mating_types))
+  
+  make_offspring &lt;- function(row, type, zygote_freq){
+    data.frame(mother = mating_types$mother[row],
+               father = mating_types$father[row],
+               type, 
+               zygote_freq, 
+               stringsAsFactors = FALSE)
+  }
+  
+  g0 &lt;- c(&quot;wild_type_female&quot;, &quot;wild_type_male&quot;,
+          &quot;hetero_female_maternal&quot;, &quot;hetero_male_maternal&quot;)
+  g1 &lt;- c(&quot;wild_type_female&quot;, &quot;wild_type_male&quot;,
+          &quot;hetero_female_paternal&quot;, &quot;hetero_male_paternal&quot;)
+  g2 &lt;- c(&quot;wild_type_female&quot;, &quot;wild_type_male&quot;,
+          &quot;hetero_female_maternal&quot;, &quot;hetero_male_maternal&quot;,
+          &quot;hetero_female_paternal&quot;, &quot;hetero_male_paternal&quot;,
+          &quot;homo_female&quot;, &quot;homo_male&quot;)
+  g3 &lt;- c(&quot;hetero_female_maternal&quot;, &quot;hetero_male_maternal&quot;,
+          &quot;homo_female&quot;, &quot;homo_male&quot;)
+  g4 &lt;- c(&quot;hetero_female_maternal&quot;, &quot;hetero_male_maternal&quot;,
+          &quot;homo_female&quot;, &quot;homo_male&quot;)
+  p1 &lt;- c(0.25*(1 - k)*(1 + SR_bias_in_hetero_males), 0.25*(1 - k)*(1 - SR_bias_in_hetero_males), 
+          0.25*(1 + k)*(1 + SR_bias_in_hetero_males), 0.25*(1 + k)*(1 - SR_bias_in_hetero_males))
+  p2 &lt;- c(0.125*(1 - k)*(1 + SR_bias_in_hetero_males), 0.125*(1 - k)*(1 - SR_bias_in_hetero_males),
+          0.125*(1 - k)*(1 + SR_bias_in_hetero_males), 0.125*(1 - k)*(1 - SR_bias_in_hetero_males),
+          0.125*(1 + k)*(1 + SR_bias_in_hetero_males), 0.125*(1 + k)*(1 - SR_bias_in_hetero_males),
+          0.125*(1 + k)*(1 + SR_bias_in_hetero_males), 0.125*(1 + k)*(1 - SR_bias_in_hetero_males))
+  
+  rep25 &lt;- rep(0.25, 4)
+  rep5  &lt;- rep(0.5, 2)
+  
+  offspring[[1]]  &lt;- make_offspring(1, c(&quot;wild_type_female&quot;, &quot;wild_type_male&quot;), rep5)
+  offspring[[2]]  &lt;- make_offspring(2, g0, rep25)
+  offspring[[3]]  &lt;- make_offspring(3, g0, rep25)
+  offspring[[4]]  &lt;- make_offspring(4, c(&quot;hetero_female_maternal&quot;, &quot;hetero_male_maternal&quot;), rep5)
+  offspring[[5]]  &lt;- make_offspring(5, g1, p1)
+  offspring[[6]]  &lt;- make_offspring(6, g2, p2)
+  offspring[[7]]  &lt;- make_offspring(7, g2, p2)
+  offspring[[8]]  &lt;- make_offspring(8, g3, p1)
+  offspring[[9]]  &lt;- make_offspring(9, g1, p1)
+  offspring[[10]] &lt;- make_offspring(10, g2, p2)
+  offspring[[11]] &lt;- make_offspring(11, g2, p2)
+  offspring[[12]] &lt;- make_offspring(12, g3, p1)
+  offspring[[13]] &lt;- make_offspring(13, c(&quot;hetero_female_paternal&quot;, &quot;hetero_male_paternal&quot;), rep5)
+  offspring[[14]] &lt;- make_offspring(14, g4, rep25)
+  offspring[[15]] &lt;- make_offspring(15, g4, rep25)
+  offspring[[16]] &lt;- make_offspring(16, c(&quot;homo_female&quot;, &quot;homo_male&quot;), rep5)
+  
+  output &lt;-  do.call(&quot;rbind&quot;, offspring)
+  
+  names(offspring) &lt;- paste(mating_types[,1], mating_types[,2], sep = &quot; x &quot;)
+ # print(offspring)
+  
+  output
+}</code></pre>
+<div id="an-example-of-a-mating-type-table" class="section level3">
+<h3>An example of a mating type table</h3>
+<p>An example of the output of <code>make_mating_table()</code>, under the assumptions that there is strong but incomplete segregation distortion, and that male SD heterozygotes produce a somewhat female-biased sex ratio.</p>
+<pre class="r"><code>mating_types &lt;- expand.grid(mother = c(&quot;wild_type_female&quot;,
+                                       &quot;hetero_female_maternal&quot;,
+                                       &quot;hetero_female_paternal&quot;,
+                                       &quot;homo_female&quot;),
+                            father = c(&quot;wild_type_male&quot;,
+                                       &quot;hetero_male_maternal&quot;,
+                                       &quot;hetero_male_paternal&quot;,
+                                       &quot;homo_male&quot;),
+                            stringsAsFactors = FALSE) 
+make_mating_table(
+  k = 0.9, 
+  mating_types, 
+  SR_bias_in_hetero_males = 0.4) %&gt;%
+  kable() %&gt;%
+  kable_styling() %&gt;%
+  scroll_box(height = &quot;500px&quot;)</code></pre>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:500px; ">
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+mother
+</th>
+<th style="text-align:left;">
+father
+</th>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:right;">
+zygote_freq
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+wild_type_female
+</td>
+<td style="text-align:left;">
+wild_type_male
+</td>
+<td style="text-align:left;">
+wild_type_female
+</td>
+<td style="text-align:right;">
+0.5000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+wild_type_female
+</td>
+<td style="text-align:left;">
+wild_type_male
+</td>
+<td style="text-align:left;">
+wild_type_male
+</td>
+<td style="text-align:right;">
+0.5000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hetero_female_maternal
+</td>
+<td style="text-align:left;">
+wild_type_male
+</td>
+<td style="text-align:left;">
+wild_type_female
+</td>
+<td style="text-align:right;">
+0.2500
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hetero_female_maternal
+</td>
+<td style="text-align:left;">
+wild_type_male
+</td>
+<td style="text-align:left;">
+wild_type_male
+</td>
+<td style="text-align:right;">
+0.2500
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hetero_female_maternal
+</td>
+<td style="text-align:left;">
+wild_type_male
+</td>
+<td style="text-align:left;">
+hetero_female_maternal
+</td>
+<td style="text-align:right;">
+0.2500
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hetero_female_maternal
+</td>
+<td style="text-align:left;">
+wild_type_male
+</td>
+<td style="text-align:left;">
+hetero_male_maternal
+</td>
+<td style="text-align:right;">
+0.2500
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hetero_female_paternal
+</td>
+<td style="text-align:left;">
+wild_type_male
+</td>
+<td style="text-align:left;">
+wild_type_female
+</td>
+<td style="text-align:right;">
+0.2500
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hetero_female_paternal
+</td>
+<td style="text-align:left;">
+wild_type_male
+</td>
+<td style="text-align:left;">
+wild_type_male
+</td>
+<td style="text-align:right;">
+0.2500
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hetero_female_paternal
+</td>
+<td style="text-align:left;">
+wild_type_male
+</td>
+<td style="text-align:left;">
+hetero_female_maternal
+</td>
+<td style="text-align:right;">
+0.2500
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hetero_female_paternal
+</td>
+<td style="text-align:left;">
+wild_type_male
+</td>
+<td style="text-align:left;">
+hetero_male_maternal
+</td>
+<td style="text-align:right;">
+0.2500
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+homo_female
+</td>
+<td style="text-align:left;">
+wild_type_male
+</td>
+<td style="text-align:left;">
+hetero_female_maternal
+</td>
+<td style="text-align:right;">
+0.5000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+homo_female
+</td>
+<td style="text-align:left;">
+wild_type_male
+</td>
+<td style="text-align:left;">
+hetero_male_maternal
+</td>
+<td style="text-align:right;">
+0.5000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+wild_type_female
+</td>
+<td style="text-align:left;">
+hetero_male_maternal
+</td>
+<td style="text-align:left;">
+wild_type_female
+</td>
+<td style="text-align:right;">
+0.0350
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+wild_type_female
+</td>
+<td style="text-align:left;">
+hetero_male_maternal
+</td>
+<td style="text-align:left;">
+wild_type_male
+</td>
+<td style="text-align:right;">
+0.0150
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+wild_type_female
+</td>
+<td style="text-align:left;">
+hetero_male_maternal
+</td>
+<td style="text-align:left;">
+hetero_female_paternal
+</td>
+<td style="text-align:right;">
+0.6650
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+wild_type_female
+</td>
+<td style="text-align:left;">
+hetero_male_maternal
+</td>
+<td style="text-align:left;">
+hetero_male_paternal
+</td>
+<td style="text-align:right;">
+0.2850
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hetero_female_maternal
+</td>
+<td style="text-align:left;">
+hetero_male_maternal
+</td>
+<td style="text-align:left;">
+wild_type_female
+</td>
+<td style="text-align:right;">
+0.0175
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hetero_female_maternal
+</td>
+<td style="text-align:left;">
+hetero_male_maternal
+</td>
+<td style="text-align:left;">
+wild_type_male
+</td>
+<td style="text-align:right;">
+0.0075
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hetero_female_maternal
+</td>
+<td style="text-align:left;">
+hetero_male_maternal
+</td>
+<td style="text-align:left;">
+hetero_female_maternal
+</td>
+<td style="text-align:right;">
+0.0175
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hetero_female_maternal
+</td>
+<td style="text-align:left;">
+hetero_male_maternal
+</td>
+<td style="text-align:left;">
+hetero_male_maternal
+</td>
+<td style="text-align:right;">
+0.0075
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hetero_female_maternal
+</td>
+<td style="text-align:left;">
+hetero_male_maternal
+</td>
+<td style="text-align:left;">
+hetero_female_paternal
+</td>
+<td style="text-align:right;">
+0.3325
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hetero_female_maternal
+</td>
+<td style="text-align:left;">
+hetero_male_maternal
+</td>
+<td style="text-align:left;">
+hetero_male_paternal
+</td>
+<td style="text-align:right;">
+0.1425
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hetero_female_maternal
+</td>
+<td style="text-align:left;">
+hetero_male_maternal
+</td>
+<td style="text-align:left;">
+homo_female
+</td>
+<td style="text-align:right;">
+0.3325
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hetero_female_maternal
+</td>
+<td style="text-align:left;">
+hetero_male_maternal
+</td>
+<td style="text-align:left;">
+homo_male
+</td>
+<td style="text-align:right;">
+0.1425
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hetero_female_paternal
+</td>
+<td style="text-align:left;">
+hetero_male_maternal
+</td>
+<td style="text-align:left;">
+wild_type_female
+</td>
+<td style="text-align:right;">
+0.0175
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hetero_female_paternal
+</td>
+<td style="text-align:left;">
+hetero_male_maternal
+</td>
+<td style="text-align:left;">
+wild_type_male
+</td>
+<td style="text-align:right;">
+0.0075
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hetero_female_paternal
+</td>
+<td style="text-align:left;">
+hetero_male_maternal
+</td>
+<td style="text-align:left;">
+hetero_female_maternal
+</td>
+<td style="text-align:right;">
+0.0175
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hetero_female_paternal
+</td>
+<td style="text-align:left;">
+hetero_male_maternal
+</td>
+<td style="text-align:left;">
+hetero_male_maternal
+</td>
+<td style="text-align:right;">
+0.0075
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hetero_female_paternal
+</td>
+<td style="text-align:left;">
+hetero_male_maternal
+</td>
+<td style="text-align:left;">
+hetero_female_paternal
+</td>
+<td style="text-align:right;">
+0.3325
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hetero_female_paternal
+</td>
+<td style="text-align:left;">
+hetero_male_maternal
+</td>
+<td style="text-align:left;">
+hetero_male_paternal
+</td>
+<td style="text-align:right;">
+0.1425
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hetero_female_paternal
+</td>
+<td style="text-align:left;">
+hetero_male_maternal
+</td>
+<td style="text-align:left;">
+homo_female
+</td>
+<td style="text-align:right;">
+0.3325
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hetero_female_paternal
+</td>
+<td style="text-align:left;">
+hetero_male_maternal
+</td>
+<td style="text-align:left;">
+homo_male
+</td>
+<td style="text-align:right;">
+0.1425
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+homo_female
+</td>
+<td style="text-align:left;">
+hetero_male_maternal
+</td>
+<td style="text-align:left;">
+hetero_female_maternal
+</td>
+<td style="text-align:right;">
+0.0350
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+homo_female
+</td>
+<td style="text-align:left;">
+hetero_male_maternal
+</td>
+<td style="text-align:left;">
+hetero_male_maternal
+</td>
+<td style="text-align:right;">
+0.0150
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+homo_female
+</td>
+<td style="text-align:left;">
+hetero_male_maternal
+</td>
+<td style="text-align:left;">
+homo_female
+</td>
+<td style="text-align:right;">
+0.6650
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+homo_female
+</td>
+<td style="text-align:left;">
+hetero_male_maternal
+</td>
+<td style="text-align:left;">
+homo_male
+</td>
+<td style="text-align:right;">
+0.2850
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+wild_type_female
+</td>
+<td style="text-align:left;">
+hetero_male_paternal
+</td>
+<td style="text-align:left;">
+wild_type_female
+</td>
+<td style="text-align:right;">
+0.0350
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+wild_type_female
+</td>
+<td style="text-align:left;">
+hetero_male_paternal
+</td>
+<td style="text-align:left;">
+wild_type_male
+</td>
+<td style="text-align:right;">
+0.0150
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+wild_type_female
+</td>
+<td style="text-align:left;">
+hetero_male_paternal
+</td>
+<td style="text-align:left;">
+hetero_female_paternal
+</td>
+<td style="text-align:right;">
+0.6650
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+wild_type_female
+</td>
+<td style="text-align:left;">
+hetero_male_paternal
+</td>
+<td style="text-align:left;">
+hetero_male_paternal
+</td>
+<td style="text-align:right;">
+0.2850
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hetero_female_maternal
+</td>
+<td style="text-align:left;">
+hetero_male_paternal
+</td>
+<td style="text-align:left;">
+wild_type_female
+</td>
+<td style="text-align:right;">
+0.0175
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hetero_female_maternal
+</td>
+<td style="text-align:left;">
+hetero_male_paternal
+</td>
+<td style="text-align:left;">
+wild_type_male
+</td>
+<td style="text-align:right;">
+0.0075
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hetero_female_maternal
+</td>
+<td style="text-align:left;">
+hetero_male_paternal
+</td>
+<td style="text-align:left;">
+hetero_female_maternal
+</td>
+<td style="text-align:right;">
+0.0175
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hetero_female_maternal
+</td>
+<td style="text-align:left;">
+hetero_male_paternal
+</td>
+<td style="text-align:left;">
+hetero_male_maternal
+</td>
+<td style="text-align:right;">
+0.0075
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hetero_female_maternal
+</td>
+<td style="text-align:left;">
+hetero_male_paternal
+</td>
+<td style="text-align:left;">
+hetero_female_paternal
+</td>
+<td style="text-align:right;">
+0.3325
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hetero_female_maternal
+</td>
+<td style="text-align:left;">
+hetero_male_paternal
+</td>
+<td style="text-align:left;">
+hetero_male_paternal
+</td>
+<td style="text-align:right;">
+0.1425
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hetero_female_maternal
+</td>
+<td style="text-align:left;">
+hetero_male_paternal
+</td>
+<td style="text-align:left;">
+homo_female
+</td>
+<td style="text-align:right;">
+0.3325
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hetero_female_maternal
+</td>
+<td style="text-align:left;">
+hetero_male_paternal
+</td>
+<td style="text-align:left;">
+homo_male
+</td>
+<td style="text-align:right;">
+0.1425
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hetero_female_paternal
+</td>
+<td style="text-align:left;">
+hetero_male_paternal
+</td>
+<td style="text-align:left;">
+wild_type_female
+</td>
+<td style="text-align:right;">
+0.0175
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hetero_female_paternal
+</td>
+<td style="text-align:left;">
+hetero_male_paternal
+</td>
+<td style="text-align:left;">
+wild_type_male
+</td>
+<td style="text-align:right;">
+0.0075
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hetero_female_paternal
+</td>
+<td style="text-align:left;">
+hetero_male_paternal
+</td>
+<td style="text-align:left;">
+hetero_female_maternal
+</td>
+<td style="text-align:right;">
+0.0175
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hetero_female_paternal
+</td>
+<td style="text-align:left;">
+hetero_male_paternal
+</td>
+<td style="text-align:left;">
+hetero_male_maternal
+</td>
+<td style="text-align:right;">
+0.0075
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hetero_female_paternal
+</td>
+<td style="text-align:left;">
+hetero_male_paternal
+</td>
+<td style="text-align:left;">
+hetero_female_paternal
+</td>
+<td style="text-align:right;">
+0.3325
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hetero_female_paternal
+</td>
+<td style="text-align:left;">
+hetero_male_paternal
+</td>
+<td style="text-align:left;">
+hetero_male_paternal
+</td>
+<td style="text-align:right;">
+0.1425
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hetero_female_paternal
+</td>
+<td style="text-align:left;">
+hetero_male_paternal
+</td>
+<td style="text-align:left;">
+homo_female
+</td>
+<td style="text-align:right;">
+0.3325
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hetero_female_paternal
+</td>
+<td style="text-align:left;">
+hetero_male_paternal
+</td>
+<td style="text-align:left;">
+homo_male
+</td>
+<td style="text-align:right;">
+0.1425
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+homo_female
+</td>
+<td style="text-align:left;">
+hetero_male_paternal
+</td>
+<td style="text-align:left;">
+hetero_female_maternal
+</td>
+<td style="text-align:right;">
+0.0350
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+homo_female
+</td>
+<td style="text-align:left;">
+hetero_male_paternal
+</td>
+<td style="text-align:left;">
+hetero_male_maternal
+</td>
+<td style="text-align:right;">
+0.0150
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+homo_female
+</td>
+<td style="text-align:left;">
+hetero_male_paternal
+</td>
+<td style="text-align:left;">
+homo_female
+</td>
+<td style="text-align:right;">
+0.6650
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+homo_female
+</td>
+<td style="text-align:left;">
+hetero_male_paternal
+</td>
+<td style="text-align:left;">
+homo_male
+</td>
+<td style="text-align:right;">
+0.2850
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+wild_type_female
+</td>
+<td style="text-align:left;">
+homo_male
+</td>
+<td style="text-align:left;">
+hetero_female_paternal
+</td>
+<td style="text-align:right;">
+0.5000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+wild_type_female
+</td>
+<td style="text-align:left;">
+homo_male
+</td>
+<td style="text-align:left;">
+hetero_male_paternal
+</td>
+<td style="text-align:right;">
+0.5000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hetero_female_maternal
+</td>
+<td style="text-align:left;">
+homo_male
+</td>
+<td style="text-align:left;">
+hetero_female_maternal
+</td>
+<td style="text-align:right;">
+0.2500
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hetero_female_maternal
+</td>
+<td style="text-align:left;">
+homo_male
+</td>
+<td style="text-align:left;">
+hetero_male_maternal
+</td>
+<td style="text-align:right;">
+0.2500
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hetero_female_maternal
+</td>
+<td style="text-align:left;">
+homo_male
+</td>
+<td style="text-align:left;">
+homo_female
+</td>
+<td style="text-align:right;">
+0.2500
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hetero_female_maternal
+</td>
+<td style="text-align:left;">
+homo_male
+</td>
+<td style="text-align:left;">
+homo_male
+</td>
+<td style="text-align:right;">
+0.2500
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hetero_female_paternal
+</td>
+<td style="text-align:left;">
+homo_male
+</td>
+<td style="text-align:left;">
+hetero_female_maternal
+</td>
+<td style="text-align:right;">
+0.2500
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hetero_female_paternal
+</td>
+<td style="text-align:left;">
+homo_male
+</td>
+<td style="text-align:left;">
+hetero_male_maternal
+</td>
+<td style="text-align:right;">
+0.2500
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hetero_female_paternal
+</td>
+<td style="text-align:left;">
+homo_male
+</td>
+<td style="text-align:left;">
+homo_female
+</td>
+<td style="text-align:right;">
+0.2500
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hetero_female_paternal
+</td>
+<td style="text-align:left;">
+homo_male
+</td>
+<td style="text-align:left;">
+homo_male
+</td>
+<td style="text-align:right;">
+0.2500
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+homo_female
+</td>
+<td style="text-align:left;">
+homo_male
+</td>
+<td style="text-align:left;">
+homo_female
+</td>
+<td style="text-align:right;">
+0.5000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+homo_female
+</td>
+<td style="text-align:left;">
+homo_male
+</td>
+<td style="text-align:left;">
+homo_male
+</td>
+<td style="text-align:right;">
+0.5000
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="function-to-determine-the-mating-type-frequencies-for-the-population" class="section level2">
+<h2>Function to determine the mating type frequencies for the population</h2>
+<p>Given a set of genotype frequencies, it is simple to calculate the frequencies of each mating type. First, we implement selection, such that each genotype is represented in the mating types according to the product of its frequency and its fitness. Second, we determine the frequency of cross between male genotype <span class="math inline">\(i\)</span> and female genotype <span class="math inline">\(j\)</span> as <span class="math inline">\(i\times j\)</span>.</p>
+<pre class="r"><code>find_mating_type_frequencies &lt;- function(pop, mating_types){
+  
+  # Implement selection
+  pop$prop &lt;- pop$prop * pop$fitness
+  pop$prop &lt;- pop$prop / sum(pop$prop)
+  
+  # Mating type freq is f_1 * f_2, post selection
+  mating_types %&gt;%
+    mutate(mating_freq = pop$prop[match(mating_types$mother, pop$type)] * pop$prop[match(mating_types$father, pop$type)])
+}</code></pre>
+</div>
+<div id="define-the-main-simulation-function" class="section level2">
+<h2>Define the main simulation function</h2>
+<p>This function iterates over generations, implementing selection and reproduction each time, until either A) the SD allele fixes, B) the SD allele goes extinct, or C) the generation timer expires.</p>
+<pre class="r"><code># Helper function to calculate the frequency of the SD allele
+calc_prop_SD &lt;- function(pop){
+  (sum(pop$prop[1:4]) + 2 * sum(pop$prop[5:6])) / 2
+}
+
+run_simulation &lt;- function(generations,
+                           k,
+                           w_hetero_female_maternal,
+                           w_hetero_female_paternal,
+                           w_hetero_male_maternal,
+                           w_hetero_male_paternal,
+                           w_homo_male,
+                           w_homo_female,
+                           SR_bias_in_hetero_males,
+                           initial_freq_SD,
+                           mating_types){
+  
+  # Make the initial population
+  pop &lt;- data.frame(
+    type = c(&quot;wild_type_female&quot;,
+             &quot;wild_type_male&quot;,
+             &quot;hetero_female_maternal&quot;,
+             &quot;hetero_male_maternal&quot;,
+             &quot;hetero_female_paternal&quot;,
+             &quot;hetero_male_paternal&quot;,
+             &quot;homo_female&quot;,
+             &quot;homo_male&quot;),
+    prop = c(rep(0.5  * (1 - initial_freq_SD)^2, 2),
+             rep(0.25 * (1 - initial_freq_SD) * initial_freq_SD, 2),
+             rep(0.25 * (1 - initial_freq_SD) * initial_freq_SD, 2),
+             rep(0.5  * initial_freq_SD^2, 2)), 
+    fitness = c(1, 1, w_hetero_female_maternal,
+                w_hetero_female_paternal,
+                w_hetero_male_maternal,
+                w_hetero_male_paternal,
+                w_homo_male,
+                w_homo_female),
+    stringsAsFactors = FALSE) %&gt;% 
+    arrange(type) 
+  
+  # Make the mating table used for this simulation run
+  mating_table &lt;- make_mating_table(k, mating_types, SR_bias_in_hetero_males)
+  
+  # Iterate over generations
+  for(i in 1:generations){
+    
+    # Find the mating type frequencies, find the offspring frequencies, and renormalise the frequencies to sum to one
+    prop_col &lt;- mating_table %&gt;%
+      left_join(find_mating_type_frequencies(pop, mating_types), 
+                by = c(&quot;mother&quot;, &quot;father&quot;)) %&gt;%
+      mutate(offspring_freq = mating_freq * zygote_freq) %&gt;%
+      group_by(type) %&gt;%
+      summarise(prop = sum(offspring_freq)) %&gt;%
+      mutate(prop = prop / sum(prop)) %&gt;%
+      pull(prop)
+    
+    # Calculate the frequency of SD. 
+    # Quit early if SD fixed/extinct-ish
+    prop_SD &lt;- calc_prop_SD(pop %&gt;% mutate(prop = prop_col))
+    # if(is.na(prop_SD)) print(pop)   # FOR DEBUGGING
+    pop &lt;- pop %&gt;% mutate(prop = prop_col)
+        
+    if(prop_SD &gt; 0.99) return(pop) 
+    if(prop_SD &lt; 0.0001) return(pop)
+    
+    
+    # offspring &lt;- mating_table %&gt;%
+    #   left_join(find_mating_type_frequencies(pop, mating_types), 
+    #             by = c(&quot;mother&quot;, &quot;father&quot;)) %&gt;%
+    #   mutate(offspring_freq = mating_freq * zygote_freq)
+    # 
+    # pop$prop &lt;- 
+    #   c(sum(offspring$offspring_freq[offspring$type == &quot;wild_type_female&quot;]),
+    #     sum(offspring$offspring_freq[offspring$type == &quot;wild_type_male&quot;]),
+    #     sum(offspring$offspring_freq[offspring$type == &quot;hetero_female_maternal&quot;]),
+    #     sum(offspring$offspring_freq[offspring$type == &quot;hetero_male_maternal&quot;]),
+    #     sum(offspring$offspring_freq[offspring$type == &quot;hetero_female_paternal&quot;]),
+    #     sum(offspring$offspring_freq[offspring$type == &quot;hetero_male_paternal&quot;]),
+    #     sum(offspring$offspring_freq[offspring$type == &quot;homo_female&quot;]),
+    #     sum(offspring$offspring_freq[offspring$type == &quot;homo_male&quot;]))
+    # 
+    # pop$prop[is.na(pop$prop)] &lt;- 0
+    # pop$prop &lt;- pop$prop / sum(pop$prop)
+  
+    # print(pop %&gt;% mutate(prop = round(prop, 2)))
+
+  }
+  pop
+}</code></pre>
+</div>
+<div id="define-a-wrapper-used-to-run-the-main-simulation-on-a-data-frame-of-parameters" class="section level2">
+<h2>Define a wrapper used to run the main simulation on a data frame of parameters</h2>
+<p>A helper function that runs <code>run_simulation()</code> on a data frame of parameter values.</p>
+<pre class="r"><code>run_many_simulations &lt;- function(parameters){
+  
+  mating_types &lt;- expand.grid(mother = c(&quot;wild_type_female&quot;,
+                                         &quot;hetero_female_maternal&quot;,
+                                         &quot;hetero_female_paternal&quot;,
+                                         &quot;homo_female&quot;),
+                              father = c(&quot;wild_type_male&quot;,
+                                         &quot;hetero_male_maternal&quot;,
+                                         &quot;hetero_male_paternal&quot;,
+                                         &quot;homo_male&quot;),
+                              stringsAsFactors = FALSE) 
+  
+  # Carefully pass all the parameters to run_simulation()
+  run_one_simulation &lt;- function(row, parameters, mating_types){
+    genotypes &lt;- run_simulation(
+      generations = parameters$generations[row],
+      k = parameters$k[row],
+      w_hetero_female_maternal = parameters$w_hetero_female_maternal[row],
+      w_hetero_female_paternal = parameters$w_hetero_female_paternal[row],
+      w_hetero_male_maternal = parameters$w_hetero_male_maternal[row],
+      w_hetero_male_paternal = parameters$w_hetero_male_paternal[row],
+      w_homo_male = parameters$w_homo_male[row],
+      w_homo_female = parameters$w_homo_female[row],
+      SR_bias_in_hetero_males = parameters$SR_bias_in_hetero_males[row],
+      initial_freq_SD = parameters$initial_freq_SD[row],
+      mating_types = mating_types
+    )
+    
+    output &lt;- data.frame(parameters[row, ]) %&gt;% as_tibble()
+    output$genotypes &lt;- list(genotypes %&gt;% select(-fitness))
+    output
+  }
+  
+  # Loop over all the different parameter spaces
+  lapply(1:nrow(parameters), run_one_simulation, parameters = parameters, mating_types = mating_types) %&gt;%
+    do.call(&quot;rbind&quot;, .) %&gt;% 
+    mutate(prop_SD = map_dbl(genotypes, calc_prop_SD))
+}</code></pre>
+</div>
+<div id="define-the-parameter-space-to-investigate" class="section level2">
+<h2>Define the parameter space to investigate</h2>
+<p>Used to define the parameter spaces that are plotted in the figure of the results.</p>
+<pre class="r"><code>imprint_cost &lt;- 0.2 
+resolution &lt;- 101
+resolution_y &lt;- 91
+gen &lt;- 10000
+
+parameters &lt;- rbind(
+  expand.grid(
+    generations = gen,
+    k = seq(0, 1, length = resolution),
+    w_hetero_female_maternal = 1,
+    w_hetero_female_paternal = 1,
+    w_hetero_male_maternal = 1,
+    w_hetero_male_paternal = 1,
+    w_homo_male = 1,
+    w_homo_female = 1,
+    facet = &quot;Cost free&quot;,
+    SR_bias_in_hetero_males = seq(-0.9, 0.9, length = resolution_y),
+    initial_freq_SD = 0.01
+  ),
+  expand.grid(
+    generations = gen,
+    k = seq(0, 1, length = resolution),
+    w_hetero_female_maternal = .8,
+    w_hetero_female_paternal = .8,
+    w_hetero_male_maternal = .8,
+    w_hetero_male_paternal = .8,
+    w_homo_male = .8,
+    w_homo_female = .8,
+    facet = &quot;Dominant cost&quot;,
+    SR_bias_in_hetero_males = seq(-0.9, 0.9, length = resolution_y),
+    initial_freq_SD = 0.01
+  ),
+  expand.grid(
+    generations = gen,
+    k = seq(0, 1, length = resolution),
+    w_hetero_female_maternal = 1,
+    w_hetero_female_paternal = 1,
+    w_hetero_male_maternal = 1,
+    w_hetero_male_paternal = 1,
+    w_homo_male = 0,
+    w_homo_female = 0,
+    facet = &quot;Recessive lethal&quot;,
+    SR_bias_in_hetero_males = seq(-0.9, 0.9, length = resolution_y),
+    initial_freq_SD = 0.01
+  ),
+  expand.grid(
+    generations = gen,
+    k = seq(0, 1, length = resolution),
+    w_hetero_female_maternal = .8,
+    w_hetero_female_paternal = .8,
+    w_hetero_male_maternal = .8,
+    w_hetero_male_paternal = .8,
+    w_homo_male = 0,
+    w_homo_female = 0,
+    facet = &quot;Recessive lethal plus heterozygote cost&quot;,
+    SR_bias_in_hetero_males = seq(-0.9, 0.9, length = resolution_y),
+    initial_freq_SD = 0.01
+  ),
+ expand.grid(
+    generations = gen,
+    k = seq(0, 1, length = resolution),
+    w_hetero_female_maternal = 1,
+    w_hetero_female_paternal = 1 - imprint_cost,
+    w_hetero_male_maternal = 1,
+    w_hetero_male_paternal = 1 - imprint_cost,
+    w_homo_male = 1 - imprint_cost,
+    w_homo_female = 1 - imprint_cost,
+    facet = &quot;Cost of paternal inheritance (PI)&quot;,
+    SR_bias_in_hetero_males = seq(-0.9, 0.9, length = resolution_y),
+    initial_freq_SD = 0.01
+  ),
+  expand.grid(
+    generations = gen,
+    k = seq(0, 1, length = resolution),
+    w_hetero_female_maternal = .8,
+    w_hetero_female_paternal = .8 - imprint_cost,
+    w_hetero_male_maternal = .8,
+    w_hetero_male_paternal = .8 - imprint_cost,
+    w_homo_male = .8 - imprint_cost,
+    w_homo_female = .8 - imprint_cost,
+    facet = &quot;Dominant cost plus cost of PI&quot;,
+    SR_bias_in_hetero_males = seq(-0.9, 0.9, length = resolution_y),
+    initial_freq_SD = 0.01
+  ),
+  expand.grid(
+    generations = gen,
+    k = seq(0, 1, length = resolution),
+    w_hetero_female_maternal = 1,
+    w_hetero_female_paternal = 1 - imprint_cost,
+    w_hetero_male_maternal = 1,
+    w_hetero_male_paternal = 1 - imprint_cost,
+    w_homo_male = 0,
+    w_homo_female = 0,
+    facet = &quot;Recessive lethal plus cost of PI&quot;,
+    SR_bias_in_hetero_males = seq(-0.9, 0.9, length = resolution_y),
+    initial_freq_SD = 0.01
+  ),
+ expand.grid(
+    generations = gen,
+    k = seq(0, 1, length = resolution),
+    w_hetero_female_maternal = .8,
+    w_hetero_female_paternal = .8 - imprint_cost,
+    w_hetero_male_maternal = .8,
+    w_hetero_male_paternal = .8 - imprint_cost,
+    w_homo_male = 0,
+    w_homo_female = 0,
+    facet = &quot;Recessive lethal, heterozygote cost, and cost of PI&quot;,
+    SR_bias_in_hetero_males = seq(-0.9, 0.9, length = resolution_y),
+    initial_freq_SD = 0.01
+  ),
+  expand.grid(
+    generations = gen,
+    k = seq(0, 1, length = resolution),
+    w_hetero_female_maternal = 1 - imprint_cost,
+    w_hetero_female_paternal = 1,
+    w_hetero_male_maternal = 1 - imprint_cost,
+    w_hetero_male_paternal = 1,
+    w_homo_male = 1 - imprint_cost,
+    w_homo_female = 1 - imprint_cost,
+    facet = &quot;Cost of maternal inheritance (MI)&quot;,
+    SR_bias_in_hetero_males = seq(-0.9, 0.9, length = resolution_y),
+    initial_freq_SD = 0.01
+  ),
+  expand.grid(
+    generations = gen,
+    k = seq(0, 1, length = resolution),
+    w_hetero_female_maternal = .8 - imprint_cost,
+    w_hetero_female_paternal = .8,
+    w_hetero_male_maternal = .8 - imprint_cost,
+    w_hetero_male_paternal = .8,
+    w_homo_male = .8 - imprint_cost,
+    w_homo_female = .8 - imprint_cost,
+    facet = &quot;Dominant cost plus cost of MI&quot;,
+    SR_bias_in_hetero_males = seq(-0.9, 0.9, length = resolution_y),
+    initial_freq_SD = 0.01
+  ),
+  expand.grid(
+    generations = gen,
+    k = seq(0, 1, length = resolution),
+    w_hetero_female_maternal = 1 - imprint_cost,
+    w_hetero_female_paternal = 1,
+    w_hetero_male_maternal = 1 - imprint_cost,
+    w_hetero_male_paternal = 1,
+    w_homo_male = 0,
+    w_homo_female = 0,
+    facet = &quot;Recessive lethal plus cost of MI&quot;,
+    SR_bias_in_hetero_males = seq(-0.9, 0.9, length = resolution_y),
+    initial_freq_SD = 0.01
+  ),
+  expand.grid(
+    generations = gen,
+    k = seq(0, 1, length = resolution),
+    w_hetero_female_maternal = .8 - imprint_cost,
+    w_hetero_female_paternal = .8,
+    w_hetero_male_maternal = .8 - imprint_cost,
+    w_hetero_male_paternal = .8,
+    w_homo_male = 0,
+    w_homo_female = 0,
+    facet = &quot;Recessive lethal, heterozygote cost, and cost of MI&quot;,
+    SR_bias_in_hetero_males = seq(-0.9, 0.9, length = resolution_y),
+    initial_freq_SD = 0.01
+  )
+) %&gt;% as_tibble()</code></pre>
+</div>
+<div id="run-the-simulation" class="section level2">
+<h2>Run the simulation</h2>
+<pre class="r"><code>if(!file.exists(&quot;data/simulation_output.rds&quot;)){
+  
+  cores &lt;- 7
+  # Divide the job into 100 equal-ish chunks so that we can see the % completion as it proceeds
+  split_parameters &lt;- split(parameters, sample(1:100, nrow(parameters), replace = TRUE))
+  
+  for(i in 1:length(split_parameters)){
+    print(i)
+    plan(&quot;multicore&quot;)
+    chunk_size &lt;- floor(nrow(split_parameters[[i]]) / cores)
+    simulation_output &lt;- split(split_parameters[[i]], c(rep(1:(cores-1), each = chunk_size), 
+                                                        rep(cores, nrow(split_parameters[[i]]) - chunk_size*(cores-1)))) %&gt;%
+      future_lapply(run_many_simulations) %&gt;% do.call(&quot;rbind&quot;, .)
+    saveRDS(simulation_output, paste(&quot;data/simulation_output_&quot;, i, &quot;.rds&quot;, sep = &quot;&quot;))
+  }
+  
+ simulation_output &lt;- list.files(path = &quot;data&quot;, pattern = &quot;simulation_output_&quot;, full.names = TRUE) %&gt;%
+   lapply(readRDS) %&gt;% do.call(&quot;rbind&quot;, .)
+ saveRDS(simulation_output, &quot;data/simulation_output.rds&quot;)
+  
+} else {
+  simulation_output &lt;- readRDS(&quot;data/simulation_output.rds&quot;)
+  if(nrow(simulation_output) != nrow(parameters)){
+    pasted_done &lt;- apply(simulation_output[, names(simulation_output) %in% names(parameters)], 1, paste0, collapse = &quot;_&quot;)
+    pasted_to_do &lt;- apply(parameters, 1, paste0, collapse = &quot;_&quot;)
+    trimmed_parameters &lt;- parameters[!(pasted_to_do %in% pasted_done), ]
+
+    cores &lt;- 7
+    # Divide the job into 100 equal-ish chunks so that we can see the % completion as it proceeds
+    split_parameters &lt;- split(trimmed_parameters, sample(1:10, nrow(parameters), replace = TRUE))
+    
+    for(i in 1:length(split_parameters)){
+      print(i)
+      plan(&quot;multicore&quot;)
+      chunk_size &lt;- floor(nrow(split_parameters[[i]]) / cores)
+      simulation_output &lt;- split(split_parameters[[i]], c(rep(1:(cores-1), each = chunk_size), 
+                                                          rep(cores, nrow(split_parameters[[i]]) - chunk_size*(cores-1)))) %&gt;%
+        future_lapply(run_many_simulations) %&gt;% do.call(&quot;rbind&quot;, .)
+      saveRDS(simulation_output, paste(&quot;data/simulation_output_surplus_&quot;, i, &quot;.rds&quot;, sep = &quot;&quot;))
+    }
+    simulation_output &lt;- list.files(path = &quot;data&quot;, pattern = &quot;simulation_output_&quot;, full.names = TRUE) %&gt;%
+      lapply(readRDS) %&gt;% do.call(&quot;rbind&quot;, .)
+    saveRDS(simulation_output, &quot;data/simulation_output.rds&quot;)
+  }
+}
+# delete individual files
+# unlink(list.files(path = &quot;data&quot;, pattern = &quot;simulation_output_&quot;, full.names = TRUE))</code></pre>
+</div>
+<div id="make-figure-3" class="section level2">
+<h2>Make Figure 3</h2>
+<pre class="r"><code>fig_3 &lt;- simulation_output %&gt;% 
+  ggplot(aes(k, SR_bias_in_hetero_males, fill = prop_SD)) +
+  geom_blank() +
+  geom_raster() + 
+  stat_contour(aes(z = prop_SD), colour = &quot;grey10&quot;) +
+  geom_hline(yintercept = 0, colour = &quot;black&quot;, linetype = 3) +
+  labs(x = &quot;Strength of segregation distortion (K)&quot;, 
+       y = &quot;Sex ratio bias in SD heterozygotes\n(postive means more daughters, negative means more sons)&quot;) +
+  facet_wrap(~ facet, labeller = labeller(facet = label_wrap_gen(35))) + 
+  scale_fill_distiller(palette = &quot;YlGnBu&quot;, direction =  1, name = expression(paste(&quot;&quot;, hat(paste(&quot;p&quot;)), &quot; (SD)&quot;)), limits = c(0,1)) +
+  #scale_fill_viridis_c(direction =  -1, name = expression(paste(&quot;&quot;, hat(paste(&quot;p&quot;)), &quot; (SD)&quot;)), option = &quot;D&quot;) + 
+  scale_x_continuous(expand = c(0, 0), labels = c(0, 0.25, 0.5, 0.75, 1)) + scale_y_continuous(expand = c(0, 0)) +
+  theme(panel.border = element_rect(fill = NA, colour = &quot;black&quot;, size = .8),
+        strip.background = element_rect(colour = &quot;black&quot;, fill = &quot;grey90&quot;, size = .8),
+        legend.position = &quot;bottom&quot;)
+
+ggsave(fig_3, filename = &quot;figures/fig3.pdf&quot;, height = 9, width = 9)
+fig_3</code></pre>
+<p><img src="figure/simulation.Rmd/unnamed-chunk-9-1.png" width="864" style="display: block; margin: auto;" /> <br></br></p>
+<strong>Figure 3</strong>: The equilibrium frequency reached by the  allele, <span class="math inline">\(\hat{p}(SD)\)</span>, depends on the strength of segregataion distortion (<span class="math inline">\(K\)</span> = 0 indicates fair meiosis, <span class="math inline">\(K\)</span> = 1 means that heterozygotes transmit only the  allele) and the direction and strength of sex ratio bias in the progeny of  heterozygote males. The four columns make different assumptions about the fitness costs to individuals carrying the  allele (see Results), while the three rows assume either that  has no parent-of-origin-specific effects on fitness (top row), or that  is especially costly when paternally inherited (middle row) or maternally inherited (bottom row). <br> <br>
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
+<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Session information
+</button>
+</p>
+<div id="workflowr-sessioninfo" class="collapse">
+<pre class="r"><code>sessionInfo()</code></pre>
+<pre><code>R version 3.5.1 (2018-07-02)
+Platform: x86_64-apple-darwin15.6.0 (64-bit)
+Running under: macOS High Sierra 10.13.6
+
+Matrix products: default
+BLAS: /Library/Frameworks/R.framework/Versions/3.5/Resources/lib/libRblas.0.dylib
+LAPACK: /Library/Frameworks/R.framework/Versions/3.5/Resources/lib/libRlapack.dylib
+
+locale:
+[1] en_AU.UTF-8/en_AU.UTF-8/en_AU.UTF-8/C/en_AU.UTF-8/en_AU.UTF-8
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+[1] ggplot2_3.1.0      kableExtra_0.9.0   future.apply_1.0.1
+[4] future_1.11.1.1    dplyr_0.8.0.1      purrr_0.3.1       
+
+loaded via a namespace (and not attached):
+ [1] Rcpp_1.0.0         RColorBrewer_1.1-2 highr_0.7         
+ [4] plyr_1.8.4         pillar_1.3.1.9000  compiler_3.5.1    
+ [7] git2r_0.23.0       workflowr_1.2.0    tools_3.5.1       
+[10] digest_0.6.18      gtable_0.2.0       viridisLite_0.3.0 
+[13] evaluate_0.11      tibble_2.0.99.9000 pkgconfig_2.0.2   
+[16] rlang_0.3.1        rstudioapi_0.9.0   yaml_2.2.0        
+[19] parallel_3.5.1     withr_2.1.2        stringr_1.3.1     
+[22] httr_1.3.1         knitr_1.20         xml2_1.2.0        
+[25] fs_1.2.6           globals_0.12.4     hms_0.4.2         
+[28] grid_3.5.1         rprojroot_1.3-2    tidyselect_0.2.5  
+[31] glue_1.3.0.9000    listenv_0.7.0      R6_2.4.0          
+[34] rmarkdown_1.10     readr_1.1.1        magrittr_1.5      
+[37] whisker_0.3-2      backports_1.1.2    scales_1.0.0      
+[40] codetools_0.2-15   htmltools_0.3.6    assertthat_0.2.0  
+[43] rvest_0.3.2        colorspace_1.3-2   labeling_0.3      
+[46] stringi_1.3.1      lazyeval_0.2.1     munsell_0.5.0     
+[49] crayon_1.3.4      </code></pre>
+</div>
+</div>
+
+
+<!-- Adjust MathJax settings so that all math formulae are shown using
+TeX fonts only; see
+http://docs.mathjax.org/en/latest/configuration.html.  This will make
+the presentation more consistent at the cost of the webpage sometimes
+taking slightly longer to load. Note that this only works because the
+footer is added to webpages before the MathJax javascript. -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

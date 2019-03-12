@@ -1,0 +1,5682 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="Luke Holman and Heidi Wong" />
+
+<meta name="date" content="2019-03-12" />
+
+<title>Fitness costs of SD chromosomes in _Drosophila melanogaster_</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.0.13/css/fa-svg-with-js.css" rel="stylesheet" />
+<script src="site_libs/font-awesome-5.0.13/js/fontawesome-all.min.js"></script>
+<script src="site_libs/font-awesome-5.0.13/js/fa-v4-shims.min.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">fitnessCostSD</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+<li>
+  <a href="license.html">License</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/lukeholman/fitnessCostSD">
+    <span class="fa fa-github"></span>
+     
+    Source code
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<!-- Add a small amount of space between sections. -->
+<style type="text/css">
+div.section {
+  padding-top: 12px;
+}
+</style>
+
+<div class="fluid-row" id="header">
+
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">Fitness costs of SD chromosomes in <em>Drosophila melanogaster</em></h1>
+<h4 class="author"><em>Luke Holman and Heidi Wong</em></h4>
+<h4 class="date"><em>2019-03-12</em></h4>
+
+</div>
+
+
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+</button>
+</p>
+<div id="workflowr-report" class="collapse">
+<ul class="nav nav-tabs">
+<li class="active">
+<a data-toggle="tab" href="#summary">Summary</a>
+</li>
+<li>
+<a data-toggle="tab" href="#report"> Report <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> </a>
+</li>
+<li>
+<a data-toggle="tab" href="#versions">Past versions</a>
+</li>
+</ul>
+<div class="tab-content">
+<div id="summary" class="tab-pane fade in active">
+<p>
+<strong>Last updated:</strong> 2019-03-12
+</p>
+<p>
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
+</p>
+<p>
+<strong>Knit directory:</strong> <code>fitnessCostSD/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
+</p>
+<p>
+This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis was created with <a
+  href="https://github.com/jdblischak/workflowr">workflowr</a> (version 1.2.0). The <em>Report</em> tab describes the reproducibility checks that were applied when the results were created. The <em>Past versions</em> tab lists the development history.
+</p>
+<hr>
+</div>
+<div id="report" class="tab-pane fade">
+<div id="workflowr-checks" class="panel-group">
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date </a>
+</p>
+</div>
+<div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Environment:</strong> empty </a>
+</p>
+</div>
+<div id="strongEnvironmentstrongempty" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! The global environment was empty. Objects defined in the global environment can affect the analysis in your R Markdown file in unknown ways. For reproduciblity it’s best to always run the code in an empty environment.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed20190312code"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Seed:</strong> <code>set.seed(20190312)</code> </a>
+</p>
+</div>
+<div id="strongSeedstrongcodesetseed20190312code" class="panel-collapse collapse">
+<div class="panel-body">
+<p>The command <code>set.seed(20190312)</code> was run prior to running the code in the R Markdown file. Setting a seed ensures that any results that rely on randomness, e.g. subsampling or permutations, are reproducible.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Session information:</strong> recorded </a>
+</p>
+</div>
+<div id="strongSessioninformationstrongrecorded" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Recording the operating system, R version, and package versions is critical for reproducibility.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Cache:</strong> none </a>
+</p>
+</div>
+<div id="strongCachestrongnone" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Nice! There were no cached chunks for this analysis, so you can be confident that you successfully produced the results during this run.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtree2bc25a0a4f0d83af98831f95269829bee789571atargetblank2bc25a0a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/fitnessCostSD/tree/2bc25a0a4f0d83af98831f95269829bee789571a" target="_blank">2bc25a0</a> </a>
+</p>
+</div>
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtree2bc25a0a4f0d83af98831f95269829bee789571atargetblank2bc25a0a" class="panel-collapse collapse">
+<div class="panel-body">
+<p>
+Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
+</p>
+<pre><code>
+Ignored files:
+    Ignored:    .DS_Store
+    Ignored:    .Rproj.user/
+    Ignored:    data/.DS_Store
+    Ignored:    docs/.DS_Store
+
+Untracked files:
+    Untracked:  data/SD_k tests_2018_04_05.xlsx
+    Untracked:  data/clean_data/
+    Untracked:  data/data collection sheet - follow up looking at sex ratio.xlsx
+    Untracked:  data/data collection sheet from Heidi.xlsx
+    Untracked:  data/messy_data/
+    Untracked:  data/model_output/
+    Untracked:  data/simulation_output.rds
+    Untracked:  docs/figure/
+    Untracked:  figures/
+    Untracked:  manuscript/
+
+</code></pre>
+<p>
+Note that any generated files, e.g. HTML, png, CSS, etc., are not included in this status report because it is ok for generated content to have uncommitted changes.
+</p>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</div>
+<div id="versions" class="tab-pane fade">
+
+<p>
+These are the previous versions of the R Markdown and HTML files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view them.
+</p>
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+File
+</th>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+<th>
+Message
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/lukeholman/fitnessCostSD/blob/2bc25a0a4f0d83af98831f95269829bee789571a/analysis/statistics.Rmd" target="_blank">2bc25a0</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2019-03-12
+</td>
+<td>
+Added main pages
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div id="set-up-for-the-analysis" class="section level2">
+<h2>Set up for the analysis</h2>
+<div id="load-r-packages" class="section level3">
+<h3>Load R packages</h3>
+<pre class="r"><code>packages &lt;- c(&quot;dplyr&quot;, &quot;brms&quot;, &quot;ggplot2&quot;, &quot;reshape2&quot;, &quot;Cairo&quot;, &quot;knitr&quot;, &quot;pander&quot;, &quot;lazerhawk&quot;,
+              &quot;grid&quot;, &quot;gridExtra&quot;, &quot;ggthemes&quot;, &quot;readr&quot;, &quot;tibble&quot;, &quot;stringr&quot;)
+shh &lt;- suppressMessages(lapply(packages, library, character.only = TRUE, quietly = TRUE))
+nCores &lt;- 1
+
+summarise_brms &lt;- function(brmsfit){
+  lazerhawk::brms_SummaryTable(brmsfit, astrology = TRUE) %&gt;%
+  mutate(Covariate = str_replace_all(Covariate, &quot;SDM&quot;, &quot;SD-&quot;),
+         Covariate = str_replace_all(Covariate, &quot;SD-other&quot;, &quot;SDMother&quot;)) %&gt;% 
+  pander(split.cell = 40, split.table = Inf)
+} </code></pre>
+</div>
+<div id="load-and-clean-the-data" class="section level3">
+<h3>Load and clean the data</h3>
+<p>This section also saves a copy of the cleaned data in the directory <code>data/cleaned_data</code>. If you wish to re-use the data, I suggest you use these cleaned files; the factor and level names are more intuitive than in the original data sheets (however, the actual data are identical).</p>
+<pre class="r"><code>load_and_clean_data &lt;- function(path){
+  
+   if(path == &quot;data/messy_data/experiment2.csv&quot;){
+   
+    expt2 &lt;- read_csv(path) %&gt;%
+      mutate(prop_SD_females = female_SD / (female_SD + female_cyo),
+             prop_SD_males = male_SD / (male_SD + male_cyo),
+             prop_males = (male_SD + male_cyo) / (male_SD + male_cyo + female_SD + female_cyo),
+             starting_number_focal_sex = num_embryos,
+             SD_offspring = female_SD,
+             CyO_offspring = female_cyo) 
+    
+    expt2$starting_number_focal_sex[expt2$sex_of_embryos == &quot;male&quot;] &lt;- 
+      expt2$starting_number_focal_sex[expt2$sex_of_embryos == &quot;male&quot;] -
+      expt2$female_SD[expt2$sex_of_embryos == &quot;male&quot;] - expt2$female_cyo[expt2$sex_of_embryos == &quot;male&quot;]
+    
+    expt2$starting_number_focal_sex[expt2$sex_of_embryos == &quot;female&quot;] &lt;- 
+      expt2$starting_number_focal_sex[expt2$sex_of_embryos == &quot;female&quot;] -
+      expt2$male_SD[expt2$sex_of_embryos == &quot;female&quot;] - expt2$male_cyo[expt2$sex_of_embryos == &quot;female&quot;]
+    
+    expt2$SD_offspring[expt2$sex_of_embryos == &quot;male&quot;] &lt;- expt2$male_SD[expt2$sex_of_embryos == &quot;male&quot;]
+    expt2$CyO_offspring[expt2$sex_of_embryos == &quot;male&quot;] &lt;- expt2$male_cyo[expt2$sex_of_embryos == &quot;male&quot;]
+    
+    expt2$starting_number_focal_sex[expt2$starting_number_focal_sex &lt; expt2$SD_focal_sex] &lt;-
+      expt2$SD_focal_sex[expt2$starting_number_focal_sex &lt; expt2$SD_focal_sex]
+    
+    expt2$Dead_offspring &lt;- expt2$starting_number_focal_sex - expt2$SD_offspring - expt2$CyO_offspring
+    expt2$Dead_offspring[expt2$Dead_offspring &lt; 0] &lt;- 0
+    
+    expt2$starting_number_focal_sex &lt;- with(expt2, SD_offspring + CyO_offspring + Dead_offspring)
+    
+    expt2 &lt;- expt2 %&gt;% 
+      select(block, SD_parent, sex_of_embryos, SD, starting_number_focal_sex, SD_offspring, CyO_offspring, Dead_offspring) %&gt;%
+      mutate(vial = 1:n(), 
+             SD_embryos = &quot;to be estimated&quot;,
+             CyO_embryos = &quot;to be estimated&quot;,
+             block = as.numeric(as.factor(block))) %&gt;%
+      filter(!(SD %in% c(&quot;w1118&quot;, &quot;LHm&quot;)))
+    write_csv(expt2, path = str_replace(path, &quot;messy&quot;, &quot;clean&quot;)) 
+    return(expt2)
+  }
+  
+  # For experiment 1....
+  dat &lt;- read_csv(path) %&gt;% 
+    mutate(block = as.character(block), 
+           copies_of_SD = substr(genotype, 2, 2),
+           parent_with_SD = substr(genotype, 1, 1),
+           parent_with_SD = replace(parent_with_SD, 
+                                    parent_with_SD == &quot;M&quot;, &quot;Mother&quot;),
+           parent_with_SD = replace(parent_with_SD, 
+                                    parent_with_SD == &quot;P&quot;, &quot;Father&quot;),
+           parent_with_SD = replace(parent_with_SD, 
+                                    parent_with_SD == &quot;A&quot;, &quot;Both parents&quot;),
+           parent_with_SD = replace(parent_with_SD, 
+                                    parent_with_SD == &quot;N&quot;, &quot;Neither parent&quot;),
+           parent_with_SD =  factor(parent_with_SD, 
+                                    levels = c(&quot;Neither parent&quot;, 
+                                               &quot;Father&quot;, &quot;Mother&quot;, 
+                                               &quot;Both parents&quot;)),
+           SD = paste(&quot;SD-&quot;, SD, sep = &quot;&quot;),
+           SD = replace(SD, SD == &quot;SD-N&quot;, &quot;No SD chromosome&quot;),
+  
+           MotherHasSD = ifelse(parent_with_SD != &quot;Father&quot;, 1, 0),
+           FatherHasSD = ifelse(parent_with_SD != &quot;Mother&quot;, 1, 0),
+           MotherHasSD = replace(MotherHasSD, SD == &quot;No SD chromosome&quot;, 0),
+           FatherHasSD = replace(FatherHasSD, SD == &quot;No SD chromosome&quot;, 0),
+           SD_from_mum = ifelse(MotherHasSD==1 &amp; copies_of_SD==&quot;1&quot;, &quot;Yes&quot;, &quot;No&quot;),
+           SD_from_mum = replace(SD_from_mum, FatherHasSD==1 &amp; MotherHasSD==1 &amp; copies_of_SD==&quot;2&quot;, &quot;Yes&quot;),
+           SD_from_dad = ifelse(FatherHasSD == 1 &amp; copies_of_SD == &quot;1&quot;, &quot;Yes&quot;, &quot;No&quot;),
+           SD_from_dad = replace(SD_from_dad, FatherHasSD==1 &amp; MotherHasSD==1 &amp; copies_of_SD==&quot;2&quot;, &quot;Yes&quot;),
+           mum_genotype = relevel(as.factor(ifelse(MotherHasSD==1, SD, &quot;wild_type&quot;)), ref = &quot;wild_type&quot;),
+           dad_genotype = relevel(as.factor(ifelse(FatherHasSD==1, SD, &quot;wild_type&quot;)), ref = &quot;wild_type&quot;))
+  
+  if(path == &quot;data/messy_data/male_fitness.csv&quot;){
+    dat &lt;- dat %&gt;% 
+      mutate(focal.male.fitness = focal_daughters + focal_sons,
+             rival.male.fitness = rival_daughters + rival_sons,
+             total = focal.male.fitness + rival.male.fitness,
+             vial = 1:n())
+  }
+  
+  if(path == &quot;data/messy_data/larval_fitness.csv&quot;){
+    
+    # Note that for &#39;Mother has SD&#39; crosses (Cross 2), the &#39;initial_number&#39; of larvae is the maximum possible.
+    # The real initial number of non-recombinants is probably a bit lower, since the survival rate of the recombinants is probably not 100%
+    # This means the survival rate in Cross 2 is an under-estimate of the true survival rate.
+    # For SD-5, it is a very slight underestimate, since SD-5 does not recombine much.
+    # For the other two SDs, it is a larger underestimate. 
+    
+    dat &lt;- dat %&gt;%
+      mutate(surviving_females = nonrecombinant_females,
+             surviving_males = nonrecombinant_males,
+             survivors = nonrecombinant_females + nonrecombinant_males,
+             initial_number = number_larvae_in_vial - recombinant_females - recombinant_males,
+             number_died = initial_number - survivors,
+             larval_density = as.numeric(scale(number_larvae_in_vial)), # mean-centre the larval density covariate
+             vial = 1:n(),
+             total = survivors + number_died) %&gt;%
+      select(-number_larvae_in_vial, -nonrecombinant_females, -nonrecombinant_males, -recombinant_females, -recombinant_males)
+      
+    # We never put more than 100 larvae in one vial, so for cases where the initial number was 200, it was 2 vials of 100 each, etc.
+    dat$larval_density[dat$larval_density &gt; 100] &lt;- 100
+    
+    # For Cross 1, where both parents have SD, we cannot discriminate larvae with 0 or 1 copies of SD 
+    # (until they become adults and develop eyes)
+    dat$copies_of_SD[dat$genotype == &quot;A0+A1&quot;] &lt;- &quot;0 or 1&quot;
+  }
+  
+  if(path == &quot;data/messy_data/female_fitness.csv&quot;){
+    dat$vial &lt;- 1:nrow(dat)
+  }
+  
+  # &#39;genotype&#39; variable is a composite of SD genotype and parental origin, used during data collection. Not needed for analysis
+  dat &lt;- dat %&gt;% select(-genotype) 
+  
+  # save the clean data
+  write_csv(dat, path = str_replace(path, &quot;messy&quot;, &quot;clean&quot;)) 
+  dat 
+}
+
+larvae  &lt;- load_and_clean_data(&quot;data/messy_data/larval_fitness.csv&quot;) 
+males   &lt;- load_and_clean_data(&quot;data/messy_data/male_fitness.csv&quot;) 
+females &lt;- load_and_clean_data(&quot;data/messy_data/female_fitness.csv&quot;) 
+expt2   &lt;- load_and_clean_data(&quot;data/messy_data/experiment2.csv&quot;) </code></pre>
+</div>
+</div>
+<div id="summary-statistics-for-the-four-response-variables" class="section level2">
+<h2>Summary statistics for the four response variables</h2>
+<div id="larval-survival-data" class="section level3">
+<h3>Larval survival data</h3>
+<p><strong>Table S1</strong>: Number and percentage of L1 larvae surviving to adulthood for each SD genotype and cross type.</p>
+<pre class="r"><code>larvae %&gt;% 
+  group_by(SD, copies_of_SD, parent_with_SD) %&gt;% 
+  summarise(number_larvae_counted = sum(survivors + number_died),
+            number_of_survivors = sum(survivors),
+            percent_surviving = 100 * (number_of_survivors / number_larvae_counted)) %&gt;%
+    mutate(percent_surviving = format(round(percent_surviving, 1), nsmall = 1)) %&gt;%
+  as.data.frame() %&gt;% pander(split.cell = 40, split.table = Inf)</code></pre>
+<table>
+<colgroup>
+<col width="15%" />
+<col width="12%" />
+<col width="14%" />
+<col width="20%" />
+<col width="18%" />
+<col width="18%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">SD</th>
+<th align="center">copies_of_SD</th>
+<th align="center">parent_with_SD</th>
+<th align="center">number_larvae_counted</th>
+<th align="center">number_of_survivors</th>
+<th align="center">percent_surviving</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">No SD chromosome</td>
+<td align="center">0</td>
+<td align="center">Neither parent</td>
+<td align="center">600</td>
+<td align="center">495</td>
+<td align="center">82.5</td>
+</tr>
+<tr class="even">
+<td align="center">SD-5</td>
+<td align="center">0</td>
+<td align="center">Father</td>
+<td align="center">113</td>
+<td align="center">89</td>
+<td align="center">78.8</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-5</td>
+<td align="center">0</td>
+<td align="center">Mother</td>
+<td align="center">459</td>
+<td align="center">408</td>
+<td align="center">88.9</td>
+</tr>
+<tr class="even">
+<td align="center">SD-5</td>
+<td align="center">0 or 1</td>
+<td align="center">Both parents</td>
+<td align="center">700</td>
+<td align="center">520</td>
+<td align="center">74.3</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-5</td>
+<td align="center">1</td>
+<td align="center">Father</td>
+<td align="center">563</td>
+<td align="center">412</td>
+<td align="center">73.2</td>
+</tr>
+<tr class="even">
+<td align="center">SD-5</td>
+<td align="center">1</td>
+<td align="center">Mother</td>
+<td align="center">494</td>
+<td align="center">415</td>
+<td align="center">84.0</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-5</td>
+<td align="center">2</td>
+<td align="center">Both parents</td>
+<td align="center">40</td>
+<td align="center">0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td align="center">SD-72</td>
+<td align="center">0</td>
+<td align="center">Father</td>
+<td align="center">287</td>
+<td align="center">226</td>
+<td align="center">78.7</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-72</td>
+<td align="center">0</td>
+<td align="center">Mother</td>
+<td align="center">396</td>
+<td align="center">333</td>
+<td align="center">84.1</td>
+</tr>
+<tr class="even">
+<td align="center">SD-72</td>
+<td align="center">0 or 1</td>
+<td align="center">Both parents</td>
+<td align="center">700</td>
+<td align="center">542</td>
+<td align="center">77.4</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-72</td>
+<td align="center">1</td>
+<td align="center">Father</td>
+<td align="center">600</td>
+<td align="center">477</td>
+<td align="center">79.5</td>
+</tr>
+<tr class="even">
+<td align="center">SD-72</td>
+<td align="center">1</td>
+<td align="center">Mother</td>
+<td align="center">423</td>
+<td align="center">342</td>
+<td align="center">80.9</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-72</td>
+<td align="center">2</td>
+<td align="center">Both parents</td>
+<td align="center">600</td>
+<td align="center">0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td align="center">SD-Mad</td>
+<td align="center">0</td>
+<td align="center">Father</td>
+<td align="center">296</td>
+<td align="center">239</td>
+<td align="center">80.7</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-Mad</td>
+<td align="center">0</td>
+<td align="center">Mother</td>
+<td align="center">371</td>
+<td align="center">279</td>
+<td align="center">75.2</td>
+</tr>
+<tr class="even">
+<td align="center">SD-Mad</td>
+<td align="center">0 or 1</td>
+<td align="center">Both parents</td>
+<td align="center">700</td>
+<td align="center">558</td>
+<td align="center">79.7</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-Mad</td>
+<td align="center">1</td>
+<td align="center">Father</td>
+<td align="center">600</td>
+<td align="center">462</td>
+<td align="center">77.0</td>
+</tr>
+<tr class="even">
+<td align="center">SD-Mad</td>
+<td align="center">1</td>
+<td align="center">Mother</td>
+<td align="center">436</td>
+<td align="center">320</td>
+<td align="center">73.4</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-Mad</td>
+<td align="center">2</td>
+<td align="center">Both parents</td>
+<td align="center">585</td>
+<td align="center">413</td>
+<td align="center">70.6</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="adult-sex-ratio" class="section level3">
+<h3>Adult sex ratio</h3>
+<p><strong>Table S2</strong>: Number and percentage of male and female adults emerging from the juvenile fitness assay vials.</p>
+<pre class="r"><code>larvae %&gt;% group_by(SD, copies_of_SD, parent_with_SD) %&gt;% 
+  summarise(n.males = sum(surviving_males),
+            n.females = sum(surviving_females),
+            n.total = sum(survivors), 
+            percent.male = format(round(100 * sum(surviving_males) / n.total, 1), nsmall = 1)) %&gt;%
+  as.data.frame() %&gt;% pander(split.cell = 40, split.table = Inf)</code></pre>
+<table>
+<colgroup>
+<col width="19%" />
+<col width="15%" />
+<col width="17%" />
+<col width="10%" />
+<col width="12%" />
+<col width="10%" />
+<col width="15%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">SD</th>
+<th align="center">copies_of_SD</th>
+<th align="center">parent_with_SD</th>
+<th align="center">n.males</th>
+<th align="center">n.females</th>
+<th align="center">n.total</th>
+<th align="center">percent.male</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">No SD chromosome</td>
+<td align="center">0</td>
+<td align="center">Neither parent</td>
+<td align="center">267</td>
+<td align="center">228</td>
+<td align="center">495</td>
+<td align="center">53.9</td>
+</tr>
+<tr class="even">
+<td align="center">SD-5</td>
+<td align="center">0</td>
+<td align="center">Father</td>
+<td align="center">48</td>
+<td align="center">41</td>
+<td align="center">89</td>
+<td align="center">53.9</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-5</td>
+<td align="center">0</td>
+<td align="center">Mother</td>
+<td align="center">206</td>
+<td align="center">202</td>
+<td align="center">408</td>
+<td align="center">50.5</td>
+</tr>
+<tr class="even">
+<td align="center">SD-5</td>
+<td align="center">0 or 1</td>
+<td align="center">Both parents</td>
+<td align="center">239</td>
+<td align="center">281</td>
+<td align="center">520</td>
+<td align="center">46.0</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-5</td>
+<td align="center">1</td>
+<td align="center">Father</td>
+<td align="center">196</td>
+<td align="center">216</td>
+<td align="center">412</td>
+<td align="center">47.6</td>
+</tr>
+<tr class="even">
+<td align="center">SD-5</td>
+<td align="center">1</td>
+<td align="center">Mother</td>
+<td align="center">193</td>
+<td align="center">222</td>
+<td align="center">415</td>
+<td align="center">46.5</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-5</td>
+<td align="center">2</td>
+<td align="center">Both parents</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">NaN</td>
+</tr>
+<tr class="even">
+<td align="center">SD-72</td>
+<td align="center">0</td>
+<td align="center">Father</td>
+<td align="center">105</td>
+<td align="center">121</td>
+<td align="center">226</td>
+<td align="center">46.5</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-72</td>
+<td align="center">0</td>
+<td align="center">Mother</td>
+<td align="center">169</td>
+<td align="center">164</td>
+<td align="center">333</td>
+<td align="center">50.8</td>
+</tr>
+<tr class="even">
+<td align="center">SD-72</td>
+<td align="center">0 or 1</td>
+<td align="center">Both parents</td>
+<td align="center">272</td>
+<td align="center">270</td>
+<td align="center">542</td>
+<td align="center">50.2</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-72</td>
+<td align="center">1</td>
+<td align="center">Father</td>
+<td align="center">233</td>
+<td align="center">244</td>
+<td align="center">477</td>
+<td align="center">48.8</td>
+</tr>
+<tr class="even">
+<td align="center">SD-72</td>
+<td align="center">1</td>
+<td align="center">Mother</td>
+<td align="center">186</td>
+<td align="center">156</td>
+<td align="center">342</td>
+<td align="center">54.4</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-72</td>
+<td align="center">2</td>
+<td align="center">Both parents</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">NaN</td>
+</tr>
+<tr class="even">
+<td align="center">SD-Mad</td>
+<td align="center">0</td>
+<td align="center">Father</td>
+<td align="center">102</td>
+<td align="center">137</td>
+<td align="center">239</td>
+<td align="center">42.7</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-Mad</td>
+<td align="center">0</td>
+<td align="center">Mother</td>
+<td align="center">145</td>
+<td align="center">134</td>
+<td align="center">279</td>
+<td align="center">52.0</td>
+</tr>
+<tr class="even">
+<td align="center">SD-Mad</td>
+<td align="center">0 or 1</td>
+<td align="center">Both parents</td>
+<td align="center">253</td>
+<td align="center">305</td>
+<td align="center">558</td>
+<td align="center">45.3</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-Mad</td>
+<td align="center">1</td>
+<td align="center">Father</td>
+<td align="center">190</td>
+<td align="center">272</td>
+<td align="center">462</td>
+<td align="center">41.1</td>
+</tr>
+<tr class="even">
+<td align="center">SD-Mad</td>
+<td align="center">1</td>
+<td align="center">Mother</td>
+<td align="center">184</td>
+<td align="center">136</td>
+<td align="center">320</td>
+<td align="center">57.5</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-Mad</td>
+<td align="center">2</td>
+<td align="center">Both parents</td>
+<td align="center">209</td>
+<td align="center">204</td>
+<td align="center">413</td>
+<td align="center">50.6</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="male-fitness-data" class="section level3">
+<h3>Male fitness data</h3>
+<p><strong>Table S3</strong>: Average relative fitness of adult males for each SD genotype and cross type, expressed as the average proportion of offspring sired. The last two columns give the sample size in terms of number of vials (each of which contained 5 focal males), and number of males.</p>
+<pre class="r"><code>SE &lt;- function(x) sd(x) / sqrt(length(x))
+males %&gt;% 
+  group_by(SD, copies_of_SD, parent_with_SD) %&gt;% 
+  summarise(average_relative_fitness = mean(focal.male.fitness / (focal.male.fitness + rival.male.fitness)),
+            SE = SE(focal.male.fitness / (focal.male.fitness + rival.male.fitness)),
+            number_of_vials = n(),
+            number_of_males = number_of_vials * 5) %&gt;%
+  mutate(average_relative_fitness = format(round(average_relative_fitness, 2), nsmall = 2),
+         SE = format(round(SE, 3), nsmall = 3)) %&gt;%
+  as.data.frame() %&gt;% pander(split.cell = 40, split.table = Inf)</code></pre>
+<table style="width:100%;">
+<colgroup>
+<col width="15%" />
+<col width="12%" />
+<col width="13%" />
+<col width="22%" />
+<col width="6%" />
+<col width="14%" />
+<col width="14%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">SD</th>
+<th align="center">copies_of_SD</th>
+<th align="center">parent_with_SD</th>
+<th align="center">average_relative_fitness</th>
+<th align="center">SE</th>
+<th align="center">number_of_vials</th>
+<th align="center">number_of_males</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">No SD chromosome</td>
+<td align="center">0</td>
+<td align="center">Neither parent</td>
+<td align="center">0.79</td>
+<td align="center">0.040</td>
+<td align="center">13</td>
+<td align="center">65</td>
+</tr>
+<tr class="even">
+<td align="center">SD-5</td>
+<td align="center">0</td>
+<td align="center">Father</td>
+<td align="center">0.68</td>
+<td align="center">0.147</td>
+<td align="center">5</td>
+<td align="center">25</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-5</td>
+<td align="center">0</td>
+<td align="center">Mother</td>
+<td align="center">0.82</td>
+<td align="center">0.045</td>
+<td align="center">17</td>
+<td align="center">85</td>
+</tr>
+<tr class="even">
+<td align="center">SD-5</td>
+<td align="center">0</td>
+<td align="center">Both parents</td>
+<td align="center">0.59</td>
+<td align="center">NA</td>
+<td align="center">1</td>
+<td align="center">5</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-5</td>
+<td align="center">1</td>
+<td align="center">Father</td>
+<td align="center">0.14</td>
+<td align="center">0.055</td>
+<td align="center">18</td>
+<td align="center">90</td>
+</tr>
+<tr class="even">
+<td align="center">SD-5</td>
+<td align="center">1</td>
+<td align="center">Mother</td>
+<td align="center">0.32</td>
+<td align="center">0.072</td>
+<td align="center">12</td>
+<td align="center">60</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-5</td>
+<td align="center">1</td>
+<td align="center">Both parents</td>
+<td align="center">0.39</td>
+<td align="center">0.074</td>
+<td align="center">13</td>
+<td align="center">65</td>
+</tr>
+<tr class="even">
+<td align="center">SD-72</td>
+<td align="center">0</td>
+<td align="center">Father</td>
+<td align="center">0.88</td>
+<td align="center">0.027</td>
+<td align="center">16</td>
+<td align="center">80</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-72</td>
+<td align="center">0</td>
+<td align="center">Mother</td>
+<td align="center">0.77</td>
+<td align="center">0.054</td>
+<td align="center">13</td>
+<td align="center">65</td>
+</tr>
+<tr class="even">
+<td align="center">SD-72</td>
+<td align="center">0</td>
+<td align="center">Both parents</td>
+<td align="center">0.79</td>
+<td align="center">NA</td>
+<td align="center">1</td>
+<td align="center">5</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-72</td>
+<td align="center">1</td>
+<td align="center">Father</td>
+<td align="center">0.76</td>
+<td align="center">0.045</td>
+<td align="center">18</td>
+<td align="center">90</td>
+</tr>
+<tr class="even">
+<td align="center">SD-72</td>
+<td align="center">1</td>
+<td align="center">Mother</td>
+<td align="center">0.80</td>
+<td align="center">0.039</td>
+<td align="center">17</td>
+<td align="center">85</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-72</td>
+<td align="center">1</td>
+<td align="center">Both parents</td>
+<td align="center">0.67</td>
+<td align="center">0.051</td>
+<td align="center">19</td>
+<td align="center">95</td>
+</tr>
+<tr class="even">
+<td align="center">SD-Mad</td>
+<td align="center">0</td>
+<td align="center">Father</td>
+<td align="center">0.75</td>
+<td align="center">0.055</td>
+<td align="center">14</td>
+<td align="center">70</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-Mad</td>
+<td align="center">0</td>
+<td align="center">Mother</td>
+<td align="center">0.75</td>
+<td align="center">0.069</td>
+<td align="center">11</td>
+<td align="center">55</td>
+</tr>
+<tr class="even">
+<td align="center">SD-Mad</td>
+<td align="center">0</td>
+<td align="center">Both parents</td>
+<td align="center">0.82</td>
+<td align="center">0.078</td>
+<td align="center">5</td>
+<td align="center">25</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-Mad</td>
+<td align="center">1</td>
+<td align="center">Father</td>
+<td align="center">0.87</td>
+<td align="center">0.028</td>
+<td align="center">18</td>
+<td align="center">90</td>
+</tr>
+<tr class="even">
+<td align="center">SD-Mad</td>
+<td align="center">1</td>
+<td align="center">Mother</td>
+<td align="center">0.81</td>
+<td align="center">0.037</td>
+<td align="center">17</td>
+<td align="center">85</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-Mad</td>
+<td align="center">1</td>
+<td align="center">Both parents</td>
+<td align="center">0.75</td>
+<td align="center">0.053</td>
+<td align="center">18</td>
+<td align="center">90</td>
+</tr>
+<tr class="even">
+<td align="center">SD-Mad</td>
+<td align="center">2</td>
+<td align="center">Both parents</td>
+<td align="center">0.19</td>
+<td align="center">0.072</td>
+<td align="center">14</td>
+<td align="center">70</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="female-fitness-data" class="section level3">
+<h3>Female fitness data</h3>
+<p><strong>Table S4</strong>: Average fecundity of adult females for each SD genotype and cross type. The last two columns give the sample size in terms of number of oviposition vials (each of which contained up to 5 focal females), and number of males.</p>
+<pre class="r"><code>females %&gt;% 
+  mutate(larvae_per_female = larvae_produced / number_of_laying_females) %&gt;%
+  group_by(SD, copies_of_SD, parent_with_SD) %&gt;% 
+  summarise(average_fecundity = mean(larvae_per_female),
+            SE = SE(larvae_per_female),
+            number_of_vials = n(), 
+            number_of_females = sum(number_of_laying_females)) %&gt;%
+  mutate(average_fecundity = format(round(average_fecundity, 2), nsmall = 2),
+         SE = format(round(SE, 3), nsmall = 3)) %&gt;%
+  as.data.frame() %&gt;% pander(split.cell = 40, split.table = Inf)</code></pre>
+<table>
+<colgroup>
+<col width="16%" />
+<col width="12%" />
+<col width="14%" />
+<col width="17%" />
+<col width="6%" />
+<col width="15%" />
+<col width="17%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">SD</th>
+<th align="center">copies_of_SD</th>
+<th align="center">parent_with_SD</th>
+<th align="center">average_fecundity</th>
+<th align="center">SE</th>
+<th align="center">number_of_vials</th>
+<th align="center">number_of_females</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">No SD chromosome</td>
+<td align="center">0</td>
+<td align="center">Neither parent</td>
+<td align="center">26.55</td>
+<td align="center">3.874</td>
+<td align="center">10</td>
+<td align="center">48</td>
+</tr>
+<tr class="even">
+<td align="center">SD-5</td>
+<td align="center">0</td>
+<td align="center">Father</td>
+<td align="center">25.06</td>
+<td align="center">8.127</td>
+<td align="center">6</td>
+<td align="center">28</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-5</td>
+<td align="center">0</td>
+<td align="center">Mother</td>
+<td align="center">41.13</td>
+<td align="center">3.700</td>
+<td align="center">15</td>
+<td align="center">71</td>
+</tr>
+<tr class="even">
+<td align="center">SD-5</td>
+<td align="center">0</td>
+<td align="center">Both parents</td>
+<td align="center">24.95</td>
+<td align="center">3.767</td>
+<td align="center">5</td>
+<td align="center">22</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-5</td>
+<td align="center">1</td>
+<td align="center">Father</td>
+<td align="center">28.88</td>
+<td align="center">3.337</td>
+<td align="center">12</td>
+<td align="center">55</td>
+</tr>
+<tr class="even">
+<td align="center">SD-5</td>
+<td align="center">1</td>
+<td align="center">Mother</td>
+<td align="center">29.74</td>
+<td align="center">3.118</td>
+<td align="center">16</td>
+<td align="center">69</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-5</td>
+<td align="center">1</td>
+<td align="center">Both parents</td>
+<td align="center">26.83</td>
+<td align="center">2.583</td>
+<td align="center">15</td>
+<td align="center">67</td>
+</tr>
+<tr class="even">
+<td align="center">SD-72</td>
+<td align="center">0</td>
+<td align="center">Father</td>
+<td align="center">32.68</td>
+<td align="center">3.258</td>
+<td align="center">14</td>
+<td align="center">65</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-72</td>
+<td align="center">0</td>
+<td align="center">Mother</td>
+<td align="center">35.10</td>
+<td align="center">3.023</td>
+<td align="center">15</td>
+<td align="center">68</td>
+</tr>
+<tr class="even">
+<td align="center">SD-72</td>
+<td align="center">0</td>
+<td align="center">Both parents</td>
+<td align="center">22.53</td>
+<td align="center">6.671</td>
+<td align="center">3</td>
+<td align="center">15</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-72</td>
+<td align="center">1</td>
+<td align="center">Father</td>
+<td align="center">33.97</td>
+<td align="center">2.743</td>
+<td align="center">16</td>
+<td align="center">77</td>
+</tr>
+<tr class="even">
+<td align="center">SD-72</td>
+<td align="center">1</td>
+<td align="center">Mother</td>
+<td align="center">41.90</td>
+<td align="center">3.792</td>
+<td align="center">14</td>
+<td align="center">68</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-72</td>
+<td align="center">1</td>
+<td align="center">Both parents</td>
+<td align="center">31.85</td>
+<td align="center">2.885</td>
+<td align="center">15</td>
+<td align="center">73</td>
+</tr>
+<tr class="even">
+<td align="center">SD-Mad</td>
+<td align="center">0</td>
+<td align="center">Father</td>
+<td align="center">28.25</td>
+<td align="center">3.769</td>
+<td align="center">16</td>
+<td align="center">79</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-Mad</td>
+<td align="center">0</td>
+<td align="center">Mother</td>
+<td align="center">44.71</td>
+<td align="center">3.723</td>
+<td align="center">13</td>
+<td align="center">65</td>
+</tr>
+<tr class="even">
+<td align="center">SD-Mad</td>
+<td align="center">0</td>
+<td align="center">Both parents</td>
+<td align="center">16.50</td>
+<td align="center">1.762</td>
+<td align="center">3</td>
+<td align="center">14</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-Mad</td>
+<td align="center">1</td>
+<td align="center">Father</td>
+<td align="center">36.85</td>
+<td align="center">3.968</td>
+<td align="center">16</td>
+<td align="center">77</td>
+</tr>
+<tr class="even">
+<td align="center">SD-Mad</td>
+<td align="center">1</td>
+<td align="center">Mother</td>
+<td align="center">40.58</td>
+<td align="center">4.602</td>
+<td align="center">14</td>
+<td align="center">64</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-Mad</td>
+<td align="center">1</td>
+<td align="center">Both parents</td>
+<td align="center">34.88</td>
+<td align="center">3.478</td>
+<td align="center">16</td>
+<td align="center">76</td>
+</tr>
+<tr class="even">
+<td align="center">SD-Mad</td>
+<td align="center">2</td>
+<td align="center">Both parents</td>
+<td align="center">11.26</td>
+<td align="center">1.631</td>
+<td align="center">17</td>
+<td align="center">83</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="experiment-2-larval-survival-data" class="section level3">
+<h3>Experiment 2 larval survival data</h3>
+<p><strong>Table S5</strong>: Number and percentage of L1 larvae surviving to adulthood in Experiment 2, for each SD genotype, cross type, and offspring sex.</p>
+<pre class="r"><code>set.seed(1)
+expt2 %&gt;%
+  rename(parent_with_SD = SD_parent, offspring_sex = sex_of_embryos) %&gt;%
+  mutate(SD_embryos = SD_offspring + rbinom(n(), Dead_offspring, 0.5),
+         CyO_embryos = starting_number_focal_sex - SD_embryos,
+         parent_with_SD = ifelse(parent_with_SD == &quot;dad&quot;, &quot;Father&quot;, &quot;Mother&quot;),
+         offspring_sex = ifelse(offspring_sex == &quot;female&quot;, &quot;Female&quot;, &quot;Male&quot;)) %&gt;%
+  group_by(SD, parent_with_SD, offspring_sex) %&gt;% 
+  summarise(percent_surviving_SD_larvae = mean(100 * SD_offspring / SD_embryos),
+            percent_surviving_CyO_larvae = mean(100 * CyO_offspring / CyO_embryos),
+            n_larvae_counted = sum(starting_number_focal_sex),
+            n_crosses = n()) %&gt;%
+  mutate(percent_surviving_SD_larvae = format(round(percent_surviving_SD_larvae, 1), nsmall = 1),
+         percent_surviving_CyO_larvae = format(round(percent_surviving_CyO_larvae, 1), nsmall = 1)) %&gt;% 
+  pander(split.cell = 40, split.table = Inf)</code></pre>
+<table>
+<colgroup>
+<col width="6%" />
+<col width="12%" />
+<col width="11%" />
+<col width="22%" />
+<col width="23%" />
+<col width="14%" />
+<col width="8%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">SD</th>
+<th align="center">parent_with_SD</th>
+<th align="center">offspring_sex</th>
+<th align="center">percent_surviving_SD_larvae</th>
+<th align="center">percent_surviving_CyO_larvae</th>
+<th align="center">n_larvae_counted</th>
+<th align="center">n_crosses</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">SD-5</td>
+<td align="center">Father</td>
+<td align="center">Female</td>
+<td align="center">81.0</td>
+<td align="center">86.0</td>
+<td align="center">763</td>
+<td align="center">16</td>
+</tr>
+<tr class="even">
+<td align="center">SD-5</td>
+<td align="center">Father</td>
+<td align="center">Male</td>
+<td align="center">79.1</td>
+<td align="center">79.4</td>
+<td align="center">727</td>
+<td align="center">17</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-5</td>
+<td align="center">Mother</td>
+<td align="center">Female</td>
+<td align="center">76.3</td>
+<td align="center">82.1</td>
+<td align="center">871</td>
+<td align="center">18</td>
+</tr>
+<tr class="even">
+<td align="center">SD-5</td>
+<td align="center">Mother</td>
+<td align="center">Male</td>
+<td align="center">68.2</td>
+<td align="center">69.9</td>
+<td align="center">972</td>
+<td align="center">20</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-72</td>
+<td align="center">Father</td>
+<td align="center">Female</td>
+<td align="center">86.3</td>
+<td align="center">85.4</td>
+<td align="center">744</td>
+<td align="center">16</td>
+</tr>
+<tr class="even">
+<td align="center">SD-72</td>
+<td align="center">Father</td>
+<td align="center">Male</td>
+<td align="center">83.7</td>
+<td align="center">77.9</td>
+<td align="center">615</td>
+<td align="center">15</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-72</td>
+<td align="center">Mother</td>
+<td align="center">Female</td>
+<td align="center">89.5</td>
+<td align="center">88.1</td>
+<td align="center">1123</td>
+<td align="center">23</td>
+</tr>
+<tr class="even">
+<td align="center">SD-72</td>
+<td align="center">Mother</td>
+<td align="center">Male</td>
+<td align="center">78.7</td>
+<td align="center">77.6</td>
+<td align="center">1186</td>
+<td align="center">24</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-Mad</td>
+<td align="center">Father</td>
+<td align="center">Female</td>
+<td align="center">86.2</td>
+<td align="center">85.5</td>
+<td align="center">457</td>
+<td align="center">10</td>
+</tr>
+<tr class="even">
+<td align="center">SD-Mad</td>
+<td align="center">Father</td>
+<td align="center">Male</td>
+<td align="center">86.2</td>
+<td align="center">84.1</td>
+<td align="center">480</td>
+<td align="center">11</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-Mad</td>
+<td align="center">Mother</td>
+<td align="center">Female</td>
+<td align="center">84.4</td>
+<td align="center">85.2</td>
+<td align="center">942</td>
+<td align="center">20</td>
+</tr>
+<tr class="even">
+<td align="center">SD-Mad</td>
+<td align="center">Mother</td>
+<td align="center">Male</td>
+<td align="center">82.1</td>
+<td align="center">78.6</td>
+<td align="center">1010</td>
+<td align="center">21</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="analysis-of-l1-larva-to-adult-survival" class="section level2">
+<h2>Analysis of L1 larva-to-adult survival</h2>
+<div id="run-a-bayesian-binomial-generalised-linear-mixed-model" class="section level3">
+<h3>Run a Bayesian binomial generalised linear mixed model</h3>
+<pre class="r"><code>if(!file.exists(&quot;data/model_output/larvae_brms.rds&quot;)){
+  
+  larvae_brms &lt;-  brm(survivors | trials(total) ~ larval_density + SD * copies_of_SD * parent_with_SD + (1 | vial), 
+                      family = binomial,
+                      data = larvae, 
+                      iter = 4000, chains = 4, cores = nCores,
+                      control = list(adapt_delta = 0.99, max_treedepth = 15),
+                      prior = prior(normal(0, 5), class = &quot;b&quot;))
+  
+  saveRDS(larvae_brms, &quot;data/model_output/larvae_brms.rds&quot;)
+} else larvae_brms &lt;- readRDS(&quot;data/model_output/larvae_brms.rds&quot;)</code></pre>
+</div>
+<div id="check-a-diagnostic-plot-of-the-model" class="section level3">
+<h3>Check a diagnostic plot of the model</h3>
+<p>This plot shows the frequency distribution of the original data (black line), along with predicted data that were computed using 10 random samples from the posterior of the model parameters. The posterior predicted values closely match the originals, suggesting that the model is approximating the data reasonably well.</p>
+<pre class="r"><code>pp_check(larvae_brms)</code></pre>
+<p><img src="figure/statistics.Rmd/unnamed-chunk-9-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="inspect-the-model-summary" class="section level3">
+<h3>Inspect the model summary</h3>
+<p>This summary shows the median, error, and 95% CIs for the posterior for all the fixed effects. This table is difficult to interpret and not very informative, but is presented here for completeness.</p>
+<pre class="r"><code>summarise_brms(larvae_brms)</code></pre>
+<table>
+<colgroup>
+<col width="49%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Covariate</th>
+<th align="center">Estimate</th>
+<th align="center">Est.Error</th>
+<th align="center">l-95% CI</th>
+<th align="center">u-95% CI</th>
+<th align="center">Notable</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Intercept</td>
+<td align="center">1.64</td>
+<td align="center">0.34</td>
+<td align="center">0.97</td>
+<td align="center">2.32</td>
+<td align="center">*</td>
+</tr>
+<tr class="even">
+<td align="center">larval_density</td>
+<td align="center">-0.04</td>
+<td align="center">0.17</td>
+<td align="center">-0.37</td>
+<td align="center">0.31</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-5</td>
+<td align="center">-0.57</td>
+<td align="center">3.18</td>
+<td align="center">-6.69</td>
+<td align="center">5.57</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-72</td>
+<td align="center">-0.79</td>
+<td align="center">3.18</td>
+<td align="center">-7.07</td>
+<td align="center">5.43</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-Mad</td>
+<td align="center">0.19</td>
+<td align="center">3.17</td>
+<td align="center">-6.16</td>
+<td align="center">6.49</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">copies_of_SD0or1</td>
+<td align="center">0.89</td>
+<td align="center">4.29</td>
+<td align="center">-7.55</td>
+<td align="center">9.18</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">copies_of_SD1</td>
+<td align="center">-0.07</td>
+<td align="center">3.55</td>
+<td align="center">-7.08</td>
+<td align="center">6.88</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">copies_of_SD2</td>
+<td align="center">-2.56</td>
+<td align="center">4.31</td>
+<td align="center">-11.00</td>
+<td align="center">5.91</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">parent_with_SDFather</td>
+<td align="center">0.04</td>
+<td align="center">3.06</td>
+<td align="center">-5.90</td>
+<td align="center">5.98</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">parent_with_SDMother</td>
+<td align="center">0.35</td>
+<td align="center">3.04</td>
+<td align="center">-5.64</td>
+<td align="center">6.33</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">parent_with_SDBothparents</td>
+<td align="center">-1.75</td>
+<td align="center">4.10</td>
+<td align="center">-9.63</td>
+<td align="center">6.33</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-5:copies_of_SD0or1</td>
+<td align="center">0.78</td>
+<td align="center">4.29</td>
+<td align="center">-7.69</td>
+<td align="center">9.14</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-72:copies_of_SD0or1</td>
+<td align="center">1.04</td>
+<td align="center">4.40</td>
+<td align="center">-7.63</td>
+<td align="center">9.81</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-Mad:copies_of_SD0or1</td>
+<td align="center">-0.89</td>
+<td align="center">4.31</td>
+<td align="center">-9.41</td>
+<td align="center">7.68</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-5:copies_of_SD1</td>
+<td align="center">-0.16</td>
+<td align="center">3.55</td>
+<td align="center">-7.05</td>
+<td align="center">6.74</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-72:copies_of_SD1</td>
+<td align="center">0.08</td>
+<td align="center">3.53</td>
+<td align="center">-6.79</td>
+<td align="center">6.97</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-Mad:copies_of_SD1</td>
+<td align="center">-0.03</td>
+<td align="center">3.54</td>
+<td align="center">-6.97</td>
+<td align="center">6.90</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-5:copies_of_SD2</td>
+<td align="center">-2.16</td>
+<td align="center">4.53</td>
+<td align="center">-11.22</td>
+<td align="center">6.71</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-72:copies_of_SD2</td>
+<td align="center">-2.78</td>
+<td align="center">4.65</td>
+<td align="center">-11.86</td>
+<td align="center">6.34</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-Mad:copies_of_SD2</td>
+<td align="center">2.35</td>
+<td align="center">4.41</td>
+<td align="center">-6.37</td>
+<td align="center">11.11</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-5:parent_with_SDFather</td>
+<td align="center">0.03</td>
+<td align="center">3.42</td>
+<td align="center">-6.59</td>
+<td align="center">6.91</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-72:parent_with_SDFather</td>
+<td align="center">0.37</td>
+<td align="center">3.46</td>
+<td align="center">-6.53</td>
+<td align="center">7.19</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-Mad:parent_with_SDFather</td>
+<td align="center">-0.45</td>
+<td align="center">3.45</td>
+<td align="center">-7.31</td>
+<td align="center">6.26</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-5:parent_with_SDMother</td>
+<td align="center">0.73</td>
+<td align="center">3.42</td>
+<td align="center">-5.87</td>
+<td align="center">7.58</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-72:parent_with_SDMother</td>
+<td align="center">0.51</td>
+<td align="center">3.32</td>
+<td align="center">-6.05</td>
+<td align="center">7.12</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-Mad:parent_with_SDMother</td>
+<td align="center">-0.89</td>
+<td align="center">3.37</td>
+<td align="center">-7.41</td>
+<td align="center">5.86</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-5:parent_with_SDBothparents</td>
+<td align="center">-1.38</td>
+<td align="center">4.16</td>
+<td align="center">-9.58</td>
+<td align="center">6.70</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-72:parent_with_SDBothparents</td>
+<td align="center">-1.65</td>
+<td align="center">4.26</td>
+<td align="center">-9.96</td>
+<td align="center">6.89</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-Mad:parent_with_SDBothparents</td>
+<td align="center">1.37</td>
+<td align="center">4.13</td>
+<td align="center">-6.77</td>
+<td align="center">9.69</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">copies_of_SD0or1:parent_with_SDFather</td>
+<td align="center">-0.01</td>
+<td align="center">5.11</td>
+<td align="center">-10.16</td>
+<td align="center">10.02</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">copies_of_SD1:parent_with_SDFather</td>
+<td align="center">0.03</td>
+<td align="center">3.54</td>
+<td align="center">-6.90</td>
+<td align="center">6.94</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">copies_of_SD2:parent_with_SDFather</td>
+<td align="center">0.11</td>
+<td align="center">4.99</td>
+<td align="center">-9.60</td>
+<td align="center">9.91</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">copies_of_SD0or1:parent_with_SDMother</td>
+<td align="center">-0.04</td>
+<td align="center">4.91</td>
+<td align="center">-9.60</td>
+<td align="center">9.63</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">copies_of_SD1:parent_with_SDMother</td>
+<td align="center">-0.13</td>
+<td align="center">3.63</td>
+<td align="center">-7.24</td>
+<td align="center">7.09</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">copies_of_SD2:parent_with_SDMother</td>
+<td align="center">0.06</td>
+<td align="center">5.06</td>
+<td align="center">-9.76</td>
+<td align="center">9.81</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">copies_of_SD0or1:parent_with_SDBothparents</td>
+<td align="center">0.89</td>
+<td align="center">4.23</td>
+<td align="center">-7.16</td>
+<td align="center">9.22</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">copies_of_SD1:parent_with_SDBothparents</td>
+<td align="center">0.08</td>
+<td align="center">4.90</td>
+<td align="center">-9.61</td>
+<td align="center">9.82</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">copies_of_SD2:parent_with_SDBothparents</td>
+<td align="center">-2.68</td>
+<td align="center">4.37</td>
+<td align="center">-11.18</td>
+<td align="center">5.82</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-5:copies_of_SD0or1:parent_with_SDFather</td>
+<td align="center">0.01</td>
+<td align="center">4.93</td>
+<td align="center">-9.76</td>
+<td align="center">9.63</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-72:copies_of_SD0or1:parent_with_SDFather</td>
+<td align="center">-0.03</td>
+<td align="center">5.09</td>
+<td align="center">-10.10</td>
+<td align="center">10.02</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-Mad:copies_of_SD0or1:parent_with_SDFather</td>
+<td align="center">0.00</td>
+<td align="center">5.08</td>
+<td align="center">-9.93</td>
+<td align="center">9.91</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-5:copies_of_SD1:parent_with_SDFather</td>
+<td align="center">0.06</td>
+<td align="center">3.53</td>
+<td align="center">-6.84</td>
+<td align="center">6.90</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-72:copies_of_SD1:parent_with_SDFather</td>
+<td align="center">0.11</td>
+<td align="center">3.55</td>
+<td align="center">-6.86</td>
+<td align="center">7.07</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-Mad:copies_of_SD1:parent_with_SDFather</td>
+<td align="center">-0.11</td>
+<td align="center">3.57</td>
+<td align="center">-7.17</td>
+<td align="center">6.86</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-5:copies_of_SD2:parent_with_SDFather</td>
+<td align="center">0.09</td>
+<td align="center">5.06</td>
+<td align="center">-9.60</td>
+<td align="center">9.95</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-72:copies_of_SD2:parent_with_SDFather</td>
+<td align="center">0.04</td>
+<td align="center">4.94</td>
+<td align="center">-9.58</td>
+<td align="center">9.60</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-Mad:copies_of_SD2:parent_with_SDFather</td>
+<td align="center">-0.01</td>
+<td align="center">4.96</td>
+<td align="center">-9.76</td>
+<td align="center">9.88</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-5:copies_of_SD0or1:parent_with_SDMother</td>
+<td align="center">0.03</td>
+<td align="center">5.09</td>
+<td align="center">-9.86</td>
+<td align="center">10.08</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-72:copies_of_SD0or1:parent_with_SDMother</td>
+<td align="center">0.02</td>
+<td align="center">4.96</td>
+<td align="center">-9.67</td>
+<td align="center">9.71</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-Mad:copies_of_SD0or1:parent_with_SDMother</td>
+<td align="center">-0.03</td>
+<td align="center">4.97</td>
+<td align="center">-9.89</td>
+<td align="center">9.64</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-5:copies_of_SD1:parent_with_SDMother</td>
+<td align="center">-0.14</td>
+<td align="center">3.60</td>
+<td align="center">-7.19</td>
+<td align="center">6.93</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-72:copies_of_SD1:parent_with_SDMother</td>
+<td align="center">-0.10</td>
+<td align="center">3.64</td>
+<td align="center">-7.21</td>
+<td align="center">7.11</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-Mad:copies_of_SD1:parent_with_SDMother</td>
+<td align="center">0.12</td>
+<td align="center">3.58</td>
+<td align="center">-6.92</td>
+<td align="center">7.18</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-5:copies_of_SD2:parent_with_SDMother</td>
+<td align="center">0.01</td>
+<td align="center">4.86</td>
+<td align="center">-9.39</td>
+<td align="center">9.50</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-72:copies_of_SD2:parent_with_SDMother</td>
+<td align="center">-0.02</td>
+<td align="center">5.06</td>
+<td align="center">-9.93</td>
+<td align="center">9.87</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-Mad:copies_of_SD2:parent_with_SDMother</td>
+<td align="center">0.04</td>
+<td align="center">5.02</td>
+<td align="center">-9.64</td>
+<td align="center">9.90</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-5:copies_of_SD0or1:parent_with_SDBothparents</td>
+<td align="center">0.76</td>
+<td align="center">4.26</td>
+<td align="center">-7.48</td>
+<td align="center">8.94</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-72:copies_of_SD0or1:parent_with_SDBothparents</td>
+<td align="center">0.99</td>
+<td align="center">4.41</td>
+<td align="center">-7.54</td>
+<td align="center">9.71</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-Mad:copies_of_SD0or1:parent_with_SDBothparents</td>
+<td align="center">-0.85</td>
+<td align="center">4.30</td>
+<td align="center">-9.30</td>
+<td align="center">7.38</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-5:copies_of_SD1:parent_with_SDBothparents</td>
+<td align="center">-0.05</td>
+<td align="center">4.89</td>
+<td align="center">-9.48</td>
+<td align="center">9.44</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-72:copies_of_SD1:parent_with_SDBothparents</td>
+<td align="center">0.09</td>
+<td align="center">5.12</td>
+<td align="center">-9.96</td>
+<td align="center">10.17</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-Mad:copies_of_SD1:parent_with_SDBothparents</td>
+<td align="center">0.00</td>
+<td align="center">4.97</td>
+<td align="center">-9.69</td>
+<td align="center">9.78</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-5:copies_of_SD2:parent_with_SDBothparents</td>
+<td align="center">-2.17</td>
+<td align="center">4.58</td>
+<td align="center">-11.16</td>
+<td align="center">6.77</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-72:copies_of_SD2:parent_with_SDBothparents</td>
+<td align="center">-2.80</td>
+<td align="center">4.54</td>
+<td align="center">-11.78</td>
+<td align="center">5.99</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-Mad:copies_of_SD2:parent_with_SDBothparents</td>
+<td align="center">2.32</td>
+<td align="center">4.36</td>
+<td align="center">-6.35</td>
+<td align="center">10.75</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="hypothesis-testing" class="section level3">
+<h3>Hypothesis testing</h3>
+<p><strong>Table S6</strong>: The results of hypothesis tests computed using the model of larval survival in Experiment 1. Each row gives the posterior estimate of a difference in means, such that the estimate is positive if mean 1 is larger than mean 2, and negative otherwise (expressed in % larval survival). The mean 1 and mean 2 columns list the parent which had SD (mother, father, or both), followed by the number of SD alleles present in the offspring (0, 1 or 2). The Posterior probability column gives the probability that the mean with the smaller point estimate is actually larger than the other mean, analagously to a one-tailed p-value. The Evidence ratio (ER) column gives the ratio of evidence, such that ER = 5 means that it is 5 times more likely that the mean with the smaller point estimate really is the smaller one. Asterisks highlight rows where the posterior probability is less than 0.05. <br></br></p>
+<pre class="r"><code># Function to compute posterior difference in means, with the posterior_probability of the smaller mean actually being the larger one (plus the larger evidence ratio, e.g. ER = 10 means it&#39;s 10x more likely the smaller mean really is smaller not larger, ER=1 means it&#39;s equally likely the smaller one is actually larger)
+compare &lt;- function(mean1, mean2){
+  difference &lt;- mean1 - mean2
+  prob_less &lt;- hypothesis(data.frame(x = difference), &quot;x &lt; 0&quot;)$hypothesis
+  prob_more &lt;- hypothesis(data.frame(x = difference), &quot;x &gt; 0&quot;)$hypothesis
+  hypothesis(data.frame(x = difference), &quot;x = 0&quot;)$hypothesis %&gt;% 
+    mutate(Posterior_probability = min(c(prob_less$Post.Prob, prob_more$Post.Prob)),
+           Evidence_ratio = max(c(prob_less$Evid.Ratio, prob_more$Evid.Ratio)))
+}
+
+hypothesis_tests &lt;- function(model, dat, SR = FALSE, divisor = NULL){
+  
+  SDs &lt;- c(&quot;SD-5&quot;, &quot;SD-72&quot;, &quot;SD-Mad&quot;)
+  
+  new &lt;- dat %&gt;%
+    select(SD, copies_of_SD, MotherHasSD, FatherHasSD, SD_from_mum, 
+           SD_from_dad, mum_genotype, dad_genotype, parent_with_SD) %&gt;%
+    distinct() %&gt;%
+    arrange(SD, copies_of_SD, MotherHasSD, FatherHasSD, SD_from_mum, 
+            SD_from_dad, mum_genotype, dad_genotype) %&gt;%
+    mutate(total = 100, 
+           number_of_laying_females = 5, 
+           larval_density = 0,
+           copies_of_SD = as.character(copies_of_SD),
+           i = 1:n(),
+           parent = ifelse(FatherHasSD == 1, &quot;B&quot;, &quot;M&quot;),
+           parent = replace(parent, MotherHasSD == 0, &quot;F&quot;))
+  
+  
+  SD5 &lt;- new %&gt;% filter(SD == &quot;SD-5&quot;)
+  SD72 &lt;- new %&gt;% filter(SD == &quot;SD-72&quot;)
+  SDMad &lt;- new %&gt;% filter(SD == &quot;SD-Mad&quot;)
+  
+  pred &lt;- fitted(model, re_formula = NA,  
+                 newdata = new, 
+                 summary = FALSE) 
+  
+  if(!is.null(divisor)) pred &lt;- pred / divisor
+  
+  control_0SD_neither &lt;- pred[, new %&gt;% filter(SD == &quot;No SD chromosome&quot;) %&gt;% pull(i)]
+  
+  SD5_0SD_mother &lt;- pred[, SD5 %&gt;% filter(copies_of_SD == &quot;0&quot; &amp; parent == &quot;M&quot;) %&gt;% pull(i)]
+  SD5_1SD_mother &lt;- pred[, SD5 %&gt;% filter(copies_of_SD == &quot;1&quot; &amp; parent == &quot;M&quot;) %&gt;% pull(i)]
+  SD5_0SD_father &lt;- pred[, SD5 %&gt;% filter(copies_of_SD == &quot;0&quot; &amp; parent == &quot;F&quot;) %&gt;% pull(i)]
+  SD5_1SD_father &lt;- pred[, SD5 %&gt;% filter(copies_of_SD == &quot;1&quot; &amp; parent == &quot;F&quot;) %&gt;% pull(i)]
+  
+  SD72_0SD_mother &lt;- pred[, SD72 %&gt;% filter(copies_of_SD == &quot;0&quot; &amp; parent == &quot;M&quot;) %&gt;% pull(i)]
+  SD72_1SD_mother &lt;- pred[, SD72 %&gt;% filter(copies_of_SD == &quot;1&quot; &amp; parent == &quot;M&quot;) %&gt;% pull(i)]
+  SD72_0SD_father &lt;- pred[, SD72 %&gt;% filter(copies_of_SD == &quot;0&quot; &amp; parent == &quot;F&quot;) %&gt;% pull(i)]
+  SD72_1SD_father &lt;- pred[, SD72 %&gt;% filter(copies_of_SD == &quot;1&quot; &amp; parent == &quot;F&quot;) %&gt;% pull(i)]
+  
+  SDMad_0SD_mother &lt;- pred[, SDMad %&gt;% filter(copies_of_SD == &quot;0&quot; &amp; parent == &quot;M&quot;) %&gt;% pull(i)]
+  SDMad_1SD_mother &lt;- pred[, SDMad %&gt;% filter(copies_of_SD == &quot;1&quot; &amp; parent == &quot;M&quot;) %&gt;% pull(i)]
+  SDMad_0SD_father &lt;- pred[, SDMad %&gt;% filter(copies_of_SD == &quot;0&quot; &amp; parent == &quot;F&quot;) %&gt;% pull(i)]
+  SDMad_1SD_father &lt;- pred[, SDMad %&gt;% filter(copies_of_SD == &quot;1&quot; &amp; parent == &quot;F&quot;) %&gt;% pull(i)]
+  
+  SDMad_1SD_both &lt;- pred[, SDMad %&gt;% filter(copies_of_SD %in% c(&quot;0 or 1&quot;, &quot;1&quot;) &amp; parent == &quot;B&quot;) %&gt;% pull(i)]
+  SDMad_2 &lt;- pred[, SDMad %&gt;% filter(copies_of_SD == &quot;2&quot;) %&gt;% pull(i)]
+  
+  # For larvae data only, we also have observations of SD-5 and SD-Mad homozygotes
+  if(sum(new$copies_of_SD == &quot;2&quot;) &gt; 1){ 
+    SD5_1SD_both  &lt;- pred[, SD5  %&gt;% filter(copies_of_SD %in% c(&quot;0 or 1&quot;, &quot;1&quot;) &amp; parent == &quot;B&quot;) %&gt;% pull(i)]
+    SD72_1SD_both &lt;- pred[, SD72 %&gt;% filter(copies_of_SD %in% c(&quot;0 or 1&quot;, &quot;1&quot;) &amp; parent == &quot;B&quot;) %&gt;% pull(i)]
+    SD5_2  &lt;- pred[, SD5  %&gt;% filter(copies_of_SD == &quot;2&quot;) %&gt;% pull(i)]
+    SD72_2 &lt;- pred[, SD72 %&gt;% filter(copies_of_SD == &quot;2&quot;) %&gt;% pull(i)]
+    
+    two_compare &lt;- data.frame(
+      SD = SDs,
+      Mean_1 = rep(paste(&quot;Both parents,&quot;, ifelse(&quot;0 or 1&quot; %in% SD5$copies_of_SD, &quot;0 or 1&quot;, &quot;1&quot;)), 3),
+      Mean_2 = rep(&quot;Both parents, 2&quot;, 3),
+      rbind(
+        compare(SD5_1SD_both, SD5_2),
+        compare(SD72_1SD_both, SD72_2),
+        compare(SDMad_1SD_both, SDMad_2)
+      ) 
+    )
+    
+  } else { # for non-larva data
+    two_compare &lt;- data.frame(SD = &quot;SD-Mad&quot;, 
+                              Mean_1 = &quot;Both parents, 1&quot;,
+                              Mean_2 = &quot;Both parents, 2&quot;, 
+                              compare(SDMad_1SD_both, SDMad_2)) # CONTROLS HERE
+  }
+  
+  if(&quot;0 or 1&quot; %in% new$copies_of_SD){  
+    SD5_0or1   &lt;- pred[, SD5 %&gt;% filter(copies_of_SD == &quot;0 or 1&quot;) %&gt;% pull(i)]
+    SD72_0or1  &lt;- pred[, SD72 %&gt;% filter(copies_of_SD == &quot;0 or 1&quot;) %&gt;% pull(i)]
+    SDMad_0or1 &lt;- pred[, SDMad %&gt;% filter(copies_of_SD == &quot;0 or 1&quot;) %&gt;% pull(i)]
+  }
+  
+  rbind(
+    data.frame(
+      SD = rep(SDs, 6),
+      Mean_1 = c(rep(&quot;Neither, 0&quot;, 6), rep(&quot;Mother, 0&quot;, 3), rep(&quot;Mother, 1&quot;, 3), rep(&quot;Mother, 0&quot;, 3), rep(&quot;Father, 0&quot;, 3)),
+      Mean_2 = c(rep(&quot;Father, 0&quot;, 3), rep(&quot;Mother, 0&quot;, 3),  
+                 rep(&quot;Father, 0&quot;, 3), rep(&quot;Father, 1&quot;, 3), rep(&quot;Mother, 1&quot;, 3), rep(&quot;Father, 1&quot;, 3)),
+      rbind(
+        
+        compare(control_0SD_neither, SD5_0SD_father), # controls vs 0 SD individuals
+        compare(control_0SD_neither, SD72_0SD_father),
+        compare(control_0SD_neither, SDMad_0SD_father),
+        compare(control_0SD_neither, SD5_0SD_mother),
+        compare(control_0SD_neither, SD72_0SD_mother),
+        compare(control_0SD_neither, SDMad_0SD_mother),
+        
+        compare(SD5_0SD_mother, SD5_0SD_father), # parental effects on 0 SD individuals
+        compare(SD72_0SD_mother, SD72_0SD_father),
+        compare(SDMad_0SD_mother, SDMad_0SD_father),
+        
+        compare(SD5_1SD_mother, SD5_1SD_father), # parental effects on 1 SD individuals
+        compare(SD72_1SD_mother, SD72_1SD_father),
+        compare(SDMad_1SD_mother, SDMad_1SD_father),
+        
+        compare(SD5_0SD_mother, SD5_1SD_mother), # effect of inheriting SD, from the mother
+        compare(SD72_0SD_mother, SD72_1SD_mother),
+        compare(SDMad_0SD_mother, SDMad_1SD_mother),
+        
+        compare(SD5_0SD_father, SD5_1SD_father), # effect of inheriting SD, from the father
+        compare(SD72_0SD_father, SD72_1SD_father),
+        compare(SDMad_0SD_father, SDMad_1SD_father)
+        
+      )), 
+    two_compare) %&gt;% 
+    select(-Hypothesis, -Evid.Ratio, -Post.Prob, -Star) %&gt;%
+    mutate(Notable = ifelse(Posterior_probability &lt; 0.05, &quot;*&quot;, &quot;&quot;)) 
+}
+
+clean_table &lt;- function(tabl){
+  cols &lt;- c(&quot;Trait&quot;, &quot;SD&quot;, &quot;Comparison&quot;, &quot;Difference&quot;, &quot;Error&quot;, &quot;Posterior_probability&quot;)
+  if(!(&quot;Trait&quot; %in% names(tabl))){
+    cols &lt;- cols[cols != &quot;Trait&quot;]
+  }
+  
+  tabl &lt;- mutate(tabl, 
+                 Estimate = format(round(Estimate, 1), nsmall = 1),  
+                 Est.Error = format(round(Est.Error, 1), nsmall = 1),
+                 CI.Lower = format(round(CI.Lower, 1), nsmall = 1),
+                 CI.Upper = format(round(CI.Upper, 1), nsmall = 1), 
+                 Evidence_ratio = format(round(Evidence_ratio, 1), nsmall = 1), 
+                 Difference = paste(Estimate, &quot; (&quot;, CI.Lower, &quot; to &quot;, CI.Upper, &quot;)&quot;, sep = &quot;&quot;),
+                 Comparison = paste(Mean_1, &quot;-&quot;, Mean_2),
+                 Error = Est.Error) %&gt;%
+    select(!! cols)
+  names(tabl) &lt;- str_replace_all(names(tabl), &quot;_&quot;, &quot; &quot;)
+  tabl
+}
+
+tests1 &lt;- hypothesis_tests(larvae_brms, larvae)
+tests1 %&gt;% clean_table() %&gt;% pander(split.cell = 40, split.table = Inf)</code></pre>
+<table style="width:100%;">
+<colgroup>
+<col width="8%" />
+<col width="39%" />
+<col width="21%" />
+<col width="7%" />
+<col width="22%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">SD</th>
+<th align="center">Comparison</th>
+<th align="center">Difference</th>
+<th align="center">Error</th>
+<th align="center">Posterior probability</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">SD-5</td>
+<td align="center">Neither, 0 - Father, 0</td>
+<td align="center">8.9 (-11.6 to 34.9)</td>
+<td align="center">11.8</td>
+<td align="center">0.2254</td>
+</tr>
+<tr class="even">
+<td align="center">SD-72</td>
+<td align="center">Neither, 0 - Father, 0</td>
+<td align="center">6.0 (-10.5 to 24.3)</td>
+<td align="center">8.9</td>
+<td align="center">0.2464</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-Mad</td>
+<td align="center">Neither, 0 - Father, 0</td>
+<td align="center">3.5 (-12.5 to 21.0)</td>
+<td align="center">8.4</td>
+<td align="center">0.3415</td>
+</tr>
+<tr class="even">
+<td align="center">SD-5</td>
+<td align="center">Neither, 0 - Mother, 0</td>
+<td align="center">-5.8 (-18.1 to 5.3)</td>
+<td align="center">5.9</td>
+<td align="center">0.1557</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-72</td>
+<td align="center">Neither, 0 - Mother, 0</td>
+<td align="center">-0.9 (-14.0 to 12.1)</td>
+<td align="center">6.6</td>
+<td align="center">0.4435</td>
+</tr>
+<tr class="even">
+<td align="center">SD-Mad</td>
+<td align="center">Neither, 0 - Mother, 0</td>
+<td align="center">5.4 ( -9.3 to 20.0)</td>
+<td align="center">7.3</td>
+<td align="center">0.2181</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-5</td>
+<td align="center">Mother, 0 - Father, 0</td>
+<td align="center">14.7 ( -2.8 to 39.3)</td>
+<td align="center">10.7</td>
+<td align="center">0.0575</td>
+</tr>
+<tr class="even">
+<td align="center">SD-72</td>
+<td align="center">Mother, 0 - Father, 0</td>
+<td align="center">6.9 ( -9.6 to 25.0)</td>
+<td align="center">8.8</td>
+<td align="center">0.2145</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-Mad</td>
+<td align="center">Mother, 0 - Father, 0</td>
+<td align="center">-1.9 (-18.1 to 15.9)</td>
+<td align="center">8.6</td>
+<td align="center">0.3991</td>
+</tr>
+<tr class="even">
+<td align="center">SD-5</td>
+<td align="center">Mother, 1 - Father, 1</td>
+<td align="center">10.6 ( -4.4 to 26.4)</td>
+<td align="center">7.8</td>
+<td align="center">0.07975</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-72</td>
+<td align="center">Mother, 1 - Father, 1</td>
+<td align="center">1.2 (-13.1 to 15.4)</td>
+<td align="center">7.2</td>
+<td align="center">0.429</td>
+</tr>
+<tr class="even">
+<td align="center">SD-Mad</td>
+<td align="center">Mother, 1 - Father, 1</td>
+<td align="center">-1.0 (-17.9 to 15.2)</td>
+<td align="center">8.4</td>
+<td align="center">0.4487</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-5</td>
+<td align="center">Mother, 0 - Mother, 1</td>
+<td align="center">5.6 ( -5.2 to 17.4)</td>
+<td align="center">5.7</td>
+<td align="center">0.156</td>
+</tr>
+<tr class="even">
+<td align="center">SD-72</td>
+<td align="center">Mother, 0 - Mother, 1</td>
+<td align="center">3.0 (-10.2 to 16.9)</td>
+<td align="center">6.8</td>
+<td align="center">0.326</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-Mad</td>
+<td align="center">Mother, 0 - Mother, 1</td>
+<td align="center">1.9 (-14.4 to 19.4)</td>
+<td align="center">8.6</td>
+<td align="center">0.4131</td>
+</tr>
+<tr class="even">
+<td align="center">SD-5</td>
+<td align="center">Father, 0 - Father, 1</td>
+<td align="center">1.6 (-25.5 to 23.4)</td>
+<td align="center">12.5</td>
+<td align="center">0.4146</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-72</td>
+<td align="center">Father, 0 - Father, 1</td>
+<td align="center">-2.7 (-21.5 to 15.1)</td>
+<td align="center">9.3</td>
+<td align="center">0.3935</td>
+</tr>
+<tr class="even">
+<td align="center">SD-Mad</td>
+<td align="center">Father, 0 - Father, 1</td>
+<td align="center">2.8 (-16.7 to 20.4)</td>
+<td align="center">9.2</td>
+<td align="center">0.3656</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-5</td>
+<td align="center">Both parents, 0 or 1 - Both parents, 2</td>
+<td align="center">77.1 ( 62.2 to 87.8)</td>
+<td align="center">6.5</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td align="center">SD-72</td>
+<td align="center">Both parents, 0 or 1 - Both parents, 2</td>
+<td align="center">77.5 ( 63.6 to 87.8)</td>
+<td align="center">6.1</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-Mad</td>
+<td align="center">Both parents, 0 or 1 - Both parents, 2</td>
+<td align="center">10.6 ( -6.7 to 27.7)</td>
+<td align="center">8.7</td>
+<td align="center">0.1046</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="analysis-of-adult-sex-ratio" class="section level2">
+<h2>Analysis of adult sex ratio</h2>
+<div id="run-a-bayesian-binomial-generalised-linear-mixed-model-1" class="section level3">
+<h3>Run a Bayesian binomial generalised linear mixed model</h3>
+<pre class="r"><code>SR_data &lt;- larvae %&gt;% filter(survivors &gt; 0) %&gt;% 
+  mutate(Males = surviving_males, 
+         total = surviving_males + surviving_females)
+
+if(!file.exists(&quot;data/model_output/SR_brms.rds&quot;)){
+  SR_brms &lt;-  brm(Males | trials(total) ~ SD * copies_of_SD * parent_with_SD + (1 | vial), 
+                  family = binomial,
+                  data = SR_data, iter = 4000, chains = 4, cores = nCores,
+                  control = list(adapt_delta = 0.99, max_treedepth = 15), 
+                  prior = prior(normal(0, 5), class = &quot;b&quot;))
+  
+  saveRDS(SR_brms, &quot;data/model_output/SR_brms.rds&quot;)
+} else SR_brms &lt;- readRDS(&quot;data/model_output/SR_brms.rds&quot;)</code></pre>
+</div>
+<div id="check-a-diagnostic-plot-of-the-model-1" class="section level3">
+<h3>Check a diagnostic plot of the model</h3>
+<p>This plot shows the frequency distribution of the original data (black line), along with predicted data that were computed using 10 random samples from the posterior of the model parameters. The posterior predicted values closely match the originals, suggesting that the model is approximating the data reasonably well.</p>
+<pre class="r"><code>pp_check(SR_brms)</code></pre>
+<p><img src="figure/statistics.Rmd/unnamed-chunk-13-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="inspect-the-model-summary-1" class="section level3">
+<h3>Inspect the model summary</h3>
+<p>This summary shows the median, error, and 95% CIs for the posterior for all the fixed effects. This table is difficult to interpret and not very informative, but is presented here for completeness.</p>
+<pre class="r"><code>summarise_brms(SR_brms)</code></pre>
+<table>
+<colgroup>
+<col width="49%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Covariate</th>
+<th align="center">Estimate</th>
+<th align="center">Est.Error</th>
+<th align="center">l-95% CI</th>
+<th align="center">u-95% CI</th>
+<th align="center">Notable</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Intercept</td>
+<td align="center">0.15</td>
+<td align="center">0.16</td>
+<td align="center">-0.16</td>
+<td align="center">0.46</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-5</td>
+<td align="center">0.06</td>
+<td align="center">3.20</td>
+<td align="center">-6.28</td>
+<td align="center">6.28</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-72</td>
+<td align="center">-0.08</td>
+<td align="center">3.19</td>
+<td align="center">-6.29</td>
+<td align="center">6.31</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-Mad</td>
+<td align="center">-0.13</td>
+<td align="center">3.15</td>
+<td align="center">-6.34</td>
+<td align="center">5.91</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">copies_of_SD0or1</td>
+<td align="center">-0.10</td>
+<td align="center">4.36</td>
+<td align="center">-8.53</td>
+<td align="center">8.54</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">copies_of_SD1</td>
+<td align="center">0.03</td>
+<td align="center">3.55</td>
+<td align="center">-6.99</td>
+<td align="center">6.99</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">copies_of_SD2</td>
+<td align="center">-0.01</td>
+<td align="center">4.54</td>
+<td align="center">-9.04</td>
+<td align="center">8.98</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">parent_with_SDFather</td>
+<td align="center">-0.12</td>
+<td align="center">3.05</td>
+<td align="center">-6.15</td>
+<td align="center">5.89</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">parent_with_SDMother</td>
+<td align="center">-0.01</td>
+<td align="center">3.07</td>
+<td align="center">-5.99</td>
+<td align="center">5.92</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">parent_with_SDBothparents</td>
+<td align="center">-0.03</td>
+<td align="center">4.15</td>
+<td align="center">-8.19</td>
+<td align="center">8.13</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-5:copies_of_SD0or1</td>
+<td align="center">-0.11</td>
+<td align="center">4.31</td>
+<td align="center">-8.51</td>
+<td align="center">8.49</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-72:copies_of_SD0or1</td>
+<td align="center">0.04</td>
+<td align="center">4.35</td>
+<td align="center">-8.57</td>
+<td align="center">8.45</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-Mad:copies_of_SD0or1</td>
+<td align="center">-0.07</td>
+<td align="center">4.27</td>
+<td align="center">-8.43</td>
+<td align="center">8.10</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-5:copies_of_SD1</td>
+<td align="center">-0.17</td>
+<td align="center">3.61</td>
+<td align="center">-7.23</td>
+<td align="center">6.96</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-72:copies_of_SD1</td>
+<td align="center">0.05</td>
+<td align="center">3.53</td>
+<td align="center">-6.84</td>
+<td align="center">6.96</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-Mad:copies_of_SD1</td>
+<td align="center">0.03</td>
+<td align="center">3.53</td>
+<td align="center">-6.85</td>
+<td align="center">6.93</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-5:copies_of_SD2</td>
+<td align="center">0.01</td>
+<td align="center">5.00</td>
+<td align="center">-9.76</td>
+<td align="center">9.78</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-72:copies_of_SD2</td>
+<td align="center">0.02</td>
+<td align="center">5.02</td>
+<td align="center">-9.82</td>
+<td align="center">9.99</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-Mad:copies_of_SD2</td>
+<td align="center">0.01</td>
+<td align="center">4.47</td>
+<td align="center">-8.64</td>
+<td align="center">8.77</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-5:parent_with_SDFather</td>
+<td align="center">0.07</td>
+<td align="center">3.42</td>
+<td align="center">-6.61</td>
+<td align="center">6.85</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-72:parent_with_SDFather</td>
+<td align="center">-0.08</td>
+<td align="center">3.37</td>
+<td align="center">-6.74</td>
+<td align="center">6.44</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-Mad:parent_with_SDFather</td>
+<td align="center">-0.20</td>
+<td align="center">3.41</td>
+<td align="center">-6.80</td>
+<td align="center">6.50</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-5:parent_with_SDMother</td>
+<td align="center">-0.15</td>
+<td align="center">3.48</td>
+<td align="center">-6.98</td>
+<td align="center">6.78</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-72:parent_with_SDMother</td>
+<td align="center">-0.03</td>
+<td align="center">3.41</td>
+<td align="center">-6.73</td>
+<td align="center">6.52</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-Mad:parent_with_SDMother</td>
+<td align="center">0.11</td>
+<td align="center">3.42</td>
+<td align="center">-6.61</td>
+<td align="center">6.87</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-5:parent_with_SDBothparents</td>
+<td align="center">-0.03</td>
+<td align="center">4.31</td>
+<td align="center">-8.53</td>
+<td align="center">8.36</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-72:parent_with_SDBothparents</td>
+<td align="center">-0.01</td>
+<td align="center">4.40</td>
+<td align="center">-8.72</td>
+<td align="center">8.59</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-Mad:parent_with_SDBothparents</td>
+<td align="center">-0.01</td>
+<td align="center">4.17</td>
+<td align="center">-8.43</td>
+<td align="center">8.09</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">copies_of_SD0or1:parent_with_SDFather</td>
+<td align="center">-0.01</td>
+<td align="center">4.91</td>
+<td align="center">-9.76</td>
+<td align="center">9.72</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">copies_of_SD1:parent_with_SDFather</td>
+<td align="center">-0.02</td>
+<td align="center">3.50</td>
+<td align="center">-7.03</td>
+<td align="center">6.85</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">copies_of_SD2:parent_with_SDFather</td>
+<td align="center">0.06</td>
+<td align="center">4.97</td>
+<td align="center">-9.73</td>
+<td align="center">9.93</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">copies_of_SD0or1:parent_with_SDMother</td>
+<td align="center">0.02</td>
+<td align="center">5.00</td>
+<td align="center">-9.91</td>
+<td align="center">9.73</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">copies_of_SD1:parent_with_SDMother</td>
+<td align="center">0.06</td>
+<td align="center">3.49</td>
+<td align="center">-6.85</td>
+<td align="center">6.98</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">copies_of_SD2:parent_with_SDMother</td>
+<td align="center">0.01</td>
+<td align="center">5.08</td>
+<td align="center">-9.92</td>
+<td align="center">10.00</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">copies_of_SD0or1:parent_with_SDBothparents</td>
+<td align="center">-0.05</td>
+<td align="center">4.32</td>
+<td align="center">-8.58</td>
+<td align="center">8.30</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">copies_of_SD1:parent_with_SDBothparents</td>
+<td align="center">0.03</td>
+<td align="center">4.98</td>
+<td align="center">-9.69</td>
+<td align="center">9.86</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">copies_of_SD2:parent_with_SDBothparents</td>
+<td align="center">0.05</td>
+<td align="center">4.48</td>
+<td align="center">-8.89</td>
+<td align="center">8.87</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-5:copies_of_SD0or1:parent_with_SDFather</td>
+<td align="center">-0.04</td>
+<td align="center">4.95</td>
+<td align="center">-9.71</td>
+<td align="center">9.82</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-72:copies_of_SD0or1:parent_with_SDFather</td>
+<td align="center">0.03</td>
+<td align="center">5.11</td>
+<td align="center">-9.90</td>
+<td align="center">10.00</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-Mad:copies_of_SD0or1:parent_with_SDFather</td>
+<td align="center">0.03</td>
+<td align="center">4.98</td>
+<td align="center">-9.82</td>
+<td align="center">9.78</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-5:copies_of_SD1:parent_with_SDFather</td>
+<td align="center">-0.09</td>
+<td align="center">3.50</td>
+<td align="center">-6.93</td>
+<td align="center">6.85</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-72:copies_of_SD1:parent_with_SDFather</td>
+<td align="center">0.04</td>
+<td align="center">3.54</td>
+<td align="center">-6.93</td>
+<td align="center">6.90</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-Mad:copies_of_SD1:parent_with_SDFather</td>
+<td align="center">-0.09</td>
+<td align="center">3.54</td>
+<td align="center">-7.00</td>
+<td align="center">6.89</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-5:copies_of_SD2:parent_with_SDFather</td>
+<td align="center">0.04</td>
+<td align="center">5.01</td>
+<td align="center">-9.56</td>
+<td align="center">9.79</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-72:copies_of_SD2:parent_with_SDFather</td>
+<td align="center">0.00</td>
+<td align="center">4.84</td>
+<td align="center">-9.52</td>
+<td align="center">9.55</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-Mad:copies_of_SD2:parent_with_SDFather</td>
+<td align="center">-0.04</td>
+<td align="center">5.05</td>
+<td align="center">-9.75</td>
+<td align="center">10.02</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-5:copies_of_SD0or1:parent_with_SDMother</td>
+<td align="center">-0.09</td>
+<td align="center">5.05</td>
+<td align="center">-10.00</td>
+<td align="center">9.75</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-72:copies_of_SD0or1:parent_with_SDMother</td>
+<td align="center">-0.01</td>
+<td align="center">4.92</td>
+<td align="center">-9.78</td>
+<td align="center">9.66</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-Mad:copies_of_SD0or1:parent_with_SDMother</td>
+<td align="center">0.01</td>
+<td align="center">4.97</td>
+<td align="center">-9.72</td>
+<td align="center">9.53</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-5:copies_of_SD1:parent_with_SDMother</td>
+<td align="center">-0.12</td>
+<td align="center">3.57</td>
+<td align="center">-7.11</td>
+<td align="center">6.90</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-72:copies_of_SD1:parent_with_SDMother</td>
+<td align="center">0.02</td>
+<td align="center">3.44</td>
+<td align="center">-6.68</td>
+<td align="center">6.75</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-Mad:copies_of_SD1:parent_with_SDMother</td>
+<td align="center">0.16</td>
+<td align="center">3.50</td>
+<td align="center">-6.79</td>
+<td align="center">7.13</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-5:copies_of_SD2:parent_with_SDMother</td>
+<td align="center">0.05</td>
+<td align="center">4.94</td>
+<td align="center">-9.42</td>
+<td align="center">9.67</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-72:copies_of_SD2:parent_with_SDMother</td>
+<td align="center">-0.02</td>
+<td align="center">5.01</td>
+<td align="center">-9.83</td>
+<td align="center">9.61</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-Mad:copies_of_SD2:parent_with_SDMother</td>
+<td align="center">0.02</td>
+<td align="center">4.95</td>
+<td align="center">-9.76</td>
+<td align="center">9.99</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-5:copies_of_SD0or1:parent_with_SDBothparents</td>
+<td align="center">-0.05</td>
+<td align="center">4.37</td>
+<td align="center">-8.45</td>
+<td align="center">8.44</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-72:copies_of_SD0or1:parent_with_SDBothparents</td>
+<td align="center">0.08</td>
+<td align="center">4.45</td>
+<td align="center">-8.39</td>
+<td align="center">8.82</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-Mad:copies_of_SD0or1:parent_with_SDBothparents</td>
+<td align="center">0.05</td>
+<td align="center">4.25</td>
+<td align="center">-8.36</td>
+<td align="center">8.33</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-5:copies_of_SD1:parent_with_SDBothparents</td>
+<td align="center">0.05</td>
+<td align="center">4.97</td>
+<td align="center">-9.73</td>
+<td align="center">9.99</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-72:copies_of_SD1:parent_with_SDBothparents</td>
+<td align="center">-0.03</td>
+<td align="center">5.04</td>
+<td align="center">-10.04</td>
+<td align="center">9.77</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-Mad:copies_of_SD1:parent_with_SDBothparents</td>
+<td align="center">0.01</td>
+<td align="center">4.95</td>
+<td align="center">-9.71</td>
+<td align="center">9.58</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-5:copies_of_SD2:parent_with_SDBothparents</td>
+<td align="center">0.00</td>
+<td align="center">5.06</td>
+<td align="center">-9.77</td>
+<td align="center">10.07</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-72:copies_of_SD2:parent_with_SDBothparents</td>
+<td align="center">-0.04</td>
+<td align="center">4.93</td>
+<td align="center">-9.73</td>
+<td align="center">9.63</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-Mad:copies_of_SD2:parent_with_SDBothparents</td>
+<td align="center">-0.01</td>
+<td align="center">4.54</td>
+<td align="center">-8.94</td>
+<td align="center">8.88</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="hypothesis-testing-1" class="section level3">
+<h3>Hypothesis testing</h3>
+<p><strong>Table S7</strong>: The results of hypothesis tests computed using the model of adult sex ratio in Experiment 1. Each row gives the posterior estimate of a difference in means, such that the estimate is positive if mean 1 is larger than mean 2, and negative otherwise (expressed in % males). The mean 1 and mean 2 columns list the parent which had SD (mother, father, or both), followed by the number of SD alleles present in the offspring (0, 1 or 2). The Posterior probability column gives the probability that the mean with the smaller point estimate is actually larger than the other mean, analagously to a one-tailed p-value. The Evidence ratio (ER) column gives the ratio of evidence, such that ER = 5 means that it is 5 times more likely that the mean with the smaller point estimate really is the smaller one. Asterisks highlight rows where the posterior probability is less than 0.05.</p>
+<pre class="r"><code>tests2 &lt;- hypothesis_tests(SR_brms, SR_data)
+tests2 %&gt;% clean_table() %&gt;% pander(split.cell = 40, split.table = Inf)</code></pre>
+<table style="width:100%;">
+<colgroup>
+<col width="9%" />
+<col width="36%" />
+<col width="23%" />
+<col width="8%" />
+<col width="24%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">SD</th>
+<th align="center">Comparison</th>
+<th align="center">Difference</th>
+<th align="center">Error</th>
+<th align="center">Posterior probability</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">SD-5</td>
+<td align="center">Neither, 0 - Father, 0</td>
+<td align="center">-0.3 (-15.9 to 15.7)</td>
+<td align="center">8.1</td>
+<td align="center">0.482</td>
+</tr>
+<tr class="even">
+<td align="center">SD-72</td>
+<td align="center">Neither, 0 - Father, 0</td>
+<td align="center">7.2 ( -4.9 to 19.1)</td>
+<td align="center">6.1</td>
+<td align="center">0.1136</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-Mad</td>
+<td align="center">Neither, 0 - Father, 0</td>
+<td align="center">11.1 ( -0.8 to 23.0)</td>
+<td align="center">6.0</td>
+<td align="center">0.03387</td>
+</tr>
+<tr class="even">
+<td align="center">SD-5</td>
+<td align="center">Neither, 0 - Mother, 0</td>
+<td align="center">2.5 ( -9.0 to 13.7)</td>
+<td align="center">5.7</td>
+<td align="center">0.323</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-72</td>
+<td align="center">Neither, 0 - Mother, 0</td>
+<td align="center">3.2 ( -7.9 to 14.5)</td>
+<td align="center">5.7</td>
+<td align="center">0.2835</td>
+</tr>
+<tr class="even">
+<td align="center">SD-Mad</td>
+<td align="center">Neither, 0 - Mother, 0</td>
+<td align="center">0.9 (-11.0 to 12.4)</td>
+<td align="center">5.9</td>
+<td align="center">0.437</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-5</td>
+<td align="center">Mother, 0 - Father, 0</td>
+<td align="center">-2.8 (-18.4 to 13.4)</td>
+<td align="center">8.1</td>
+<td align="center">0.3619</td>
+</tr>
+<tr class="even">
+<td align="center">SD-72</td>
+<td align="center">Mother, 0 - Father, 0</td>
+<td align="center">4.0 ( -8.5 to 16.1)</td>
+<td align="center">6.3</td>
+<td align="center">0.2602</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-Mad</td>
+<td align="center">Mother, 0 - Father, 0</td>
+<td align="center">10.2 ( -2.7 to 22.6)</td>
+<td align="center">6.3</td>
+<td align="center">0.05613</td>
+</tr>
+<tr class="even">
+<td align="center">SD-5</td>
+<td align="center">Mother, 1 - Father, 1</td>
+<td align="center">-1.5 (-13.0 to 9.9)</td>
+<td align="center">5.7</td>
+<td align="center">0.3913</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-72</td>
+<td align="center">Mother, 1 - Father, 1</td>
+<td align="center">5.6 ( -5.8 to 17.0)</td>
+<td align="center">5.7</td>
+<td align="center">0.1593</td>
+</tr>
+<tr class="even">
+<td align="center">SD-Mad</td>
+<td align="center">Mother, 1 - Father, 1</td>
+<td align="center">18.3 ( 7.1 to 29.7)</td>
+<td align="center">5.7</td>
+<td align="center">0.001375</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-5</td>
+<td align="center">Mother, 0 - Mother, 1</td>
+<td align="center">5.1 ( -6.2 to 16.6)</td>
+<td align="center">5.8</td>
+<td align="center">0.1869</td>
+</tr>
+<tr class="even">
+<td align="center">SD-72</td>
+<td align="center">Mother, 0 - Mother, 1</td>
+<td align="center">-3.9 (-15.7 to 7.9)</td>
+<td align="center">6.0</td>
+<td align="center">0.2506</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-Mad</td>
+<td align="center">Mother, 0 - Mother, 1</td>
+<td align="center">-6.7 (-18.6 to 5.0)</td>
+<td align="center">6.0</td>
+<td align="center">0.128</td>
+</tr>
+<tr class="even">
+<td align="center">SD-5</td>
+<td align="center">Father, 0 - Father, 1</td>
+<td align="center">6.3 ( -9.9 to 22.4)</td>
+<td align="center">8.1</td>
+<td align="center">0.2083</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-72</td>
+<td align="center">Father, 0 - Father, 1</td>
+<td align="center">-2.3 (-13.8 to 9.5)</td>
+<td align="center">6.0</td>
+<td align="center">0.343</td>
+</tr>
+<tr class="even">
+<td align="center">SD-Mad</td>
+<td align="center">Father, 0 - Father, 1</td>
+<td align="center">1.4 (-10.2 to 13.2)</td>
+<td align="center">5.9</td>
+<td align="center">0.4101</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-Mad</td>
+<td align="center">Both parents, 1 - Both parents, 2</td>
+<td align="center">-5.2 (-16.1 to 5.9)</td>
+<td align="center">5.5</td>
+<td align="center">0.1635</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="analysis-of-adult-female-fitness" class="section level2">
+<h2>Analysis of adult female fitness</h2>
+<div id="run-a-bayesian-negative-binomial-generalised-linear-mixed-model" class="section level3">
+<h3>Run a Bayesian negative binomial generalised linear mixed model</h3>
+<pre class="r"><code>if(!file.exists(&quot;data/model_output/female_brms.rds&quot;)){
+  female_brms &lt;-  brm(larvae_produced ~ number_of_laying_females + SD * copies_of_SD * parent_with_SD, 
+                    family = negbinomial,
+                    data = females, iter = 4000, chains = 4, cores = nCores,
+                    control = list(adapt_delta = 0.99, max_treedepth = 15),
+                    prior = prior(normal(0, 5), class = &quot;b&quot;))
+  
+  saveRDS(female_brms, &quot;data/model_output/female_brms.rds&quot;)
+} else female_brms &lt;- readRDS(&quot;data/model_output/female_brms.rds&quot;)</code></pre>
+</div>
+<div id="check-a-diagnostic-plot-of-the-model-2" class="section level3">
+<h3>Check a diagnostic plot of the model</h3>
+<p>This plot shows the frequency distribution of the original data (black line), along with predicted data that were computed using 10 random samples from the posterior of the model parameters. The posterior predicted values closely match the originals, suggesting that the model is approximating the data reasonably well.</p>
+<pre class="r"><code>pp_check(female_brms)</code></pre>
+<p><img src="figure/statistics.Rmd/unnamed-chunk-17-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="inspect-the-model-summary-2" class="section level3">
+<h3>Inspect the model summary</h3>
+<p>This summary shows the median, error, and 95% CIs for the posterior for all the fixed effects. This table is difficult to interpret and not very informative, but is presented here for completeness.</p>
+<pre class="r"><code>summarise_brms(female_brms)</code></pre>
+<table>
+<colgroup>
+<col width="47%" />
+<col width="10%" />
+<col width="11%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Covariate</th>
+<th align="center">Estimate</th>
+<th align="center">Est.Error</th>
+<th align="center">l-95% CI</th>
+<th align="center">u-95% CI</th>
+<th align="center">Notable</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Intercept</td>
+<td align="center">3.97</td>
+<td align="center">0.34</td>
+<td align="center">3.32</td>
+<td align="center">4.64</td>
+<td align="center">*</td>
+</tr>
+<tr class="even">
+<td align="center">number_of_laying_females</td>
+<td align="center">0.18</td>
+<td align="center">0.06</td>
+<td align="center">0.06</td>
+<td align="center">0.30</td>
+<td align="center">*</td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-5</td>
+<td align="center">0.04</td>
+<td align="center">3.00</td>
+<td align="center">-5.88</td>
+<td align="center">5.84</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-72</td>
+<td align="center">0.07</td>
+<td align="center">2.96</td>
+<td align="center">-5.62</td>
+<td align="center">5.75</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-Mad</td>
+<td align="center">0.09</td>
+<td align="center">3.04</td>
+<td align="center">-5.93</td>
+<td align="center">6.02</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">copies_of_SD1</td>
+<td align="center">0.06</td>
+<td align="center">3.39</td>
+<td align="center">-6.59</td>
+<td align="center">6.60</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">copies_of_SD2</td>
+<td align="center">-0.08</td>
+<td align="center">4.31</td>
+<td align="center">-8.50</td>
+<td align="center">8.48</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">parent_with_SDFather</td>
+<td align="center">0.01</td>
+<td align="center">3.02</td>
+<td align="center">-5.86</td>
+<td align="center">5.94</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">parent_with_SDMother</td>
+<td align="center">0.20</td>
+<td align="center">3.03</td>
+<td align="center">-5.77</td>
+<td align="center">6.12</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">parent_with_SDBothparents</td>
+<td align="center">-0.19</td>
+<td align="center">3.02</td>
+<td align="center">-6.19</td>
+<td align="center">5.73</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-5:copies_of_SD1</td>
+<td align="center">-0.03</td>
+<td align="center">3.27</td>
+<td align="center">-6.46</td>
+<td align="center">6.38</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-72:copies_of_SD1</td>
+<td align="center">0.09</td>
+<td align="center">3.26</td>
+<td align="center">-6.28</td>
+<td align="center">6.39</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-Mad:copies_of_SD1</td>
+<td align="center">0.17</td>
+<td align="center">3.31</td>
+<td align="center">-6.19</td>
+<td align="center">6.65</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-5:copies_of_SD2</td>
+<td align="center">0.03</td>
+<td align="center">4.88</td>
+<td align="center">-9.70</td>
+<td align="center">9.71</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-72:copies_of_SD2</td>
+<td align="center">0.00</td>
+<td align="center">5.00</td>
+<td align="center">-9.67</td>
+<td align="center">9.74</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-Mad:copies_of_SD2</td>
+<td align="center">-0.12</td>
+<td align="center">4.43</td>
+<td align="center">-8.81</td>
+<td align="center">8.62</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-5:parent_with_SDFather</td>
+<td align="center">-0.13</td>
+<td align="center">3.28</td>
+<td align="center">-6.55</td>
+<td align="center">6.27</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-72:parent_with_SDFather</td>
+<td align="center">0.12</td>
+<td align="center">3.28</td>
+<td align="center">-6.38</td>
+<td align="center">6.59</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-Mad:parent_with_SDFather</td>
+<td align="center">-0.03</td>
+<td align="center">3.28</td>
+<td align="center">-6.39</td>
+<td align="center">6.44</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-5:parent_with_SDMother</td>
+<td align="center">0.19</td>
+<td align="center">3.26</td>
+<td align="center">-6.31</td>
+<td align="center">6.46</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-72:parent_with_SDMother</td>
+<td align="center">-0.01</td>
+<td align="center">3.25</td>
+<td align="center">-6.41</td>
+<td align="center">6.43</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-Mad:parent_with_SDMother</td>
+<td align="center">0.24</td>
+<td align="center">3.35</td>
+<td align="center">-6.43</td>
+<td align="center">6.69</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-5:parent_with_SDBothparents</td>
+<td align="center">0.08</td>
+<td align="center">3.20</td>
+<td align="center">-6.25</td>
+<td align="center">6.23</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-72:parent_with_SDBothparents</td>
+<td align="center">-0.02</td>
+<td align="center">3.32</td>
+<td align="center">-6.56</td>
+<td align="center">6.49</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-Mad:parent_with_SDBothparents</td>
+<td align="center">-0.35</td>
+<td align="center">3.34</td>
+<td align="center">-6.82</td>
+<td align="center">6.28</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">copies_of_SD1:parent_with_SDFather</td>
+<td align="center">-0.01</td>
+<td align="center">3.36</td>
+<td align="center">-6.55</td>
+<td align="center">6.45</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">copies_of_SD2:parent_with_SDFather</td>
+<td align="center">-0.06</td>
+<td align="center">5.06</td>
+<td align="center">-9.93</td>
+<td align="center">9.53</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">copies_of_SD1:parent_with_SDMother</td>
+<td align="center">-0.18</td>
+<td align="center">3.34</td>
+<td align="center">-6.74</td>
+<td align="center">6.51</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">copies_of_SD2:parent_with_SDMother</td>
+<td align="center">-0.01</td>
+<td align="center">4.99</td>
+<td align="center">-9.67</td>
+<td align="center">9.78</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">copies_of_SD1:parent_with_SDBothparents</td>
+<td align="center">0.14</td>
+<td align="center">3.29</td>
+<td align="center">-6.31</td>
+<td align="center">6.50</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">copies_of_SD2:parent_with_SDBothparents</td>
+<td align="center">-0.01</td>
+<td align="center">4.30</td>
+<td align="center">-8.55</td>
+<td align="center">8.40</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-5:copies_of_SD1:parent_with_SDFather</td>
+<td align="center">0.13</td>
+<td align="center">3.31</td>
+<td align="center">-6.35</td>
+<td align="center">6.54</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-72:copies_of_SD1:parent_with_SDFather</td>
+<td align="center">-0.10</td>
+<td align="center">3.22</td>
+<td align="center">-6.42</td>
+<td align="center">6.30</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-Mad:copies_of_SD1:parent_with_SDFather</td>
+<td align="center">0.04</td>
+<td align="center">3.38</td>
+<td align="center">-6.58</td>
+<td align="center">6.66</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-5:copies_of_SD2:parent_with_SDFather</td>
+<td align="center">-0.02</td>
+<td align="center">5.06</td>
+<td align="center">-10.04</td>
+<td align="center">9.88</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-72:copies_of_SD2:parent_with_SDFather</td>
+<td align="center">0.03</td>
+<td align="center">5.05</td>
+<td align="center">-9.86</td>
+<td align="center">9.96</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-Mad:copies_of_SD2:parent_with_SDFather</td>
+<td align="center">0.02</td>
+<td align="center">4.94</td>
+<td align="center">-9.61</td>
+<td align="center">9.85</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-5:copies_of_SD1:parent_with_SDMother</td>
+<td align="center">-0.22</td>
+<td align="center">3.31</td>
+<td align="center">-6.65</td>
+<td align="center">6.15</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-72:copies_of_SD1:parent_with_SDMother</td>
+<td align="center">0.22</td>
+<td align="center">3.33</td>
+<td align="center">-6.21</td>
+<td align="center">6.79</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-Mad:copies_of_SD1:parent_with_SDMother</td>
+<td align="center">-0.18</td>
+<td align="center">3.38</td>
+<td align="center">-6.81</td>
+<td align="center">6.37</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-5:copies_of_SD2:parent_with_SDMother</td>
+<td align="center">0.02</td>
+<td align="center">4.98</td>
+<td align="center">-9.75</td>
+<td align="center">10.09</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-72:copies_of_SD2:parent_with_SDMother</td>
+<td align="center">0.00</td>
+<td align="center">4.94</td>
+<td align="center">-9.60</td>
+<td align="center">9.69</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-Mad:copies_of_SD2:parent_with_SDMother</td>
+<td align="center">0.01</td>
+<td align="center">5.02</td>
+<td align="center">-9.79</td>
+<td align="center">9.80</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-5:copies_of_SD1:parent_with_SDBothparents</td>
+<td align="center">-0.12</td>
+<td align="center">3.25</td>
+<td align="center">-6.41</td>
+<td align="center">6.20</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-72:copies_of_SD1:parent_with_SDBothparents</td>
+<td align="center">0.02</td>
+<td align="center">3.32</td>
+<td align="center">-6.32</td>
+<td align="center">6.66</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-Mad:copies_of_SD1:parent_with_SDBothparents</td>
+<td align="center">0.34</td>
+<td align="center">3.33</td>
+<td align="center">-6.18</td>
+<td align="center">6.87</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-5:copies_of_SD2:parent_with_SDBothparents</td>
+<td align="center">0.02</td>
+<td align="center">5.00</td>
+<td align="center">-9.75</td>
+<td align="center">9.82</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-72:copies_of_SD2:parent_with_SDBothparents</td>
+<td align="center">-0.05</td>
+<td align="center">4.96</td>
+<td align="center">-9.70</td>
+<td align="center">9.57</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-Mad:copies_of_SD2:parent_with_SDBothparents</td>
+<td align="center">-0.20</td>
+<td align="center">4.42</td>
+<td align="center">-8.76</td>
+<td align="center">8.64</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="hypothesis-testing-2" class="section level3">
+<h3>Hypothesis testing</h3>
+<p><strong>Table S8</strong>: The results of hypothesis tests computed using the model of female fitness in Experiment 1. Each row gives the posterior estimate of a difference in means, such that the estimate is positive if mean 1 is larger than mean 2, and negative otherwise (expressed as the number of offspring produced). The mean 1 and mean 2 columns list the parent which had SD (mother, father, or both), followed by the number of SD alleles present in the offspring (0, 1 or 2). The Posterior probability column gives the probability that the mean with the smaller point estimate is actually larger than the other mean, analagously to a one-tailed p-value. The Evidence ratio (ER) column gives the ratio of evidence, such that ER = 5 means that it is 5 times more likely that the mean with the smaller point estimate really is the smaller one. Asterisks highlight rows where the posterior probability is less than 0.05.</p>
+<pre class="r"><code>tests3 &lt;- hypothesis_tests(female_brms, females, divisor = 5)
+tests3 %&gt;% clean_table() %&gt;% pander(split.cell = 40, split.table = Inf)</code></pre>
+<table style="width:100%;">
+<colgroup>
+<col width="8%" />
+<col width="35%" />
+<col width="23%" />
+<col width="7%" />
+<col width="23%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">SD</th>
+<th align="center">Comparison</th>
+<th align="center">Difference</th>
+<th align="center">Error</th>
+<th align="center">Posterior probability</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">SD-5</td>
+<td align="center">Neither, 0 - Father, 0</td>
+<td align="center">1.9 (-12.3 to 14.7)</td>
+<td align="center">6.9</td>
+<td align="center">0.3684</td>
+</tr>
+<tr class="even">
+<td align="center">SD-72</td>
+<td align="center">Neither, 0 - Father, 0</td>
+<td align="center">-5.8 (-18.5 to 6.5)</td>
+<td align="center">6.2</td>
+<td align="center">0.1609</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-Mad</td>
+<td align="center">Neither, 0 - Father, 0</td>
+<td align="center">-1.7 (-12.7 to 9.9)</td>
+<td align="center">5.8</td>
+<td align="center">0.3711</td>
+</tr>
+<tr class="even">
+<td align="center">SD-5</td>
+<td align="center">Neither, 0 - Mother, 0</td>
+<td align="center">-14.4 (-28.6 to -0.4)</td>
+<td align="center">7.0</td>
+<td align="center">0.02187</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-72</td>
+<td align="center">Neither, 0 - Mother, 0</td>
+<td align="center">-7.9 (-20.5 to 4.5)</td>
+<td align="center">6.4</td>
+<td align="center">0.1049</td>
+</tr>
+<tr class="even">
+<td align="center">SD-Mad</td>
+<td align="center">Neither, 0 - Mother, 0</td>
+<td align="center">-18.7 (-34.7 to -3.8)</td>
+<td align="center">7.8</td>
+<td align="center">0.005875</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-5</td>
+<td align="center">Mother, 0 - Father, 0</td>
+<td align="center">16.4 ( 1.0 to 31.0)</td>
+<td align="center">7.6</td>
+<td align="center">0.01862</td>
+</tr>
+<tr class="even">
+<td align="center">SD-72</td>
+<td align="center">Mother, 0 - Father, 0</td>
+<td align="center">2.0 (-10.9 to 14.7)</td>
+<td align="center">6.4</td>
+<td align="center">0.3709</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-Mad</td>
+<td align="center">Mother, 0 - Father, 0</td>
+<td align="center">17.0 ( 3.2 to 32.6)</td>
+<td align="center">7.5</td>
+<td align="center">0.008625</td>
+</tr>
+<tr class="even">
+<td align="center">SD-5</td>
+<td align="center">Mother, 1 - Father, 1</td>
+<td align="center">-0.1 (-11.5 to 10.8)</td>
+<td align="center">5.7</td>
+<td align="center">0.4999</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-72</td>
+<td align="center">Mother, 1 - Father, 1</td>
+<td align="center">8.2 ( -5.5 to 22.8)</td>
+<td align="center">7.2</td>
+<td align="center">0.1254</td>
+</tr>
+<tr class="even">
+<td align="center">SD-Mad</td>
+<td align="center">Mother, 1 - Father, 1</td>
+<td align="center">3.4 (-10.5 to 17.7)</td>
+<td align="center">7.2</td>
+<td align="center">0.3214</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-5</td>
+<td align="center">Mother, 0 - Mother, 1</td>
+<td align="center">12.5 ( -0.2 to 26.1)</td>
+<td align="center">6.6</td>
+<td align="center">0.02687</td>
+</tr>
+<tr class="even">
+<td align="center">SD-72</td>
+<td align="center">Mother, 0 - Mother, 1</td>
+<td align="center">-7.5 (-22.5 to 6.9)</td>
+<td align="center">7.4</td>
+<td align="center">0.1456</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-Mad</td>
+<td align="center">Mother, 0 - Mother, 1</td>
+<td align="center">5.4 (-10.9 to 22.3)</td>
+<td align="center">8.5</td>
+<td align="center">0.2546</td>
+</tr>
+<tr class="even">
+<td align="center">SD-5</td>
+<td align="center">Father, 0 - Father, 1</td>
+<td align="center">-3.9 (-16.9 to 10.1)</td>
+<td align="center">6.8</td>
+<td align="center">0.2641</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-72</td>
+<td align="center">Father, 0 - Father, 1</td>
+<td align="center">-1.4 (-13.9 to 11.4)</td>
+<td align="center">6.3</td>
+<td align="center">0.412</td>
+</tr>
+<tr class="even">
+<td align="center">SD-Mad</td>
+<td align="center">Father, 0 - Father, 1</td>
+<td align="center">-8.2 (-20.4 to 3.4)</td>
+<td align="center">6.0</td>
+<td align="center">0.07975</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-Mad</td>
+<td align="center">Both parents, 1 - Both parents, 2</td>
+<td align="center">23.4 ( 15.0 to 33.1)</td>
+<td align="center">4.6</td>
+<td align="center">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="analysis-of-adult-male-fitness" class="section level2">
+<h2>Analysis of adult male fitness</h2>
+<div id="run-a-bayesian-binomial-generalised-linear-mixed-model-2" class="section level3">
+<h3>Run a Bayesian binomial generalised linear mixed model</h3>
+<pre class="r"><code>if(!file.exists(&quot;data/model_output/male_brms.rds&quot;)){
+  male_brms &lt;-  brm(focal.male.fitness | trials(total) ~ SD * copies_of_SD * parent_with_SD + (1 | vial), 
+                    family = binomial,
+                    data = males, iter = 4000, chains = 4, cores = nCores,
+                    control = list(adapt_delta = 0.99, max_treedepth = 15),
+                    prior = prior(normal(0, 5), class = &quot;b&quot;))
+  
+  saveRDS(male_brms, &quot;data/model_output/male_brms.rds&quot;)
+} else male_brms &lt;- readRDS(&quot;data/model_output/male_brms.rds&quot;)</code></pre>
+</div>
+<div id="check-a-diagnostic-plot-of-the-model-3" class="section level3">
+<h3>Check a diagnostic plot of the model</h3>
+<p>This plot shows the frequency distribution of the original data (black line), along with predicted data that were computed using 10 random samples from the posterior of the model parameters. The posterior predicted values closely match the originals, suggesting that the model is approximating the data reasonably well.</p>
+<pre class="r"><code>pp_check(male_brms)</code></pre>
+<p><img src="figure/statistics.Rmd/unnamed-chunk-21-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="inspect-the-model-summary-3" class="section level3">
+<h3>Inspect the model summary</h3>
+<p>This summary shows the median, error, and 95% CIs for the posterior for all the fixed effects. This table is difficult to interpret and not very informative, but is presented here for completeness.</p>
+<pre class="r"><code>summarise_brms(male_brms)</code></pre>
+<table>
+<colgroup>
+<col width="47%" />
+<col width="10%" />
+<col width="11%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Covariate</th>
+<th align="center">Estimate</th>
+<th align="center">Est.Error</th>
+<th align="center">l-95% CI</th>
+<th align="center">u-95% CI</th>
+<th align="center">Notable</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Intercept</td>
+<td align="center">1.60</td>
+<td align="center">0.44</td>
+<td align="center">0.75</td>
+<td align="center">2.48</td>
+<td align="center">*</td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-5</td>
+<td align="center">-0.30</td>
+<td align="center">3.08</td>
+<td align="center">-6.24</td>
+<td align="center">5.71</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-72</td>
+<td align="center">0.21</td>
+<td align="center">3.02</td>
+<td align="center">-5.72</td>
+<td align="center">6.12</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-Mad</td>
+<td align="center">0.09</td>
+<td align="center">3.03</td>
+<td align="center">-5.81</td>
+<td align="center">5.89</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">copies_of_SD1</td>
+<td align="center">-0.53</td>
+<td align="center">3.31</td>
+<td align="center">-6.99</td>
+<td align="center">5.93</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">copies_of_SD2</td>
+<td align="center">-1.11</td>
+<td align="center">4.30</td>
+<td align="center">-9.86</td>
+<td align="center">7.50</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">parent_with_SDFather</td>
+<td align="center">0.00</td>
+<td align="center">3.03</td>
+<td align="center">-5.93</td>
+<td align="center">5.90</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">parent_with_SDMother</td>
+<td align="center">0.12</td>
+<td align="center">3.04</td>
+<td align="center">-5.83</td>
+<td align="center">6.05</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">parent_with_SDBothparents</td>
+<td align="center">-0.22</td>
+<td align="center">3.06</td>
+<td align="center">-6.32</td>
+<td align="center">5.83</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-5:copies_of_SD1</td>
+<td align="center">-1.43</td>
+<td align="center">3.36</td>
+<td align="center">-8.01</td>
+<td align="center">5.11</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-72:copies_of_SD1</td>
+<td align="center">0.25</td>
+<td align="center">3.34</td>
+<td align="center">-6.44</td>
+<td align="center">6.75</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-Mad:copies_of_SD1</td>
+<td align="center">0.78</td>
+<td align="center">3.37</td>
+<td align="center">-5.81</td>
+<td align="center">7.39</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-5:copies_of_SD2</td>
+<td align="center">-0.04</td>
+<td align="center">5.11</td>
+<td align="center">-10.10</td>
+<td align="center">10.05</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-72:copies_of_SD2</td>
+<td align="center">-0.01</td>
+<td align="center">5.05</td>
+<td align="center">-9.92</td>
+<td align="center">9.53</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-Mad:copies_of_SD2</td>
+<td align="center">-1.07</td>
+<td align="center">4.37</td>
+<td align="center">-9.68</td>
+<td align="center">7.51</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-5:parent_with_SDFather</td>
+<td align="center">-0.29</td>
+<td align="center">3.37</td>
+<td align="center">-6.78</td>
+<td align="center">6.42</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-72:parent_with_SDFather</td>
+<td align="center">0.52</td>
+<td align="center">3.29</td>
+<td align="center">-5.85</td>
+<td align="center">6.99</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-Mad:parent_with_SDFather</td>
+<td align="center">-0.22</td>
+<td align="center">3.30</td>
+<td align="center">-6.73</td>
+<td align="center">6.23</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-5:parent_with_SDMother</td>
+<td align="center">0.69</td>
+<td align="center">3.32</td>
+<td align="center">-5.96</td>
+<td align="center">7.19</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-72:parent_with_SDMother</td>
+<td align="center">-0.26</td>
+<td align="center">3.34</td>
+<td align="center">-6.80</td>
+<td align="center">6.32</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-Mad:parent_with_SDMother</td>
+<td align="center">-0.18</td>
+<td align="center">3.33</td>
+<td align="center">-6.59</td>
+<td align="center">6.44</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-5:parent_with_SDBothparents</td>
+<td align="center">-0.59</td>
+<td align="center">3.49</td>
+<td align="center">-7.36</td>
+<td align="center">6.40</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-72:parent_with_SDBothparents</td>
+<td align="center">-0.16</td>
+<td align="center">3.38</td>
+<td align="center">-6.75</td>
+<td align="center">6.45</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-Mad:parent_with_SDBothparents</td>
+<td align="center">0.62</td>
+<td align="center">3.31</td>
+<td align="center">-5.94</td>
+<td align="center">7.15</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">copies_of_SD1:parent_with_SDFather</td>
+<td align="center">-0.44</td>
+<td align="center">3.29</td>
+<td align="center">-6.91</td>
+<td align="center">6.05</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">copies_of_SD2:parent_with_SDFather</td>
+<td align="center">0.10</td>
+<td align="center">4.93</td>
+<td align="center">-9.52</td>
+<td align="center">9.66</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">copies_of_SD1:parent_with_SDMother</td>
+<td align="center">-0.16</td>
+<td align="center">3.28</td>
+<td align="center">-6.48</td>
+<td align="center">6.36</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">copies_of_SD2:parent_with_SDMother</td>
+<td align="center">0.03</td>
+<td align="center">5.06</td>
+<td align="center">-9.99</td>
+<td align="center">9.89</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">copies_of_SD1:parent_with_SDBothparents</td>
+<td align="center">0.01</td>
+<td align="center">3.38</td>
+<td align="center">-6.63</td>
+<td align="center">6.59</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">copies_of_SD2:parent_with_SDBothparents</td>
+<td align="center">-0.94</td>
+<td align="center">4.25</td>
+<td align="center">-9.33</td>
+<td align="center">7.32</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-5:copies_of_SD1:parent_with_SDFather</td>
+<td align="center">-1.27</td>
+<td align="center">3.32</td>
+<td align="center">-7.70</td>
+<td align="center">5.33</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-72:copies_of_SD1:parent_with_SDFather</td>
+<td align="center">-0.14</td>
+<td align="center">3.32</td>
+<td align="center">-6.74</td>
+<td align="center">6.29</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-Mad:copies_of_SD1:parent_with_SDFather</td>
+<td align="center">1.24</td>
+<td align="center">3.36</td>
+<td align="center">-5.35</td>
+<td align="center">7.87</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-5:copies_of_SD2:parent_with_SDFather</td>
+<td align="center">0.02</td>
+<td align="center">5.09</td>
+<td align="center">-10.01</td>
+<td align="center">10.11</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-72:copies_of_SD2:parent_with_SDFather</td>
+<td align="center">0.03</td>
+<td align="center">4.89</td>
+<td align="center">-9.63</td>
+<td align="center">9.51</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-Mad:copies_of_SD2:parent_with_SDFather</td>
+<td align="center">0.01</td>
+<td align="center">5.05</td>
+<td align="center">-9.95</td>
+<td align="center">9.91</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-5:copies_of_SD1:parent_with_SDMother</td>
+<td align="center">-1.02</td>
+<td align="center">3.37</td>
+<td align="center">-7.61</td>
+<td align="center">5.37</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-72:copies_of_SD1:parent_with_SDMother</td>
+<td align="center">0.60</td>
+<td align="center">3.36</td>
+<td align="center">-6.16</td>
+<td align="center">7.09</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-Mad:copies_of_SD1:parent_with_SDMother</td>
+<td align="center">0.37</td>
+<td align="center">3.34</td>
+<td align="center">-6.29</td>
+<td align="center">6.77</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-5:copies_of_SD2:parent_with_SDMother</td>
+<td align="center">0.00</td>
+<td align="center">5.01</td>
+<td align="center">-9.93</td>
+<td align="center">9.70</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-72:copies_of_SD2:parent_with_SDMother</td>
+<td align="center">-0.03</td>
+<td align="center">5.08</td>
+<td align="center">-9.85</td>
+<td align="center">10.14</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-Mad:copies_of_SD2:parent_with_SDMother</td>
+<td align="center">-0.01</td>
+<td align="center">5.03</td>
+<td align="center">-9.98</td>
+<td align="center">10.05</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-5:copies_of_SD1:parent_with_SDBothparents</td>
+<td align="center">0.94</td>
+<td align="center">3.43</td>
+<td align="center">-6.00</td>
+<td align="center">7.52</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-72:copies_of_SD1:parent_with_SDBothparents</td>
+<td align="center">-0.15</td>
+<td align="center">3.49</td>
+<td align="center">-6.95</td>
+<td align="center">6.90</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-Mad:copies_of_SD1:parent_with_SDBothparents</td>
+<td align="center">-0.65</td>
+<td align="center">3.34</td>
+<td align="center">-7.14</td>
+<td align="center">5.87</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-5:copies_of_SD2:parent_with_SDBothparents</td>
+<td align="center">-0.01</td>
+<td align="center">5.05</td>
+<td align="center">-9.75</td>
+<td align="center">9.83</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-72:copies_of_SD2:parent_with_SDBothparents</td>
+<td align="center">-0.04</td>
+<td align="center">4.98</td>
+<td align="center">-9.92</td>
+<td align="center">9.61</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-Mad:copies_of_SD2:parent_with_SDBothparents</td>
+<td align="center">-0.93</td>
+<td align="center">4.29</td>
+<td align="center">-9.20</td>
+<td align="center">7.43</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="hypothesis-testing-3" class="section level3">
+<h3>Hypothesis testing</h3>
+<p><strong>Table S9</strong>: The results of hypothesis tests computed using the model of male fitness in Experiment 1. Each row gives the posterior estimate of a difference in means, such that the estimate is positive if mean 1 is larger than mean 2, and negative otherwise (expressed in % offspring sired). The mean 1 and mean 2 columns list the parent which had SD (mother, father, or both), followed by the number of SD alleles present in the offspring (0, 1 or 2). The Posterior probability column gives the probability that the mean with the smaller point estimate is actually larger than the other mean, analagously to a one-tailed p-value. The Evidence ratio (ER) column gives the ratio of evidence, such that ER = 5 means that it is 5 times more likely that the mean with the smaller point estimate really is the smaller one. Asterisks highlight rows where the posterior probability is less than 0.05.</p>
+<pre class="r"><code>tests4 &lt;- hypothesis_tests(male_brms, males)
+tests4 %&gt;% clean_table() %&gt;% pander(split.cell = 40, split.table = Inf)</code></pre>
+<table style="width:100%;">
+<colgroup>
+<col width="9%" />
+<col width="36%" />
+<col width="23%" />
+<col width="8%" />
+<col width="24%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">SD</th>
+<th align="center">Comparison</th>
+<th align="center">Difference</th>
+<th align="center">Error</th>
+<th align="center">Posterior probability</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">SD-5</td>
+<td align="center">Neither, 0 - Father, 0</td>
+<td align="center">10.9 (-13.9 to 42.5)</td>
+<td align="center">14.6</td>
+<td align="center">0.2375</td>
+</tr>
+<tr class="even">
+<td align="center">SD-72</td>
+<td align="center">Neither, 0 - Father, 0</td>
+<td align="center">-8.3 (-23.7 to 4.4)</td>
+<td align="center">7.2</td>
+<td align="center">0.1099</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-Mad</td>
+<td align="center">Neither, 0 - Father, 0</td>
+<td align="center">1.7 (-15.5 to 19.4)</td>
+<td align="center">8.9</td>
+<td align="center">0.4201</td>
+</tr>
+<tr class="even">
+<td align="center">SD-5</td>
+<td align="center">Neither, 0 - Mother, 0</td>
+<td align="center">-6.2 (-22.2 to 7.6)</td>
+<td align="center">7.5</td>
+<td align="center">0.1953</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-72</td>
+<td align="center">Neither, 0 - Mother, 0</td>
+<td align="center">-0.9 (-18.2 to 16.6)</td>
+<td align="center">8.6</td>
+<td align="center">0.4524</td>
+</tr>
+<tr class="even">
+<td align="center">SD-Mad</td>
+<td align="center">Neither, 0 - Mother, 0</td>
+<td align="center">-0.2 (-18.2 to 18.0)</td>
+<td align="center">9.2</td>
+<td align="center">0.483</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-5</td>
+<td align="center">Mother, 0 - Father, 0</td>
+<td align="center">17.2 ( -5.8 to 47.4)</td>
+<td align="center">13.9</td>
+<td align="center">0.09125</td>
+</tr>
+<tr class="even">
+<td align="center">SD-72</td>
+<td align="center">Mother, 0 - Father, 0</td>
+<td align="center">-7.3 (-22.6 to 4.7)</td>
+<td align="center">7.0</td>
+<td align="center">0.1331</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-Mad</td>
+<td align="center">Mother, 0 - Father, 0</td>
+<td align="center">2.0 (-16.1 to 19.3)</td>
+<td align="center">8.9</td>
+<td align="center">0.3945</td>
+</tr>
+<tr class="even">
+<td align="center">SD-5</td>
+<td align="center">Mother, 1 - Father, 1</td>
+<td align="center">20.0 ( 5.5 to 39.2)</td>
+<td align="center">8.8</td>
+<td align="center">0.003375</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-72</td>
+<td align="center">Mother, 1 - Father, 1</td>
+<td align="center">4.8 ( -9.6 to 19.9)</td>
+<td align="center">7.4</td>
+<td align="center">0.2538</td>
+</tr>
+<tr class="even">
+<td align="center">SD-Mad</td>
+<td align="center">Mother, 1 - Father, 1</td>
+<td align="center">-3.8 (-13.8 to 5.1)</td>
+<td align="center">4.7</td>
+<td align="center">0.2009</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-5</td>
+<td align="center">Mother, 0 - Mother, 1</td>
+<td align="center">61.6 ( 41.0 to 77.7)</td>
+<td align="center">9.4</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td align="center">SD-72</td>
+<td align="center">Mother, 0 - Mother, 1</td>
+<td align="center">-2.2 (-18.4 to 12.7)</td>
+<td align="center">7.8</td>
+<td align="center">0.3987</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-Mad</td>
+<td align="center">Mother, 0 - Mother, 1</td>
+<td align="center">-5.7 (-23.0 to 8.5)</td>
+<td align="center">7.8</td>
+<td align="center">0.229</td>
+</tr>
+<tr class="even">
+<td align="center">SD-5</td>
+<td align="center">Father, 0 - Father, 1</td>
+<td align="center">64.5 ( 34.6 to 85.6)</td>
+<td align="center">13.5</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-72</td>
+<td align="center">Father, 0 - Father, 1</td>
+<td align="center">9.9 ( -2.2 to 23.9)</td>
+<td align="center">6.7</td>
+<td align="center">0.055</td>
+</tr>
+<tr class="even">
+<td align="center">SD-Mad</td>
+<td align="center">Father, 0 - Father, 1</td>
+<td align="center">-11.5 (-26.7 to 0.6)</td>
+<td align="center">6.9</td>
+<td align="center">0.03213</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-Mad</td>
+<td align="center">Both parents, 1 - Both parents, 2</td>
+<td align="center">70.6 ( 54.2 to 82.6)</td>
+<td align="center">7.2</td>
+<td align="center">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="making-figure-1" class="section level2">
+<h2>Making Figure 1</h2>
+<pre class="r"><code>make_plot &lt;- function(model, data, ylab, ylim = NULL){
+  new &lt;- data %&gt;% 
+    distinct(SD, copies_of_SD, MotherHasSD, FatherHasSD, SD_from_mum, SD_from_dad, mum_genotype, dad_genotype, parent_with_SD) %&gt;% 
+    mutate(total = 100, number_of_laying_females = 5, larval_density = 0)
+  
+  dots &lt;- data.frame(new, fitted(model, newdata = new, re_formula = NA)) %&gt;%
+    mutate(parent_with_SD = ifelse(MotherHasSD == 1, &quot;Mother&quot;, &quot;Father&quot;),
+           parent_with_SD = replace(parent_with_SD, MotherHasSD == 1 &amp; FatherHasSD == 1, &quot;Both&quot;)) %&gt;%
+    mutate(parent_with_SD = factor(parent_with_SD, c(&quot;Father&quot;, &quot;Mother&quot;, &quot;Both&quot;)))
+  
+  inner_bar &lt;- data.frame(new, fitted(model, newdata = new, re_formula = NA, probs = c(0.25, 0.75))) %&gt;%
+    mutate(parent_with_SD = ifelse(MotherHasSD == 1, &quot;Mother&quot;, &quot;Father&quot;),
+           parent_with_SD = replace(parent_with_SD, MotherHasSD == 1 &amp; FatherHasSD == 1, &quot;Both&quot;)) %&gt;%
+    mutate(parent_with_SD = factor(parent_with_SD, c(&quot;Father&quot;, &quot;Mother&quot;, &quot;Both&quot;)))
+  
+  lowerCI &lt;- dots$Q2.5[dots$MotherHasSD == 0 &amp; dots$FatherHasSD == 0]
+  upperCI &lt;- dots$Q97.5[dots$MotherHasSD == 0 &amp; dots$FatherHasSD == 0]
+  dots &lt;- dots %&gt;% filter(!(MotherHasSD == 0 &amp; FatherHasSD == 0)) %&gt;%
+    left_join(inner_bar %&gt;% select(-Estimate, -Est.Error))
+  
+  if(&quot;number_of_laying_females&quot; %in% names(data)){
+    dots$Estimate &lt;- dots$Estimate / 5
+    dots$Q2.5 &lt;- dots$Q2.5 / 5
+    dots$Q97.5 &lt;- dots$Q97.5 / 5
+    dots$Q25 &lt;- dots$Q25 / 5
+    dots$Q75 &lt;- dots$Q75 / 5
+    lowerCI &lt;- lowerCI / 5
+    upperCI &lt;- upperCI / 5
+  }
+  
+  pd &lt;- position_dodge(0.45)
+  plot &lt;- dots %&gt;%
+    mutate(copies_of_SD = factor(copies_of_SD, levels = c(&quot;0&quot;, &quot;0 or 1&quot;, &quot;1&quot;, &quot;2&quot;))) %&gt;%
+    ggplot(aes(parent_with_SD, Estimate, colour = copies_of_SD, fill = copies_of_SD)) + 
+    geom_errorbar(aes(ymin = Q2.5, ymax = Q97.5), width = 0, position = pd, alpha = 0) + # invisible layer - placeholder for scales
+    annotate(&quot;rect&quot;, xmin = -Inf, xmax = Inf, ymin = lowerCI, ymax = upperCI, alpha = 0.2, fill = &quot;skyblue&quot;) + 
+    geom_errorbar(aes(ymin = Q2.5, ymax = Q97.5), width = 0, position = pd, size = 1.2) + 
+    geom_errorbar(aes(ymin = Q25, ymax = Q75), width = 0, position = pd, size = 3) + 
+    geom_point(position = pd, size = 2, colour = &quot;black&quot;, pch = 21) + 
+    scale_colour_brewer(name = &quot;Copies of SD&quot;, palette = &quot;Spectral&quot;, 
+                        drop = FALSE, direction = -1,
+                        aesthetics = c(&quot;colour&quot;, &quot;fill&quot;)) +
+    facet_wrap(~SD) + 
+    xlab(&quot;Parent carrying SD&quot;) + ylab(ylab) + theme_hc() + theme(axis.ticks.y = element_blank())
+  
+  if(!is.null(ylim))  plot &lt;- plot + scale_y_continuous(limits = ylim) 
+  plot
+
+}
+
+make_expt1_multiplot &lt;- function(...) {
+    plots &lt;- list(...)
+    g &lt;- ggplotGrob(plots[[1]] + theme(legend.position=&quot;top&quot;))$grobs
+    legend &lt;- g[[which(sapply(g, function(x) x$name) == &quot;guide-box&quot;)]]
+    lheight &lt;- sum(legend$height)
+    plots &lt;- lapply(plots, function(x) ggplotGrob(x + theme(legend.position = &quot;none&quot;)))
+    
+    p &lt;- gtable_cbind(gtable_rbind(plots[[1]], plots[[3]]), 
+                      gtable_rbind(plots[[2]], plots[[4]]))
+    
+    grid.arrange(legend, p,
+                 nrow = 2, 
+                 heights = unit.c(lheight, unit(1, &quot;npc&quot;) - lheight),
+                 bottom = &quot;Parent carrying SD&quot;)
+}
+
+fig1 &lt;- make_expt1_multiplot(
+  make_plot(larvae_brms, larvae, &quot;Juvenile fitness&quot;) + xlab(NULL) + theme(axis.text.x = element_blank(), axis.ticks.x = element_blank()),
+  make_plot(SR_brms, SR_data, &quot;Adult sex ratio (% males)&quot;) + xlab(NULL) + theme(axis.text.x = element_blank(), axis.ticks.x = element_blank()),
+  make_plot(female_brms, females, &quot;Adult female fitness&quot;, c(0, 62)) + xlab(NULL),
+  make_plot(male_brms, males, &quot;Adult male fitness&quot;, c(0, 100)) + xlab(NULL)
+)</code></pre>
+<p><img src="figure/statistics.Rmd/unnamed-chunk-24-1.png" width="1056" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>ggsave(fig1, file = &quot;figures/fig1.pdf&quot;, height = 7, width = 11)</code></pre>
+<p><strong>Figure 1</strong>: Posterior estimates of the group means for the four different response variables in Experiment 1, for each type of cross (x-axis), SD variant (panels), and genotype (colours). The horizontal blue bar shows the 95% CIs for the sex ratio in the control cross between two SD-free parents, and the error bars show the 95% quantiles of the posterior. Tables S6-S9 give the accompanying statistcal results. Points labelled as carrying “0 or 1” SD allele refer to cases where the genotype of the offspring could not be ascertained due to the brown eye marker not being expressed in larvae; most of these individuals probably carried 1 SD allele because of segregation distortion.</p>
+</div>
+<div id="making-table-1" class="section level2">
+<h2>Making Table 1</h2>
+<p><strong>Table 1</strong>: List of the all the notable differences between groups in Experiment 1 (posterior probability &lt;0.05; see Tables S6-S9 for the remaining results). For each contast, we give the parent carrying <em>SD</em> (neither, mother, father, or both) and the number of <em>SD</em>} alleles carried by the offspring. The difference in means is expressed in the original units, i.e. % larvae surviving, % male larvae, number of larvae produced, or % offspring sired, and the parentheses give 95% credible intervals. The difference is positive when the first-listed mean is larger than the second-listed mean, and negative otherwise. The posterior probability (p) has a similar interpretation to a one-tailed p-value.</p>
+<pre class="r"><code>table1 &lt;- bind_rows(tests1 %&gt;% mutate(Trait = &quot;Larval survival&quot;),
+                    tests2 %&gt;% mutate(Trait = &quot;Sex ratio&quot;),
+                    tests3 %&gt;% mutate(Trait = &quot;Female fitness&quot;),
+                    tests4 %&gt;% mutate(Trait = &quot;Male fitness&quot;)) %&gt;% 
+  filter(Notable == &quot;*&quot;) %&gt;% clean_table()
+
+write_csv(table1 %&gt;% rename(p = `Posterior probability`), path = &quot;figures/Table1.csv&quot;)
+table1 %&gt;% pander(split.cell = 50, split.table = Inf) </code></pre>
+<table>
+<colgroup>
+<col width="14%" />
+<col width="7%" />
+<col width="33%" />
+<col width="19%" />
+<col width="6%" />
+<col width="19%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Trait</th>
+<th align="center">SD</th>
+<th align="center">Comparison</th>
+<th align="center">Difference</th>
+<th align="center">Error</th>
+<th align="center">Posterior probability</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Larval survival</td>
+<td align="center">SD-5</td>
+<td align="center">Both parents, 0 or 1 - Both parents, 2</td>
+<td align="center">77.1 ( 62.2 to 87.8)</td>
+<td align="center">6.5</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td align="center">Larval survival</td>
+<td align="center">SD-72</td>
+<td align="center">Both parents, 0 or 1 - Both parents, 2</td>
+<td align="center">77.5 ( 63.6 to 87.8)</td>
+<td align="center">6.1</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td align="center">Sex ratio</td>
+<td align="center">SD-Mad</td>
+<td align="center">Neither, 0 - Father, 0</td>
+<td align="center">11.1 ( -0.8 to 23.0)</td>
+<td align="center">6.0</td>
+<td align="center">0.03387</td>
+</tr>
+<tr class="even">
+<td align="center">Sex ratio</td>
+<td align="center">SD-Mad</td>
+<td align="center">Mother, 1 - Father, 1</td>
+<td align="center">18.3 ( 7.1 to 29.7)</td>
+<td align="center">5.7</td>
+<td align="center">0.001375</td>
+</tr>
+<tr class="odd">
+<td align="center">Female fitness</td>
+<td align="center">SD-5</td>
+<td align="center">Neither, 0 - Mother, 0</td>
+<td align="center">-14.4 (-28.6 to -0.4)</td>
+<td align="center">7.0</td>
+<td align="center">0.02187</td>
+</tr>
+<tr class="even">
+<td align="center">Female fitness</td>
+<td align="center">SD-Mad</td>
+<td align="center">Neither, 0 - Mother, 0</td>
+<td align="center">-18.7 (-34.7 to -3.8)</td>
+<td align="center">7.8</td>
+<td align="center">0.005875</td>
+</tr>
+<tr class="odd">
+<td align="center">Female fitness</td>
+<td align="center">SD-5</td>
+<td align="center">Mother, 0 - Father, 0</td>
+<td align="center">16.4 ( 1.0 to 31.0)</td>
+<td align="center">7.6</td>
+<td align="center">0.01862</td>
+</tr>
+<tr class="even">
+<td align="center">Female fitness</td>
+<td align="center">SD-Mad</td>
+<td align="center">Mother, 0 - Father, 0</td>
+<td align="center">17.0 ( 3.2 to 32.6)</td>
+<td align="center">7.5</td>
+<td align="center">0.008625</td>
+</tr>
+<tr class="odd">
+<td align="center">Female fitness</td>
+<td align="center">SD-5</td>
+<td align="center">Mother, 0 - Mother, 1</td>
+<td align="center">12.5 ( -0.2 to 26.1)</td>
+<td align="center">6.6</td>
+<td align="center">0.02687</td>
+</tr>
+<tr class="even">
+<td align="center">Female fitness</td>
+<td align="center">SD-Mad</td>
+<td align="center">Both parents, 1 - Both parents, 2</td>
+<td align="center">23.4 ( 15.0 to 33.1)</td>
+<td align="center">4.6</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td align="center">Male fitness</td>
+<td align="center">SD-5</td>
+<td align="center">Mother, 1 - Father, 1</td>
+<td align="center">20.0 ( 5.5 to 39.2)</td>
+<td align="center">8.8</td>
+<td align="center">0.003375</td>
+</tr>
+<tr class="even">
+<td align="center">Male fitness</td>
+<td align="center">SD-5</td>
+<td align="center">Mother, 0 - Mother, 1</td>
+<td align="center">61.6 ( 41.0 to 77.7)</td>
+<td align="center">9.4</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td align="center">Male fitness</td>
+<td align="center">SD-5</td>
+<td align="center">Father, 0 - Father, 1</td>
+<td align="center">64.5 ( 34.6 to 85.6)</td>
+<td align="center">13.5</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td align="center">Male fitness</td>
+<td align="center">SD-Mad</td>
+<td align="center">Father, 0 - Father, 1</td>
+<td align="center">-11.5 (-26.7 to 0.6)</td>
+<td align="center">6.9</td>
+<td align="center">0.03213</td>
+</tr>
+<tr class="odd">
+<td align="center">Male fitness</td>
+<td align="center">SD-Mad</td>
+<td align="center">Both parents, 1 - Both parents, 2</td>
+<td align="center">70.6 ( 54.2 to 82.6)</td>
+<td align="center">7.2</td>
+<td align="center">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="experiment-2" class="section level2">
+<h2>Experiment 2</h2>
+<div id="run-a-bayesian-binomial-generalised-linear-mixed-model-3" class="section level3">
+<h3>Run a Bayesian binomial generalised linear mixed model</h3>
+<pre class="r"><code># Function to simular the missing genotypes of embryos that died, assuming fair meiosis in SD mothers and k = k in SD fathers
+simulate_expt2_data &lt;- function(expt2_dataset, k){
+  
+  have_SD_mum &lt;- which(expt2_dataset$SD_parent == &quot;mum&quot;)
+  have_SD_dad &lt;- which(expt2_dataset$SD_parent == &quot;dad&quot;)
+  
+  expt2_dataset$SD_embryos[have_SD_mum] &lt;- with(expt2_dataset[have_SD_mum, ], 
+                                                SD_offspring + rbinom(length(SD_embryos), Dead_offspring, 0.5))
+  
+  expt2_dataset$SD_embryos[have_SD_dad] &lt;- with(expt2_dataset[have_SD_dad, ], 
+                                                SD_offspring + rbinom(length(SD_embryos), Dead_offspring, k))
+  
+  expt2_dataset &lt;- expt2_dataset %&gt;%
+    mutate(SD_embryos = as.numeric(SD_embryos),
+           CyO_embryos = starting_number_focal_sex - SD_embryos) %&gt;% 
+    select(-starting_number_focal_sex, -Dead_offspring) 
+  
+  expt2_dataset %&gt;% 
+    select(sex_of_embryos, SD, SD_parent, vial, block, SD_offspring, CyO_offspring) %&gt;%
+    tidyr::gather(genotype, num_survivors, SD_offspring, CyO_offspring) %&gt;%
+    mutate(genotype = gsub(&quot;_offspring&quot;, &quot;&quot;, genotype)) %&gt;%
+    left_join(expt2_dataset %&gt;% 
+                select(sex_of_embryos, SD, SD_parent, vial, block, SD_embryos, CyO_embryos) %&gt;%
+                tidyr::gather(genotype, total_number, SD_embryos, CyO_embryos) %&gt;%
+                mutate(genotype = gsub(&quot;_embryos&quot;, &quot;&quot;, genotype))) %&gt;%
+    arrange(vial)
+}
+
+# Simulate some data and run the Bayesian GLMM
+model_simulated_data &lt;- function(expt2_dataset, k){
+  
+  # First re-format teh data and simulate the missing embryo genotypes using stated value of k
+  dat &lt;- simulate_expt2_data(expt2_dataset, k)
+
+  # Now run the model
+  brm(num_survivors  | trials(total_number) ~ genotype * sex_of_embryos * SD * SD_parent + (1 | vial), 
+      data = dat, family = &quot;binomial&quot;,
+      chains = 4, cores = nCores, seed = 1,
+      prior = prior(normal(0, 5), class = &quot;b&quot;),
+      control = list(adapt_delta = 0.9999, max_treedepth = 15))  
+  
+}
+
+# Do the same model for k = 0.5, 0.6 and 0.7
+if(!file.exists(&quot;data/model_output/expt2_brms.rds&quot;)){
+  model_list &lt;- list(
+    model_simulated_data(expt2, 0.5),
+    model_simulated_data(expt2, 0.6),
+    model_simulated_data(expt2, 0.7))
+  
+  saveRDS(model_list, &quot;data/model_output/expt2_brms.rds&quot;)
+} else model_list &lt;- readRDS(&quot;data/model_output/expt2_brms.rds&quot;)</code></pre>
+</div>
+<div id="check-a-diagnostic-plot-of-the-model-4" class="section level3">
+<h3>Check a diagnostic plot of the model</h3>
+<p>This plot shows the frequency distribution of the original data (black line), along with predicted data that were computed using 10 random samples from the posterior of the model parameters. The posterior predicted values closely match the originals, suggesting that the model is approximating the data reasonably well. There are two plots for this model because we used a multivariate model that jointly modelled two response variables: the survival of SD larvae and of CyO larvae.</p>
+<pre class="r"><code>grid.arrange(
+  pp_check(model_list[[1]], resp = &quot;SDoffspring&quot;)  + labs(title = &quot;Number of SD offspring&quot;),
+  pp_check(model_list[[1]], resp = &quot;CyOoffspring&quot;) + labs(title = &quot;Number of CyO offspring&quot;)
+)</code></pre>
+<p><img src="figure/statistics.Rmd/unnamed-chunk-27-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="inspect-the-model-summary-4" class="section level3">
+<h3>Inspect the model summary</h3>
+<p>This summary shows the median, error, and 95% CIs for the posterior for all the fixed effects. This table is difficult to interpret and not very informative, but is presented here for completeness.</p>
+<pre class="r"><code>summarise_brms(model_list[[1]])</code></pre>
+<table>
+<colgroup>
+<col width="49%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Covariate</th>
+<th align="center">Estimate</th>
+<th align="center">Est.Error</th>
+<th align="center">l-95% CI</th>
+<th align="center">u-95% CI</th>
+<th align="center">Notable</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Intercept</td>
+<td align="center">1.80</td>
+<td align="center">0.21</td>
+<td align="center">1.40</td>
+<td align="center">2.21</td>
+<td align="center">*</td>
+</tr>
+<tr class="even">
+<td align="center">genotypeSD</td>
+<td align="center">-0.10</td>
+<td align="center">0.20</td>
+<td align="center">-0.49</td>
+<td align="center">0.28</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">sex_of_embryosmale</td>
+<td align="center">-0.19</td>
+<td align="center">0.29</td>
+<td align="center">-0.76</td>
+<td align="center">0.37</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-72</td>
+<td align="center">0.16</td>
+<td align="center">0.30</td>
+<td align="center">-0.42</td>
+<td align="center">0.74</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-Mad</td>
+<td align="center">0.10</td>
+<td align="center">0.35</td>
+<td align="center">-0.58</td>
+<td align="center">0.77</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SD_parentmum</td>
+<td align="center">-0.19</td>
+<td align="center">0.28</td>
+<td align="center">-0.74</td>
+<td align="center">0.37</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">genotypeSD:sex_of_embryosmale</td>
+<td align="center">-0.17</td>
+<td align="center">0.27</td>
+<td align="center">-0.70</td>
+<td align="center">0.36</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">genotypeSD:SDSD-72</td>
+<td align="center">0.07</td>
+<td align="center">0.29</td>
+<td align="center">-0.49</td>
+<td align="center">0.65</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">genotypeSD:SDSD-Mad</td>
+<td align="center">0.16</td>
+<td align="center">0.33</td>
+<td align="center">-0.49</td>
+<td align="center">0.82</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">sex_of_embryosmale:SDSD-72</td>
+<td align="center">-0.34</td>
+<td align="center">0.42</td>
+<td align="center">-1.14</td>
+<td align="center">0.52</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">sex_of_embryosmale:SDSD-Mad</td>
+<td align="center">0.28</td>
+<td align="center">0.50</td>
+<td align="center">-0.70</td>
+<td align="center">1.25</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">genotypeSD:SD_parentmum</td>
+<td align="center">-0.21</td>
+<td align="center">0.26</td>
+<td align="center">-0.71</td>
+<td align="center">0.32</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">sex_of_embryosmale:SD_parentmum</td>
+<td align="center">-0.45</td>
+<td align="center">0.39</td>
+<td align="center">-1.20</td>
+<td align="center">0.33</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SDSD-72:SD_parentmum</td>
+<td align="center">0.30</td>
+<td align="center">0.41</td>
+<td align="center">-0.50</td>
+<td align="center">1.10</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SDSD-Mad:SD_parentmum</td>
+<td align="center">0.44</td>
+<td align="center">0.45</td>
+<td align="center">-0.41</td>
+<td align="center">1.31</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">genotypeSD:sex_of_embryosmale:SDSD-72</td>
+<td align="center">0.34</td>
+<td align="center">0.40</td>
+<td align="center">-0.45</td>
+<td align="center">1.13</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">genotypeSD:sex_of_embryosmale:SDSD-Mad</td>
+<td align="center">-0.09</td>
+<td align="center">0.47</td>
+<td align="center">-1.00</td>
+<td align="center">0.83</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">genotypeSD:sex_of_embryosmale:SD_parentmum</td>
+<td align="center">0.32</td>
+<td align="center">0.35</td>
+<td align="center">-0.36</td>
+<td align="center">1.01</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">genotypeSD:SDSD-72:SD_parentmum</td>
+<td align="center">0.49</td>
+<td align="center">0.38</td>
+<td align="center">-0.26</td>
+<td align="center">1.23</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">genotypeSD:SDSD-Mad:SD_parentmum</td>
+<td align="center">-0.34</td>
+<td align="center">0.42</td>
+<td align="center">-1.18</td>
+<td align="center">0.48</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">sex_of_embryosmale:SDSD-72:SD_parentmum</td>
+<td align="center">0.16</td>
+<td align="center">0.54</td>
+<td align="center">-0.93</td>
+<td align="center">1.24</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">sex_of_embryosmale:SDSD-Mad:SD_parentmum</td>
+<td align="center">-0.40</td>
+<td align="center">0.61</td>
+<td align="center">-1.58</td>
+<td align="center">0.78</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">genotypeSD:sex_of_embryosmale:SDSD-72:SD_parentmum</td>
+<td align="center">-0.54</td>
+<td align="center">0.51</td>
+<td align="center">-1.52</td>
+<td align="center">0.46</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">genotypeSD:sex_of_embryosmale:SDSD-Mad:SD_parentmum</td>
+<td align="center">0.62</td>
+<td align="center">0.57</td>
+<td align="center">-0.47</td>
+<td align="center">1.73</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="plot-the-posterior-predictions-of-the-group-means" class="section level3">
+<h3>Plot the posterior predictions of the group means</h3>
+<pre class="r"><code>new_data &lt;- simulate_expt2_data(expt2, 0.5) %&gt;% 
+  select(sex_of_embryos, SD, SD_parent, genotype) %&gt;% 
+  distinct() %&gt;% mutate(total_number = 100) %&gt;%
+  arrange(desc(SD_parent), SD, desc(sex_of_embryos))
+
+plot_expt2 &lt;- function(model){
+
+  pd &lt;- position_dodge(0.4)
+  
+  predictions &lt;- fitted(model, 
+                        summary = TRUE, 
+                        newdata = new_data, re_formula = NA)
+  
+  inner_bar &lt;- fitted(model, 
+                      summary = TRUE, 
+                      newdata = new_data, re_formula = NA,
+                      probs = c(0.25, 0.75))
+  
+  process_preds &lt;- function(preds){
+    data.frame(new_data, preds) %&gt;%
+      rename(Offspring_type = genotype) %&gt;%
+      mutate(sex_of_embryos  = str_replace_all(sex_of_embryos, &quot;female&quot;, &quot;daughters&quot;),
+             sex_of_embryos  = str_replace_all(sex_of_embryos, &quot;male&quot;, &quot;sons&quot;),
+             Offspring_type = paste(Offspring_type, sex_of_embryos),
+             SD_parent = str_replace_all(SD_parent, &quot;dad&quot;, &quot;SD/CyO father&quot;),
+             SD_parent = str_replace_all(SD_parent, &quot;mum&quot;, &quot;SD/CyO mother&quot;))
+  }
+
+  left_join(process_preds(predictions), 
+            process_preds(inner_bar)) %&gt;% 
+    ggplot(aes(Offspring_type, Estimate, colour = SD_parent, fill = SD_parent)) +
+    geom_errorbar(aes(ymin = Q2.5, ymax = Q97.5), width = 0, position = pd, size = 1.3) + 
+    geom_errorbar(aes(ymin = Q25, ymax = Q75), width = 0, position = pd, size = 3) + 
+    geom_point(position = pd, size = 2, colour = &quot;black&quot;,  pch = 21) +
+    facet_grid(~SD) + 
+    scale_colour_brewer(name = &quot;Cross&quot;, palette = &quot;Pastel1&quot;, direction = -1, aesthetics = c(&quot;colour&quot;, &quot;fill&quot;)) +
+    theme_hc() + 
+    theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1),
+          legend.position = &quot;top&quot;, axis.ticks.y = element_blank()) +
+    ylab(&quot;Juvenile fitness&quot;) + xlab(&quot;Genotype and sex of offspring&quot;)
+}
+
+fig2 &lt;- plot_expt2(model_list[[1]])
+ggsave(fig2, file = &quot;figures/fig2.pdf&quot;, height = 3.9, width = 7)
+fig2</code></pre>
+<p><img src="figure/statistics.Rmd/unnamed-chunk-29-1.png" width="672" style="display: block; margin: auto;" /> <strong>Figure 2</strong>: Posterior estimates of % L1 larva-to-adult survival in Experiment 2 for each combination of offspring sex and genotype (x-axis), SD variant (panels), and cross (colours). Error bars show the 95% quantiles of the posterior. See Tables 2 and S10 for associated hypothesis tests. This plot was generated assuming fair meiosis (<span class="math inline">\(k\)</span> = 0.5) in SD/CyO males; see Figure S1 for equivalent plots made using different assumed values of <span class="math inline">\(k\)</span>.</p>
+</div>
+<div id="check-the-effect-of-our-assumption-that-meiosis-is-fair-in-sdcyo-males" class="section level3">
+<h3>Check the effect of our assumption that meiosis is fair in SD/CyO males</h3>
+<pre class="r"><code>make_expt2_multiplot &lt;- function(...) {
+    plots &lt;- list(...)
+    g &lt;- ggplotGrob(plots[[1]] + theme(legend.position=&quot;bottom&quot;))$grobs
+    legend &lt;- g[[which(sapply(g, function(x) x$name) == &quot;guide-box&quot;)]]
+    lheight &lt;- sum(legend$height)
+    plots &lt;- lapply(plots, function(x) ggplotGrob(x + theme(legend.position = &quot;none&quot;)))
+    
+    p &lt;- gtable_rbind(plots[[1]], plots[[2]], plots[[3]])
+    
+    grid.arrange(p, legend, 
+                 nrow = 2, 
+                 heights = unit.c(unit(1, &quot;npc&quot;) - lheight, lheight))
+  }
+
+make_expt2_multiplot(
+  plot_expt2(model_list[[1]]) + theme(axis.text.x = element_blank(), axis.ticks.x = element_blank()) + xlab(NULL) + ylab(NULL),
+  plot_expt2(model_list[[2]]) + theme(axis.text.x = element_blank(), axis.ticks.x = element_blank()) + xlab(NULL),
+  plot_expt2(model_list[[3]]) + ylab(NULL))</code></pre>
+<p><img src="figure/statistics.Rmd/unnamed-chunk-30-1.png" width="864" style="display: block; margin: auto;" /> <br></br> <strong>Figure S1</strong>: Equivalent plots to Figure 2, under the assumption that meiosis is fair (<span class="math inline">\(k\)</span> = 0.5, top row, same as Figure 2), slightly biased (<span class="math inline">\(k\)</span> = 0.6, middle row), and more strongly biased (<span class="math inline">\(k\)</span> = 0.7, bottom row). Note that the significant results for Figure 2 mostly stay the same or increase in magnitude, suggesting that they are genuine and are not sensitive to our assumptions about the data.</p>
+</div>
+<div id="hypothesis-testing-4" class="section level3">
+<h3>Hypothesis testing</h3>
+<pre class="r"><code>hypothesis_tests_expt2 &lt;- function(model){
+  
+  compare &lt;- function(mean1, mean2, SD, Mean_1, Mean_2){
+  difference &lt;- mean1 - mean2
+  prob_less &lt;- hypothesis(data.frame(x = difference), &quot;x &lt; 0&quot;)$hypothesis
+  prob_more &lt;- hypothesis(data.frame(x = difference), &quot;x &gt; 0&quot;)$hypothesis
+  output &lt;- data.frame(
+    SD, Mean_1, Mean_2,
+    hypothesis(data.frame(x = difference), &quot;x = 0&quot;)$hypothesis %&gt;% 
+    mutate(Posterior_probability = min(c(prob_less$Post.Prob, prob_more$Post.Prob)),
+           Evidence_ratio = max(c(prob_less$Evid.Ratio, prob_more$Evid.Ratio)))
+  )
+}
+  preds &lt;- fitted(model, 
+                  summary = FALSE, 
+                  newdata = new_data, re_formula = NA)
+  
+  
+  SD5_sons_mum_SD &lt;- preds[,1]
+  SD5_sons_mum_CyO &lt;- preds[,2]
+  SD5_daughters_mum_SD &lt;- preds[,3]
+  SD5_daughters_mum_CyO &lt;- preds[,4]
+  SD72_sons_mum_SD &lt;- preds[,5]
+  SD72_sons_mum_CyO &lt;- preds[,6]
+  SD72_daughters_mum_SD &lt;- preds[,7]
+  SD72_daughters_mum_CyO &lt;- preds[,8]
+  SDMad_sons_mum_SD &lt;- preds[,9]
+  SDMad_sons_mum_CyO &lt;- preds[,10]
+  SDMad_daughters_mum_SD &lt;- preds[,11]
+  SDMad_daughters_mum_CyO &lt;- preds[,12]
+  SD5_sons_dad_SD &lt;- preds[,13]
+  SD5_sons_dad_CyO &lt;- preds[,14]
+  SD5_daughters_dad_SD &lt;- preds[,15]
+  SD5_daughters_dad_CyO &lt;- preds[,16]
+  SD72_sons_dad_SD &lt;- preds[,17]
+  SD72_sons_dad_CyO &lt;- preds[,18]
+  SD72_daughters_dad_SD &lt;- preds[,19]
+  SD72_daughters_dad_CyO &lt;- preds[,20]
+  SDMad_sons_dad_SD &lt;- preds[,21]
+  SDMad_sons_dad_CyO &lt;- preds[,22]
+  SDMad_daughters_dad_SD &lt;- preds[,23]
+  SDMad_daughters_dad_CyO &lt;- preds[,24]
+  
+  rbind(
+    # sex effect on SD individuals when mother has SD
+    compare(SD5_sons_mum_SD, SD5_daughters_mum_SD, &quot;SD-5&quot;, &quot;Sons, SD, mother&quot;, &quot;Daughters, SD, mother&quot;), 
+    compare(SD72_sons_mum_SD, SD72_daughters_mum_SD, &quot;SD-72&quot;, &quot;Sons, SD, mother&quot;, &quot;Daughters, SD, mother&quot;),
+    compare(SDMad_sons_mum_SD, SDMad_daughters_mum_SD, &quot;SD-Mad&quot;, &quot;Sons, SD, mother&quot;, &quot;Daughters, SD, mother&quot;),
+    # sex effect on CyO individuals when mother has SD
+    compare(SD5_sons_mum_CyO, SD5_daughters_mum_CyO, &quot;SD-5&quot;, &quot;Sons, CyO, mother&quot;, &quot;Daughters, CyO, mother&quot;), 
+    compare(SD72_sons_mum_CyO, SD72_daughters_mum_CyO, &quot;SD-72&quot;, &quot;Sons, CyO, mother&quot;, &quot;Daughters, CyO, mother&quot;),
+    compare(SDMad_sons_mum_CyO, SDMad_daughters_mum_CyO, &quot;SD-Mad&quot;, &quot;Sons, CyO, mother&quot;, &quot;Daughters, CyO, mother&quot;),
+    # sex effect on SD individuals when father has SD
+    compare(SD5_sons_dad_SD, SD5_daughters_dad_SD, &quot;SD-5&quot;, &quot;Sons, SD, father&quot;, &quot;Daughters, SD, father&quot;), 
+    compare(SD72_sons_dad_SD, SD72_daughters_dad_SD, &quot;SD-72&quot;, &quot;Sons, SD, father&quot;, &quot;Daughters, SD, father&quot;),
+    compare(SDMad_sons_dad_SD, SDMad_daughters_dad_SD, &quot;SD-Mad&quot;, &quot;Sons, SD, father&quot;, &quot;Daughters, SD, father&quot;),
+    # sex effect on CyO individuals when father has SD
+    compare(SD5_sons_dad_CyO, SD5_daughters_dad_CyO, &quot;SD-5&quot;, &quot;Sons, CyO, father&quot;, &quot;Daughters, CyO, father&quot;), 
+    compare(SD72_sons_dad_CyO, SD72_daughters_dad_CyO, &quot;SD-72&quot;, &quot;Sons, CyO, father&quot;, &quot;Daughters, CyO, father&quot;),
+    compare(SDMad_sons_dad_CyO, SDMad_daughters_dad_CyO, &quot;SD-Mad&quot;, &quot;Sons, CyO, father&quot;, &quot;Daughters, CyO, father&quot;),
+    # effect of inheriting SD not CyO from mother on sons
+    compare(SD5_sons_mum_CyO, SD5_sons_mum_SD, &quot;SD-5&quot;, &quot;Sons, CyO, mother&quot;, &quot;Sons, SD, mother&quot;), 
+    compare(SD72_sons_mum_CyO, SD72_sons_mum_SD, &quot;SD-72&quot;, &quot;Sons, CyO, mother&quot;, &quot;Sons, SD, mother&quot;),
+    compare(SDMad_sons_mum_CyO, SDMad_sons_mum_SD, &quot;SD-Mad&quot;, &quot;Sons, CyO, mother&quot;, &quot;Sons, SD, mother&quot;),
+    # effect of inheriting SD not CyO from father on sons
+    compare(SD5_sons_dad_CyO, SD5_sons_dad_SD, &quot;SD-5&quot;, &quot;Sons, CyO, father&quot;, &quot;Sons, SD, father&quot;),
+    compare(SD72_sons_dad_CyO, SD72_sons_dad_SD, &quot;SD-72&quot;, &quot;Sons, CyO, father&quot;, &quot;Sons, SD, father&quot;),
+    compare(SDMad_sons_dad_CyO, SDMad_sons_dad_SD, &quot;SD-Mad&quot;, &quot;Sons, CyO, father&quot;, &quot;Sons, SD, father&quot;),
+    # effect of inheriting SD not CyO from mother on daughters
+    compare(SD5_daughters_mum_CyO, SD5_daughters_mum_SD, &quot;SD-5&quot;, &quot;Daughters, CyO, mother&quot;, &quot;Daughters, SD, mother&quot;), 
+    compare(SD72_daughters_mum_CyO, SD72_daughters_mum_SD, &quot;SD-72&quot;, &quot;Daughters, CyO, mother&quot;, &quot;Daughters, SD, mother&quot;),
+    compare(SDMad_daughters_mum_CyO, SDMad_daughters_mum_SD, &quot;SD-Mad&quot;, &quot;Daughters, CyO, mother&quot;, &quot;Daughters, SD, mother&quot;),
+    # effect of inheriting SD not CyO from father on daughters
+    compare(SD5_daughters_dad_CyO, SD5_daughters_dad_SD, &quot;SD-5&quot;, &quot;Daughters, CyO, father&quot;, &quot;Daughters, SD, father&quot;), 
+    compare(SD72_daughters_dad_CyO, SD72_daughters_dad_SD, &quot;SD-72&quot;, &quot;Daughters, CyO, father&quot;, &quot;Daughters, SD, father&quot;),
+    compare(SDMad_daughters_dad_CyO, SDMad_daughters_dad_SD, &quot;SD-Mad&quot;, &quot;Daughters, CyO, father&quot;, &quot;Daughters, SD, father&quot;),
+    # effect of cross direction for SD sons
+    compare(SD5_sons_mum_SD, SD5_sons_dad_SD, &quot;SD-5&quot;, &quot;Sons, SD, mother&quot;, &quot;Sons, SD, father&quot;), 
+    compare(SD72_sons_mum_SD, SD72_sons_dad_SD, &quot;SD-72&quot;, &quot;Sons, SD, mother&quot;, &quot;Sons, SD, father&quot;),
+    compare(SDMad_sons_mum_SD, SDMad_sons_dad_SD, &quot;SD-Mad&quot;, &quot;Sons, SD, mother&quot;, &quot;Sons, SD, father&quot;),
+    # effect of cross direction for SD daughters
+    compare(SD5_daughters_mum_SD, SD5_daughters_dad_SD, &quot;SD-5&quot;, &quot;Daughters, SD, mother&quot;, &quot;Daughters, SD, father&quot;), 
+    compare(SD72_daughters_mum_SD, SD72_daughters_dad_SD, &quot;SD-72&quot;, &quot;Daughters, SD, mother&quot;, &quot;Daughters, SD, father&quot;),
+    compare(SDMad_daughters_mum_SD, SDMad_daughters_dad_SD, &quot;SD-Mad&quot;, &quot;Daughters, SD, mother&quot;, &quot;Daughters, SD, father&quot;),
+    # effect of cross direction for CyO sons
+    compare(SD5_sons_mum_CyO, SD5_sons_dad_CyO, &quot;SD-5&quot;, &quot;Sons, CyO, mother&quot;, &quot;Sons, CyO, father&quot;), 
+    compare(SD72_sons_mum_CyO, SD72_sons_dad_CyO, &quot;SD-72&quot;, &quot;Sons, CyO, mother&quot;, &quot;Sons, CyO, father&quot;),
+    compare(SDMad_sons_mum_CyO, SDMad_sons_dad_CyO, &quot;SD-Mad&quot;, &quot;Sons, CyO, mother&quot;, &quot;Sons, CyO, father&quot;),
+    # effect of cross direction for CyO daughters
+    compare(SD5_daughters_mum_CyO, SD5_daughters_dad_CyO, &quot;SD-5&quot;, &quot;Daughters, CyO, mother&quot;, &quot;Daughters, CyO, father&quot;), 
+    compare(SD72_daughters_mum_CyO, SD72_daughters_dad_CyO, &quot;SD-72&quot;, &quot;Daughters, CyO, mother&quot;, &quot;Daughters, CyO, father&quot;),
+    compare(SDMad_daughters_mum_CyO, SDMad_daughters_dad_CyO, &quot;SD-Mad&quot;, &quot;Daughters, CyO, mother&quot;, &quot;Daughters, CyO, father&quot;)
+  ) %&gt;% 
+    select(-Hypothesis, -Evid.Ratio, -Post.Prob, -Star) %&gt;%
+    mutate(Notable = ifelse(Posterior_probability &lt; 0.05, &quot;*&quot;, &quot;&quot;),
+           Test = c(rep(&quot;Sex difference in survival&quot;, 12),
+                    rep(&quot;Effect of offspring genotype&quot;, 12),
+                    rep(&quot;Effect of parental genotype&quot;, 12))) %&gt;% as_tibble() 
+}
+
+tests_expt2 &lt;- hypothesis_tests_expt2(model_list[[1]]) %&gt;% 
+  mutate(Estimate = format(round(Estimate, 1), nsmall = 1),  
+         Est.Error = format(round(Est.Error, 1), nsmall = 1),
+         CI.Lower = format(round(CI.Lower, 1), nsmall = 1),
+         CI.Upper = format(round(CI.Upper, 1), nsmall = 1), 
+         Difference = paste(Estimate, &quot; (&quot;, CI.Lower, &quot; to &quot;, CI.Upper, &quot;)&quot;, sep = &quot;&quot;),
+         Comparison = paste(Mean_1, &quot;-&quot;, Mean_2),
+         Error = Est.Error) %&gt;%
+  select(SD, Comparison, Difference, Error, Posterior_probability, Notable) %&gt;% 
+  arrange(SD, Comparison)</code></pre>
+<p><strong>Table 2</strong>: List of the all the notable differences between groups in Experiment 2 (posterior probability $&lt;$0.05; see Table S10 for the remaining results). For each group, we list the sex of the focal larvae, their genotype (<em>SD</em> or <em>CyO</em>), and the parent that carried <em>SD</em> (mother or father). The difference in means is expressed in % larvae surviving; other details are as in Table 1.</p>
+<pre class="r"><code>table2 &lt;- tests_expt2 %&gt;% 
+  filter(Notable == &quot;*&quot;) %&gt;% select(-Notable) 
+names(table2) &lt;- str_replace_all(names(table2), &quot;_&quot;, &quot; &quot;)
+
+write_csv(table2 %&gt;% rename(p = `Posterior probability`), path = &quot;figures/Table2.csv&quot;)
+table2 %&gt;% pander(split.cell = 50, split.table = Inf)</code></pre>
+<table>
+<colgroup>
+<col width="7%" />
+<col width="42%" />
+<col width="21%" />
+<col width="7%" />
+<col width="21%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">SD</th>
+<th align="center">Comparison</th>
+<th align="center">Difference</th>
+<th align="center">Error</th>
+<th align="center">Posterior probability</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">SD-5</td>
+<td align="center">Daughters, CyO, mother - Daughters, SD, mother</td>
+<td align="center">4.6 ( -0.6 to 10.0)</td>
+<td align="center">2.7</td>
+<td align="center">0.041</td>
+</tr>
+<tr class="even">
+<td align="center">SD-5</td>
+<td align="center">Sons, CyO, mother - Daughters, CyO, mother</td>
+<td align="center">-10.7 (-19.4 to -2.0)</td>
+<td align="center">4.5</td>
+<td align="center">0.00825</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-5</td>
+<td align="center">Sons, CyO, mother - Sons, CyO, father</td>
+<td align="center">-10.7 (-19.8 to -1.5)</td>
+<td align="center">4.6</td>
+<td align="center">0.0105</td>
+</tr>
+<tr class="even">
+<td align="center">SD-5</td>
+<td align="center">Sons, SD, mother - Daughters, SD, mother</td>
+<td align="center">-9.1 (-18.7 to 0.4)</td>
+<td align="center">4.8</td>
+<td align="center">0.028</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-5</td>
+<td align="center">Sons, SD, mother - Sons, SD, father</td>
+<td align="center">-9.7 (-19.4 to -0.1)</td>
+<td align="center">5.0</td>
+<td align="center">0.02475</td>
+</tr>
+<tr class="even">
+<td align="center">SD-72</td>
+<td align="center">Sons, CyO, father - Daughters, CyO, father</td>
+<td align="center">-7.0 (-15.5 to 1.0)</td>
+<td align="center">4.2</td>
+<td align="center">0.04475</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-72</td>
+<td align="center">Sons, CyO, mother - Daughters, CyO, mother</td>
+<td align="center">-11.0 (-17.9 to -4.3)</td>
+<td align="center">3.5</td>
+<td align="center">0.00075</td>
+</tr>
+<tr class="even">
+<td align="center">SD-72</td>
+<td align="center">Sons, SD, mother - Daughters, SD, mother</td>
+<td align="center">-9.9 (-15.8 to -4.2)</td>
+<td align="center">3.0</td>
+<td align="center">5e-04</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-Mad</td>
+<td align="center">Daughters, CyO, mother - Daughters, SD, mother</td>
+<td align="center">5.4 ( 1.2 to 9.9)</td>
+<td align="center">2.2</td>
+<td align="center">0.00675</td>
+</tr>
+<tr class="even">
+<td align="center">SD-Mad</td>
+<td align="center">Sons, CyO, mother - Daughters, CyO, mother</td>
+<td align="center">-9.4 (-16.3 to -2.7)</td>
+<td align="center">3.5</td>
+<td align="center">0.00225</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-Mad</td>
+<td align="center">Sons, CyO, mother - Sons, CyO, father</td>
+<td align="center">-7.7 (-15.6 to 0.6)</td>
+<td align="center">4.1</td>
+<td align="center">0.0345</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Table S10</strong>: Complete version of Table 2, showing all the contrasts that were tested in Experiment 2.</p>
+<pre class="r"><code>tests_expt2 %&gt;% pander(split.cell = 50, split.table = Inf) </code></pre>
+<table style="width:100%;">
+<colgroup>
+<col width="7%" />
+<col width="40%" />
+<col width="19%" />
+<col width="6%" />
+<col width="19%" />
+<col width="8%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">SD</th>
+<th align="center">Comparison</th>
+<th align="center">Difference</th>
+<th align="center">Error</th>
+<th align="center">Posterior_probability</th>
+<th align="center">Notable</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">SD-5</td>
+<td align="center">Daughters, CyO, father - Daughters, SD, father</td>
+<td align="center">1.2 ( -3.5 to 6.3)</td>
+<td align="center">2.5</td>
+<td align="center">0.3105</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SD-5</td>
+<td align="center">Daughters, CyO, mother - Daughters, CyO, father</td>
+<td align="center">-2.5 ( -9.8 to 4.8)</td>
+<td align="center">3.7</td>
+<td align="center">0.2448</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SD-5</td>
+<td align="center">Daughters, CyO, mother - Daughters, SD, mother</td>
+<td align="center">4.6 ( -0.6 to 10.0)</td>
+<td align="center">2.7</td>
+<td align="center">0.041</td>
+<td align="center">*</td>
+</tr>
+<tr class="even">
+<td align="center">SD-5</td>
+<td align="center">Daughters, SD, mother - Daughters, SD, father</td>
+<td align="center">-5.9 (-14.6 to 2.5)</td>
+<td align="center">4.2</td>
+<td align="center">0.07775</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SD-5</td>
+<td align="center">Sons, CyO, father - Daughters, CyO, father</td>
+<td align="center">-2.5 (-10.4 to 4.9)</td>
+<td align="center">3.9</td>
+<td align="center">0.2597</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SD-5</td>
+<td align="center">Sons, CyO, father - Sons, SD, father</td>
+<td align="center">4.0 ( -1.8 to 10.0)</td>
+<td align="center">3.0</td>
+<td align="center">0.08675</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SD-5</td>
+<td align="center">Sons, CyO, mother - Daughters, CyO, mother</td>
+<td align="center">-10.7 (-19.4 to -2.0)</td>
+<td align="center">4.5</td>
+<td align="center">0.00825</td>
+<td align="center">*</td>
+</tr>
+<tr class="even">
+<td align="center">SD-5</td>
+<td align="center">Sons, CyO, mother - Sons, CyO, father</td>
+<td align="center">-10.7 (-19.8 to -1.5)</td>
+<td align="center">4.6</td>
+<td align="center">0.0105</td>
+<td align="center">*</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-5</td>
+<td align="center">Sons, CyO, mother - Sons, SD, mother</td>
+<td align="center">3.1 ( -2.8 to 9.0)</td>
+<td align="center">3.0</td>
+<td align="center">0.1493</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SD-5</td>
+<td align="center">Sons, SD, father - Daughters, SD, father</td>
+<td align="center">-5.3 (-14.5 to 3.7)</td>
+<td align="center">4.5</td>
+<td align="center">0.118</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SD-5</td>
+<td align="center">Sons, SD, mother - Daughters, SD, mother</td>
+<td align="center">-9.1 (-18.7 to 0.4)</td>
+<td align="center">4.8</td>
+<td align="center">0.028</td>
+<td align="center">*</td>
+</tr>
+<tr class="even">
+<td align="center">SD-5</td>
+<td align="center">Sons, SD, mother - Sons, SD, father</td>
+<td align="center">-9.7 (-19.4 to -0.1)</td>
+<td align="center">5.0</td>
+<td align="center">0.02475</td>
+<td align="center">*</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-72</td>
+<td align="center">Daughters, CyO, father - Daughters, SD, father</td>
+<td align="center">0.3 ( -4.4 to 5.0)</td>
+<td align="center">2.4</td>
+<td align="center">0.449</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SD-72</td>
+<td align="center">Daughters, CyO, mother - Daughters, CyO, father</td>
+<td align="center">1.2 ( -4.7 to 7.4)</td>
+<td align="center">3.0</td>
+<td align="center">0.3395</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SD-72</td>
+<td align="center">Daughters, CyO, mother - Daughters, SD, mother</td>
+<td align="center">-2.3 ( -5.9 to 1.1)</td>
+<td align="center">1.8</td>
+<td align="center">0.0875</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SD-72</td>
+<td align="center">Daughters, SD, mother - Daughters, SD, father</td>
+<td align="center">3.8 ( -1.6 to 9.9)</td>
+<td align="center">2.9</td>
+<td align="center">0.08525</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SD-72</td>
+<td align="center">Sons, CyO, father - Daughters, CyO, father</td>
+<td align="center">-7.0 (-15.5 to 1.0)</td>
+<td align="center">4.2</td>
+<td align="center">0.04475</td>
+<td align="center">*</td>
+</tr>
+<tr class="even">
+<td align="center">SD-72</td>
+<td align="center">Sons, CyO, father - Sons, SD, father</td>
+<td align="center">-2.2 ( -8.8 to 3.8)</td>
+<td align="center">3.2</td>
+<td align="center">0.2433</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SD-72</td>
+<td align="center">Sons, CyO, mother - Daughters, CyO, mother</td>
+<td align="center">-11.0 (-17.9 to -4.3)</td>
+<td align="center">3.5</td>
+<td align="center">0.00075</td>
+<td align="center">*</td>
+</tr>
+<tr class="even">
+<td align="center">SD-72</td>
+<td align="center">Sons, CyO, mother - Sons, CyO, father</td>
+<td align="center">-2.7 (-11.4 to 6.3)</td>
+<td align="center">4.5</td>
+<td align="center">0.2742</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SD-72</td>
+<td align="center">Sons, CyO, mother - Sons, SD, mother</td>
+<td align="center">-3.4 ( -8.1 to 1.2)</td>
+<td align="center">2.4</td>
+<td align="center">0.074</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SD-72</td>
+<td align="center">Sons, SD, father - Daughters, SD, father</td>
+<td align="center">-4.5 (-12.7 to 3.3)</td>
+<td align="center">4.1</td>
+<td align="center">0.1335</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SD-72</td>
+<td align="center">Sons, SD, mother - Daughters, SD, mother</td>
+<td align="center">-9.9 (-15.8 to -4.2)</td>
+<td align="center">3.0</td>
+<td align="center">5e-04</td>
+<td align="center">*</td>
+</tr>
+<tr class="even">
+<td align="center">SD-72</td>
+<td align="center">Sons, SD, mother - Sons, SD, father</td>
+<td align="center">-1.5 ( -9.3 to 6.4)</td>
+<td align="center">4.1</td>
+<td align="center">0.354</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SD-Mad</td>
+<td align="center">Daughters, CyO, father - Daughters, SD, father</td>
+<td align="center">-0.8 ( -6.9 to 5.2)</td>
+<td align="center">3.1</td>
+<td align="center">0.4085</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SD-Mad</td>
+<td align="center">Daughters, CyO, mother - Daughters, CyO, father</td>
+<td align="center">2.8 ( -4.3 to 10.7)</td>
+<td align="center">3.8</td>
+<td align="center">0.236</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SD-Mad</td>
+<td align="center">Daughters, CyO, mother - Daughters, SD, mother</td>
+<td align="center">5.4 ( 1.2 to 9.9)</td>
+<td align="center">2.2</td>
+<td align="center">0.00675</td>
+<td align="center">*</td>
+</tr>
+<tr class="even">
+<td align="center">SD-Mad</td>
+<td align="center">Daughters, SD, mother - Daughters, SD, father</td>
+<td align="center">-3.4 (-11.0 to 4.9)</td>
+<td align="center">4.0</td>
+<td align="center">0.1965</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SD-Mad</td>
+<td align="center">Sons, CyO, father - Daughters, CyO, father</td>
+<td align="center">1.1 ( -7.8 to 9.8)</td>
+<td align="center">4.5</td>
+<td align="center">0.4127</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SD-Mad</td>
+<td align="center">Sons, CyO, father - Sons, SD, father</td>
+<td align="center">2.2 ( -4.1 to 8.7)</td>
+<td align="center">3.2</td>
+<td align="center">0.2318</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SD-Mad</td>
+<td align="center">Sons, CyO, mother - Daughters, CyO, mother</td>
+<td align="center">-9.4 (-16.3 to -2.7)</td>
+<td align="center">3.5</td>
+<td align="center">0.00225</td>
+<td align="center">*</td>
+</tr>
+<tr class="even">
+<td align="center">SD-Mad</td>
+<td align="center">Sons, CyO, mother - Sons, CyO, father</td>
+<td align="center">-7.7 (-15.6 to 0.6)</td>
+<td align="center">4.1</td>
+<td align="center">0.0345</td>
+<td align="center">*</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-Mad</td>
+<td align="center">Sons, CyO, mother - Sons, SD, mother</td>
+<td align="center">-3.0 ( -8.0 to 1.9)</td>
+<td align="center">2.5</td>
+<td align="center">0.1115</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SD-Mad</td>
+<td align="center">Sons, SD, father - Daughters, SD, father</td>
+<td align="center">-1.9 (-10.9 to 6.7)</td>
+<td align="center">4.6</td>
+<td align="center">0.3347</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SD-Mad</td>
+<td align="center">Sons, SD, mother - Daughters, SD, mother</td>
+<td align="center">-1.0 ( -8.0 to 6.1)</td>
+<td align="center">3.6</td>
+<td align="center">0.3847</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SD-Mad</td>
+<td align="center">Sons, SD, mother - Sons, SD, father</td>
+<td align="center">-2.5 (-10.3 to 6.3)</td>
+<td align="center">4.1</td>
+<td align="center">0.2578</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<br> <br>
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
+<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Session information
+</button>
+</p>
+<div id="workflowr-sessioninfo" class="collapse">
+<pre class="r"><code>sessionInfo()</code></pre>
+<pre><code>R version 3.5.1 (2018-07-02)
+Platform: x86_64-apple-darwin15.6.0 (64-bit)
+Running under: macOS High Sierra 10.13.6
+
+Matrix products: default
+BLAS: /Library/Frameworks/R.framework/Versions/3.5/Resources/lib/libRblas.0.dylib
+LAPACK: /Library/Frameworks/R.framework/Versions/3.5/Resources/lib/libRlapack.dylib
+
+locale:
+[1] en_AU.UTF-8/en_AU.UTF-8/en_AU.UTF-8/C/en_AU.UTF-8/en_AU.UTF-8
+
+attached base packages:
+[1] grid      stats     graphics  grDevices utils     datasets  methods  
+[8] base     
+
+other attached packages:
+ [1] stringr_1.3.1      tibble_2.0.99.9000 readr_1.1.1       
+ [4] ggthemes_4.0.1     gridExtra_2.3      lazerhawk_0.2.4   
+ [7] pander_0.6.2       Cairo_1.5-9        reshape2_1.4.3    
+[10] brms_2.6.0         ggplot2_3.1.0      Rcpp_1.0.0        
+[13] dplyr_0.8.0.1      knitr_1.20        
+
+loaded via a namespace (and not attached):
+ [1] nlme_3.1-137         matrixStats_0.54.0   fs_1.2.6            
+ [4] xts_0.11-0           devtools_1.13.6      RColorBrewer_1.1-2  
+ [7] threejs_0.3.1        rprojroot_1.3-2      rstan_2.18.2        
+[10] tools_3.5.1          backports_1.1.2      R6_2.4.0            
+[13] DT_0.4               lazyeval_0.2.1       colorspace_1.3-2    
+[16] withr_2.1.2          tidyselect_0.2.5     prettyunits_1.0.2   
+[19] processx_3.2.1       Brobdingnag_1.2-5    compiler_3.5.1      
+[22] git2r_0.23.0         cli_1.0.1            shinyjs_1.0         
+[25] labeling_0.3         colourpicker_1.0     scales_1.0.0        
+[28] dygraphs_1.1.1.6     mvtnorm_1.0-8        ggridges_0.5.0      
+[31] callr_2.0.4          digest_0.6.18        StanHeaders_2.18.0  
+[34] rmarkdown_1.10       base64enc_0.1-3      pkgconfig_2.0.2     
+[37] htmltools_0.3.6      htmlwidgets_1.2      rlang_0.3.1         
+[40] shiny_1.2.0          zoo_1.8-3            crosstalk_1.0.0     
+[43] gtools_3.8.1         inline_0.3.15        magrittr_1.5        
+[46] loo_2.0.0            bayesplot_1.5.0      Matrix_1.2-14       
+[49] munsell_0.5.0        abind_1.4-5          stringi_1.3.1       
+[52] whisker_0.3-2        yaml_2.2.0           pkgbuild_1.0.2      
+[55] plyr_1.8.4           parallel_3.5.1       promises_1.0.1      
+[58] crayon_1.3.4         miniUI_0.1.1.1       lattice_0.20-35     
+[61] hms_0.4.2            ps_1.3.0             pillar_1.3.1.9000   
+[64] igraph_1.2.1         markdown_0.8         shinystan_2.5.0     
+[67] stats4_3.5.1         rstantools_1.5.0     glue_1.3.0.9000     
+[70] evaluate_0.11        httpuv_1.4.5         gtable_0.2.0        
+[73] purrr_0.3.1          tidyr_0.8.2          assertthat_0.2.0    
+[76] mime_0.6             xtable_1.8-3         colortools_0.1.5    
+[79] coda_0.19-2          later_0.7.5          rsconnect_0.8.8     
+[82] shinythemes_1.1.1    memoise_1.1.0        workflowr_1.2.0     
+[85] bridgesampling_0.4-0</code></pre>
+</div>
+</div>
+</div>
+
+
+<!-- Adjust MathJax settings so that all math formulae are shown using
+TeX fonts only; see
+http://docs.mathjax.org/en/latest/configuration.html.  This will make
+the presentation more consistent at the cost of the webpage sometimes
+taking slightly longer to load. Note that this only works because the
+footer is added to webpages before the MathJax javascript. -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
