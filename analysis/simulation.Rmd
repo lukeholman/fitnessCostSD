@@ -79,8 +79,6 @@ make_mating_table <- function(k, mating_types, SR_bias_in_hetero_males){
   output <-  do.call("rbind", offspring)
   
   names(offspring) <- paste(mating_types[,1], mating_types[,2], sep = " x ")
- # print(offspring)
-  
   output
 }
 ```
@@ -190,28 +188,6 @@ run_simulation <- function(generations,
         
     if(prop_SD > 0.99) return(pop) 
     if(prop_SD < 0.0001) return(pop)
-    
-    
-    # offspring <- mating_table %>%
-    #   left_join(find_mating_type_frequencies(pop, mating_types), 
-    #             by = c("mother", "father")) %>%
-    #   mutate(offspring_freq = mating_freq * zygote_freq)
-    # 
-    # pop$prop <- 
-    #   c(sum(offspring$offspring_freq[offspring$type == "wild_type_female"]),
-    #     sum(offspring$offspring_freq[offspring$type == "wild_type_male"]),
-    #     sum(offspring$offspring_freq[offspring$type == "hetero_female_maternal"]),
-    #     sum(offspring$offspring_freq[offspring$type == "hetero_male_maternal"]),
-    #     sum(offspring$offspring_freq[offspring$type == "hetero_female_paternal"]),
-    #     sum(offspring$offspring_freq[offspring$type == "hetero_male_paternal"]),
-    #     sum(offspring$offspring_freq[offspring$type == "homo_female"]),
-    #     sum(offspring$offspring_freq[offspring$type == "homo_male"]))
-    # 
-    # pop$prop[is.na(pop$prop)] <- 0
-    # pop$prop <- pop$prop / sum(pop$prop)
-  
-    # print(pop %>% mutate(prop = round(prop, 2)))
-
   }
   pop
 }
