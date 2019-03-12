@@ -8,7 +8,7 @@ output:
 
 This website presents all the code used for the paper _Fitness costs of SD chromosomes in Drosophila melanogaster_ by Wong and Holman.
 
-# [Bioinformatics](SD_costs_analysis.html)
+# [Data analysis](SD_costs_analysis.html)
 Click [here](SD_costs_analysis.html) to see the R script used to analyse our empirical data and produce all statistical results, figures, and tables.
 
 # [Population genetic model](evolutionary_simulation_SD.html)
