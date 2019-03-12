@@ -238,7 +238,7 @@ run_many_simulations <- function(parameters){
 ```
 
 ## Define the parameter space to investigate
-Used to define the parameter spaces that are plotted in the figure of the results.
+Used to define the parameter spaces that are plotted in Figure 3.
 ```{r}
 imprint_cost <- 0.2 
 resolution <- 101
