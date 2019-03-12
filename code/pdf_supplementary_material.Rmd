@@ -1,6 +1,7 @@
 ---
 title: "Supplementary Information"
 output:
+  pdf_document: default
   html_document:
     df_print: paged
 header-includes: \usepackage{booktabs} \usepackage{microtype} \usepackage{longtable}
@@ -22,15 +23,7 @@ library(kableExtra)
 library(stringr)
 
 make_table <- function(file, digits = 3){
-  df <- as.data.frame(readRDS(file))
-  names(df) <- str_replace_all(names(df), "_", " ")
-  names(df) <- str_replace_all(names(df), "[.]", " ")
-  names(df) <- sapply(names(df), function(x) {
-    substr(x,1,1) <- toupper(substr(x,1,1))
-    x
-    })
-  
-  kable(df, "latex", booktabs = TRUE, digits = digits) %>%
+  kable(readRDS(file), "latex", booktabs = TRUE, digits = digits) %>%
     kable_styling(latex_options = c("repeat_header", "scale_down"), font_size = 8)
 }
 ```

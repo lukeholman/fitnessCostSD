@@ -343,7 +343,7 @@ div.section {
 
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
-<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span>
 </button>
 </p>
 <div id="workflowr-report" class="collapse">
@@ -352,7 +352,7 @@ div.section {
 <a data-toggle="tab" href="#summary">Summary</a>
 </li>
 <li>
-<a data-toggle="tab" href="#report"> Report <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> </a>
+<a data-toggle="tab" href="#report"> Report <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -364,7 +364,7 @@ div.section {
 <strong>Last updated:</strong> 2019-03-12
 </p>
 <p>
-<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 5 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>fitnessCostSD/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
@@ -380,12 +380,12 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges"> <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
+<div id="strongRMarkdownfilestronguncommittedchanges" class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
 </div>
 </div>
 </div>
@@ -440,10 +440,10 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtree8d925894232ce83039f43e9b70d731d7b9c73d3dtargetblank8d92589a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/fitnessCostSD/tree/8d925894232ce83039f43e9b70d731d7b9c73d3d" target="_blank">8d92589</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtree36e95d38d961e39f25d6c4b88d6ba3b2d67535fbtargetblank36e95d3a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/fitnessCostSD/tree/36e95d38d961e39f25d6c4b88d6ba3b2d67535fb" target="_blank">36e95d3</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtree8d925894232ce83039f43e9b70d731d7b9c73d3dtargetblank8d92589a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtree36e95d38d961e39f25d6c4b88d6ba3b2d67535fbtargetblank36e95d3a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -462,6 +462,14 @@ Ignored files:
     Ignored:    docs/figure/SD_costs_analysis.Rmd/
     Ignored:    docs/figure/evolutionary_simulation_SD.Rmd/
     Ignored:    manuscript/.DS_Store
+
+Unstaged changes:
+    Modified:   analysis/statistics.Rmd
+    Modified:   code/pdf_supplementary_material.Rmd
+    Modified:   code/pdf_supplementary_material.pdf
+    Modified:   figures/Table1.csv
+    Modified:   figures/fig1.pdf
+    Modified:   figures/fig2.pdf
 
 </code></pre>
 <p>
@@ -500,6 +508,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/lukeholman/fitnessCostSD/36e95d38d961e39f25d6c4b88d6ba3b2d67535fb/docs/statistics.html" target="_blank">36e95d3</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2019-03-12
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -776,32 +801,47 @@ expt2   &lt;- load_and_clean_data(&quot;data/messy_data/experiment2.csv&quot;) <
 <div id="larval-survival-data" class="section level3">
 <h3>Larval survival data</h3>
 <p><strong>Table S1</strong>: Number and percentage of L1 larvae surviving to adulthood for each SD genotype and cross type.</p>
-<pre class="r"><code>tab_S1 &lt;- larvae %&gt;% 
+<pre class="r"><code>tidy_names &lt;- function(df){
+  df &lt;- as.data.frame(df)
+  names(df) &lt;- str_replace_all(names(df), &quot;_&quot;, &quot; &quot;)
+  names(df) &lt;- str_replace_all(names(df), &quot;[.]&quot;, &quot; &quot;)
+  names(df) &lt;- sapply(names(df), function(x) {
+    if(substr(x,1,2) == &quot;n &quot;) return(x)
+    substr(x,1,1) &lt;- toupper(substr(x,1,1))
+    x
+  })
+  names(df) &lt;- str_replace_all(names(df), &quot;[Pp]ercent&quot;, &quot;%&quot;)
+  names(df) &lt;- str_replace_all(names(df), &quot;Number of&quot;, &quot;n&quot;)
+  df
+}
+
+
+tab_S1 &lt;- larvae %&gt;% 
   group_by(SD, copies_of_SD, parent_with_SD) %&gt;% 
   summarise(number_larvae_counted = sum(survivors + number_died),
             number_of_survivors = sum(survivors),
             percent_surviving = 100 * (number_of_survivors / number_larvae_counted)) %&gt;%
     mutate(percent_surviving = format(round(percent_surviving, 1), nsmall = 1)) %&gt;%
-  as.data.frame() 
+  tidy_names() 
 saveRDS(tab_S1, file = &quot;output/tab_S1.rds&quot;)
 tab_S1 %&gt;% pander(split.cell = 40, split.table = Inf)</code></pre>
 <table>
 <colgroup>
-<col width="15%" />
-<col width="12%" />
+<col width="18%" />
 <col width="14%" />
-<col width="20%" />
-<col width="18%" />
-<col width="18%" />
+<col width="16%" />
+<col width="23%" />
+<col width="13%" />
+<col width="13%" />
 </colgroup>
 <thead>
 <tr class="header">
 <th align="center">SD</th>
-<th align="center">copies_of_SD</th>
-<th align="center">parent_with_SD</th>
-<th align="center">number_larvae_counted</th>
-<th align="center">number_of_survivors</th>
-<th align="center">percent_surviving</th>
+<th align="center">Copies of SD</th>
+<th align="center">Parent with SD</th>
+<th align="center">Number larvae counted</th>
+<th align="center">n survivors</th>
+<th align="center">% surviving</th>
 </tr>
 </thead>
 <tbody>
@@ -963,34 +1003,35 @@ tab_S1 %&gt;% pander(split.cell = 40, split.table = Inf)</code></pre>
 <div id="adult-sex-ratio" class="section level3">
 <h3>Adult sex ratio</h3>
 <p><strong>Table S2</strong>: Number and percentage of male and female adults emerging from the juvenile fitness assay vials.</p>
-<pre class="r"><code>tab_S2 &lt;- larvae %&gt;% group_by(SD, copies_of_SD, parent_with_SD) %&gt;% 
+<pre class="r"><code>tab_S2 &lt;- larvae %&gt;% 
+  group_by(SD, copies_of_SD, parent_with_SD) %&gt;% 
   summarise(n.males = sum(surviving_males),
             n.females = sum(surviving_females),
             n.total = sum(survivors), 
             percent.male = format(round(100 * sum(surviving_males) / n.total, 1), nsmall = 1)) %&gt;%
-  as.data.frame() 
+  tidy_names() 
 
 saveRDS(tab_S2, file = &quot;output/tab_S2.rds&quot;)
 tab_S2 %&gt;% pander(split.cell = 40, split.table = Inf)</code></pre>
 <table>
 <colgroup>
-<col width="19%" />
-<col width="15%" />
-<col width="17%" />
+<col width="20%" />
+<col width="16%" />
+<col width="18%" />
 <col width="10%" />
 <col width="12%" />
 <col width="10%" />
-<col width="15%" />
+<col width="10%" />
 </colgroup>
 <thead>
 <tr class="header">
 <th align="center">SD</th>
-<th align="center">copies_of_SD</th>
-<th align="center">parent_with_SD</th>
-<th align="center">n.males</th>
-<th align="center">n.females</th>
-<th align="center">n.total</th>
-<th align="center">percent.male</th>
+<th align="center">Copies of SD</th>
+<th align="center">Parent with SD</th>
+<th align="center">n males</th>
+<th align="center">n females</th>
+<th align="center">n total</th>
+<th align="center">% male</th>
 </tr>
 </thead>
 <tbody>
@@ -1180,29 +1221,29 @@ tab_S3 &lt;- males %&gt;%
             number_of_males = number_of_vials * 5) %&gt;%
   mutate(average_relative_fitness = format(round(average_relative_fitness, 2), nsmall = 2),
          SE = format(round(SE, 3), nsmall = 3)) %&gt;%
-  as.data.frame()
+  tidy_names()
 
 saveRDS(tab_S3, file = &quot;output/tab_S3.rds&quot;)
 tab_S3 %&gt;% pander(split.cell = 40, split.table = Inf)</code></pre>
-<table style="width:100%;">
+<table>
 <colgroup>
-<col width="15%" />
-<col width="12%" />
-<col width="13%" />
-<col width="22%" />
-<col width="6%" />
+<col width="17%" />
 <col width="14%" />
-<col width="14%" />
+<col width="16%" />
+<col width="25%" />
+<col width="7%" />
+<col width="9%" />
+<col width="9%" />
 </colgroup>
 <thead>
 <tr class="header">
 <th align="center">SD</th>
-<th align="center">copies_of_SD</th>
-<th align="center">parent_with_SD</th>
-<th align="center">average_relative_fitness</th>
+<th align="center">Copies of SD</th>
+<th align="center">Parent with SD</th>
+<th align="center">Average relative fitness</th>
 <th align="center">SE</th>
-<th align="center">number_of_vials</th>
-<th align="center">number_of_males</th>
+<th align="center">n vials</th>
+<th align="center">n males</th>
 </tr>
 </thead>
 <tbody>
@@ -1401,29 +1442,29 @@ tab_S3 %&gt;% pander(split.cell = 40, split.table = Inf)</code></pre>
             number_of_females = sum(number_of_laying_females)) %&gt;%
   mutate(average_fecundity = format(round(average_fecundity, 2), nsmall = 2),
          SE = format(round(SE, 3), nsmall = 3)) %&gt;%
-  as.data.frame() 
+  tidy_names() 
 
 saveRDS(tab_S4, file = &quot;output/tab_S4.rds&quot;)
 tab_S4 %&gt;% pander(split.cell = 40, split.table = Inf)</code></pre>
-<table>
+<table style="width:100%;">
 <colgroup>
-<col width="16%" />
-<col width="12%" />
+<col width="18%" />
 <col width="14%" />
-<col width="17%" />
-<col width="6%" />
-<col width="15%" />
-<col width="17%" />
+<col width="16%" />
+<col width="19%" />
+<col width="7%" />
+<col width="9%" />
+<col width="11%" />
 </colgroup>
 <thead>
 <tr class="header">
 <th align="center">SD</th>
-<th align="center">copies_of_SD</th>
-<th align="center">parent_with_SD</th>
-<th align="center">average_fecundity</th>
+<th align="center">Copies of SD</th>
+<th align="center">Parent with SD</th>
+<th align="center">Average fecundity</th>
 <th align="center">SE</th>
-<th align="center">number_of_vials</th>
-<th align="center">number_of_females</th>
+<th align="center">n vials</th>
+<th align="center">n females</th>
 </tr>
 </thead>
 <tbody>
@@ -1625,29 +1666,30 @@ tab_S4 %&gt;% pander(split.cell = 40, split.table = Inf)</code></pre>
             n_larvae_counted = sum(starting_number_focal_sex),
             n_crosses = n()) %&gt;%
   mutate(percent_surviving_SD_larvae = format(round(percent_surviving_SD_larvae, 1), nsmall = 1),
-         percent_surviving_CyO_larvae = format(round(percent_surviving_CyO_larvae, 1), nsmall = 1)) 
+         percent_surviving_CyO_larvae = format(round(percent_surviving_CyO_larvae, 1), nsmall = 1)) %&gt;%
+  tidy_names()
 
 saveRDS(tab_S5, file = &quot;output/tab_S5.rds&quot;)
 tab_S5 %&gt;% pander(split.cell = 40, split.table = Inf)</code></pre>
-<table>
+<table style="width:100%;">
 <colgroup>
-<col width="6%" />
-<col width="12%" />
-<col width="11%" />
-<col width="22%" />
-<col width="23%" />
-<col width="14%" />
-<col width="8%" />
+<col width="7%" />
+<col width="13%" />
+<col width="13%" />
+<col width="19%" />
+<col width="20%" />
+<col width="15%" />
+<col width="9%" />
 </colgroup>
 <thead>
 <tr class="header">
 <th align="center">SD</th>
-<th align="center">parent_with_SD</th>
-<th align="center">offspring_sex</th>
-<th align="center">percent_surviving_SD_larvae</th>
-<th align="center">percent_surviving_CyO_larvae</th>
-<th align="center">n_larvae_counted</th>
-<th align="center">n_crosses</th>
+<th align="center">Parent with SD</th>
+<th align="center">Offspring sex</th>
+<th align="center">% surviving SD larvae</th>
+<th align="center">% surviving CyO larvae</th>
+<th align="center">n larvae counted</th>
+<th align="center">n crosses</th>
 </tr>
 </thead>
 <tbody>
@@ -2526,12 +2568,11 @@ clean_table &lt;- function(tabl){
                  Comparison = paste(Mean_1, &quot;-&quot;, Mean_2),
                  Error = Est.Error) %&gt;%
     select(!! cols)
-  names(tabl) &lt;- str_replace_all(names(tabl), &quot;_&quot;, &quot; &quot;)
-  tabl
+  tabl %&gt;% tidy_names()
 }
 
 tests1 &lt;- hypothesis_tests(larvae_brms, larvae)
-tab_S6 &lt;- tests1 %&gt;% clean_table()
+tab_S6 &lt;- tests1 %&gt;% clean_table() 
 saveRDS(tab_S6, file = &quot;output/tab_S6.rds&quot;)
 tab_S6 %&gt;% pander(split.cell = 40, split.table = Inf)</code></pre>
 <table style="width:100%;">
@@ -3317,10 +3358,9 @@ lukeholman
 <div id="hypothesis-testing-1" class="section level3">
 <h3>Hypothesis testing</h3>
 <p><strong>Table S7</strong>: The results of hypothesis tests computed using the model of adult sex ratio in Experiment 1. Each row gives the posterior estimate of a difference in means, such that the estimate is positive if mean 1 is larger than mean 2, and negative otherwise (expressed in % males). The mean 1 and mean 2 columns list the parent which had SD (mother, father, or both), followed by the number of SD alleles present in the offspring (0, 1 or 2). The Posterior probability column gives the probability that the mean with the smaller point estimate is actually larger than the other mean, analagously to a one-tailed p-value. The Evidence ratio (ER) column gives the ratio of evidence, such that ER = 5 means that it is 5 times more likely that the mean with the smaller point estimate really is the smaller one. Asterisks highlight rows where the posterior probability is less than 0.05.</p>
-<pre class="r"><code>tests2 &lt;- hypothesis_tests(SR_brms, SR_data)
-tab_S7 &lt;- tests2
-saveRDS(tab_S7, file = &quot;output/tab_S7.rds&quot;)
-tab_S7 %&gt;% clean_table() %&gt;% pander(split.cell = 40, split.table = Inf)</code></pre>
+<pre class="r"><code>tests2 &lt;- hypothesis_tests(SR_brms, SR_data) %&gt;% clean_table()
+saveRDS(tests2, file = &quot;output/tab_S7.rds&quot;)
+tests2 %&gt;% pander(split.cell = 40, split.table = Inf)</code></pre>
 <table style="width:100%;">
 <colgroup>
 <col width="9%" />
@@ -4929,22 +4969,6 @@ table1 %&gt;% pander(split.cell = 50, split.table = Inf) </code></pre>
 <td align="center">0</td>
 </tr>
 <tr class="odd">
-<td align="center">Sex ratio</td>
-<td align="center">SD-Mad</td>
-<td align="center">Neither, 0 - Father, 0</td>
-<td align="center">11.1 ( -0.8 to 23.0)</td>
-<td align="center">6.0</td>
-<td align="center">0.03387</td>
-</tr>
-<tr class="even">
-<td align="center">Sex ratio</td>
-<td align="center">SD-Mad</td>
-<td align="center">Mother, 1 - Father, 1</td>
-<td align="center">18.3 ( 7.1 to 29.7)</td>
-<td align="center">5.7</td>
-<td align="center">0.001375</td>
-</tr>
-<tr class="odd">
 <td align="center">Female fitness</td>
 <td align="center">SD-5</td>
 <td align="center">Neither, 0 - Mother, 0</td>
@@ -5638,8 +5662,7 @@ tests_expt2 &lt;- hypothesis_tests_expt2(model_list[[1]]) %&gt;%
   arrange(SD, Comparison)</code></pre>
 <p><strong>Table 2</strong>: List of the all the notable differences between groups in Experiment 2 (posterior probability $&lt;$0.05; see Table S10 for the remaining results). For each group, we list the sex of the focal larvae, their genotype (<em>SD</em> or <em>CyO</em>), and the parent that carried <em>SD</em> (mother or father). The difference in means is expressed in % larvae surviving; other details are as in Table 1.</p>
 <pre class="r"><code>table2 &lt;- tests_expt2 %&gt;% 
-  filter(Notable == &quot;*&quot;) %&gt;% select(-Notable) 
-names(table2) &lt;- str_replace_all(names(table2), &quot;_&quot;, &quot; &quot;)
+  filter(Notable == &quot;*&quot;) %&gt;% select(-Notable) %&gt;% tidy_names()
 
 write_csv(table2 %&gt;% rename(p = `Posterior probability`), path = &quot;figures/Table2.csv&quot;)
 table2 %&gt;% pander(split.cell = 50, split.table = Inf)</code></pre>
@@ -5741,7 +5764,7 @@ table2 %&gt;% pander(split.cell = 50, split.table = Inf)</code></pre>
 </tbody>
 </table>
 <p><strong>Table S10</strong>: Complete version of Table 2, showing all the contrasts that were tested in Experiment 2.</p>
-<pre class="r"><code>saveRDS(tests_expt2, file = &quot;output/tab_S10.rds&quot;)
+<pre class="r"><code>saveRDS(tests_expt2 %&gt;% tidy_names(), file = &quot;output/tab_S10.rds&quot;)
 tests_expt2 %&gt;% pander(split.cell = 50, split.table = Inf) </code></pre>
 <table style="width:100%;">
 <colgroup>

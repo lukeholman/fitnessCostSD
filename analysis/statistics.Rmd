@@ -164,13 +164,28 @@ expt2   <- load_and_clean_data("data/messy_data/experiment2.csv")
 
 **Table S1**: Number and percentage of L1 larvae surviving to adulthood for each SD genotype and cross type.
 ```{r}
+tidy_names <- function(df){
+  df <- as.data.frame(df)
+  names(df) <- str_replace_all(names(df), "_", " ")
+  names(df) <- str_replace_all(names(df), "[.]", " ")
+  names(df) <- sapply(names(df), function(x) {
+    if(substr(x,1,2) == "n ") return(x)
+    substr(x,1,1) <- toupper(substr(x,1,1))
+    x
+  })
+  names(df) <- str_replace_all(names(df), "[Pp]ercent", "%")
+  names(df) <- str_replace_all(names(df), "Number of", "n")
+  df
+}
+
+
 tab_S1 <- larvae %>% 
   group_by(SD, copies_of_SD, parent_with_SD) %>% 
   summarise(number_larvae_counted = sum(survivors + number_died),
             number_of_survivors = sum(survivors),
             percent_surviving = 100 * (number_of_survivors / number_larvae_counted)) %>%
     mutate(percent_surviving = format(round(percent_surviving, 1), nsmall = 1)) %>%
-  as.data.frame() 
+  tidy_names() 
 saveRDS(tab_S1, file = "output/tab_S1.rds")
 tab_S1 %>% pander(split.cell = 40, split.table = Inf)
 ```
@@ -179,12 +194,13 @@ tab_S1 %>% pander(split.cell = 40, split.table = Inf)
 
 **Table S2**: Number and percentage of male and female adults emerging from the juvenile fitness assay vials.
 ```{r}
-tab_S2 <- larvae %>% group_by(SD, copies_of_SD, parent_with_SD) %>% 
+tab_S2 <- larvae %>% 
+  group_by(SD, copies_of_SD, parent_with_SD) %>% 
   summarise(n.males = sum(surviving_males),
             n.females = sum(surviving_females),
             n.total = sum(survivors), 
             percent.male = format(round(100 * sum(surviving_males) / n.total, 1), nsmall = 1)) %>%
-  as.data.frame() 
+  tidy_names() 
 
 saveRDS(tab_S2, file = "output/tab_S2.rds")
 tab_S2 %>% pander(split.cell = 40, split.table = Inf)
@@ -202,7 +218,7 @@ tab_S3 <- males %>%
             number_of_males = number_of_vials * 5) %>%
   mutate(average_relative_fitness = format(round(average_relative_fitness, 2), nsmall = 2),
          SE = format(round(SE, 3), nsmall = 3)) %>%
-  as.data.frame()
+  tidy_names()
 
 saveRDS(tab_S3, file = "output/tab_S3.rds")
 tab_S3 %>% pander(split.cell = 40, split.table = Inf)
@@ -220,7 +236,7 @@ tab_S4 <- females %>%
             number_of_females = sum(number_of_laying_females)) %>%
   mutate(average_fecundity = format(round(average_fecundity, 2), nsmall = 2),
          SE = format(round(SE, 3), nsmall = 3)) %>%
-  as.data.frame() 
+  tidy_names() 
 
 saveRDS(tab_S4, file = "output/tab_S4.rds")
 tab_S4 %>% pander(split.cell = 40, split.table = Inf)
@@ -242,7 +258,8 @@ tab_S5 <- expt2 %>%
             n_larvae_counted = sum(starting_number_focal_sex),
             n_crosses = n()) %>%
   mutate(percent_surviving_SD_larvae = format(round(percent_surviving_SD_larvae, 1), nsmall = 1),
-         percent_surviving_CyO_larvae = format(round(percent_surviving_CyO_larvae, 1), nsmall = 1)) 
+         percent_surviving_CyO_larvae = format(round(percent_surviving_CyO_larvae, 1), nsmall = 1)) %>%
+  tidy_names()
 
 saveRDS(tab_S5, file = "output/tab_S5.rds")
 tab_S5 %>% pander(split.cell = 40, split.table = Inf)
@@ -427,12 +444,11 @@ clean_table <- function(tabl){
                  Comparison = paste(Mean_1, "-", Mean_2),
                  Error = Est.Error) %>%
     select(!! cols)
-  names(tabl) <- str_replace_all(names(tabl), "_", " ")
-  tabl
+  tabl %>% tidy_names()
 }
 
 tests1 <- hypothesis_tests(larvae_brms, larvae)
-tab_S6 <- tests1 %>% clean_table()
+tab_S6 <- tests1 %>% clean_table() 
 saveRDS(tab_S6, file = "output/tab_S6.rds")
 tab_S6 %>% pander(split.cell = 40, split.table = Inf)
 ```
@@ -474,10 +490,9 @@ summarise_brms(SR_brms)
 ### Hypothesis testing
 **Table S7**: The results of hypothesis tests computed using the model of adult sex ratio in Experiment 1. Each row gives the posterior estimate of a difference in means, such that the estimate is positive if mean 1 is larger than mean 2, and negative otherwise (expressed in % males). The mean 1 and mean 2 columns list the parent which had SD (mother, father, or both), followed by the number of SD alleles present in the offspring (0, 1 or 2). The Posterior probability column gives the probability that the mean with the smaller point estimate is actually larger than the other mean, analagously to a one-tailed p-value. The Evidence ratio (ER) column gives the ratio of evidence, such that ER = 5 means that it is 5 times more likely that the mean with the smaller point estimate really is the smaller one. Asterisks highlight rows where the posterior probability is less than 0.05.
 ```{r}
-tests2 <- hypothesis_tests(SR_brms, SR_data)
-tab_S7 <- tests2
-saveRDS(tab_S7, file = "output/tab_S7.rds")
-tab_S7 %>% clean_table() %>% pander(split.cell = 40, split.table = Inf)
+tests2 <- hypothesis_tests(SR_brms, SR_data) %>% clean_table()
+saveRDS(tests2, file = "output/tab_S7.rds")
+tests2 %>% pander(split.cell = 40, split.table = Inf)
 ```
 
 
@@ -920,8 +935,7 @@ tests_expt2 <- hypothesis_tests_expt2(model_list[[1]]) %>%
 **Table 2**: List of the all the notable differences between groups in Experiment 2 (posterior probability $<$0.05; see Table S10 for the remaining results). For each group, we list the sex of the focal larvae, their genotype (_SD_ or _CyO_), and the parent that carried _SD_ (mother or father). The difference in means is expressed in % larvae surviving; other details are as in Table 1.
 ```{r}
 table2 <- tests_expt2 %>% 
-  filter(Notable == "*") %>% select(-Notable) 
-names(table2) <- str_replace_all(names(table2), "_", " ")
+  filter(Notable == "*") %>% select(-Notable) %>% tidy_names()
 
 write_csv(table2 %>% rename(p = `Posterior probability`), path = "figures/Table2.csv")
 table2 %>% pander(split.cell = 50, split.table = Inf)
@@ -929,7 +943,7 @@ table2 %>% pander(split.cell = 50, split.table = Inf)
 
 **Table S10**: Complete version of Table 2, showing all the contrasts that were tested in Experiment 2. 
 ```{r}
-saveRDS(tests_expt2, file = "output/tab_S10.rds")
+saveRDS(tests_expt2 %>% tidy_names(), file = "output/tab_S10.rds")
 tests_expt2 %>% pander(split.cell = 50, split.table = Inf) 
 ```
 

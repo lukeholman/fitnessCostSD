@@ -120,7 +120,7 @@ Posterior estimates of mean fitness for each group are plotted in Figure 1. Tabl
 \begin{figure}
 \centering
 \includegraphics{../figures/fig1.pdf}
-\caption{\footnotesize{Posterior estimates of the group means for the four different response variables in Experiment 1, for each type of cross (x-axis), \textit{SD} variant (panels), and genotype (colours). The thicker inner bar shows the region containing 50\% of the posterior, while the outer bar covers 95\% of the posterior. Tables S6-S9 give the accompanying statistcal results. Points labelled as carrying ``0 or 1'' \textit{SD} allele refer to cases where the genotype of the offspring could not be ascertained due to the brown eye marker not being expressed in larvae; most of these individuals probably carried 1 \textit{SD} allele because of segregation distortion.}}
+\caption{\footnotesize{Posterior estimates of the group means for the four different response variables in Experiment 1, for each type of cross (x-axis), \textit{SD} variant (panels), and genotype (colours). Juvenile fitness was measured as % L1 larva-to-adult survival, female fitness as the estimated number of progeny produced per female, and male fitness as the siring success relative to competitior males. The thicker inner bar shows the region containing 50\% of the posterior, while the outer bar covers 95\% of the posterior. Tables S6-S9 give the accompanying statistcal results. Points labelled as carrying ``0 or 1'' \textit{SD} allele refer to cases where the genotype of the offspring could not be ascertained due to the brown eye marker not being expressed in larvae; most of these individuals probably carried 1 \textit{SD} allele because of segregation distortion.}}
 \end{figure}
 
 ```{r results='asis'}
@@ -137,7 +137,7 @@ The limitations of this assay (see Methods) mean that Figure 1 might underestima
 For crosses in which the father carried _SD-Mad_, the sex ratio of the emerging adults was significantly more female-biased than for crosses in which the mother carried _SD-Mad_, irrespective of offspring genotype. The results did not replicate earlier findings that the non-_SD_ offspring of _SD_ heterozygote fathers show a female-biased sex ratio [@hiraizumi1967; @denell1969]; indeed, there was a nonsignificant trend in the opposite direction for _SD-5_ (the posterior median % male offspring was 54% among the non-_SD_ offspring and 48% male among the _SD_ offspring; Figure 1).   
 
 ### Adult female fitness
-Females homozygous for _SD-Mad_ had low fitness. Additionally, females were fitter if their mother, as opposed to their father, carried _SD-5_ or _SD-Mad_, irrespective of whether the offspring inherited _SD_.
+Females homozygous for _SD-Mad_ had low fitness. Additionally, females were fitter if their mother, as opposed to their father, carried _SD-5_ or _SD-Mad_, irrespective of whether the offspring inherited _SD_.  
 
 ### Adult male fitness
 Males homozygous for _SD-Mad_ had low fitness. We again observed evidence for non-genetic effects: for _SD-5_, males with a paternally-inherited _SD_ chromosome were substantially less fit than males with a maternally-inherited _SD_ chromosome. There was also a strong fitness cost of inheriting an _SD-5_ allele from either parent. Interestingly, males with an _SD-Mad_ father were fitter if they inherited _SD-Mad_ rather than the non-_SD_ allele.
