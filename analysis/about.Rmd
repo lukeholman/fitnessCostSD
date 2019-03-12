@@ -5,4 +5,4 @@ output:
     toc: false
 ---
 
-Describe your project.
+Analysis for a forthcoming paper by Heidi Wong and Luke Holman.
