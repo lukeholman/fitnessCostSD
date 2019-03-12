@@ -5,4 +5,4 @@ output:
     toc: false
 ---
 
-Analysis for the forthcoming paper _Fitness consequences of the selfish supergene Segregation Distorter_ by Heidi Wong and Luke Holman.
+Analysis for the forthcoming paper _Fitness consequences of the selfish supergene Segregation Distorter_.
