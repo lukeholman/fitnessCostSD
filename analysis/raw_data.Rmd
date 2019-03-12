@@ -1,0 +1,86 @@
+---
+title: "Tables of the raw data"
+date: "2019-03-12"
+output: workflowr::wflow_html
+---
+
+```{r setup, cache=FALSE, include=FALSE}
+library(knitr)
+library(kableExtra)
+library(dplyr)
+opts_chunk$set(warning = FALSE, message = FALSE, echo = FALSE)
+```
+
+
+```{r}
+larvae  <- read.csv("data/clean_data/larval_fitness.csv") %>% 
+  select(-SD, -MotherHasSD, -FatherHasSD, -SD_from_mum, -SD_from_dad, -parent_with_SD, -vial, -total, -larval_density) %>%
+  select(mum_genotype, dad_genotype, copies_of_SD, block, number_larvae_in_vial, initial_number, everything()) %>%
+  rename(initial_number_focal_larvae = initial_number)
+males   <- read.csv("data/clean_data/male_fitness.csv") %>% 
+  select(-SD, -MotherHasSD, -FatherHasSD, -SD_from_mum, -SD_from_dad, -parent_with_SD, -vial, -total, -focal.male.fitness, -rival.male.fitness) %>%
+  select(mum_genotype, dad_genotype, copies_of_SD, block, everything())
+females <- read.csv("data/clean_data/female_fitness.csv") %>% 
+  select(-SD, -MotherHasSD, -FatherHasSD, -SD_from_mum, -SD_from_dad, -parent_with_SD, -vial) %>%
+  select(mum_genotype, dad_genotype, copies_of_SD, block, everything())
+expt2   <- read.csv("data/clean_data/experiment2.csv") %>%
+  select(SD, SD_parent, sex_of_embryos, block, everything()) %>%
+  select(-vial, -SD_embryos, -CyO_embryos) %>%
+  rename(initial_number_larvae = starting_number_focal_sex) %>%
+  rename(surviving_SD_offspring = SD_offspring) %>%
+  rename(surviving_CyO_offspring = CyO_offspring) %>%
+  arrange(SD, SD_parent, sex_of_embryos, block)
+```
+
+# Raw data from Experiment 1: larval survival and sex ratio
+
+ - `mum_genotype`: The genotype of the mother (note that 'wild type' actually just means not SD; it was actually the _bw-GFP_ tester genotype, not true wild type).
+ - `dad_genotype`: The genotype of the father.
+ - `copies_of_SD`: The number of copies of SD carried by the focal individuals.
+ - `block`: The experimental block. Flies from the same block were bred and measured concurrently.
+ - `number_larvae_in_vial`: The total number of larvae in the vial (i.e. focal individuals, plus occasionally some _Gla/CyO_ larvae added to make up the numbers for very rare progeny classes)
+ - `initial_number_focal_larvae`:The total number of larvae in the vial, excluding any _Gla/CyO_ larvae.
+ - `surviving_females`: The number of females that eclosed as adults.
+ - `surviving_males`: The number of males that eclosed as adults.
+ - `survivors`: The number of males plus females that eclosed as adults.
+ - `number_died`: The number of focal individuals that did not survive to adulthood.
+
+```{r}
+larvae %>%
+  kable() %>% kable_styling() %>%
+  scroll_box(height = "1000px", width = "800px")
+```
+<br></br>
+
+# Raw data from Experiment 1: female fitness
+
+```{r}
+females %>%
+  kable() %>% kable_styling() %>%
+  scroll_box(height = "1000px", width = "800px")
+```
+<br></br>
+
+# Raw data from Experiment 1: male fitness
+
+ - `focal_daughters`: The number of eclosing females that were sired by the focal males.
+ - `focal_sons`: The number of eclosing males that were sired by the focal males.
+ - `rival_daughters`: The number of eclosing females that were sired by the competing _Gla/CyO_ males.
+ - `rival_sons`: The number of eclosing males that were sired by the competing _Gla/CyO_ males.
+ 
+```{r}
+males %>%
+  kable() %>% kable_styling() %>%
+  scroll_box(height = "1000px", width = "800px")
+```
+<br></br>
+
+# Raw data from Experiment 2
+
+  - `larvae_produced` The number of larvae produced (summed over all the females in the vial).
+  - `number_of_laying_females` The number of females who produced the larvae. 
+```{r}
+expt2 %>%
+  kable() %>% kable_styling() %>%
+  scroll_box(height = "1000px", width = "800px")
+```
