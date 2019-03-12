@@ -438,10 +438,10 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtree32e7ee29eacb984c189437d8cbda14268828c090targetblank32e7ee2a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/fitnessCostSD/tree/32e7ee29eacb984c189437d8cbda14268828c090" target="_blank">32e7ee2</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtreee8a0b1814188690f91431ea1c287337139e7f4detargetblanke8a0b18a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/fitnessCostSD/tree/e8a0b1814188690f91431ea1c287337139e7f4de" target="_blank">e8a0b18</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtree32e7ee29eacb984c189437d8cbda14268828c090targetblank32e7ee2a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtreee8a0b1814188690f91431ea1c287337139e7f4detargetblanke8a0b18a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -460,9 +460,11 @@ Ignored files:
     Ignored:    docs/figure/SD_costs_analysis.Rmd/
     Ignored:    docs/figure/evolutionary_simulation_SD.Rmd/
     Ignored:    manuscript/.DS_Store
+    Ignored:    output/
 
 Unstaged changes:
-    Modified:   figures/fig3.pdf
+    Modified:   figures/fig1.pdf
+    Modified:   figures/fig2.pdf
 
 </code></pre>
 <p>
@@ -501,6 +503,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/lukeholman/fitnessCostSD/blob/e8a0b1814188690f91431ea1c287337139e7f4de/analysis/statistics.Rmd" target="_blank">e8a0b18</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2019-03-12
+</td>
+<td>
+fix
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/lukeholman/fitnessCostSD/861ee2dc84660ad43543559ef046f0f243d696f1/docs/statistics.html" target="_blank">861ee2d</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2019-03-12
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 html
@@ -5636,11 +5672,45 @@ fig_S1 &lt;- make_expt2_multiplot(
   plot_expt2(model_list[[3]]) + ylab(NULL))
 
 fig_S1 %&gt;% ggsave(file = &quot;output/fig_S1.pdf&quot;, height = 10, width = 9)
-fig_S1</code></pre>
-<pre><code>TableGrob (2 x 1) &quot;arrange&quot;: 2 grobs
-  z     cells    name              grob
-1 1 (1-1,1-1) arrange    gtable[layout]
-2 2 (2-2,1-1) arrange gtable[guide-box]</code></pre>
+fig_S1 %&gt;% grid::grid.draw()</code></pre>
+<p><img src="figure/statistics.Rmd/unnamed-chunk-30-1.png" width="864" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-30-1">
+Past versions of unnamed-chunk-30-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-30-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/lukeholman/fitnessCostSD/blob/6b03f9cad3b5fb45ae2a5987f36c332476e99c95/docs/figure/statistics.Rmd/unnamed-chunk-30-1.png" target="_blank">6b03f9c</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2019-03-12
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p><br></br> <strong>Figure S1</strong>: Equivalent plots to Figure 2, under the assumption that meiosis is fair (<span class="math inline">\(k\)</span> = 0.5, top row, same as Figure 2), slightly biased (<span class="math inline">\(k\)</span> = 0.6, middle row), and more strongly biased (<span class="math inline">\(k\)</span> = 0.7, bottom row). Note that the significant results for Figure 2 mostly stay the same or increase in magnitude, suggesting that they are genuine and are not sensitive to our assumptions about the data.</p>
 </div>
 <div id="hypothesis-testing-4" class="section level3">
