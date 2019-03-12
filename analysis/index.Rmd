@@ -8,8 +8,8 @@ output:
 
 This website presents all the code used for the forthcoming paper _Fitness consequences of the selfish supergene Segregation Distorter_ by Heidi Wong and Luke Holman.
 
-# [Part 1: Data analysis](SD_costs_analysis.html)
-Click [here](SD_costs_analysis.html) to see the R script used to analyse our empirical data and produce all statistical results, figures, and tables.
+# [Part 1: Data analysis](statistics.html)
+Click [here](statistics.html) to see the R script used to analyse our empirical data and produce all statistical results, figures, and tables.
 
-# [Part 2: Population genetic model](evolutionary_simulation_SD.html)
-Click [here](evolutionary_simulation_SD.html) to see the R script used to run and plot the population genetic model.
+# [Part 2: Population genetic model](simulation.html)
+Click [here](simulation.html) to see the R script used to run and plot the population genetic model.
