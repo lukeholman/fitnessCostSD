@@ -9,3 +9,9 @@ analysis/*png
 analysis/*html
 analysis/*_cache
 analysis/site_libs
+data/model_output/*
+data/SD_k tests_2018_04_05.xlsx
+data/data collection sheet - follow up looking at sex ratio.xlsx
+data/data collection sheet from Heidi.xlsx
+docs/figure/SD_costs_analysis.Rmd/
+docs/figure/evolutionary_simulation_SD.Rmd/

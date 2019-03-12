@@ -1,0 +1,17 @@
+\usepackage{float}
+
+\usepackage{microtype} \usepackage{amsmath}
+  \usepackage{booktabs} \usepackage{caption} \usepackage[labelfont=bf]{caption} \usepackage{titling}
+  \pretitle{\begin{flushleft}\LARGE} \posttitle{\par\end{flushleft}\vskip 0.5em} \preauthor{\begin{flushleft}\large
+  \lineskip 0.5em} \postauthor{\par\end{flushleft}} \predate{\begin{flushleft}\large}
+  \postdate{\par\end{flushleft}} \usepackage{fancyhdr} \pagestyle{fancy} \fancyhead[LO,LE]{\textsl{\leftmark}}
+  \rhead[]{Fitness costs of selfish genes} \usepackage[noabbrev,capitalise]{cleveref} \usepackage{titlefoot}
+  \usepackage{amssymb} \usepackage{rotating} \usepackage{lineno} \linenumbers
+
+\let\origfigure\figure
+\let\endorigfigure\endfigure
+\renewenvironment{figure}[1][2] {
+    \expandafter\origfigure\expandafter[H]
+} {
+    \endorigfigure
+}

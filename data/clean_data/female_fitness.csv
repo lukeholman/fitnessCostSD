@@ -1,0 +1,252 @@
+block,SD,larvae_produced,number_of_laying_females,copies_of_SD,parent_with_SD,MotherHasSD,FatherHasSD,SD_from_mum,SD_from_dad,mum_genotype,dad_genotype,vial
+1,SD-5,121,4,0,Both parents,1,1,No,No,SD-5,SD-5,1
+1,SD-5,155,5,0,Both parents,1,1,No,No,SD-5,SD-5,2
+1,SD-5,49,3,1,Both parents,1,1,Yes,Yes,SD-5,SD-5,3
+1,SD-5,73,4,1,Both parents,1,1,Yes,Yes,SD-5,SD-5,4
+1,SD-5,91,4,1,Both parents,1,1,Yes,Yes,SD-5,SD-5,5
+1,SD-5,160,5,1,Both parents,1,1,Yes,Yes,SD-5,SD-5,6
+1,SD-5,222,4,0,Mother,1,0,No,No,SD-5,wild_type,7
+1,SD-5,201,5,0,Mother,1,0,No,No,SD-5,wild_type,8
+1,SD-5,144,4,0,Mother,1,0,No,No,SD-5,wild_type,9
+1,SD-5,196,5,0,Mother,1,0,No,No,SD-5,wild_type,10
+1,SD-5,169,5,0,Mother,1,0,No,No,SD-5,wild_type,11
+1,SD-5,148,5,1,Mother,1,0,Yes,No,SD-5,wild_type,12
+1,SD-5,45,5,1,Mother,1,0,Yes,No,SD-5,wild_type,13
+1,SD-5,138,5,1,Mother,1,0,Yes,No,SD-5,wild_type,14
+1,SD-5,76,5,1,Mother,1,0,Yes,No,SD-5,wild_type,15
+1,SD-5,93,5,1,Mother,1,0,Yes,No,SD-5,wild_type,16
+1,SD-5,228,5,0,Father,0,1,No,No,wild_type,SD-5,17
+1,SD-5,133,3,0,Father,0,1,No,No,wild_type,SD-5,18
+1,SD-5,122,4,1,Father,0,1,No,Yes,wild_type,SD-5,19
+1,SD-5,163,5,1,Father,0,1,No,Yes,wild_type,SD-5,20
+1,SD-5,216,5,1,Father,0,1,No,Yes,wild_type,SD-5,21
+1,SD-5,74,4,1,Father,0,1,No,Yes,wild_type,SD-5,22
+1,SD-72,196,5,1,Both parents,1,1,Yes,Yes,SD-72,SD-72,23
+1,SD-72,148,5,1,Both parents,1,1,Yes,Yes,SD-72,SD-72,24
+1,SD-72,154,5,1,Both parents,1,1,Yes,Yes,SD-72,SD-72,25
+1,SD-72,193,5,1,Both parents,1,1,Yes,Yes,SD-72,SD-72,26
+1,SD-72,212,5,0,Mother,1,0,No,No,SD-72,wild_type,27
+1,SD-72,213,4,0,Mother,1,0,No,No,SD-72,wild_type,28
+1,SD-72,142,5,0,Mother,1,0,No,No,SD-72,wild_type,29
+1,SD-72,126,4,0,Mother,1,0,No,No,SD-72,wild_type,30
+1,SD-72,244,5,0,Mother,1,0,No,No,SD-72,wild_type,31
+1,SD-72,107,4,1,Mother,1,0,Yes,No,SD-72,wild_type,32
+1,SD-72,242,5,1,Mother,1,0,Yes,No,SD-72,wild_type,33
+1,SD-72,191,5,1,Mother,1,0,Yes,No,SD-72,wild_type,34
+1,SD-72,189,4,1,Mother,1,0,Yes,No,SD-72,wild_type,35
+1,SD-72,156,5,0,Father,0,1,No,No,wild_type,SD-72,36
+1,SD-72,110,4,0,Father,0,1,No,No,wild_type,SD-72,37
+1,SD-72,183,5,0,Father,0,1,No,No,wild_type,SD-72,38
+1,SD-72,115,5,0,Father,0,1,No,No,wild_type,SD-72,39
+1,SD-72,162,5,1,Father,0,1,No,Yes,wild_type,SD-72,40
+1,SD-72,132,5,1,Father,0,1,No,Yes,wild_type,SD-72,41
+1,SD-72,224,5,1,Father,0,1,No,Yes,wild_type,SD-72,42
+1,SD-72,141,5,1,Father,0,1,No,Yes,wild_type,SD-72,43
+1,SD-Mad,158,5,1,Both parents,1,1,Yes,Yes,SD-Mad,SD-Mad,44
+1,SD-Mad,249,5,1,Both parents,1,1,Yes,Yes,SD-Mad,SD-Mad,45
+1,SD-Mad,150,5,1,Both parents,1,1,Yes,Yes,SD-Mad,SD-Mad,46
+1,SD-Mad,147,5,1,Both parents,1,1,Yes,Yes,SD-Mad,SD-Mad,47
+1,SD-Mad,69,5,2,Both parents,1,1,Yes,Yes,SD-Mad,SD-Mad,48
+1,SD-Mad,109,5,2,Both parents,1,1,Yes,Yes,SD-Mad,SD-Mad,49
+1,SD-Mad,87,5,2,Both parents,1,1,Yes,Yes,SD-Mad,SD-Mad,50
+1,SD-Mad,88,5,2,Both parents,1,1,Yes,Yes,SD-Mad,SD-Mad,51
+1,SD-Mad,253,5,0,Mother,1,0,No,No,SD-Mad,wild_type,52
+1,SD-Mad,261,5,0,Mother,1,0,No,No,SD-Mad,wild_type,53
+1,SD-Mad,198,5,0,Mother,1,0,No,No,SD-Mad,wild_type,54
+1,SD-Mad,218,5,0,Mother,1,0,No,No,SD-Mad,wild_type,55
+1,SD-Mad,289,5,1,Mother,1,0,Yes,No,SD-Mad,wild_type,56
+1,SD-Mad,219,5,1,Mother,1,0,Yes,No,SD-Mad,wild_type,57
+1,SD-Mad,251,5,1,Mother,1,0,Yes,No,SD-Mad,wild_type,58
+1,SD-Mad,150,5,1,Mother,1,0,Yes,No,SD-Mad,wild_type,59
+1,SD-Mad,174,5,0,Father,0,1,No,No,wild_type,SD-Mad,60
+1,SD-Mad,117,5,0,Father,0,1,No,No,wild_type,SD-Mad,61
+1,SD-Mad,145,5,0,Father,0,1,No,No,wild_type,SD-Mad,62
+1,SD-Mad,135,5,0,Father,0,1,No,No,wild_type,SD-Mad,63
+1,SD-Mad,256,5,1,Father,0,1,No,Yes,wild_type,SD-Mad,64
+1,SD-Mad,313,5,1,Father,0,1,No,Yes,wild_type,SD-Mad,65
+1,SD-Mad,92,5,1,Father,0,1,No,Yes,wild_type,SD-Mad,66
+1,SD-Mad,210,5,1,Father,0,1,No,Yes,wild_type,SD-Mad,67
+1,No SD chromosome,140,5,0,Neither parent,0,0,No,No,wild_type,wild_type,68
+1,No SD chromosome,176,5,0,Neither parent,0,0,No,No,wild_type,wild_type,69
+1,No SD chromosome,172,5,0,Neither parent,0,0,No,No,wild_type,wild_type,70
+1,No SD chromosome,174,5,0,Neither parent,0,0,No,No,wild_type,wild_type,71
+2,SD-5,160,5,0,Both parents,1,1,No,No,SD-5,SD-5,72
+2,SD-5,93,5,1,Both parents,1,1,Yes,Yes,SD-5,SD-5,73
+2,SD-5,131,5,1,Both parents,1,1,Yes,Yes,SD-5,SD-5,74
+2,SD-5,107,5,1,Both parents,1,1,Yes,Yes,SD-5,SD-5,75
+2,SD-5,180,5,1,Both parents,1,1,Yes,Yes,SD-5,SD-5,76
+2,SD-5,113,3,1,Both parents,1,1,Yes,Yes,SD-5,SD-5,77
+2,SD-5,267,5,1,Both parents,1,1,Yes,Yes,SD-5,SD-5,78
+2,SD-5,109,4,1,Both parents,1,1,Yes,Yes,SD-5,SD-5,79
+2,SD-5,300,5,0,Mother,1,0,No,No,SD-5,wild_type,80
+2,SD-5,293,5,0,Mother,1,0,No,No,SD-5,wild_type,81
+2,SD-5,140,5,0,Mother,1,0,No,No,SD-5,wild_type,82
+2,SD-5,285,5,0,Mother,1,0,No,No,SD-5,wild_type,83
+2,SD-5,235,5,0,Mother,1,0,No,No,SD-5,wild_type,84
+2,SD-5,266,5,0,Mother,1,0,No,No,SD-5,wild_type,85
+2,SD-5,76,4,0,Mother,1,0,No,No,SD-5,wild_type,86
+2,SD-5,188,4,0,Mother,1,0,No,No,SD-5,wild_type,87
+2,SD-5,202,5,1,Mother,1,0,Yes,No,SD-5,wild_type,88
+2,SD-5,200,5,1,Mother,1,0,Yes,No,SD-5,wild_type,89
+2,SD-5,68,4,1,Mother,1,0,Yes,No,SD-5,wild_type,90
+2,SD-5,124,3,1,Mother,1,0,Yes,No,SD-5,wild_type,91
+2,SD-5,49,3,1,Mother,1,0,Yes,No,SD-5,wild_type,92
+2,SD-5,154,3,1,Mother,1,0,Yes,No,SD-5,wild_type,93
+2,SD-5,129,4,1,Mother,1,0,Yes,No,SD-5,wild_type,94
+2,SD-5,190,4,1,Mother,1,0,Yes,No,SD-5,wild_type,95
+2,SD-5,99,4,1,Father,0,1,No,Yes,wild_type,SD-5,96
+2,SD-5,181,4,1,Father,0,1,No,Yes,wild_type,SD-5,97
+2,SD-5,123,4,1,Father,0,1,No,Yes,wild_type,SD-5,98
+2,SD-5,233,5,1,Father,0,1,No,Yes,wild_type,SD-5,99
+2,SD-72,148,5,0,Both parents,1,1,No,No,SD-72,SD-72,100
+2,SD-72,96,5,1,Both parents,1,1,Yes,Yes,SD-72,SD-72,101
+2,SD-72,180,5,1,Both parents,1,1,Yes,Yes,SD-72,SD-72,102
+2,SD-72,151,5,1,Both parents,1,1,Yes,Yes,SD-72,SD-72,103
+2,SD-72,135,5,1,Both parents,1,1,Yes,Yes,SD-72,SD-72,104
+2,SD-72,162,4,1,Both parents,1,1,Yes,Yes,SD-72,SD-72,105
+2,SD-72,314,5,1,Both parents,1,1,Yes,Yes,SD-72,SD-72,106
+2,SD-72,176,5,1,Both parents,1,1,Yes,Yes,SD-72,SD-72,107
+2,SD-72,95,5,1,Both parents,1,1,Yes,Yes,SD-72,SD-72,108
+2,SD-72,76,4,0,Mother,1,0,No,No,SD-72,wild_type,109
+2,SD-72,160,4,0,Mother,1,0,No,No,SD-72,wild_type,110
+2,SD-72,207,5,0,Mother,1,0,No,No,SD-72,wild_type,111
+2,SD-72,221,5,0,Mother,1,0,No,No,SD-72,wild_type,112
+2,SD-72,125,3,0,Mother,1,0,No,No,SD-72,wild_type,113
+2,SD-72,135,4,0,Mother,1,0,No,No,SD-72,wild_type,114
+2,SD-72,108,5,0,Mother,1,0,No,No,SD-72,wild_type,115
+2,SD-72,221,5,0,Mother,1,0,No,No,SD-72,wild_type,116
+2,SD-72,204,5,1,Mother,1,0,Yes,No,SD-72,wild_type,117
+2,SD-72,355,5,1,Mother,1,0,Yes,No,SD-72,wild_type,118
+2,SD-72,162,5,1,Mother,1,0,Yes,No,SD-72,wild_type,119
+2,SD-72,104,5,1,Mother,1,0,Yes,No,SD-72,wild_type,120
+2,SD-72,187,5,1,Mother,1,0,Yes,No,SD-72,wild_type,121
+2,SD-72,234,5,1,Mother,1,0,Yes,No,SD-72,wild_type,122
+2,SD-72,251,5,1,Mother,1,0,Yes,No,SD-72,wild_type,123
+2,SD-72,325,5,1,Mother,1,0,Yes,No,SD-72,wild_type,124
+2,SD-72,251,5,0,Father,0,1,No,No,wild_type,SD-72,125
+2,SD-72,254,5,0,Father,0,1,No,No,wild_type,SD-72,126
+2,SD-72,230,5,0,Father,0,1,No,No,wild_type,SD-72,127
+2,SD-72,182,4,0,Father,0,1,No,No,wild_type,SD-72,128
+2,SD-72,114,4,0,Father,0,1,No,No,wild_type,SD-72,129
+2,SD-72,161,5,0,Father,0,1,No,No,wild_type,SD-72,130
+2,SD-72,226,5,1,Father,0,1,No,Yes,wild_type,SD-72,131
+2,SD-72,165,5,1,Father,0,1,No,Yes,wild_type,SD-72,132
+2,SD-72,197,5,1,Father,0,1,No,Yes,wild_type,SD-72,133
+2,SD-72,260,5,1,Father,0,1,No,Yes,wild_type,SD-72,134
+2,SD-72,137,4,1,Father,0,1,No,Yes,wild_type,SD-72,135
+2,SD-72,156,4,1,Father,0,1,No,Yes,wild_type,SD-72,136
+2,SD-72,183,5,1,Father,0,1,No,Yes,wild_type,SD-72,137
+2,SD-72,180,4,1,Father,0,1,No,Yes,wild_type,SD-72,138
+2,SD-Mad,98,5,0,Both parents,1,1,No,No,SD-Mad,SD-Mad,139
+2,SD-Mad,164,5,1,Both parents,1,1,Yes,Yes,SD-Mad,SD-Mad,140
+2,SD-Mad,205,5,1,Both parents,1,1,Yes,Yes,SD-Mad,SD-Mad,141
+2,SD-Mad,259,5,1,Both parents,1,1,Yes,Yes,SD-Mad,SD-Mad,142
+2,SD-Mad,138,4,1,Both parents,1,1,Yes,Yes,SD-Mad,SD-Mad,143
+2,SD-Mad,185,5,1,Both parents,1,1,Yes,Yes,SD-Mad,SD-Mad,144
+2,SD-Mad,254,5,1,Both parents,1,1,Yes,Yes,SD-Mad,SD-Mad,145
+2,SD-Mad,176,4,1,Both parents,1,1,Yes,Yes,SD-Mad,SD-Mad,146
+2,SD-Mad,148,3,1,Both parents,1,1,Yes,Yes,SD-Mad,SD-Mad,147
+2,SD-Mad,30,5,2,Both parents,1,1,Yes,Yes,SD-Mad,SD-Mad,148
+2,SD-Mad,36,5,2,Both parents,1,1,Yes,Yes,SD-Mad,SD-Mad,149
+2,SD-Mad,54,5,2,Both parents,1,1,Yes,Yes,SD-Mad,SD-Mad,150
+2,SD-Mad,45,5,2,Both parents,1,1,Yes,Yes,SD-Mad,SD-Mad,151
+2,SD-Mad,90,5,2,Both parents,1,1,Yes,Yes,SD-Mad,SD-Mad,152
+2,SD-Mad,88,5,2,Both parents,1,1,Yes,Yes,SD-Mad,SD-Mad,153
+2,SD-Mad,20,5,2,Both parents,1,1,Yes,Yes,SD-Mad,SD-Mad,154
+2,SD-Mad,77,4,2,Both parents,1,1,Yes,Yes,SD-Mad,SD-Mad,155
+2,SD-Mad,187,5,0,Mother,1,0,No,No,SD-Mad,wild_type,156
+2,SD-Mad,306,5,0,Mother,1,0,No,No,SD-Mad,wild_type,157
+2,SD-Mad,212,5,0,Mother,1,0,No,No,SD-Mad,wild_type,158
+2,SD-Mad,241,5,0,Mother,1,0,No,No,SD-Mad,wild_type,159
+2,SD-Mad,281,5,0,Mother,1,0,No,No,SD-Mad,wild_type,160
+2,SD-Mad,292,5,0,Mother,1,0,No,No,SD-Mad,wild_type,161
+2,SD-Mad,265,5,0,Mother,1,0,No,No,SD-Mad,wild_type,162
+2,SD-Mad,174,3,1,Mother,1,0,Yes,No,SD-Mad,wild_type,163
+2,SD-Mad,208,4,1,Mother,1,0,Yes,No,SD-Mad,wild_type,164
+2,SD-Mad,169,5,1,Mother,1,0,Yes,No,SD-Mad,wild_type,165
+2,SD-Mad,189,5,1,Mother,1,0,Yes,No,SD-Mad,wild_type,166
+2,SD-Mad,269,5,1,Mother,1,0,Yes,No,SD-Mad,wild_type,167
+2,SD-Mad,283,5,1,Mother,1,0,Yes,No,SD-Mad,wild_type,168
+2,SD-Mad,107,3,1,Mother,1,0,Yes,No,SD-Mad,wild_type,169
+2,SD-Mad,182,4,1,Mother,1,0,Yes,No,SD-Mad,wild_type,170
+2,SD-Mad,152,5,0,Father,0,1,No,No,wild_type,SD-Mad,171
+2,SD-Mad,256,5,0,Father,0,1,No,No,wild_type,SD-Mad,172
+2,SD-Mad,208,5,0,Father,0,1,No,No,wild_type,SD-Mad,173
+2,SD-Mad,168,4,0,Father,0,1,No,No,wild_type,SD-Mad,174
+2,SD-Mad,47,5,0,Father,0,1,No,No,wild_type,SD-Mad,175
+2,SD-Mad,281,5,0,Father,0,1,No,No,wild_type,SD-Mad,176
+2,SD-Mad,125,5,0,Father,0,1,No,No,wild_type,SD-Mad,177
+2,SD-Mad,144,5,0,Father,0,1,No,No,wild_type,SD-Mad,178
+2,SD-Mad,245,5,1,Father,0,1,No,Yes,wild_type,SD-Mad,179
+2,SD-Mad,187,5,1,Father,0,1,No,Yes,wild_type,SD-Mad,180
+2,SD-Mad,268,5,1,Father,0,1,No,Yes,wild_type,SD-Mad,181
+2,SD-Mad,142,4,1,Father,0,1,No,Yes,wild_type,SD-Mad,182
+2,SD-Mad,131,3,1,Father,0,1,No,Yes,wild_type,SD-Mad,183
+2,SD-Mad,106,5,1,Father,0,1,No,Yes,wild_type,SD-Mad,184
+2,SD-Mad,248,5,1,Father,0,1,No,Yes,wild_type,SD-Mad,185
+2,SD-Mad,225,5,1,Father,0,1,No,Yes,wild_type,SD-Mad,186
+2,No SD chromosome,141,5,0,Neither parent,0,0,No,No,wild_type,wild_type,187
+2,No SD chromosome,163,4,0,Neither parent,0,0,No,No,wild_type,wild_type,188
+2,No SD chromosome,12,4,0,Neither parent,0,0,No,No,wild_type,wild_type,189
+3,SD-5,62,4,0,Both parents,1,1,No,No,SD-5,SD-5,190
+3,SD-5,64,4,0,Both parents,1,1,No,No,SD-5,SD-5,191
+3,SD-5,60,4,1,Both parents,1,1,Yes,Yes,SD-5,SD-5,192
+3,SD-5,110,5,1,Both parents,1,1,Yes,Yes,SD-5,SD-5,193
+3,SD-5,132,5,1,Both parents,1,1,Yes,Yes,SD-5,SD-5,194
+3,SD-5,146,5,1,Both parents,1,1,Yes,Yes,SD-5,SD-5,195
+3,SD-5,106,5,0,Mother,1,0,No,No,SD-5,wild_type,196
+3,SD-5,106,5,0,Mother,1,0,No,No,SD-5,wild_type,197
+3,SD-5,104,4,1,Mother,1,0,Yes,No,SD-5,wild_type,198
+3,SD-5,106,4,1,Mother,1,0,Yes,No,SD-5,wild_type,199
+3,SD-5,186,5,1,Mother,1,0,Yes,No,SD-5,wild_type,200
+3,SD-5,88,5,1,Father,0,1,No,Yes,wild_type,SD-5,201
+3,SD-5,124,5,1,Father,0,1,No,Yes,wild_type,SD-5,202
+3,SD-5,108,5,1,Father,0,1,No,Yes,wild_type,SD-5,203
+3,SD-5,52,5,1,Father,0,1,No,Yes,wild_type,SD-5,204
+3,SD-5,58,5,0,Father,0,1,No,No,wild_type,SD-5,205
+3,SD-5,12,5,0,Father,0,1,No,No,wild_type,SD-5,206
+3,SD-5,38,5,0,Father,0,1,No,No,wild_type,SD-5,207
+3,SD-5,194,5,0,Father,0,1,No,No,wild_type,SD-5,208
+3,SD-72,144,5,0,Both parents,1,1,No,No,SD-72,SD-72,209
+3,SD-72,46,5,0,Both parents,1,1,No,No,SD-72,SD-72,210
+3,SD-72,106,5,1,Both parents,1,1,Yes,Yes,SD-72,SD-72,211
+3,SD-72,120,5,1,Both parents,1,1,Yes,Yes,SD-72,SD-72,212
+3,SD-72,98,4,1,Both parents,1,1,Yes,Yes,SD-72,SD-72,213
+3,SD-72,98,5,0,Mother,1,0,No,No,SD-72,wild_type,214
+3,SD-72,84,5,0,Mother,1,0,No,No,SD-72,wild_type,215
+3,SD-72,136,5,1,Mother,1,0,Yes,No,SD-72,wild_type,216
+3,SD-72,172,5,1,Mother,1,0,Yes,No,SD-72,wild_type,217
+3,SD-72,60,3,0,Father,0,1,No,No,wild_type,SD-72,218
+3,SD-72,180,5,0,Father,0,1,No,No,wild_type,SD-72,219
+3,SD-72,80,5,0,Father,0,1,No,No,wild_type,SD-72,220
+3,SD-72,70,5,0,Father,0,1,No,No,wild_type,SD-72,221
+3,SD-72,42,5,1,Father,0,1,No,Yes,wild_type,SD-72,222
+3,SD-72,90,5,1,Father,0,1,No,Yes,wild_type,SD-72,223
+3,SD-72,170,5,1,Father,0,1,No,Yes,wild_type,SD-72,224
+3,SD-72,134,5,1,Father,0,1,No,Yes,wild_type,SD-72,225
+3,SD-Mad,54,4,0,Both parents,1,1,No,No,SD-Mad,SD-Mad,226
+3,SD-Mad,82,5,0,Both parents,1,1,No,No,SD-Mad,SD-Mad,227
+3,SD-Mad,42,5,1,Both parents,1,1,Yes,Yes,SD-Mad,SD-Mad,228
+3,SD-Mad,146,5,1,Both parents,1,1,Yes,Yes,SD-Mad,SD-Mad,229
+3,SD-Mad,176,5,1,Both parents,1,1,Yes,Yes,SD-Mad,SD-Mad,230
+3,SD-Mad,16,5,1,Both parents,1,1,Yes,Yes,SD-Mad,SD-Mad,231
+3,SD-Mad,10,4,2,Both parents,1,1,Yes,Yes,SD-Mad,SD-Mad,232
+3,SD-Mad,4,5,2,Both parents,1,1,Yes,Yes,SD-Mad,SD-Mad,233
+3,SD-Mad,46,5,2,Both parents,1,1,Yes,Yes,SD-Mad,SD-Mad,234
+3,SD-Mad,12,5,2,Both parents,1,1,Yes,Yes,SD-Mad,SD-Mad,235
+3,SD-Mad,70,5,2,Both parents,1,1,Yes,Yes,SD-Mad,SD-Mad,236
+3,SD-Mad,84,5,0,Mother,1,0,No,No,SD-Mad,wild_type,237
+3,SD-Mad,108,5,0,Mother,1,0,No,No,SD-Mad,wild_type,238
+3,SD-Mad,4,5,1,Mother,1,0,Yes,No,SD-Mad,wild_type,239
+3,SD-Mad,62,5,1,Mother,1,0,Yes,No,SD-Mad,wild_type,240
+3,SD-Mad,58,5,0,Father,0,1,No,No,wild_type,SD-Mad,241
+3,SD-Mad,20,5,0,Father,0,1,No,No,wild_type,SD-Mad,242
+3,SD-Mad,38,5,0,Father,0,1,No,No,wild_type,SD-Mad,243
+3,SD-Mad,150,5,0,Father,0,1,No,No,wild_type,SD-Mad,244
+3,SD-Mad,82,5,1,Father,0,1,No,Yes,wild_type,SD-Mad,245
+3,SD-Mad,146,5,1,Father,0,1,No,Yes,wild_type,SD-Mad,246
+3,SD-Mad,154,5,1,Father,0,1,No,Yes,wild_type,SD-Mad,247
+3,SD-Mad,20,5,1,Father,0,1,No,Yes,wild_type,SD-Mad,248
+3,No SD chromosome,52,5,0,Neither parent,0,0,No,No,wild_type,wild_type,249
+3,No SD chromosome,166,5,0,Neither parent,0,0,No,No,wild_type,wild_type,250
+3,No SD chromosome,88,5,0,Neither parent,0,0,No,No,wild_type,wild_type,251
