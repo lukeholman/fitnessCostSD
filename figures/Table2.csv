@@ -1,0 +1,12 @@
+SD,Comparison,Difference,Error,p
+SD-5,"Daughters, CyO, mother - Daughters, SD, mother",  4.6 ( -0.6 to 10.0),2.7,0.041
+SD-5,"Sons, CyO, mother - Daughters, CyO, mother",-10.7 (-19.4 to -2.0),4.5,0.00825
+SD-5,"Sons, CyO, mother - Sons, CyO, father",-10.7 (-19.8 to -1.5),4.6,0.010499999999999999
+SD-5,"Sons, SD, mother - Daughters, SD, mother", -9.1 (-18.7 to  0.4),4.8,0.028
+SD-5,"Sons, SD, mother - Sons, SD, father", -9.7 (-19.4 to -0.1),5.0,0.024749999999999998
+SD-72,"Sons, CyO, father - Daughters, CyO, father", -7.0 (-15.5 to  1.0),4.2,0.044750000000000005
+SD-72,"Sons, CyO, mother - Daughters, CyO, mother",-11.0 (-17.9 to -4.3),3.5,7.500000000000001e-4
+SD-72,"Sons, SD, mother - Daughters, SD, mother", -9.9 (-15.8 to -4.2),3.0,4.999999999999999e-4
+SD-Mad,"Daughters, CyO, mother - Daughters, SD, mother",  5.4 (  1.2 to  9.9),2.2,0.00675
+SD-Mad,"Sons, CyO, mother - Daughters, CyO, mother", -9.4 (-16.3 to -2.7),3.5,0.0022500000000000003
+SD-Mad,"Sons, CyO, mother - Sons, CyO, father", -7.7 (-15.6 to  0.6),4.1,0.0345

@@ -164,32 +164,37 @@ expt2   <- load_and_clean_data("data/messy_data/experiment2.csv")
 
 **Table S1**: Number and percentage of L1 larvae surviving to adulthood for each SD genotype and cross type.
 ```{r}
-larvae %>% 
+tab_S1 <- larvae %>% 
   group_by(SD, copies_of_SD, parent_with_SD) %>% 
   summarise(number_larvae_counted = sum(survivors + number_died),
             number_of_survivors = sum(survivors),
             percent_surviving = 100 * (number_of_survivors / number_larvae_counted)) %>%
     mutate(percent_surviving = format(round(percent_surviving, 1), nsmall = 1)) %>%
-  as.data.frame() %>% pander(split.cell = 40, split.table = Inf)
+  as.data.frame() 
+saveRDS(tab_S1, file = "output/tab_S1.rds")
+tab_S1 %>% pander(split.cell = 40, split.table = Inf)
 ```
 
 ### Adult sex ratio
 
 **Table S2**: Number and percentage of male and female adults emerging from the juvenile fitness assay vials.
 ```{r}
-larvae %>% group_by(SD, copies_of_SD, parent_with_SD) %>% 
+tab_S2 <- larvae %>% group_by(SD, copies_of_SD, parent_with_SD) %>% 
   summarise(n.males = sum(surviving_males),
             n.females = sum(surviving_females),
             n.total = sum(survivors), 
             percent.male = format(round(100 * sum(surviving_males) / n.total, 1), nsmall = 1)) %>%
-  as.data.frame() %>% pander(split.cell = 40, split.table = Inf)
+  as.data.frame() 
+
+saveRDS(tab_S2, file = "output/tab_S2.rds")
+tab_S2 %>% pander(split.cell = 40, split.table = Inf)
 ```
 
 ### Male fitness data
 **Table S3**: Average relative fitness of adult males for each SD genotype and cross type, expressed as the average proportion of offspring sired. The last two columns give the sample size in terms of number of vials (each of which contained 5 focal males), and number of males.
 ```{r}
 SE <- function(x) sd(x) / sqrt(length(x))
-males %>% 
+tab_S3 <- males %>% 
   group_by(SD, copies_of_SD, parent_with_SD) %>% 
   summarise(average_relative_fitness = mean(focal.male.fitness / (focal.male.fitness + rival.male.fitness)),
             SE = SE(focal.male.fitness / (focal.male.fitness + rival.male.fitness)),
@@ -197,13 +202,16 @@ males %>%
             number_of_males = number_of_vials * 5) %>%
   mutate(average_relative_fitness = format(round(average_relative_fitness, 2), nsmall = 2),
          SE = format(round(SE, 3), nsmall = 3)) %>%
-  as.data.frame() %>% pander(split.cell = 40, split.table = Inf)
+  as.data.frame()
+
+saveRDS(tab_S3, file = "output/tab_S3.rds")
+tab_S3 %>% pander(split.cell = 40, split.table = Inf)
 ```
 
 ### Female fitness data
 **Table S4**: Average fecundity of adult females for each SD genotype and cross type. The last two columns give the sample size in terms of number of oviposition vials (each of which contained up to 5 focal females), and number of males.
 ```{r}
-females %>% 
+tab_S4 <- females %>% 
   mutate(larvae_per_female = larvae_produced / number_of_laying_females) %>%
   group_by(SD, copies_of_SD, parent_with_SD) %>% 
   summarise(average_fecundity = mean(larvae_per_female),
@@ -212,15 +220,17 @@ females %>%
             number_of_females = sum(number_of_laying_females)) %>%
   mutate(average_fecundity = format(round(average_fecundity, 2), nsmall = 2),
          SE = format(round(SE, 3), nsmall = 3)) %>%
-  as.data.frame() %>% pander(split.cell = 40, split.table = Inf)
+  as.data.frame() 
+
+saveRDS(tab_S4, file = "output/tab_S4.rds")
+tab_S4 %>% pander(split.cell = 40, split.table = Inf)
 ```
 
 ### Experiment 2 larval survival data
 **Table S5**: Number and percentage of L1 larvae surviving to adulthood in Experiment 2, for each SD genotype, cross type, and offspring sex.
 
 ```{r}
-set.seed(1)
-expt2 %>%
+tab_S5 <- expt2 %>%
   rename(parent_with_SD = SD_parent, offspring_sex = sex_of_embryos) %>%
   mutate(SD_embryos = SD_offspring + rbinom(n(), Dead_offspring, 0.5),
          CyO_embryos = starting_number_focal_sex - SD_embryos,
@@ -232,8 +242,10 @@ expt2 %>%
             n_larvae_counted = sum(starting_number_focal_sex),
             n_crosses = n()) %>%
   mutate(percent_surviving_SD_larvae = format(round(percent_surviving_SD_larvae, 1), nsmall = 1),
-         percent_surviving_CyO_larvae = format(round(percent_surviving_CyO_larvae, 1), nsmall = 1)) %>% 
-  pander(split.cell = 40, split.table = Inf)
+         percent_surviving_CyO_larvae = format(round(percent_surviving_CyO_larvae, 1), nsmall = 1)) 
+
+saveRDS(tab_S5, file = "output/tab_S5.rds")
+tab_S5 %>% pander(split.cell = 40, split.table = Inf)
 ```
 
 
@@ -420,7 +432,9 @@ clean_table <- function(tabl){
 }
 
 tests1 <- hypothesis_tests(larvae_brms, larvae)
-tests1 %>% clean_table() %>% pander(split.cell = 40, split.table = Inf)
+tab_S6 <- tests1 %>% clean_table()
+saveRDS(tab_S6, file = "output/tab_S6.rds")
+tab_S6 %>% pander(split.cell = 40, split.table = Inf)
 ```
 
 
@@ -461,7 +475,9 @@ summarise_brms(SR_brms)
 **Table S7**: The results of hypothesis tests computed using the model of adult sex ratio in Experiment 1. Each row gives the posterior estimate of a difference in means, such that the estimate is positive if mean 1 is larger than mean 2, and negative otherwise (expressed in % males). The mean 1 and mean 2 columns list the parent which had SD (mother, father, or both), followed by the number of SD alleles present in the offspring (0, 1 or 2). The Posterior probability column gives the probability that the mean with the smaller point estimate is actually larger than the other mean, analagously to a one-tailed p-value. The Evidence ratio (ER) column gives the ratio of evidence, such that ER = 5 means that it is 5 times more likely that the mean with the smaller point estimate really is the smaller one. Asterisks highlight rows where the posterior probability is less than 0.05.
 ```{r}
 tests2 <- hypothesis_tests(SR_brms, SR_data)
-tests2 %>% clean_table() %>% pander(split.cell = 40, split.table = Inf)
+tab_S7 <- tests2
+saveRDS(tab_S7, file = "output/tab_S7.rds")
+tab_S7 %>% clean_table() %>% pander(split.cell = 40, split.table = Inf)
 ```
 
 
@@ -498,7 +514,9 @@ summarise_brms(female_brms)
 **Table S8**: The results of hypothesis tests computed using the model of female fitness in Experiment 1. Each row gives the posterior estimate of a difference in means, such that the estimate is positive if mean 1 is larger than mean 2, and negative otherwise (expressed as the number of offspring produced). The mean 1 and mean 2 columns list the parent which had SD (mother, father, or both), followed by the number of SD alleles present in the offspring (0, 1 or 2). The Posterior probability column gives the probability that the mean with the smaller point estimate is actually larger than the other mean, analagously to a one-tailed p-value. The Evidence ratio (ER) column gives the ratio of evidence, such that ER = 5 means that it is 5 times more likely that the mean with the smaller point estimate really is the smaller one. Asterisks highlight rows where the posterior probability is less than 0.05.
 ```{r}
 tests3 <- hypothesis_tests(female_brms, females, divisor = 5)
-tests3 %>% clean_table() %>% pander(split.cell = 40, split.table = Inf)
+tab_S8 <- tests3 %>% clean_table()
+saveRDS(tab_S8, file = "output/tab_S8.rds")
+tab_S8 %>% pander(split.cell = 40, split.table = Inf)
 ```
 
 
@@ -534,7 +552,9 @@ summarise_brms(male_brms)
 **Table S9**: The results of hypothesis tests computed using the model of male fitness in Experiment 1. Each row gives the posterior estimate of a difference in means, such that the estimate is positive if mean 1 is larger than mean 2, and negative otherwise (expressed in % offspring sired). The mean 1 and mean 2 columns list the parent which had SD (mother, father, or both), followed by the number of SD alleles present in the offspring (0, 1 or 2). The Posterior probability column gives the probability that the mean with the smaller point estimate is actually larger than the other mean, analagously to a one-tailed p-value. The Evidence ratio (ER) column gives the ratio of evidence, such that ER = 5 means that it is 5 times more likely that the mean with the smaller point estimate really is the smaller one. Asterisks highlight rows where the posterior probability is less than 0.05.
 ```{r}
 tests4 <- hypothesis_tests(male_brms, males)
-tests4 %>% clean_table() %>% pander(split.cell = 40, split.table = Inf)
+tab_S9 <- tests4 %>% clean_table()
+saveRDS(tab_S9, file = "output/tab_S9.rds")
+tab_S9 %>% pander(split.cell = 40, split.table = Inf)
 ```
 
 
@@ -695,10 +715,7 @@ if(!file.exists("data/model_output/expt2_brms.rds")){
 ### Check a diagnostic plot of the model
 This plot shows the frequency distribution of the original data (black line), along with predicted data that were computed using 10 random samples from the posterior of the model parameters. The posterior predicted values closely match the originals, suggesting that the model is approximating the data reasonably well. There are two plots for this model because we used a multivariate model that jointly modelled two response variables: the survival of SD larvae and of CyO larvae.
 ```{r}
-grid.arrange(
-  pp_check(model_list[[1]], resp = "SDoffspring")  + labs(title = "Number of SD offspring"),
-  pp_check(model_list[[1]], resp = "CyOoffspring") + labs(title = "Number of CyO offspring")
-)
+model_list[[1]]
 ```
 
 ### Inspect the model summary
@@ -770,15 +787,18 @@ make_expt2_multiplot <- function(...) {
     
     p <- gtable_rbind(plots[[1]], plots[[2]], plots[[3]])
     
-    grid.arrange(p, legend, 
+    arrangeGrob(p, legend, 
                  nrow = 2, 
                  heights = unit.c(unit(1, "npc") - lheight, lheight))
   }
 
-make_expt2_multiplot(
+fig_S1 <- make_expt2_multiplot(
   plot_expt2(model_list[[1]]) + theme(axis.text.x = element_blank(), axis.ticks.x = element_blank()) + xlab(NULL) + ylab(NULL),
   plot_expt2(model_list[[2]]) + theme(axis.text.x = element_blank(), axis.ticks.x = element_blank()) + xlab(NULL),
   plot_expt2(model_list[[3]]) + ylab(NULL))
+
+fig_S1 %>% ggsave(file = "output/fig_S1.pdf", height = 10, width = 9)
+fig_S1
 ```
 <br></br>
 **Figure S1**: Equivalent plots to Figure 2, under the assumption that meiosis is fair ($k$ = 0.5, top row, same as Figure 2), slightly biased ($k$ = 0.6, middle row), and more strongly biased ($k$ = 0.7, bottom row). Note that the significant results for Figure 2 mostly stay the same or increase in magnitude, suggesting that they are genuine and are not sensitive to our assumptions about the data.
@@ -909,6 +929,7 @@ table2 %>% pander(split.cell = 50, split.table = Inf)
 
 **Table S10**: Complete version of Table 2, showing all the contrasts that were tested in Experiment 2. 
 ```{r}
+saveRDS(tests_expt2, file = "output/tab_S10.rds")
 tests_expt2 %>% pander(split.cell = 50, split.table = Inf) 
 ```
 

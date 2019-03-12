@@ -343,7 +343,7 @@ div.section {
 
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
-<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span>
 </button>
 </p>
 <div id="workflowr-report" class="collapse">
@@ -352,7 +352,7 @@ div.section {
 <a data-toggle="tab" href="#summary">Summary</a>
 </li>
 <li>
-<a data-toggle="tab" href="#report"> Report <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> </a>
+<a data-toggle="tab" href="#report"> Report <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -364,7 +364,7 @@ div.section {
 <strong>Last updated:</strong> 2019-03-12
 </p>
 <p>
-<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 5 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>fitnessCostSD/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
@@ -380,12 +380,12 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges"> <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
+<div id="strongRMarkdownfilestronguncommittedchanges" class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
 </div>
 </div>
 </div>
@@ -440,10 +440,10 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtreecceac7a329808fb8536d15508c75c9332c98b9d2targetblankcceac7aa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/fitnessCostSD/tree/cceac7a329808fb8536d15508c75c9332c98b9d2" target="_blank">cceac7a</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtreee19534f3188cc1b3cdabd117b39162cf8f0cbf7etargetblanke19534fa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/fitnessCostSD/tree/e19534f3188cc1b3cdabd117b39162cf8f0cbf7e" target="_blank">e19534f</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtreecceac7a329808fb8536d15508c75c9332c98b9d2targetblankcceac7aa" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtreee19534f3188cc1b3cdabd117b39162cf8f0cbf7etargetblanke19534fa" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -453,23 +453,34 @@ Ignored files:
     Ignored:    .DS_Store
     Ignored:    .Rproj.user/
     Ignored:    data/.DS_Store
+    Ignored:    data/SD_k tests_2018_04_05.xlsx
+    Ignored:    data/clean_data/.DS_Store
+    Ignored:    data/data collection sheet - follow up looking at sex ratio.xlsx
+    Ignored:    data/data collection sheet from Heidi.xlsx
+    Ignored:    data/model_output/
     Ignored:    docs/.DS_Store
+    Ignored:    docs/figure/SD_costs_analysis.Rmd/
+    Ignored:    docs/figure/evolutionary_simulation_SD.Rmd/
+    Ignored:    manuscript/.DS_Store
 
 Untracked files:
-    Untracked:  data/SD_k tests_2018_04_05.xlsx
-    Untracked:  data/clean_data/
-    Untracked:  data/data collection sheet - follow up looking at sex ratio.xlsx
-    Untracked:  data/data collection sheet from Heidi.xlsx
-    Untracked:  data/messy_data/
-    Untracked:  data/model_output/
-    Untracked:  data/simulation_output.rds
-    Untracked:  docs/figure/SD_costs_analysis.Rmd/
-    Untracked:  docs/figure/evolutionary_simulation_SD.Rmd/
+    Untracked:  code/pdf_supplementary_material.Rmd
+    Untracked:  code/pdf_supplementary_material_files/
     Untracked:  figures/
-    Untracked:  manuscript/
+    Untracked:  output/fig_S1.rds
+    Untracked:  output/tab_S1.rds
+    Untracked:  output/tab_S10.rds
+    Untracked:  output/tab_S2.rds
+    Untracked:  output/tab_S3.rds
+    Untracked:  output/tab_S4.rds
+    Untracked:  output/tab_S5.rds
+    Untracked:  output/tab_S6.rds
+    Untracked:  output/tab_S7.rds
+    Untracked:  output/tab_S8.rds
+    Untracked:  output/tab_S9.rds
 
 Unstaged changes:
-    Modified:   README.md
+    Modified:   analysis/statistics.Rmd
 
 </code></pre>
 <p>
@@ -508,6 +519,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/lukeholman/fitnessCostSD/e67c963722b1d0f330605a777ababa80bd906c97/docs/statistics.html" target="_blank">e67c963</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2019-03-12
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -733,13 +761,15 @@ expt2   &lt;- load_and_clean_data(&quot;data/messy_data/experiment2.csv&quot;) <
 <div id="larval-survival-data" class="section level3">
 <h3>Larval survival data</h3>
 <p><strong>Table S1</strong>: Number and percentage of L1 larvae surviving to adulthood for each SD genotype and cross type.</p>
-<pre class="r"><code>larvae %&gt;% 
+<pre class="r"><code>tab_S1 &lt;- larvae %&gt;% 
   group_by(SD, copies_of_SD, parent_with_SD) %&gt;% 
   summarise(number_larvae_counted = sum(survivors + number_died),
             number_of_survivors = sum(survivors),
             percent_surviving = 100 * (number_of_survivors / number_larvae_counted)) %&gt;%
     mutate(percent_surviving = format(round(percent_surviving, 1), nsmall = 1)) %&gt;%
-  as.data.frame() %&gt;% pander(split.cell = 40, split.table = Inf)</code></pre>
+  as.data.frame() 
+saveRDS(tab_S1, file = &quot;output/tab_S1.rds&quot;)
+tab_S1 %&gt;% pander(split.cell = 40, split.table = Inf)</code></pre>
 <table>
 <colgroup>
 <col width="15%" />
@@ -918,12 +948,15 @@ expt2   &lt;- load_and_clean_data(&quot;data/messy_data/experiment2.csv&quot;) <
 <div id="adult-sex-ratio" class="section level3">
 <h3>Adult sex ratio</h3>
 <p><strong>Table S2</strong>: Number and percentage of male and female adults emerging from the juvenile fitness assay vials.</p>
-<pre class="r"><code>larvae %&gt;% group_by(SD, copies_of_SD, parent_with_SD) %&gt;% 
+<pre class="r"><code>tab_S2 &lt;- larvae %&gt;% group_by(SD, copies_of_SD, parent_with_SD) %&gt;% 
   summarise(n.males = sum(surviving_males),
             n.females = sum(surviving_females),
             n.total = sum(survivors), 
             percent.male = format(round(100 * sum(surviving_males) / n.total, 1), nsmall = 1)) %&gt;%
-  as.data.frame() %&gt;% pander(split.cell = 40, split.table = Inf)</code></pre>
+  as.data.frame() 
+
+saveRDS(tab_S2, file = &quot;output/tab_S2.rds&quot;)
+tab_S2 %&gt;% pander(split.cell = 40, split.table = Inf)</code></pre>
 <table>
 <colgroup>
 <col width="19%" />
@@ -1124,7 +1157,7 @@ expt2   &lt;- load_and_clean_data(&quot;data/messy_data/experiment2.csv&quot;) <
 <h3>Male fitness data</h3>
 <p><strong>Table S3</strong>: Average relative fitness of adult males for each SD genotype and cross type, expressed as the average proportion of offspring sired. The last two columns give the sample size in terms of number of vials (each of which contained 5 focal males), and number of males.</p>
 <pre class="r"><code>SE &lt;- function(x) sd(x) / sqrt(length(x))
-males %&gt;% 
+tab_S3 &lt;- males %&gt;% 
   group_by(SD, copies_of_SD, parent_with_SD) %&gt;% 
   summarise(average_relative_fitness = mean(focal.male.fitness / (focal.male.fitness + rival.male.fitness)),
             SE = SE(focal.male.fitness / (focal.male.fitness + rival.male.fitness)),
@@ -1132,7 +1165,10 @@ males %&gt;%
             number_of_males = number_of_vials * 5) %&gt;%
   mutate(average_relative_fitness = format(round(average_relative_fitness, 2), nsmall = 2),
          SE = format(round(SE, 3), nsmall = 3)) %&gt;%
-  as.data.frame() %&gt;% pander(split.cell = 40, split.table = Inf)</code></pre>
+  as.data.frame()
+
+saveRDS(tab_S3, file = &quot;output/tab_S3.rds&quot;)
+tab_S3 %&gt;% pander(split.cell = 40, split.table = Inf)</code></pre>
 <table style="width:100%;">
 <colgroup>
 <col width="15%" />
@@ -1341,7 +1377,7 @@ males %&gt;%
 <div id="female-fitness-data" class="section level3">
 <h3>Female fitness data</h3>
 <p><strong>Table S4</strong>: Average fecundity of adult females for each SD genotype and cross type. The last two columns give the sample size in terms of number of oviposition vials (each of which contained up to 5 focal females), and number of males.</p>
-<pre class="r"><code>females %&gt;% 
+<pre class="r"><code>tab_S4 &lt;- females %&gt;% 
   mutate(larvae_per_female = larvae_produced / number_of_laying_females) %&gt;%
   group_by(SD, copies_of_SD, parent_with_SD) %&gt;% 
   summarise(average_fecundity = mean(larvae_per_female),
@@ -1350,7 +1386,10 @@ males %&gt;%
             number_of_females = sum(number_of_laying_females)) %&gt;%
   mutate(average_fecundity = format(round(average_fecundity, 2), nsmall = 2),
          SE = format(round(SE, 3), nsmall = 3)) %&gt;%
-  as.data.frame() %&gt;% pander(split.cell = 40, split.table = Inf)</code></pre>
+  as.data.frame() 
+
+saveRDS(tab_S4, file = &quot;output/tab_S4.rds&quot;)
+tab_S4 %&gt;% pander(split.cell = 40, split.table = Inf)</code></pre>
 <table>
 <colgroup>
 <col width="16%" />
@@ -1559,8 +1598,7 @@ males %&gt;%
 <div id="experiment-2-larval-survival-data" class="section level3">
 <h3>Experiment 2 larval survival data</h3>
 <p><strong>Table S5</strong>: Number and percentage of L1 larvae surviving to adulthood in Experiment 2, for each SD genotype, cross type, and offspring sex.</p>
-<pre class="r"><code>set.seed(1)
-expt2 %&gt;%
+<pre class="r"><code>tab_S5 &lt;- expt2 %&gt;%
   rename(parent_with_SD = SD_parent, offspring_sex = sex_of_embryos) %&gt;%
   mutate(SD_embryos = SD_offspring + rbinom(n(), Dead_offspring, 0.5),
          CyO_embryos = starting_number_focal_sex - SD_embryos,
@@ -1572,8 +1610,10 @@ expt2 %&gt;%
             n_larvae_counted = sum(starting_number_focal_sex),
             n_crosses = n()) %&gt;%
   mutate(percent_surviving_SD_larvae = format(round(percent_surviving_SD_larvae, 1), nsmall = 1),
-         percent_surviving_CyO_larvae = format(round(percent_surviving_CyO_larvae, 1), nsmall = 1)) %&gt;% 
-  pander(split.cell = 40, split.table = Inf)</code></pre>
+         percent_surviving_CyO_larvae = format(round(percent_surviving_CyO_larvae, 1), nsmall = 1)) 
+
+saveRDS(tab_S5, file = &quot;output/tab_S5.rds&quot;)
+tab_S5 %&gt;% pander(split.cell = 40, split.table = Inf)</code></pre>
 <table>
 <colgroup>
 <col width="6%" />
@@ -1600,8 +1640,8 @@ expt2 %&gt;%
 <td align="center">SD-5</td>
 <td align="center">Father</td>
 <td align="center">Female</td>
-<td align="center">81.0</td>
-<td align="center">86.0</td>
+<td align="center">83.4</td>
+<td align="center">83.8</td>
 <td align="center">763</td>
 <td align="center">16</td>
 </tr>
@@ -1609,8 +1649,8 @@ expt2 %&gt;%
 <td align="center">SD-5</td>
 <td align="center">Father</td>
 <td align="center">Male</td>
-<td align="center">79.1</td>
-<td align="center">79.4</td>
+<td align="center">79.0</td>
+<td align="center">79.3</td>
 <td align="center">727</td>
 <td align="center">17</td>
 </tr>
@@ -1618,8 +1658,8 @@ expt2 %&gt;%
 <td align="center">SD-5</td>
 <td align="center">Mother</td>
 <td align="center">Female</td>
-<td align="center">76.3</td>
-<td align="center">82.1</td>
+<td align="center">76.4</td>
+<td align="center">81.9</td>
 <td align="center">871</td>
 <td align="center">18</td>
 </tr>
@@ -1627,8 +1667,8 @@ expt2 %&gt;%
 <td align="center">SD-5</td>
 <td align="center">Mother</td>
 <td align="center">Male</td>
-<td align="center">68.2</td>
-<td align="center">69.9</td>
+<td align="center">70.8</td>
+<td align="center">67.8</td>
 <td align="center">972</td>
 <td align="center">20</td>
 </tr>
@@ -1636,8 +1676,8 @@ expt2 %&gt;%
 <td align="center">SD-72</td>
 <td align="center">Father</td>
 <td align="center">Female</td>
-<td align="center">86.3</td>
-<td align="center">85.4</td>
+<td align="center">85.5</td>
+<td align="center">85.9</td>
 <td align="center">744</td>
 <td align="center">16</td>
 </tr>
@@ -1645,8 +1685,8 @@ expt2 %&gt;%
 <td align="center">SD-72</td>
 <td align="center">Father</td>
 <td align="center">Male</td>
-<td align="center">83.7</td>
-<td align="center">77.9</td>
+<td align="center">81.0</td>
+<td align="center">78.6</td>
 <td align="center">615</td>
 <td align="center">15</td>
 </tr>
@@ -1654,8 +1694,8 @@ expt2 %&gt;%
 <td align="center">SD-72</td>
 <td align="center">Mother</td>
 <td align="center">Female</td>
-<td align="center">89.5</td>
-<td align="center">88.1</td>
+<td align="center">90.2</td>
+<td align="center">87.4</td>
 <td align="center">1123</td>
 <td align="center">23</td>
 </tr>
@@ -1663,8 +1703,8 @@ expt2 %&gt;%
 <td align="center">SD-72</td>
 <td align="center">Mother</td>
 <td align="center">Male</td>
-<td align="center">78.7</td>
-<td align="center">77.6</td>
+<td align="center">78.9</td>
+<td align="center">76.8</td>
 <td align="center">1186</td>
 <td align="center">24</td>
 </tr>
@@ -1672,8 +1712,8 @@ expt2 %&gt;%
 <td align="center">SD-Mad</td>
 <td align="center">Father</td>
 <td align="center">Female</td>
-<td align="center">86.2</td>
-<td align="center">85.5</td>
+<td align="center">87.2</td>
+<td align="center">83.9</td>
 <td align="center">457</td>
 <td align="center">10</td>
 </tr>
@@ -1681,8 +1721,8 @@ expt2 %&gt;%
 <td align="center">SD-Mad</td>
 <td align="center">Father</td>
 <td align="center">Male</td>
-<td align="center">86.2</td>
-<td align="center">84.1</td>
+<td align="center">87.8</td>
+<td align="center">83.1</td>
 <td align="center">480</td>
 <td align="center">11</td>
 </tr>
@@ -1691,7 +1731,7 @@ expt2 %&gt;%
 <td align="center">Mother</td>
 <td align="center">Female</td>
 <td align="center">84.4</td>
-<td align="center">85.2</td>
+<td align="center">85.7</td>
 <td align="center">942</td>
 <td align="center">20</td>
 </tr>
@@ -1699,8 +1739,8 @@ expt2 %&gt;%
 <td align="center">SD-Mad</td>
 <td align="center">Mother</td>
 <td align="center">Male</td>
-<td align="center">82.1</td>
-<td align="center">78.6</td>
+<td align="center">82.3</td>
+<td align="center">78.4</td>
 <td align="center">1010</td>
 <td align="center">21</td>
 </tr>
@@ -2465,7 +2505,9 @@ clean_table &lt;- function(tabl){
 }
 
 tests1 &lt;- hypothesis_tests(larvae_brms, larvae)
-tests1 %&gt;% clean_table() %&gt;% pander(split.cell = 40, split.table = Inf)</code></pre>
+tab_S6 &lt;- tests1 %&gt;% clean_table()
+saveRDS(tab_S6, file = &quot;output/tab_S6.rds&quot;)
+tab_S6 %&gt;% pander(split.cell = 40, split.table = Inf)</code></pre>
 <table style="width:100%;">
 <colgroup>
 <col width="8%" />
@@ -3239,7 +3281,9 @@ lukeholman
 <h3>Hypothesis testing</h3>
 <p><strong>Table S7</strong>: The results of hypothesis tests computed using the model of adult sex ratio in Experiment 1. Each row gives the posterior estimate of a difference in means, such that the estimate is positive if mean 1 is larger than mean 2, and negative otherwise (expressed in % males). The mean 1 and mean 2 columns list the parent which had SD (mother, father, or both), followed by the number of SD alleles present in the offspring (0, 1 or 2). The Posterior probability column gives the probability that the mean with the smaller point estimate is actually larger than the other mean, analagously to a one-tailed p-value. The Evidence ratio (ER) column gives the ratio of evidence, such that ER = 5 means that it is 5 times more likely that the mean with the smaller point estimate really is the smaller one. Asterisks highlight rows where the posterior probability is less than 0.05.</p>
 <pre class="r"><code>tests2 &lt;- hypothesis_tests(SR_brms, SR_data)
-tests2 %&gt;% clean_table() %&gt;% pander(split.cell = 40, split.table = Inf)</code></pre>
+tab_S7 &lt;- tests2
+saveRDS(tab_S7, file = &quot;output/tab_S7.rds&quot;)
+tab_S7 %&gt;% clean_table() %&gt;% pander(split.cell = 40, split.table = Inf)</code></pre>
 <table style="width:100%;">
 <colgroup>
 <col width="9%" />
@@ -3875,7 +3919,9 @@ lukeholman
 <h3>Hypothesis testing</h3>
 <p><strong>Table S8</strong>: The results of hypothesis tests computed using the model of female fitness in Experiment 1. Each row gives the posterior estimate of a difference in means, such that the estimate is positive if mean 1 is larger than mean 2, and negative otherwise (expressed as the number of offspring produced). The mean 1 and mean 2 columns list the parent which had SD (mother, father, or both), followed by the number of SD alleles present in the offspring (0, 1 or 2). The Posterior probability column gives the probability that the mean with the smaller point estimate is actually larger than the other mean, analagously to a one-tailed p-value. The Evidence ratio (ER) column gives the ratio of evidence, such that ER = 5 means that it is 5 times more likely that the mean with the smaller point estimate really is the smaller one. Asterisks highlight rows where the posterior probability is less than 0.05.</p>
 <pre class="r"><code>tests3 &lt;- hypothesis_tests(female_brms, females, divisor = 5)
-tests3 %&gt;% clean_table() %&gt;% pander(split.cell = 40, split.table = Inf)</code></pre>
+tab_S8 &lt;- tests3 %&gt;% clean_table()
+saveRDS(tab_S8, file = &quot;output/tab_S8.rds&quot;)
+tab_S8 %&gt;% pander(split.cell = 40, split.table = Inf)</code></pre>
 <table style="width:100%;">
 <colgroup>
 <col width="8%" />
@@ -4503,7 +4549,9 @@ lukeholman
 <h3>Hypothesis testing</h3>
 <p><strong>Table S9</strong>: The results of hypothesis tests computed using the model of male fitness in Experiment 1. Each row gives the posterior estimate of a difference in means, such that the estimate is positive if mean 1 is larger than mean 2, and negative otherwise (expressed in % offspring sired). The mean 1 and mean 2 columns list the parent which had SD (mother, father, or both), followed by the number of SD alleles present in the offspring (0, 1 or 2). The Posterior probability column gives the probability that the mean with the smaller point estimate is actually larger than the other mean, analagously to a one-tailed p-value. The Evidence ratio (ER) column gives the ratio of evidence, such that ER = 5 means that it is 5 times more likely that the mean with the smaller point estimate really is the smaller one. Asterisks highlight rows where the posterior probability is less than 0.05.</p>
 <pre class="r"><code>tests4 &lt;- hypothesis_tests(male_brms, males)
-tests4 %&gt;% clean_table() %&gt;% pander(split.cell = 40, split.table = Inf)</code></pre>
+tab_S9 &lt;- tests4 %&gt;% clean_table()
+saveRDS(tab_S9, file = &quot;output/tab_S9.rds&quot;)
+tab_S9 %&gt;% pander(split.cell = 40, split.table = Inf)</code></pre>
 <table style="width:100%;">
 <colgroup>
 <col width="9%" />
@@ -4988,48 +5036,99 @@ if(!file.exists(&quot;data/model_output/expt2_brms.rds&quot;)){
 <div id="check-a-diagnostic-plot-of-the-model-4" class="section level3">
 <h3>Check a diagnostic plot of the model</h3>
 <p>This plot shows the frequency distribution of the original data (black line), along with predicted data that were computed using 10 random samples from the posterior of the model parameters. The posterior predicted values closely match the originals, suggesting that the model is approximating the data reasonably well. There are two plots for this model because we used a multivariate model that jointly modelled two response variables: the survival of SD larvae and of CyO larvae.</p>
-<pre class="r"><code>grid.arrange(
-  pp_check(model_list[[1]], resp = &quot;SDoffspring&quot;)  + labs(title = &quot;Number of SD offspring&quot;),
-  pp_check(model_list[[1]], resp = &quot;CyOoffspring&quot;) + labs(title = &quot;Number of CyO offspring&quot;)
-)</code></pre>
-<p><img src="figure/statistics.Rmd/unnamed-chunk-27-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-27-1">
-Past versions of unnamed-chunk-27-1.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-27-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/lukeholman/fitnessCostSD/blob/6b03f9cad3b5fb45ae2a5987f36c332476e99c95/docs/figure/statistics.Rmd/unnamed-chunk-27-1.png" target="_blank">6b03f9c</a>
-</td>
-<td>
-lukeholman
-</td>
-<td>
-2019-03-12
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+<pre class="r"><code>model_list[[1]]</code></pre>
+<pre><code> Family: binomial 
+  Links: mu = logit 
+Formula: num_survivors | trials(total_number) ~ genotype * sex_of_embryos * SD * SD_parent + (1 | vial) 
+   Data: dat (Number of observations: 422) 
+Samples: 4 chains, each with iter = 2000; warmup = 1000; thin = 1;
+         total post-warmup samples = 4000
+
+Group-Level Effects: 
+~vial (Number of levels: 211) 
+              Estimate Est.Error l-95% CI u-95% CI Eff.Sample Rhat
+sd(Intercept)     0.63      0.05     0.54     0.74       1621 1.00
+
+Population-Level Effects: 
+                                                    Estimate Est.Error
+Intercept                                               1.80      0.21
+genotypeSD                                             -0.10      0.20
+sex_of_embryosmale                                     -0.19      0.29
+SDSDM72                                                 0.16      0.30
+SDSDMMad                                                0.10      0.35
+SD_parentmum                                           -0.19      0.28
+genotypeSD:sex_of_embryosmale                          -0.17      0.27
+genotypeSD:SDSDM72                                      0.07      0.29
+genotypeSD:SDSDMMad                                     0.16      0.33
+sex_of_embryosmale:SDSDM72                             -0.34      0.42
+sex_of_embryosmale:SDSDMMad                             0.28      0.50
+genotypeSD:SD_parentmum                                -0.21      0.26
+sex_of_embryosmale:SD_parentmum                        -0.45      0.39
+SDSDM72:SD_parentmum                                    0.30      0.41
+SDSDMMad:SD_parentmum                                   0.44      0.45
+genotypeSD:sex_of_embryosmale:SDSDM72                   0.34      0.40
+genotypeSD:sex_of_embryosmale:SDSDMMad                 -0.09      0.47
+genotypeSD:sex_of_embryosmale:SD_parentmum              0.32      0.35
+genotypeSD:SDSDM72:SD_parentmum                         0.49      0.38
+genotypeSD:SDSDMMad:SD_parentmum                       -0.34      0.42
+sex_of_embryosmale:SDSDM72:SD_parentmum                 0.16      0.54
+sex_of_embryosmale:SDSDMMad:SD_parentmum               -0.40      0.61
+genotypeSD:sex_of_embryosmale:SDSDM72:SD_parentmum     -0.54      0.51
+genotypeSD:sex_of_embryosmale:SDSDMMad:SD_parentmum     0.62      0.57
+                                                    l-95% CI u-95% CI
+Intercept                                               1.40     2.21
+genotypeSD                                             -0.49     0.28
+sex_of_embryosmale                                     -0.76     0.37
+SDSDM72                                                -0.42     0.74
+SDSDMMad                                               -0.58     0.77
+SD_parentmum                                           -0.74     0.37
+genotypeSD:sex_of_embryosmale                          -0.70     0.36
+genotypeSD:SDSDM72                                     -0.49     0.65
+genotypeSD:SDSDMMad                                    -0.49     0.82
+sex_of_embryosmale:SDSDM72                             -1.14     0.52
+sex_of_embryosmale:SDSDMMad                            -0.70     1.25
+genotypeSD:SD_parentmum                                -0.71     0.32
+sex_of_embryosmale:SD_parentmum                        -1.20     0.33
+SDSDM72:SD_parentmum                                   -0.50     1.10
+SDSDMMad:SD_parentmum                                  -0.41     1.31
+genotypeSD:sex_of_embryosmale:SDSDM72                  -0.45     1.13
+genotypeSD:sex_of_embryosmale:SDSDMMad                 -1.00     0.83
+genotypeSD:sex_of_embryosmale:SD_parentmum             -0.36     1.01
+genotypeSD:SDSDM72:SD_parentmum                        -0.26     1.23
+genotypeSD:SDSDMMad:SD_parentmum                       -1.18     0.48
+sex_of_embryosmale:SDSDM72:SD_parentmum                -0.93     1.24
+sex_of_embryosmale:SDSDMMad:SD_parentmum               -1.58     0.78
+genotypeSD:sex_of_embryosmale:SDSDM72:SD_parentmum     -1.52     0.46
+genotypeSD:sex_of_embryosmale:SDSDMMad:SD_parentmum    -0.47     1.73
+                                                    Eff.Sample Rhat
+Intercept                                                  957 1.00
+genotypeSD                                                1282 1.01
+sex_of_embryosmale                                         988 1.00
+SDSDM72                                                    894 1.00
+SDSDMMad                                                  1056 1.00
+SD_parentmum                                               800 1.00
+genotypeSD:sex_of_embryosmale                             1272 1.01
+genotypeSD:SDSDM72                                        1383 1.00
+genotypeSD:SDSDMMad                                       1524 1.00
+sex_of_embryosmale:SDSDM72                                 933 1.00
+sex_of_embryosmale:SDSDMMad                               1144 1.00
+genotypeSD:SD_parentmum                                   1323 1.00
+sex_of_embryosmale:SD_parentmum                            863 1.00
+SDSDM72:SD_parentmum                                       820 1.00
+SDSDMMad:SD_parentmum                                      937 1.01
+genotypeSD:sex_of_embryosmale:SDSDM72                     1453 1.00
+genotypeSD:sex_of_embryosmale:SDSDMMad                    1571 1.00
+genotypeSD:sex_of_embryosmale:SD_parentmum                1259 1.00
+genotypeSD:SDSDM72:SD_parentmum                           1308 1.00
+genotypeSD:SDSDMMad:SD_parentmum                          1440 1.00
+sex_of_embryosmale:SDSDM72:SD_parentmum                    911 1.00
+sex_of_embryosmale:SDSDMMad:SD_parentmum                  1030 1.00
+genotypeSD:sex_of_embryosmale:SDSDM72:SD_parentmum        1363 1.00
+genotypeSD:sex_of_embryosmale:SDSDMMad:SD_parentmum       1459 1.00
+
+Samples were drawn using sampling(NUTS). For each parameter, Eff.Sample 
+is a crude measure of effective sample size, and Rhat is the potential 
+scale reduction factor on split chains (at convergence, Rhat = 1).</code></pre>
 </div>
 <div id="inspect-the-model-summary-4" class="section level3">
 <h3>Inspect the model summary</h3>
@@ -5353,7 +5452,7 @@ lukeholman
                  heights = unit.c(unit(1, &quot;npc&quot;) - lheight, lheight))
   }
 
-make_expt2_multiplot(
+fig_S1 &lt;- make_expt2_multiplot(
   plot_expt2(model_list[[1]]) + theme(axis.text.x = element_blank(), axis.ticks.x = element_blank()) + xlab(NULL) + ylab(NULL),
   plot_expt2(model_list[[2]]) + theme(axis.text.x = element_blank(), axis.ticks.x = element_blank()) + xlab(NULL),
   plot_expt2(model_list[[3]]) + ylab(NULL))</code></pre>
@@ -5395,6 +5494,12 @@ lukeholman
 </table>
 </div>
 </div>
+<pre class="r"><code>saveRDS(fig_S1, file = &quot;output/fig_S1.rds&quot;)
+fig_S1</code></pre>
+<pre><code>TableGrob (2 x 1) &quot;arrange&quot;: 2 grobs
+  z     cells    name              grob
+1 1 (1-1,1-1) arrange    gtable[layout]
+2 2 (2-2,1-1) arrange gtable[guide-box]</code></pre>
 <p><br></br> <strong>Figure S1</strong>: Equivalent plots to Figure 2, under the assumption that meiosis is fair (<span class="math inline">\(k\)</span> = 0.5, top row, same as Figure 2), slightly biased (<span class="math inline">\(k\)</span> = 0.6, middle row), and more strongly biased (<span class="math inline">\(k\)</span> = 0.7, bottom row). Note that the significant results for Figure 2 mostly stay the same or increase in magnitude, suggesting that they are genuine and are not sensitive to our assumptions about the data.</p>
 </div>
 <div id="hypothesis-testing-4" class="section level3">
@@ -5614,7 +5719,8 @@ table2 %&gt;% pander(split.cell = 50, split.table = Inf)</code></pre>
 </tbody>
 </table>
 <p><strong>Table S10</strong>: Complete version of Table 2, showing all the contrasts that were tested in Experiment 2.</p>
-<pre class="r"><code>tests_expt2 %&gt;% pander(split.cell = 50, split.table = Inf) </code></pre>
+<pre class="r"><code>saveRDS(tests_expt2, file = &quot;output/tab_S10.rds&quot;)
+tests_expt2 %&gt;% pander(split.cell = 50, split.table = Inf) </code></pre>
 <table style="width:100%;">
 <colgroup>
 <col width="7%" />
