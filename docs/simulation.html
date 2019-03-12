@@ -424,10 +424,10 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtreecceac7a329808fb8536d15508c75c9332c98b9d2targetblankcceac7aa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/fitnessCostSD/tree/cceac7a329808fb8536d15508c75c9332c98b9d2" target="_blank">cceac7a</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtree37f6e96fb3083a7aa3936efec9e5a209a7ccd2e2targetblank37f6e96a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/fitnessCostSD/tree/37f6e96fb3083a7aa3936efec9e5a209a7ccd2e2" target="_blank">37f6e96</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtreecceac7a329808fb8536d15508c75c9332c98b9d2targetblankcceac7aa" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtree37f6e96fb3083a7aa3936efec9e5a209a7ccd2e2targetblank37f6e96a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -437,23 +437,15 @@ Ignored files:
     Ignored:    .DS_Store
     Ignored:    .Rproj.user/
     Ignored:    data/.DS_Store
+    Ignored:    data/SD_k tests_2018_04_05.xlsx
+    Ignored:    data/clean_data/.DS_Store
+    Ignored:    data/data collection sheet - follow up looking at sex ratio.xlsx
+    Ignored:    data/data collection sheet from Heidi.xlsx
+    Ignored:    data/model_output/
     Ignored:    docs/.DS_Store
-
-Untracked files:
-    Untracked:  data/SD_k tests_2018_04_05.xlsx
-    Untracked:  data/clean_data/
-    Untracked:  data/data collection sheet - follow up looking at sex ratio.xlsx
-    Untracked:  data/data collection sheet from Heidi.xlsx
-    Untracked:  data/messy_data/
-    Untracked:  data/model_output/
-    Untracked:  data/simulation_output.rds
-    Untracked:  docs/figure/SD_costs_analysis.Rmd/
-    Untracked:  docs/figure/evolutionary_simulation_SD.Rmd/
-    Untracked:  figures/
-    Untracked:  manuscript/
-
-Unstaged changes:
-    Modified:   README.md
+    Ignored:    docs/figure/SD_costs_analysis.Rmd/
+    Ignored:    docs/figure/evolutionary_simulation_SD.Rmd/
+    Ignored:    manuscript/.DS_Store
 
 </code></pre>
 <p>
@@ -492,6 +484,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/lukeholman/fitnessCostSD/blob/37f6e96fb3083a7aa3936efec9e5a209a7ccd2e2/analysis/simulation.Rmd" target="_blank">37f6e96</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2019-03-12
+</td>
+<td>
+Tidy up
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/lukeholman/fitnessCostSD/e67c963722b1d0f330605a777ababa80bd906c97/docs/simulation.html" target="_blank">e67c963</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2019-03-12
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -647,8 +673,6 @@ library(ggplot2)</code></pre>
   output &lt;-  do.call(&quot;rbind&quot;, offspring)
   
   names(offspring) &lt;- paste(mating_types[,1], mating_types[,2], sep = &quot; x &quot;)
- # print(offspring)
-  
   output
 }</code></pre>
 <div id="an-example-of-a-mating-type-table" class="section level3">
@@ -1783,28 +1807,6 @@ run_simulation &lt;- function(generations,
         
     if(prop_SD &gt; 0.99) return(pop) 
     if(prop_SD &lt; 0.0001) return(pop)
-    
-    
-    # offspring &lt;- mating_table %&gt;%
-    #   left_join(find_mating_type_frequencies(pop, mating_types), 
-    #             by = c(&quot;mother&quot;, &quot;father&quot;)) %&gt;%
-    #   mutate(offspring_freq = mating_freq * zygote_freq)
-    # 
-    # pop$prop &lt;- 
-    #   c(sum(offspring$offspring_freq[offspring$type == &quot;wild_type_female&quot;]),
-    #     sum(offspring$offspring_freq[offspring$type == &quot;wild_type_male&quot;]),
-    #     sum(offspring$offspring_freq[offspring$type == &quot;hetero_female_maternal&quot;]),
-    #     sum(offspring$offspring_freq[offspring$type == &quot;hetero_male_maternal&quot;]),
-    #     sum(offspring$offspring_freq[offspring$type == &quot;hetero_female_paternal&quot;]),
-    #     sum(offspring$offspring_freq[offspring$type == &quot;hetero_male_paternal&quot;]),
-    #     sum(offspring$offspring_freq[offspring$type == &quot;homo_female&quot;]),
-    #     sum(offspring$offspring_freq[offspring$type == &quot;homo_male&quot;]))
-    # 
-    # pop$prop[is.na(pop$prop)] &lt;- 0
-    # pop$prop &lt;- pop$prop / sum(pop$prop)
-  
-    # print(pop %&gt;% mutate(prop = round(prop, 2)))
-
   }
   pop
 }</code></pre>
