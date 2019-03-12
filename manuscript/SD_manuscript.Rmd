@@ -16,10 +16,13 @@ csl: the-american-naturalist.csl
 abstract: Segregation distorters are selfish genetic elements that subvert Mendelian inheritance, often by destroying gametes that do not carry the distorter. Simple theoretical models predict that distorter alleles will either spread to fixation, or stabilise at some high intermediate frequency. However, many distorter alleles defy these predictions, suggesting that we have yet to discover all salient evolutionary forces acting on distorter alleles. Here, we measured the fitness of \textit{Drosophila melanogaster} adults and juveniles carrying zero, one or two copies of three different variants of the naturally-occurring supergene \textit{Segregation Distorter} (\textit{SD}), in order to investigate why \textit{SD} remains relatively rare despite its strong distortion. First, we show that the three variants differ in the severity and dominance of the fitness costs they impose on carrier individuals. Second, we found instances in which \textit{SD} parents produce less fit offspring, suggesting that \textit{SD} alleles have non-genetic, transgenerational costs. Third, we found an \textit{SD} variant that altered the offspring sex ratio, perhaps due to off-target effects of \textit{SD} on the Y chromosome. Finally, we use an evolutionary model to investigate the effects of transgenerational costs and sex ratio effects on the evolutionary dynamics of \textit{SD}, and show that these previously undocumented costs potentially explain the puzzingly paucity of \textit{SD} alleles in wild \textit{D. melanogaster} populations. 
 ---
 
+
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 
 library(xtable)
+library(kableExtra)
+library(stringr)
 options(xtable.comment = FALSE)
 
 table1 <- read.csv("../figures/Table1.csv")
@@ -37,9 +40,18 @@ table2$Comparison <- gsub("-", "→", table2$Comparison)
 
 table1 <- xtable(table1, label="tb:expt1", 
                  size = "footnotesize", digits = c(0,0,0,0,0,1,3),
+                 caption = "\\footnotesize{List of the all the notable differences between groups in Experiment 1 (posterior probability $<$0.05 see Tables S6-S9 for test results that did not meet this arbitrary cutoff). For each contast, we give the parent carrying SD (neither, mother, father, or both) and the number of SD alleles carried by the offspring. The difference in means is expressed as \\% larvae surviving, \\% male larvae, per-female progeny production, or \\% offspring sired, and the parentheses give 95\\% credible intervals. The difference is positive when the first-listed mean is larger than the second-listed mean, and negative otherwise.}") 
+
+                 
 table2 <- xtable(table2, label="tb:expt2", 
                  size = "footnotesize", digits = c(0,0,0,0,1,3),
-                 caption = "\\footnotesize{List of the all the notable differences between groups in Experiment 2 (posterior probability $<$0.05; see Table S10 for the remaining results). For each group, we list the sex of the focal larvae, their genotype (\\textit{SD} or \\textit{CyO}), and the parent that carried \\textit{SD} (mother or father). The difference in means is expressed in \\% larvae surviving; other details are as in Table 1.}") 
+                 caption = "\\footnotesize{List of the all the notable differences between groups in Experiment 2 (posterior probability $<$0.05; see Table S10 for test results that did not meet this arbitrary cutoff). For each group, we list the sex of the focal larvae, their genotype (\\textit{SD} or \\textit{CyO}), and the parent that carried \\textit{SD} (mother or father). The difference in means is expressed in \\% larvae surviving; other details are as in Table 1.}") 
+
+
+make_table <- function(file, digits = 3){
+  kable(readRDS(file), "latex", booktabs = TRUE, digits = digits) %>%
+    kable_styling(latex_options = c("repeat_header", "scale_down"), font_size = 8)
+}
 ```
 
 \maketitle\unmarkedfntext{\textsuperscript{1}School of BioSciences, The University of Melbourne, Victoria, Australia.}
@@ -120,7 +132,7 @@ Posterior estimates of mean fitness for each group are plotted in Figure 1. Tabl
 \begin{figure}
 \centering
 \includegraphics{../figures/fig1.pdf}
-\caption{\footnotesize{Posterior estimates of the group means for the four different response variables in Experiment 1, for each type of cross (x-axis), \textit{SD} variant (panels), and genotype (colours). Juvenile fitness was measured as % L1 larva-to-adult survival, female fitness as the estimated number of progeny produced per female, and male fitness as the siring success relative to competitior males. The thicker inner bar shows the region containing 50\% of the posterior, while the outer bar covers 95\% of the posterior. Tables S6-S9 give the accompanying statistcal results. Points labelled as carrying ``0 or 1'' \textit{SD} allele refer to cases where the genotype of the offspring could not be ascertained due to the brown eye marker not being expressed in larvae; most of these individuals probably carried 1 \textit{SD} allele because of segregation distortion.}}
+\caption{\footnotesize{Posterior estimates of the group means for the four different response variables in Experiment 1, for each type of cross (x-axis), \textit{SD} variant (panels), and genotype (colours). Juvenile fitness was measured as \% L1 larva-to-adult survival, female fitness as the estimated number of progeny produced per female, and male fitness as the siring success relative to competitior males. The thicker inner bar shows the region containing 50\% of the posterior, while the outer bar covers 95\% of the posterior. Tables S6-S9 give the accompanying statistcal results. Points labelled as carrying ``0 or 1'' \textit{SD} allele refer to cases where the genotype of the offspring could not be ascertained due to the brown eye marker not being expressed in larvae; most of these individuals probably carried 1 \textit{SD} allele because of segregation distortion.}}
 \end{figure}
 
 ```{r results='asis'}
@@ -170,7 +182,7 @@ For all four of these scenarios, we produced similar graphs under the additional
 
 \begin{figure}
 \centering
-\includegraphics{../figures/fig3.pdf}
+\includegraphics{../figures/Edited_fig3.pdf}
 \caption{\footnotesize{The equilibrium frequency reached by the \textit{SD} allele, $\hat{p}(SD)$, depends on the strength of segregataion distortion ($K$ = 0 indicates fair meiosis, $K$ = 1 that heterozygotes transmit only the \textit{SD} allele) and the direction and strength of sex ratio bias in the progeny of \textit{SD} heterozygote males. The four columns make different assumptions about the fitness costs to individuals carrying the \textit{SD} allele (see Results), while the three rows assume either that \textit{SD} has no parent-of-origin-specific effects on fitness (top row), or that \textit{SD} is especially costly when paternally inherited (middle row) or maternally inherited (bottom row).}}
 \end{figure}
 
@@ -192,4 +204,89 @@ Future studies could compete _SD_ alleles with differing costs, and differing co
 <div id="refs"></div>
 
 \newpage
-# Online Supplementary Material
+\pagenumbering{gobble}
+
+\begin{center}
+\huge{\textbf{Online Supplementary Material}}
+\end{center}
+
+\begin{center}
+\textbf{Fitness consequences of the selfish supergene \textit{Segregation Distorter}}
+\end{center}
+
+
+
+All of the figures and tables in this document can also be viewed online at **https://lukeholman.github.io/fitnessCostSD/statistics.html**, along with the R code used to generate them. 
+
+\newpage
+
+
+# Supplementary figures
+
+![](../output/fig_S1.pdf)
+
+**Supplementary Figure 1**: Equivalent plots to Figure 2, under the assumption that meiosis is fair ($k$ = 0.5, top row, same as Figure 2), slightly biased ($k$ = 0.6, middle row), and more strongly biased ($k$ = 0.7, bottom row). Note that the significant results for Figure 2 mostly stay the same or increase in magnitude, suggesting that they are genuine and are not sensitive to our assumptions about the data.
+
+
+\newpage
+# Supplementary tables
+
+**Supplementary Table 1**: Number and percentage of L1 larvae surviving to adulthood for each SD genotype and cross type.
+```{r, results='asis'}
+make_table("../output/tab_S1.rds")
+```
+\newpage
+
+**Supplementary Table 2**: Number and percentage of male and female adults emerging from the juvenile fitness assay vials.
+```{r, results='asis'}
+make_table("../output/tab_S2.rds")
+```
+\newpage
+
+**Supplementary Table 3**: Average relative fitness of adult males for each SD genotype and cross type, expressed as the average proportion of offspring sired. The last two columns give the sample size in terms of number of vials (each of which contained 5 focal males), and number of males.
+```{r, results='asis'}
+make_table("../output/tab_S3.rds")
+```
+\newpage
+
+**Supplementary Table 4**: Average fecundity of adult females for each SD genotype and cross type. The last two columns give the sample size in terms of number of oviposition vials (each of which contained up to 5 focal females), and number of males.
+```{r, results='asis'}
+make_table("../output/tab_S4.rds")
+```
+\newpage
+
+**Supplementary Table 5**: Number and percentage of L1 larvae surviving to adulthood in Experiment 2, for each SD genotype, cross type, and offspring sex.
+```{r, results='asis'}
+make_table("../output/tab_S5.rds")
+```
+\newpage
+
+**Supplementary Table 6**: The results of hypothesis tests computed using the model of larval survival in Experiment 1. Each row gives the posterior estimate of a difference in means, such that the estimate is positive if mean 1 is larger than mean 2, and negative otherwise (expressed in % larval survival). The mean 1 and mean 2 columns list the parent which had SD (mother, father, or both), followed by the number of SD alleles present in the offspring (0, 1 or 2). The Posterior probability column gives the probability that the mean with the smaller point estimate is actually larger than the other mean, analagously to a one-tailed p-value. The Evidence ratio (ER) column gives the ratio of evidence, such that ER = 5 means that it is 5 times more likely that the mean with the smaller point estimate really is the smaller one. Asterisks highlight rows where the posterior probability is less than 0.05.
+```{r, results='asis'}
+make_table("../output/tab_S6.rds")
+```
+\newpage
+
+**Supplementary Table 7**: The results of hypothesis tests computed using the model of adult sex ratio in Experiment 1. Each row gives the posterior estimate of a difference in means, such that the estimate is positive if mean 1 is larger than mean 2, and negative otherwise (expressed in % males). The mean 1 and mean 2 columns list the parent which had SD (mother, father, or both), followed by the number of SD alleles present in the offspring (0, 1 or 2). The Posterior probability column gives the probability that the mean with the smaller point estimate is actually larger than the other mean, analagously to a one-tailed p-value. The Evidence ratio (ER) column gives the ratio of evidence, such that ER = 5 means that it is 5 times more likely that the mean with the smaller point estimate really is the smaller one. Asterisks highlight rows where the posterior probability is less than 0.05.
+```{r, results='asis'}
+make_table("../output/tab_S7.rds")
+```
+\newpage
+
+**Supplementary Table 8**: The results of hypothesis tests computed using the model of female fitness in Experiment 1. Each row gives the posterior estimate of a difference in means, such that the estimate is positive if mean 1 is larger than mean 2, and negative otherwise (expressed as the number of offspring produced). The mean 1 and mean 2 columns list the parent which had SD (mother, father, or both), followed by the number of SD alleles present in the offspring (0, 1 or 2). The Posterior probability column gives the probability that the mean with the smaller point estimate is actually larger than the other mean, analagously to a one-tailed p-value. The Evidence ratio (ER) column gives the ratio of evidence, such that ER = 5 means that it is 5 times more likely that the mean with the smaller point estimate really is the smaller one. Asterisks highlight rows where the posterior probability is less than 0.05.
+```{r, results='asis'}
+make_table("../output/tab_S8.rds")
+```
+\newpage
+
+**Supplementary Table 9**: The results of hypothesis tests computed using the model of male fitness in Experiment 1. Each row gives the posterior estimate of a difference in means, such that the estimate is positive if mean 1 is larger than mean 2, and negative otherwise (expressed in % offspring sired). The mean 1 and mean 2 columns list the parent which had SD (mother, father, or both), followed by the number of SD alleles present in the offspring (0, 1 or 2). The Posterior probability column gives the probability that the mean with the smaller point estimate is actually larger than the other mean, analagously to a one-tailed p-value. The Evidence ratio (ER) column gives the ratio of evidence, such that ER = 5 means that it is 5 times more likely that the mean with the smaller point estimate really is the smaller one. Asterisks highlight rows where the posterior probability is less than 0.05.
+```{r, results='asis'}
+make_table("../output/tab_S9.rds")
+```
+\newpage
+
+**Supplementary Table 10**: Complete version of Table 2, showing all the contrasts that were tested in Experiment 2.
+```{r, results='asis'}
+make_table("../output/tab_S10.rds")
+```
+

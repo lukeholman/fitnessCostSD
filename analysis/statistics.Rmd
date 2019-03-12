@@ -1,6 +1,5 @@
 ---
 title: "Fitness consequences of the selfish supergene _Segregation Distorter_"
-author: "Luke Holman and Heidi Wong"
 date: "2019-03-12"
 output: 
   workflowr::wflow_html:
@@ -130,7 +129,7 @@ load_and_clean_data <- function(path){
              larval_density = as.numeric(scale(number_larvae_in_vial)), # mean-centre the larval density covariate
              vial = 1:n(),
              total = survivors + number_died) %>%
-      select(-number_larvae_in_vial, -nonrecombinant_females, -nonrecombinant_males, -recombinant_females, -recombinant_males)
+      select(-nonrecombinant_females, -nonrecombinant_males, -recombinant_females, -recombinant_males)
       
     # We never put more than 100 larvae in one vial, so for cases where the initial number was 200, it was 2 vials of 100 each, etc.
     dat$larval_density[dat$larval_density > 100] <- 100
@@ -935,9 +934,9 @@ tests_expt2 <- hypothesis_tests_expt2(model_list[[1]]) %>%
 **Table 2**: List of the all the notable differences between groups in Experiment 2 (posterior probability $<$0.05; see Table S10 for the remaining results). For each group, we list the sex of the focal larvae, their genotype (_SD_ or _CyO_), and the parent that carried _SD_ (mother or father). The difference in means is expressed in % larvae surviving; other details are as in Table 1.
 ```{r}
 table2 <- tests_expt2 %>% 
-  filter(Notable == "*") %>% select(-Notable) %>% tidy_names()
+  filter(Notable == "*") %>% select(-Notable) 
 
-write_csv(table2 %>% rename(p = `Posterior probability`), path = "figures/Table2.csv")
+write_csv(table2 %>% rename(p = Posterior_probability), path = "figures/Table2.csv")
 table2 %>% pander(split.cell = 50, split.table = Inf)
 ```
 

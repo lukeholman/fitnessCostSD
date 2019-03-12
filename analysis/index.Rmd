@@ -8,6 +8,9 @@ output:
 
 This website presents all the code used for the forthcoming paper _Fitness consequences of the selfish supergene Segregation Distorter_ by Heidi Wong and Luke Holman.
 
+# [Tables of the raw data](raw_data.html)
+Click [here](raw_data.html) to see tables of the raw data, and a description of what each variable means.
+
 # [Part 1: Data analysis](statistics.html)
 Click [here](statistics.html) to see the R script used to analyse our empirical data and produce all statistical results, figures, and tables.
 
