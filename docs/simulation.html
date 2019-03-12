@@ -424,10 +424,10 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtree2bc25a0a4f0d83af98831f95269829bee789571atargetblank2bc25a0a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/fitnessCostSD/tree/2bc25a0a4f0d83af98831f95269829bee789571a" target="_blank">2bc25a0</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtree7c72cbc4d0c7974c2b996e65650b50b2abe36fbftargetblank7c72cbca"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/fitnessCostSD/tree/7c72cbc4d0c7974c2b996e65650b50b2abe36fbf" target="_blank">7c72cbc</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtree2bc25a0a4f0d83af98831f95269829bee789571atargetblank2bc25a0a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtree7c72cbc4d0c7974c2b996e65650b50b2abe36fbftargetblank7c72cbca" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -447,7 +447,8 @@ Untracked files:
     Untracked:  data/messy_data/
     Untracked:  data/model_output/
     Untracked:  data/simulation_output.rds
-    Untracked:  docs/figure/
+    Untracked:  docs/figure/SD_costs_analysis.Rmd/
+    Untracked:  docs/figure/evolutionary_simulation_SD.Rmd/
     Untracked:  figures/
     Untracked:  manuscript/
 
@@ -488,6 +489,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/lukeholman/fitnessCostSD/blob/7c72cbc4d0c7974c2b996e65650b50b2abe36fbf/analysis/simulation.Rmd" target="_blank">7c72cbc</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2019-03-12
+</td>
+<td>
+Tweak
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/lukeholman/fitnessCostSD/6b03f9cad3b5fb45ae2a5987f36c332476e99c95/docs/simulation.html" target="_blank">6b03f9c</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2019-03-12
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -2008,7 +2043,6 @@ parameters &lt;- rbind(
        y = &quot;Sex ratio bias in SD heterozygotes\n(postive means more daughters, negative means more sons)&quot;) +
   facet_wrap(~ facet, labeller = labeller(facet = label_wrap_gen(35))) + 
   scale_fill_distiller(palette = &quot;YlGnBu&quot;, direction =  1, name = expression(paste(&quot;&quot;, hat(paste(&quot;p&quot;)), &quot; (SD)&quot;)), limits = c(0,1)) +
-  #scale_fill_viridis_c(direction =  -1, name = expression(paste(&quot;&quot;, hat(paste(&quot;p&quot;)), &quot; (SD)&quot;)), option = &quot;D&quot;) + 
   scale_x_continuous(expand = c(0, 0), labels = c(0, 0.25, 0.5, 0.75, 1)) + scale_y_continuous(expand = c(0, 0)) +
   theme(panel.border = element_rect(fill = NA, colour = &quot;black&quot;, size = .8),
         strip.background = element_rect(colour = &quot;black&quot;, fill = &quot;grey90&quot;, size = .8),
@@ -2016,7 +2050,45 @@ parameters &lt;- rbind(
 
 ggsave(fig_3, filename = &quot;figures/fig3.pdf&quot;, height = 9, width = 9)
 fig_3</code></pre>
-<p><img src="figure/simulation.Rmd/unnamed-chunk-9-1.png" width="864" style="display: block; margin: auto;" /> <br></br></p>
+<p><img src="figure/simulation.Rmd/unnamed-chunk-9-1.png" width="864" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-9-1">
+Past versions of unnamed-chunk-9-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-9-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/lukeholman/fitnessCostSD/blob/6b03f9cad3b5fb45ae2a5987f36c332476e99c95/docs/figure/simulation.Rmd/unnamed-chunk-9-1.png" target="_blank">6b03f9c</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2019-03-12
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><br></br></p>
 <strong>Figure 3</strong>: The equilibrium frequency reached by the  allele, <span class="math inline">\(\hat{p}(SD)\)</span>, depends on the strength of segregataion distortion (<span class="math inline">\(K\)</span> = 0 indicates fair meiosis, <span class="math inline">\(K\)</span> = 1 means that heterozygotes transmit only the  allele) and the direction and strength of sex ratio bias in the progeny of  heterozygote males. The four columns make different assumptions about the fitness costs to individuals carrying the  allele (see Results), while the three rows assume either that  has no parent-of-origin-specific effects on fitness (top row), or that  is especially costly when paternally inherited (middle row) or maternally inherited (bottom row). <br> <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">

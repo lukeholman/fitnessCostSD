@@ -440,10 +440,10 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtree2bc25a0a4f0d83af98831f95269829bee789571atargetblank2bc25a0a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/fitnessCostSD/tree/2bc25a0a4f0d83af98831f95269829bee789571a" target="_blank">2bc25a0</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtree7c72cbc4d0c7974c2b996e65650b50b2abe36fbftargetblank7c72cbca"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/fitnessCostSD/tree/7c72cbc4d0c7974c2b996e65650b50b2abe36fbf" target="_blank">7c72cbc</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtree2bc25a0a4f0d83af98831f95269829bee789571atargetblank2bc25a0a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtree7c72cbc4d0c7974c2b996e65650b50b2abe36fbftargetblank7c72cbca" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -463,7 +463,8 @@ Untracked files:
     Untracked:  data/messy_data/
     Untracked:  data/model_output/
     Untracked:  data/simulation_output.rds
-    Untracked:  docs/figure/
+    Untracked:  docs/figure/SD_costs_analysis.Rmd/
+    Untracked:  docs/figure/evolutionary_simulation_SD.Rmd/
     Untracked:  figures/
     Untracked:  manuscript/
 
@@ -504,6 +505,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/lukeholman/fitnessCostSD/6b03f9cad3b5fb45ae2a5987f36c332476e99c95/docs/statistics.html" target="_blank">6b03f9c</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2019-03-12
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1674,6 +1692,43 @@ expt2 %&gt;%
 <p>This plot shows the frequency distribution of the original data (black line), along with predicted data that were computed using 10 random samples from the posterior of the model parameters. The posterior predicted values closely match the originals, suggesting that the model is approximating the data reasonably well.</p>
 <pre class="r"><code>pp_check(larvae_brms)</code></pre>
 <p><img src="figure/statistics.Rmd/unnamed-chunk-9-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-9-1">
+Past versions of unnamed-chunk-9-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-9-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/lukeholman/fitnessCostSD/blob/6b03f9cad3b5fb45ae2a5987f36c332476e99c95/docs/figure/statistics.Rmd/unnamed-chunk-9-1.png" target="_blank">6b03f9c</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2019-03-12
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="inspect-the-model-summary" class="section level3">
 <h3>Inspect the model summary</h3>
@@ -2566,6 +2621,43 @@ if(!file.exists(&quot;data/model_output/SR_brms.rds&quot;)){
 <p>This plot shows the frequency distribution of the original data (black line), along with predicted data that were computed using 10 random samples from the posterior of the model parameters. The posterior predicted values closely match the originals, suggesting that the model is approximating the data reasonably well.</p>
 <pre class="r"><code>pp_check(SR_brms)</code></pre>
 <p><img src="figure/statistics.Rmd/unnamed-chunk-13-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-13-1">
+Past versions of unnamed-chunk-13-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-13-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/lukeholman/fitnessCostSD/blob/6b03f9cad3b5fb45ae2a5987f36c332476e99c95/docs/figure/statistics.Rmd/unnamed-chunk-13-1.png" target="_blank">6b03f9c</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2019-03-12
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="inspect-the-model-summary-1" class="section level3">
 <h3>Inspect the model summary</h3>
@@ -3285,6 +3377,43 @@ tests2 %&gt;% clean_table() %&gt;% pander(split.cell = 40, split.table = Inf)</c
 <p>This plot shows the frequency distribution of the original data (black line), along with predicted data that were computed using 10 random samples from the posterior of the model parameters. The posterior predicted values closely match the originals, suggesting that the model is approximating the data reasonably well.</p>
 <pre class="r"><code>pp_check(female_brms)</code></pre>
 <p><img src="figure/statistics.Rmd/unnamed-chunk-17-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-17-1">
+Past versions of unnamed-chunk-17-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-17-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/lukeholman/fitnessCostSD/blob/6b03f9cad3b5fb45ae2a5987f36c332476e99c95/docs/figure/statistics.Rmd/unnamed-chunk-17-1.png" target="_blank">6b03f9c</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2019-03-12
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="inspect-the-model-summary-2" class="section level3">
 <h3>Inspect the model summary</h3>
@@ -3884,6 +4013,43 @@ tests3 %&gt;% clean_table() %&gt;% pander(split.cell = 40, split.table = Inf)</c
 <p>This plot shows the frequency distribution of the original data (black line), along with predicted data that were computed using 10 random samples from the posterior of the model parameters. The posterior predicted values closely match the originals, suggesting that the model is approximating the data reasonably well.</p>
 <pre class="r"><code>pp_check(male_brms)</code></pre>
 <p><img src="figure/statistics.Rmd/unnamed-chunk-21-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-21-1">
+Past versions of unnamed-chunk-21-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-21-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/lukeholman/fitnessCostSD/blob/6b03f9cad3b5fb45ae2a5987f36c332476e99c95/docs/figure/statistics.Rmd/unnamed-chunk-21-1.png" target="_blank">6b03f9c</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2019-03-12
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="inspect-the-model-summary-3" class="section level3">
 <h3>Inspect the model summary</h3>
@@ -4531,6 +4697,43 @@ fig1 &lt;- make_expt1_multiplot(
   make_plot(male_brms, males, &quot;Adult male fitness&quot;, c(0, 100)) + xlab(NULL)
 )</code></pre>
 <p><img src="figure/statistics.Rmd/unnamed-chunk-24-1.png" width="1056" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-24-1">
+Past versions of unnamed-chunk-24-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-24-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/lukeholman/fitnessCostSD/blob/6b03f9cad3b5fb45ae2a5987f36c332476e99c95/docs/figure/statistics.Rmd/unnamed-chunk-24-1.png" target="_blank">6b03f9c</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2019-03-12
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>ggsave(fig1, file = &quot;figures/fig1.pdf&quot;, height = 7, width = 11)</code></pre>
 <p><strong>Figure 1</strong>: Posterior estimates of the group means for the four different response variables in Experiment 1, for each type of cross (x-axis), SD variant (panels), and genotype (colours). The horizontal blue bar shows the 95% CIs for the sex ratio in the control cross between two SD-free parents, and the error bars show the 95% quantiles of the posterior. Tables S6-S9 give the accompanying statistcal results. Points labelled as carrying “0 or 1” SD allele refer to cases where the genotype of the offspring could not be ascertained due to the brown eye marker not being expressed in larvae; most of these individuals probably carried 1 SD allele because of segregation distortion.</p>
 </div>
@@ -4753,6 +4956,43 @@ if(!file.exists(&quot;data/model_output/expt2_brms.rds&quot;)){
   pp_check(model_list[[1]], resp = &quot;CyOoffspring&quot;) + labs(title = &quot;Number of CyO offspring&quot;)
 )</code></pre>
 <p><img src="figure/statistics.Rmd/unnamed-chunk-27-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-27-1">
+Past versions of unnamed-chunk-27-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-27-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/lukeholman/fitnessCostSD/blob/6b03f9cad3b5fb45ae2a5987f36c332476e99c95/docs/figure/statistics.Rmd/unnamed-chunk-27-1.png" target="_blank">6b03f9c</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2019-03-12
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="inspect-the-model-summary-4" class="section level3">
 <h3>Inspect the model summary</h3>
@@ -5020,7 +5260,45 @@ plot_expt2 &lt;- function(model){
 fig2 &lt;- plot_expt2(model_list[[1]])
 ggsave(fig2, file = &quot;figures/fig2.pdf&quot;, height = 3.9, width = 7)
 fig2</code></pre>
-<p><img src="figure/statistics.Rmd/unnamed-chunk-29-1.png" width="672" style="display: block; margin: auto;" /> <strong>Figure 2</strong>: Posterior estimates of % L1 larva-to-adult survival in Experiment 2 for each combination of offspring sex and genotype (x-axis), SD variant (panels), and cross (colours). Error bars show the 95% quantiles of the posterior. See Tables 2 and S10 for associated hypothesis tests. This plot was generated assuming fair meiosis (<span class="math inline">\(k\)</span> = 0.5) in SD/CyO males; see Figure S1 for equivalent plots made using different assumed values of <span class="math inline">\(k\)</span>.</p>
+<p><img src="figure/statistics.Rmd/unnamed-chunk-29-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-29-1">
+Past versions of unnamed-chunk-29-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-29-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/lukeholman/fitnessCostSD/blob/6b03f9cad3b5fb45ae2a5987f36c332476e99c95/docs/figure/statistics.Rmd/unnamed-chunk-29-1.png" target="_blank">6b03f9c</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2019-03-12
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><strong>Figure 2</strong>: Posterior estimates of % L1 larva-to-adult survival in Experiment 2 for each combination of offspring sex and genotype (x-axis), SD variant (panels), and cross (colours). Error bars show the 95% quantiles of the posterior. See Tables 2 and S10 for associated hypothesis tests. This plot was generated assuming fair meiosis (<span class="math inline">\(k\)</span> = 0.5) in SD/CyO males; see Figure S1 for equivalent plots made using different assumed values of <span class="math inline">\(k\)</span>.</p>
 </div>
 <div id="check-the-effect-of-our-assumption-that-meiosis-is-fair-in-sdcyo-males" class="section level3">
 <h3>Check the effect of our assumption that meiosis is fair in SD/CyO males</h3>
@@ -5042,7 +5320,45 @@ make_expt2_multiplot(
   plot_expt2(model_list[[1]]) + theme(axis.text.x = element_blank(), axis.ticks.x = element_blank()) + xlab(NULL) + ylab(NULL),
   plot_expt2(model_list[[2]]) + theme(axis.text.x = element_blank(), axis.ticks.x = element_blank()) + xlab(NULL),
   plot_expt2(model_list[[3]]) + ylab(NULL))</code></pre>
-<p><img src="figure/statistics.Rmd/unnamed-chunk-30-1.png" width="864" style="display: block; margin: auto;" /> <br></br> <strong>Figure S1</strong>: Equivalent plots to Figure 2, under the assumption that meiosis is fair (<span class="math inline">\(k\)</span> = 0.5, top row, same as Figure 2), slightly biased (<span class="math inline">\(k\)</span> = 0.6, middle row), and more strongly biased (<span class="math inline">\(k\)</span> = 0.7, bottom row). Note that the significant results for Figure 2 mostly stay the same or increase in magnitude, suggesting that they are genuine and are not sensitive to our assumptions about the data.</p>
+<p><img src="figure/statistics.Rmd/unnamed-chunk-30-1.png" width="864" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-30-1">
+Past versions of unnamed-chunk-30-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-30-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/lukeholman/fitnessCostSD/blob/6b03f9cad3b5fb45ae2a5987f36c332476e99c95/docs/figure/statistics.Rmd/unnamed-chunk-30-1.png" target="_blank">6b03f9c</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2019-03-12
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><br></br> <strong>Figure S1</strong>: Equivalent plots to Figure 2, under the assumption that meiosis is fair (<span class="math inline">\(k\)</span> = 0.5, top row, same as Figure 2), slightly biased (<span class="math inline">\(k\)</span> = 0.6, middle row), and more strongly biased (<span class="math inline">\(k\)</span> = 0.7, bottom row). Note that the significant results for Figure 2 mostly stay the same or increase in magnitude, suggesting that they are genuine and are not sensitive to our assumptions about the data.</p>
 </div>
 <div id="hypothesis-testing-4" class="section level3">
 <h3>Hypothesis testing</h3>
