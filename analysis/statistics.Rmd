@@ -1,5 +1,5 @@
 ---
-title: "Fitness costs of SD chromosomes in _Drosophila melanogaster_"
+title: "Fitness consequences of the selfish supergene _Segregation Distorter_"
 author: "Luke Holman and Heidi Wong"
 date: "2019-03-12"
 output: 
