@@ -343,7 +343,7 @@ div.section {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2019-03-12
+<strong>Last updated:</strong> 2019-03-13
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -422,10 +422,10 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtree32e7ee29eacb984c189437d8cbda14268828c090targetblank32e7ee2a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/fitnessCostSD/tree/32e7ee29eacb984c189437d8cbda14268828c090" target="_blank">32e7ee2</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtreeab4afa71291bc9063cdc4c895bdedbdfb66aca1dtargetblankab4afa7a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/fitnessCostSD/tree/ab4afa71291bc9063cdc4c895bdedbdfb66aca1d" target="_blank">ab4afa7</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtree32e7ee29eacb984c189437d8cbda14268828c090targetblank32e7ee2a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtreeab4afa71291bc9063cdc4c895bdedbdfb66aca1dtargetblankab4afa7a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -433,6 +433,7 @@ Great! You are using Git for version control. Tracking code development and conn
 <pre><code>
 Ignored files:
     Ignored:    .DS_Store
+    Ignored:    .Rhistory
     Ignored:    .Rproj.user/
     Ignored:    data/.DS_Store
     Ignored:    data/SD_k tests_2018_04_05.xlsx
@@ -444,6 +445,11 @@ Ignored files:
     Ignored:    docs/figure/SD_costs_analysis.Rmd/
     Ignored:    docs/figure/evolutionary_simulation_SD.Rmd/
     Ignored:    manuscript/.DS_Store
+    Ignored:    output/
+
+Unstaged changes:
+    Modified:   figures/fig1.pdf
+    Modified:   figures/fig2.pdf
 
 </code></pre>
 <p>
@@ -482,6 +488,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/lukeholman/fitnessCostSD/blob/ab4afa71291bc9063cdc4c895bdedbdfb66aca1d/analysis/raw_data.Rmd" target="_blank">ab4afa7</a>
+</td>
+<td>
+Luke Holman
+</td>
+<td>
+2019-03-13
+</td>
+<td>
+Correcting placement of annotation
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/lukeholman/fitnessCostSD/861ee2dc84660ad43543559ef046f0f243d696f1/docs/raw_data.html" target="_blank">861ee2d</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2019-03-12
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 html
@@ -2375,6 +2415,12 @@ SD-Mad
 </div>
 <div id="raw-data-from-experiment-1-female-fitness" class="section level1">
 <h1>Raw data from Experiment 1: female fitness</h1>
+<ul>
+<li><code>larvae_produced</code> The number of larvae produced (summed over all the females in the vial).
+<ul>
+<li><code>number_of_laying_females</code> The number of females who produced the larvae.</li>
+</ul></li>
+</ul>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:1000px; overflow-x: scroll; width:800px; ">
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <thead>
@@ -14231,12 +14277,6 @@ wild_type
 </div>
 <div id="raw-data-from-experiment-2" class="section level1">
 <h1>Raw data from Experiment 2</h1>
-<ul>
-<li><code>larvae_produced</code> The number of larvae produced (summed over all the females in the vial).
-<ul>
-<li><code>number_of_laying_females</code> The number of females who produced the larvae.</li>
-</ul></li>
-</ul>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:1000px; overflow-x: scroll; width:800px; ">
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <thead>
