@@ -53,9 +53,8 @@ larvae %>%
 <br></br>
 
 # Raw data from Experiment 1: female fitness
-
-  - `larvae_produced` The number of larvae produced (summed over all the females in the vial).
-  - `number_of_laying_females` The number of females who produced the larvae. 
+* `larvae_produced` The number of larvae produced (summed over all the females in the vial).
+* `number_of_laying_females` The number of females who produced the larvae.
 
 ```{r}
 females %>%
