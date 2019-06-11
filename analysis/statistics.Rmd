@@ -661,7 +661,7 @@ ggsave(fig1, file = "figures/fig1.pdf", height = 7, width = 11)
 
 ## Making Table 1
 
-**Table 1**: List of the all the notable differences between groups in Experiment 1 (posterior probability <0.05; see Tables S6-S9 for the remaining results). For each contast, we give the parent carrying _SD_ (neither, mother, father, or both) and the number of _SD_} alleles carried by the offspring. The difference in means is expressed in the original units, i.e. % larvae surviving, % male larvae, number of larvae produced, or % offspring sired, and the parentheses give 95% credible intervals. The difference is positive when the first-listed mean is larger than the second-listed mean, and negative otherwise. The posterior probability (p) has a similar interpretation to a one-tailed p-value.
+**Table 1**: List of the all the notable differences between groups in Experiment 1 (posterior probability <0.05; see Tables S6-S9 for the remaining results). For each contast, we give the parent carrying _SD_ (neither, mother, father, or both) and the number of _SD_ alleles carried by the offspring. The difference in means is expressed in the original units, i.e. % larvae surviving, % male larvae, number of larvae produced, or % offspring sired, and the parentheses give 95% credible intervals. The difference is positive when the first-listed mean is larger than the second-listed mean, and negative otherwise. The posterior probability (p) has a similar interpretation to a one-tailed p-value.
 ```{r}
 table1 <- bind_rows(tests1 %>% mutate(Trait = "Larval survival"),
                     tests2 %>% mutate(Trait = "Sex ratio"),
@@ -952,7 +952,7 @@ table2 %>% pander(split.cell = 50, split.table = Inf)
 
 **Table S10**: Complete version of Table 2, showing all the contrasts that were tested in Experiment 2. 
 ```{r}
-saveRDS(tests_expt2 %>% tidy_names(), file = "output/tab_S10.rds")
+saveRDS(tests_expt2 %>% tidy_names() %>% select(-Notable), file = "output/tab_S10.rds")
 tests_expt2 %>% pander(split.cell = 50, split.table = Inf) 
 ```
 
