@@ -16,7 +16,7 @@ opts_chunk$set(warning = FALSE, message = FALSE)
 ### Load R packages
 ```{r results='hide', message=FALSE, warning=FALSE}
 packages <- c("dplyr", "brms", "ggplot2", "reshape2", "Cairo", "knitr", "pander", "lazerhawk",
-              "grid", "gridExtra", "ggthemes", "readr", "tibble", "stringr")
+              "grid", "gridExtra", "ggthemes", "readr", "tibble", "stringr", "gameofthrones")
 shh <- suppressMessages(lapply(packages, library, character.only = TRUE, quietly = TRUE))
 nCores <- 1
 
@@ -489,8 +489,8 @@ summarise_brms(SR_brms)
 ### Hypothesis testing
 **Table S7**: The results of hypothesis tests computed using the model of adult sex ratio in Experiment 1. Each row gives the posterior estimate of a difference in means, such that the estimate is positive if mean 1 is larger than mean 2, and negative otherwise (expressed in % males). The mean 1 and mean 2 columns list the parent which had SD (mother, father, or both), followed by the number of SD alleles present in the offspring (0, 1 or 2). The Posterior probability column gives the probability that the mean with the smaller point estimate is actually larger than the other mean, analagously to a one-tailed p-value. The Evidence ratio (ER) column gives the ratio of evidence, such that ER = 5 means that it is 5 times more likely that the mean with the smaller point estimate really is the smaller one. Asterisks highlight rows where the posterior probability is less than 0.05.
 ```{r}
-tests2 <- hypothesis_tests(SR_brms, SR_data) %>% clean_table()
-saveRDS(tests2, file = "output/tab_S7.rds")
+tests2 <- hypothesis_tests(SR_brms, SR_data) 
+saveRDS(tests2 %>% clean_table(), file = "output/tab_S7.rds")
 tests2 %>% pander(split.cell = 40, split.table = Inf)
 ```
 
@@ -604,6 +604,10 @@ make_plot <- function(model, data, ylab, ylim = NULL){
     upperCI <- upperCI / 5
   }
   
+  pal <- got(n=4, alpha = 1, begin = 0.2, end = 0.8, direction = -1, option = "tully")
+  cols <- c("0" = pal[1], "0 or 1" = pal[2], "1" = pal[3], "2" = pal[4])
+
+  
   pd <- position_dodge(0.45)
   plot <- dots %>%
     mutate(copies_of_SD = factor(copies_of_SD, levels = c("0", "0 or 1", "1", "2"))) %>%
@@ -613,9 +617,14 @@ make_plot <- function(model, data, ylab, ylim = NULL){
     geom_errorbar(aes(ymin = Q2.5, ymax = Q97.5), width = 0, position = pd, size = 1.2) + 
     geom_errorbar(aes(ymin = Q25, ymax = Q75), width = 0, position = pd, size = 3) + 
     geom_point(position = pd, size = 2, colour = "black", pch = 21) + 
-    scale_colour_brewer(name = "Copies of SD", palette = "Spectral", 
-                        drop = FALSE, direction = -1,
+    # scale_fill_got(option = "Lady Margaery", name = "Copies of SD", discrete = TRUE) + 
+    # scale_colour_got(option = "Lady Margaery", name = "Copies of SD", discrete = TRUE) + 
+    
+    scale_colour_manual(name = "Copies of SD", values = cols,
+                        drop = FALSE, 
                         aesthetics = c("colour", "fill")) +
+
+
     facet_wrap(~SD) + 
     xlab("Parent carrying SD") + ylab(ylab) + theme_hc() + theme(axis.ticks.y = element_blank())
   
@@ -641,14 +650,14 @@ make_expt1_multiplot <- function(...) {
 }
 
 fig1 <- make_expt1_multiplot(
-  make_plot(larvae_brms, larvae, "Juvenile fitness") + xlab(NULL) + theme(axis.text.x = element_blank(), axis.ticks.x = element_blank()),
+  make_plot(larvae_brms, larvae, "Juvenile fitness (% survival)") + xlab(NULL) + theme(axis.text.x = element_blank(), axis.ticks.x = element_blank()),
   make_plot(SR_brms, SR_data, "Adult sex ratio (% males)") + xlab(NULL) + theme(axis.text.x = element_blank(), axis.ticks.x = element_blank()),
-  make_plot(female_brms, females, "Adult female fitness", c(0, 62)) + xlab(NULL),
-  make_plot(male_brms, males, "Adult male fitness", c(0, 100)) + xlab(NULL)
+  make_plot(female_brms, females, "Adult female fitness (number of progeny)", c(0, 62)) + xlab(NULL),
+  make_plot(male_brms, males, "Adult male fitness (% offspring sired)", c(0, 100)) + xlab(NULL)
 )
 ggsave(fig1, file = "figures/fig1.pdf", height = 7, width = 11)
 ```
-**Figure 1**: Posterior estimates of the group means for the four different response variables in Experiment 1, for each type of cross (x-axis), SD variant (panels), and genotype (colours). The horizontal blue bar shows the 95% CIs for the sex ratio in the control cross between two SD-free parents, and the error bars show the 95\% quantiles of the posterior. Tables S6-S9 give the accompanying statistcal results. Points labelled as carrying "0 or 1" SD allele refer to cases where the genotype of the offspring could not be ascertained due to the brown eye marker not being expressed in larvae; most of these individuals probably carried 1 SD allele because of segregation distortion.
+**Figure 1**: Posterior estimates of the group means for the four different response variables in Experiment 1, for each type of cross (x-axis), _SD_ variant (panels), and genotype (colours). Juvenile fitness was measured as % L1 larva-to-adult survival, adult sex ratio refers to the number of males and females among the individuals that reached adulthood, female fitness is the estimated number of progeny produced per female, and male fitness as the siring success relative to competitior males. The thicker inner bar shows the region containing 50% of the posterior, the outer bar covers 95% of the posterior, and the circle marks the median. Tables S6-S9 give the accompanying statistcal results. Points labelled as carrying ``0 or 1'' _SD_ allele refer to cases where the genotype of the offspring could not be ascertained due to the brown eye marker not being expressed in larvae; most of these individuals probably carried 1 _SD_ allele because of segregation distortion.
 
 ## Making Table 1
 
@@ -658,7 +667,8 @@ table1 <- bind_rows(tests1 %>% mutate(Trait = "Larval survival"),
                     tests2 %>% mutate(Trait = "Sex ratio"),
                     tests3 %>% mutate(Trait = "Female fitness"),
                     tests4 %>% mutate(Trait = "Male fitness")) %>% 
-  filter(Notable == "*") %>% clean_table()
+  filter(Notable == "*") %>% clean_table() %>% 
+  arrange(SD) %>% select(SD, everything())
 
 write_csv(table1 %>% rename(p = `Posterior probability`), path = "figures/Table1.csv")
 table1 %>% pander(split.cell = 50, split.table = Inf) 
@@ -780,7 +790,7 @@ plot_expt2 <- function(model){
     theme_hc() + 
     theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1),
           legend.position = "top", axis.ticks.y = element_blank()) +
-    ylab("Juvenile fitness") + xlab("Genotype and sex of offspring")
+    ylab("Juvenile fitness (% survival)") + xlab("Genotype and sex of offspring")
 }
 
 fig2 <- plot_expt2(model_list[[1]])

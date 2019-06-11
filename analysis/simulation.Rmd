@@ -460,16 +460,18 @@ if(!file.exists("data/simulation_output.rds")){
 ## Make Figure 3
 ```{r fig.height=9, fig.width=9}
 fig_3 <- simulation_output %>% 
-  ggplot(aes(k, SR_bias_in_hetero_males, fill = prop_SD)) +
+  mutate(percent_daughters = 100 * (1 + SR_bias_in_hetero_males)/2) %>%
+  ggplot(aes(k, percent_daughters, fill = prop_SD)) +
   geom_blank() +
   geom_raster() + 
   stat_contour(aes(z = prop_SD), colour = "grey10") +
-  geom_hline(yintercept = 0, colour = "black", linetype = 3) +
+  geom_hline(yintercept = 50, colour = "black", linetype = 3) +
   labs(x = "Strength of segregation distortion (K)", 
-       y = "Sex ratio bias in SD heterozygotes\n(postive means more daughters, negative means more sons)") +
+       y = "Offspring sex ratio when father is an SD heterozygote (% daughters)") +
   facet_wrap(~ facet, labeller = labeller(facet = label_wrap_gen(35))) + 
   scale_fill_distiller(palette = "YlGnBu", direction =  1, name = expression(paste("", hat(paste("p")), " (SD)")), limits = c(0,1)) +
-  scale_x_continuous(expand = c(0, 0), labels = c(0, 0.25, 0.5, 0.75, 1)) + scale_y_continuous(expand = c(0, 0)) +
+  scale_x_continuous(expand = c(0, 0), labels = c(0, 0.25, 0.5, 0.75, 1)) + 
+  scale_y_continuous(expand = c(0, 0), labels = ) +
   theme(panel.border = element_rect(fill = NA, colour = "black", size = .8),
         strip.background = element_rect(colour = "black", fill = "grey90", size = .8),
         legend.position = "bottom")
