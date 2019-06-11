@@ -527,7 +527,7 @@ summarise_brms(female_brms)
 ### Hypothesis testing
 **Table S8**: The results of hypothesis tests computed using the model of female fitness in Experiment 1. Each row gives the posterior estimate of a difference in means, such that the estimate is positive if mean 1 is larger than mean 2, and negative otherwise (expressed as the number of offspring produced). The mean 1 and mean 2 columns list the parent which had SD (mother, father, or both), followed by the number of SD alleles present in the offspring (0, 1 or 2). The Posterior probability column gives the probability that the mean with the smaller point estimate is actually larger than the other mean, analagously to a one-tailed p-value. The Evidence ratio (ER) column gives the ratio of evidence, such that ER = 5 means that it is 5 times more likely that the mean with the smaller point estimate really is the smaller one. Asterisks highlight rows where the posterior probability is less than 0.05.
 ```{r}
-tests3 <- hypothesis_tests(female_brms, females, divisor = 5)
+tests3 <- hypothesis_tests(female_brms, females, divisor = 5) 
 tab_S8 <- tests3 %>% clean_table()
 saveRDS(tab_S8, file = "output/tab_S8.rds")
 tab_S8 %>% pander(split.cell = 40, split.table = Inf)
@@ -565,7 +565,7 @@ summarise_brms(male_brms)
 ### Hypothesis testing
 **Table S9**: The results of hypothesis tests computed using the model of male fitness in Experiment 1. Each row gives the posterior estimate of a difference in means, such that the estimate is positive if mean 1 is larger than mean 2, and negative otherwise (expressed in % offspring sired). The mean 1 and mean 2 columns list the parent which had SD (mother, father, or both), followed by the number of SD alleles present in the offspring (0, 1 or 2). The Posterior probability column gives the probability that the mean with the smaller point estimate is actually larger than the other mean, analagously to a one-tailed p-value. The Evidence ratio (ER) column gives the ratio of evidence, such that ER = 5 means that it is 5 times more likely that the mean with the smaller point estimate really is the smaller one. Asterisks highlight rows where the posterior probability is less than 0.05.
 ```{r}
-tests4 <- hypothesis_tests(male_brms, males)
+tests4 <- hypothesis_tests(male_brms, males) 
 tab_S9 <- tests4 %>% clean_table()
 saveRDS(tab_S9, file = "output/tab_S9.rds")
 tab_S9 %>% pander(split.cell = 40, split.table = Inf)
@@ -651,7 +651,7 @@ make_expt1_multiplot <- function(...) {
 
 fig1 <- make_expt1_multiplot(
   make_plot(larvae_brms, larvae, "Juvenile fitness (% survival)") + xlab(NULL) + theme(axis.text.x = element_blank(), axis.ticks.x = element_blank()),
-  make_plot(SR_brms, SR_data, "Adult sex ratio (% males)") + xlab(NULL) + theme(axis.text.x = element_blank(), axis.ticks.x = element_blank()),
+  make_plot(SR_brms, SR_data, "Adult sex ratio (% sons)") + xlab(NULL) + theme(axis.text.x = element_blank(), axis.ticks.x = element_blank()),
   make_plot(female_brms, females, "Adult female fitness (number of progeny)", c(0, 62)) + xlab(NULL),
   make_plot(male_brms, males, "Adult male fitness (% offspring sired)", c(0, 100)) + xlab(NULL)
 )
@@ -667,8 +667,9 @@ table1 <- bind_rows(tests1 %>% mutate(Trait = "Larval survival"),
                     tests2 %>% mutate(Trait = "Sex ratio"),
                     tests3 %>% mutate(Trait = "Female fitness"),
                     tests4 %>% mutate(Trait = "Male fitness")) %>% 
+  arrange(SD, Posterior_probability) %>%
   filter(Notable == "*") %>% clean_table() %>% 
-  arrange(SD) %>% select(SD, everything())
+  select(SD, everything())
 
 write_csv(table1 %>% rename(p = `Posterior probability`), path = "figures/Table1.csv")
 table1 %>% pander(split.cell = 50, split.table = Inf) 
@@ -930,6 +931,7 @@ hypothesis_tests_expt2 <- function(model){
 }
 
 tests_expt2 <- hypothesis_tests_expt2(model_list[[1]]) %>% 
+  arrange(SD, Posterior_probability) %>%
   mutate(Estimate = format(round(Estimate, 1), nsmall = 1),  
          Est.Error = format(round(Est.Error, 1), nsmall = 1),
          CI.Lower = format(round(CI.Lower, 1), nsmall = 1),
@@ -937,8 +939,7 @@ tests_expt2 <- hypothesis_tests_expt2(model_list[[1]]) %>%
          Difference = paste(Estimate, " (", CI.Lower, " to ", CI.Upper, ")", sep = ""),
          Comparison = paste(Mean_1, "-", Mean_2),
          Error = Est.Error) %>%
-  select(SD, Comparison, Difference, Error, Posterior_probability, Notable) %>% 
-  arrange(SD, Comparison)
+  select(SD, Comparison, Difference, Error, Posterior_probability, Notable)
 ```
 
 **Table 2**: List of the all the notable differences between groups in Experiment 2 (posterior probability $<$0.05; see Table S10 for the remaining results). For each group, we list the sex of the focal larvae, their genotype (_SD_ or _CyO_), and the parent that carried _SD_ (mother or father). The difference in means is expressed in % larvae surviving; other details are as in Table 1.

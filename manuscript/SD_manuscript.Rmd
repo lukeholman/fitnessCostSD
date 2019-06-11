@@ -33,8 +33,9 @@ table1$Comparison <- gsub("-", "→", table1$Comparison)
 names(table1)[names(table1) == "Difference"] <- "Difference (95% CI)"
 table1 <- table1[, !(names(table1) %in% "Error")]
 table1$Implication <- NA
-table1$Implication[table1$Comparison == "Both parents, 0 or 1 → Both parents, 2"] <- "SD is more costly when homozygous"
-table1$Implication[table1$Comparison == "Both parents, 1 → Both parents, 2"] <- "SD is more costly when homozygous"
+table1$Comparison <- gsub(" parents", "", table1$Comparison)
+table1$Implication[table1$Comparison == "Both, 0 or 1 → Both, 2"] <- "SD is more costly when homozygous"
+table1$Implication[table1$Comparison == "Both, 1 → Both, 2"] <- "SD is more costly when homozygous"
 table1$Implication[table1$Comparison == "Neither, 0 → Mother, 0"] <- "Parental effect or genomic imprinting"
 table1$Implication[table1$Comparison == "Mother, 0 → Father, 0"] <- "Parental effect or genomic imprinting"
 table1$Implication[table1$Comparison == "Mother, 0 → Father, 0"] <- "Parental effect or genomic imprinting"
@@ -60,12 +61,12 @@ table2$Implication[table2$Comparison == "Sons, SD, mother → Sons, SD, father"]
 table2$Implication[table2$Comparison == "Sons, CyO, father → Daughters, CyO, father"] <- "Sons have lower survival than daughters"
 
 table1 <- xtable(table1, label="tb:expt1", 
-                 size = "footnotesize", digits = c(0,0,0,0,0,1,3),
-                 caption = "\\footnotesize{List of the all the notable differences between groups in Experiment 1 (posterior probability, $p$, $<$0.05; see Tables S6-S9 for test results that did not meet this arbitrary cutoff). For each contast, we give the parent carrying SD (neither, mother, father, or both) and the number of SD alleles carried by the offspring. The difference in means is expressed as \\% larvae surviving, \\% male larvae, per-female progeny production, or \\% offspring sired, and the parentheses give 95\\% credible intervals. The difference is positive when the first-listed mean is larger than the second-listed mean, and negative otherwise.}") 
+                 size = "footnotesize", digits = c(0,0,0,0,0,3,0),
+                 caption = "\\footnotesize{List of all the notable differences between groups in Experiment 1 (posterior probability, $p$, $<$0.05; see Tables S6-S9 for test results that did not meet this arbitrary cutoff). For each contast, we list the parent(s) that carried \\textit{SD} (neither, mother, father, or both) and the number of \\textit{SD} alleles carried by the offspring. The difference in means is expressed in the original units (i.e. \\% larvae surviving, \\% male larvae, per-female progeny production, or \\% offspring sired), and the parentheses give 95\\% credible intervals on each difference. The difference is positive when the first-listed mean is larger than the second-listed mean, and negative otherwise. The final column explains the biological implication of each difference.}") 
 
                  
 table2 <- xtable(table2, label="tb:expt2", 
-                 size = "footnotesize", digits = c(0,0,0,0,1,3),
+                 size = "footnotesize", digits = c(0,0,0,0,3,0),
                  caption = "\\footnotesize{List of the all the notable differences between groups in Experiment 2 (posterior probability, $p$, $<$0.05; see Table S10 for test results that did not meet this arbitrary cutoff). For each group, we list the sex of the focal larvae, their genotype (\\textit{SD} or \\textit{CyO}), and the parent that carried \\textit{SD} (mother or father). The difference in means is expressed in \\% larvae surviving; other details are as in Table 1.}") 
 
 
@@ -156,7 +157,7 @@ Posterior estimates of mean fitness for each group are plotted in Figure 1. Tabl
 \end{figure}
 
 ```{r results='asis'}
-print(table1, booktabs=TRUE, size='footnotesize', include.rownames = FALSE, caption.placement = "top")
+print(table1, booktabs=TRUE, size='scriptsize', include.rownames = FALSE, caption.placement = "top")
 ```
 
 ### Juvenile fitness
@@ -184,7 +185,7 @@ Experiment 2 also suggested that _SD_ chromosomes can have both direct and trans
 \end{figure}
 
 ```{r results='asis'}
-print(table2, booktabs=TRUE, size='footnotesize', include.rownames = FALSE, caption.placement = "top")
+print(table2, booktabs=TRUE, size='scriptsize', include.rownames = FALSE, caption.placement = "top")
 ```
 
 

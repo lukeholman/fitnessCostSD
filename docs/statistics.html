@@ -341,7 +341,7 @@ div.section {
 
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
-<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span>
 </button>
 </p>
 <div id="workflowr-report" class="collapse">
@@ -350,7 +350,7 @@ div.section {
 <a data-toggle="tab" href="#summary">Summary</a>
 </li>
 <li>
-<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> </a>
+<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -362,7 +362,7 @@ div.section {
 <strong>Last updated:</strong> 2019-06-11
 </p>
 <p>
-<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 5 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>fitnessCostSD/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
@@ -378,12 +378,12 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges"> <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
+<div id="strongRMarkdownfilestronguncommittedchanges" class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
 </div>
 </div>
 </div>
@@ -438,10 +438,10 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtreea85b1fcdd1536bbc05c2c995872934359df18a64targetblanka85b1fca"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/fitnessCostSD/tree/a85b1fcdd1536bbc05c2c995872934359df18a64" target="_blank">a85b1fc</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtree0648e581adba4fae528e02a6a97b6db7c890abactargetblank0648e58a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/fitnessCostSD/tree/0648e581adba4fae528e02a6a97b6db7c890abac" target="_blank">0648e58</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtreea85b1fcdd1536bbc05c2c995872934359df18a64targetblanka85b1fca" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtree0648e581adba4fae528e02a6a97b6db7c890abactargetblank0648e58a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -451,6 +451,7 @@ Ignored files:
     Ignored:    .DS_Store
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
+    Ignored:    analysis/figure/
     Ignored:    data/.DS_Store
     Ignored:    data/SD_k tests_2018_04_05.xlsx
     Ignored:    data/clean_data/.DS_Store
@@ -462,6 +463,15 @@ Ignored files:
     Ignored:    docs/figure/evolutionary_simulation_SD.Rmd/
     Ignored:    manuscript/.DS_Store
     Ignored:    output/
+
+Unstaged changes:
+    Modified:   analysis/statistics.Rmd
+    Modified:   figures/Table1.csv
+    Modified:   figures/Table2.csv
+    Modified:   figures/fig1.pdf
+    Modified:   figures/fig2.pdf
+    Modified:   manuscript/SD_manuscript.Rmd
+    Modified:   manuscript/SD_manuscript.pdf
 
 </code></pre>
 <p>
@@ -500,6 +510,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/lukeholman/fitnessCostSD/0648e581adba4fae528e02a6a97b6db7c890abac/docs/statistics.html" target="_blank">0648e58</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2019-06-11
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -4340,7 +4367,7 @@ lukeholman
 <div id="hypothesis-testing-2" class="section level3">
 <h3>Hypothesis testing</h3>
 <p><strong>Table S8</strong>: The results of hypothesis tests computed using the model of female fitness in Experiment 1. Each row gives the posterior estimate of a difference in means, such that the estimate is positive if mean 1 is larger than mean 2, and negative otherwise (expressed as the number of offspring produced). The mean 1 and mean 2 columns list the parent which had SD (mother, father, or both), followed by the number of SD alleles present in the offspring (0, 1 or 2). The Posterior probability column gives the probability that the mean with the smaller point estimate is actually larger than the other mean, analagously to a one-tailed p-value. The Evidence ratio (ER) column gives the ratio of evidence, such that ER = 5 means that it is 5 times more likely that the mean with the smaller point estimate really is the smaller one. Asterisks highlight rows where the posterior probability is less than 0.05.</p>
-<pre class="r"><code>tests3 &lt;- hypothesis_tests(female_brms, females, divisor = 5)
+<pre class="r"><code>tests3 &lt;- hypothesis_tests(female_brms, females, divisor = 5) 
 tab_S8 &lt;- tests3 %&gt;% clean_table()
 saveRDS(tab_S8, file = &quot;output/tab_S8.rds&quot;)
 tab_S8 %&gt;% pander(split.cell = 40, split.table = Inf)</code></pre>
@@ -4992,7 +5019,7 @@ lukeholman
 <div id="hypothesis-testing-3" class="section level3">
 <h3>Hypothesis testing</h3>
 <p><strong>Table S9</strong>: The results of hypothesis tests computed using the model of male fitness in Experiment 1. Each row gives the posterior estimate of a difference in means, such that the estimate is positive if mean 1 is larger than mean 2, and negative otherwise (expressed in % offspring sired). The mean 1 and mean 2 columns list the parent which had SD (mother, father, or both), followed by the number of SD alleles present in the offspring (0, 1 or 2). The Posterior probability column gives the probability that the mean with the smaller point estimate is actually larger than the other mean, analagously to a one-tailed p-value. The Evidence ratio (ER) column gives the ratio of evidence, such that ER = 5 means that it is 5 times more likely that the mean with the smaller point estimate really is the smaller one. Asterisks highlight rows where the posterior probability is less than 0.05.</p>
-<pre class="r"><code>tests4 &lt;- hypothesis_tests(male_brms, males)
+<pre class="r"><code>tests4 &lt;- hypothesis_tests(male_brms, males) 
 tab_S9 &lt;- tests4 %&gt;% clean_table()
 saveRDS(tab_S9, file = &quot;output/tab_S9.rds&quot;)
 tab_S9 %&gt;% pander(split.cell = 40, split.table = Inf)</code></pre>
@@ -5292,8 +5319,9 @@ lukeholman
                     tests2 %&gt;% mutate(Trait = &quot;Sex ratio&quot;),
                     tests3 %&gt;% mutate(Trait = &quot;Female fitness&quot;),
                     tests4 %&gt;% mutate(Trait = &quot;Male fitness&quot;)) %&gt;% 
+  arrange(SD, Posterior_probability) %&gt;%
   filter(Notable == &quot;*&quot;) %&gt;% clean_table() %&gt;% 
-  arrange(SD) %&gt;% select(SD, everything())
+  select(SD, everything())
 
 write_csv(table1 %&gt;% rename(p = `Posterior probability`), path = &quot;figures/Table1.csv&quot;)
 table1 %&gt;% pander(split.cell = 50, split.table = Inf) </code></pre>
@@ -5327,38 +5355,6 @@ table1 %&gt;% pander(split.cell = 50, split.table = Inf) </code></pre>
 </tr>
 <tr class="even">
 <td align="center">SD-5</td>
-<td align="center">Female fitness</td>
-<td align="center">Neither, 0 - Mother, 0</td>
-<td align="center">-14.4 (-28.6 to -0.4)</td>
-<td align="center">7.0</td>
-<td align="center">0.02187</td>
-</tr>
-<tr class="odd">
-<td align="center">SD-5</td>
-<td align="center">Female fitness</td>
-<td align="center">Mother, 0 - Father, 0</td>
-<td align="center">16.4 ( 1.0 to 31.0)</td>
-<td align="center">7.6</td>
-<td align="center">0.01862</td>
-</tr>
-<tr class="even">
-<td align="center">SD-5</td>
-<td align="center">Female fitness</td>
-<td align="center">Mother, 0 - Mother, 1</td>
-<td align="center">12.5 ( -0.2 to 26.1)</td>
-<td align="center">6.6</td>
-<td align="center">0.02687</td>
-</tr>
-<tr class="odd">
-<td align="center">SD-5</td>
-<td align="center">Male fitness</td>
-<td align="center">Mother, 1 - Father, 1</td>
-<td align="center">20.0 ( 5.5 to 39.2)</td>
-<td align="center">8.8</td>
-<td align="center">0.003375</td>
-</tr>
-<tr class="even">
-<td align="center">SD-5</td>
 <td align="center">Male fitness</td>
 <td align="center">Mother, 0 - Mother, 1</td>
 <td align="center">61.6 ( 41.0 to 77.7)</td>
@@ -5374,44 +5370,44 @@ table1 %&gt;% pander(split.cell = 50, split.table = Inf) </code></pre>
 <td align="center">0</td>
 </tr>
 <tr class="even">
+<td align="center">SD-5</td>
+<td align="center">Male fitness</td>
+<td align="center">Mother, 1 - Father, 1</td>
+<td align="center">20.0 ( 5.5 to 39.2)</td>
+<td align="center">8.8</td>
+<td align="center">0.003375</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-5</td>
+<td align="center">Female fitness</td>
+<td align="center">Mother, 0 - Father, 0</td>
+<td align="center">16.4 ( 1.0 to 31.0)</td>
+<td align="center">7.6</td>
+<td align="center">0.01862</td>
+</tr>
+<tr class="even">
+<td align="center">SD-5</td>
+<td align="center">Female fitness</td>
+<td align="center">Neither, 0 - Mother, 0</td>
+<td align="center">-14.4 (-28.6 to -0.4)</td>
+<td align="center">7.0</td>
+<td align="center">0.02187</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-5</td>
+<td align="center">Female fitness</td>
+<td align="center">Mother, 0 - Mother, 1</td>
+<td align="center">12.5 ( -0.2 to 26.1)</td>
+<td align="center">6.6</td>
+<td align="center">0.02687</td>
+</tr>
+<tr class="even">
 <td align="center">SD-72</td>
 <td align="center">Larval survival</td>
 <td align="center">Both parents, 0 or 1 - Both parents, 2</td>
 <td align="center">77.5 ( 63.6 to 87.8)</td>
 <td align="center">6.1</td>
 <td align="center">0</td>
-</tr>
-<tr class="odd">
-<td align="center">SD-Mad</td>
-<td align="center">Sex ratio</td>
-<td align="center">Neither, 0 - Father, 0</td>
-<td align="center">11.1 ( -0.8 to 23.0)</td>
-<td align="center">6.0</td>
-<td align="center">0.03387</td>
-</tr>
-<tr class="even">
-<td align="center">SD-Mad</td>
-<td align="center">Sex ratio</td>
-<td align="center">Mother, 1 - Father, 1</td>
-<td align="center">18.3 ( 7.1 to 29.7)</td>
-<td align="center">5.7</td>
-<td align="center">0.001375</td>
-</tr>
-<tr class="odd">
-<td align="center">SD-Mad</td>
-<td align="center">Female fitness</td>
-<td align="center">Neither, 0 - Mother, 0</td>
-<td align="center">-18.7 (-34.7 to -3.8)</td>
-<td align="center">7.8</td>
-<td align="center">0.005875</td>
-</tr>
-<tr class="even">
-<td align="center">SD-Mad</td>
-<td align="center">Female fitness</td>
-<td align="center">Mother, 0 - Father, 0</td>
-<td align="center">17.0 ( 3.2 to 32.6)</td>
-<td align="center">7.5</td>
-<td align="center">0.008625</td>
 </tr>
 <tr class="odd">
 <td align="center">SD-Mad</td>
@@ -5424,6 +5420,38 @@ table1 %&gt;% pander(split.cell = 50, split.table = Inf) </code></pre>
 <tr class="even">
 <td align="center">SD-Mad</td>
 <td align="center">Male fitness</td>
+<td align="center">Both parents, 1 - Both parents, 2</td>
+<td align="center">70.6 ( 54.2 to 82.6)</td>
+<td align="center">7.2</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-Mad</td>
+<td align="center">Sex ratio</td>
+<td align="center">Mother, 1 - Father, 1</td>
+<td align="center">18.3 ( 7.1 to 29.7)</td>
+<td align="center">5.7</td>
+<td align="center">0.001375</td>
+</tr>
+<tr class="even">
+<td align="center">SD-Mad</td>
+<td align="center">Female fitness</td>
+<td align="center">Neither, 0 - Mother, 0</td>
+<td align="center">-18.7 (-34.7 to -3.8)</td>
+<td align="center">7.8</td>
+<td align="center">0.005875</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-Mad</td>
+<td align="center">Female fitness</td>
+<td align="center">Mother, 0 - Father, 0</td>
+<td align="center">17.0 ( 3.2 to 32.6)</td>
+<td align="center">7.5</td>
+<td align="center">0.008625</td>
+</tr>
+<tr class="even">
+<td align="center">SD-Mad</td>
+<td align="center">Male fitness</td>
 <td align="center">Father, 0 - Father, 1</td>
 <td align="center">-11.5 (-26.7 to 0.6)</td>
 <td align="center">6.9</td>
@@ -5431,11 +5459,11 @@ table1 %&gt;% pander(split.cell = 50, split.table = Inf) </code></pre>
 </tr>
 <tr class="odd">
 <td align="center">SD-Mad</td>
-<td align="center">Male fitness</td>
-<td align="center">Both parents, 1 - Both parents, 2</td>
-<td align="center">70.6 ( 54.2 to 82.6)</td>
-<td align="center">7.2</td>
-<td align="center">0</td>
+<td align="center">Sex ratio</td>
+<td align="center">Neither, 0 - Father, 0</td>
+<td align="center">11.1 ( -0.8 to 23.0)</td>
+<td align="center">6.0</td>
+<td align="center">0.03387</td>
 </tr>
 </tbody>
 </table>
@@ -6077,6 +6105,7 @@ lukeholman
 }
 
 tests_expt2 &lt;- hypothesis_tests_expt2(model_list[[1]]) %&gt;% 
+  arrange(SD, Posterior_probability) %&gt;%
   mutate(Estimate = format(round(Estimate, 1), nsmall = 1),  
          Est.Error = format(round(Est.Error, 1), nsmall = 1),
          CI.Lower = format(round(CI.Lower, 1), nsmall = 1),
@@ -6084,8 +6113,7 @@ tests_expt2 &lt;- hypothesis_tests_expt2(model_list[[1]]) %&gt;%
          Difference = paste(Estimate, &quot; (&quot;, CI.Lower, &quot; to &quot;, CI.Upper, &quot;)&quot;, sep = &quot;&quot;),
          Comparison = paste(Mean_1, &quot;-&quot;, Mean_2),
          Error = Est.Error) %&gt;%
-  select(SD, Comparison, Difference, Error, Posterior_probability, Notable) %&gt;% 
-  arrange(SD, Comparison)</code></pre>
+  select(SD, Comparison, Difference, Error, Posterior_probability, Notable)</code></pre>
 <p><strong>Table 2</strong>: List of the all the notable differences between groups in Experiment 2 (posterior probability $&lt;$0.05; see Table S10 for the remaining results). For each group, we list the sex of the focal larvae, their genotype (<em>SD</em> or <em>CyO</em>), and the parent that carried <em>SD</em> (mother or father). The difference in means is expressed in % larvae surviving; other details are as in Table 1.</p>
 <pre class="r"><code>table2 &lt;- tests_expt2 %&gt;% 
   filter(Notable == &quot;*&quot;) %&gt;% select(-Notable) 
@@ -6112,24 +6140,24 @@ table2 %&gt;% pander(split.cell = 50, split.table = Inf)</code></pre>
 <tbody>
 <tr class="odd">
 <td align="center">SD-5</td>
-<td align="center">Daughters, CyO, mother - Daughters, SD, mother</td>
-<td align="center">4.6 ( -0.6 to 10.0)</td>
-<td align="center">2.7</td>
-<td align="center">0.041</td>
-</tr>
-<tr class="even">
-<td align="center">SD-5</td>
 <td align="center">Sons, CyO, mother - Daughters, CyO, mother</td>
 <td align="center">-10.7 (-19.4 to -2.0)</td>
 <td align="center">4.5</td>
 <td align="center">0.00825</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">SD-5</td>
 <td align="center">Sons, CyO, mother - Sons, CyO, father</td>
 <td align="center">-10.7 (-19.8 to -1.5)</td>
 <td align="center">4.6</td>
 <td align="center">0.0105</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-5</td>
+<td align="center">Sons, SD, mother - Sons, SD, father</td>
+<td align="center">-9.7 (-19.4 to -0.1)</td>
+<td align="center">5.0</td>
+<td align="center">0.02475</td>
 </tr>
 <tr class="even">
 <td align="center">SD-5</td>
@@ -6140,17 +6168,17 @@ table2 %&gt;% pander(split.cell = 50, split.table = Inf)</code></pre>
 </tr>
 <tr class="odd">
 <td align="center">SD-5</td>
-<td align="center">Sons, SD, mother - Sons, SD, father</td>
-<td align="center">-9.7 (-19.4 to -0.1)</td>
-<td align="center">5.0</td>
-<td align="center">0.02475</td>
+<td align="center">Daughters, CyO, mother - Daughters, SD, mother</td>
+<td align="center">4.6 ( -0.6 to 10.0)</td>
+<td align="center">2.7</td>
+<td align="center">0.041</td>
 </tr>
 <tr class="even">
 <td align="center">SD-72</td>
-<td align="center">Sons, CyO, father - Daughters, CyO, father</td>
-<td align="center">-7.0 (-15.5 to 1.0)</td>
-<td align="center">4.2</td>
-<td align="center">0.04475</td>
+<td align="center">Sons, SD, mother - Daughters, SD, mother</td>
+<td align="center">-9.9 (-15.8 to -4.2)</td>
+<td align="center">3.0</td>
+<td align="center">5e-04</td>
 </tr>
 <tr class="odd">
 <td align="center">SD-72</td>
@@ -6161,24 +6189,24 @@ table2 %&gt;% pander(split.cell = 50, split.table = Inf)</code></pre>
 </tr>
 <tr class="even">
 <td align="center">SD-72</td>
-<td align="center">Sons, SD, mother - Daughters, SD, mother</td>
-<td align="center">-9.9 (-15.8 to -4.2)</td>
-<td align="center">3.0</td>
-<td align="center">5e-04</td>
+<td align="center">Sons, CyO, father - Daughters, CyO, father</td>
+<td align="center">-7.0 (-15.5 to 1.0)</td>
+<td align="center">4.2</td>
+<td align="center">0.04475</td>
 </tr>
 <tr class="odd">
-<td align="center">SD-Mad</td>
-<td align="center">Daughters, CyO, mother - Daughters, SD, mother</td>
-<td align="center">5.4 ( 1.2 to 9.9)</td>
-<td align="center">2.2</td>
-<td align="center">0.00675</td>
-</tr>
-<tr class="even">
 <td align="center">SD-Mad</td>
 <td align="center">Sons, CyO, mother - Daughters, CyO, mother</td>
 <td align="center">-9.4 (-16.3 to -2.7)</td>
 <td align="center">3.5</td>
 <td align="center">0.00225</td>
+</tr>
+<tr class="even">
+<td align="center">SD-Mad</td>
+<td align="center">Daughters, CyO, mother - Daughters, SD, mother</td>
+<td align="center">5.4 ( 1.2 to 9.9)</td>
+<td align="center">2.2</td>
+<td align="center">0.00675</td>
 </tr>
 <tr class="odd">
 <td align="center">SD-Mad</td>
@@ -6214,19 +6242,35 @@ tests_expt2 %&gt;% pander(split.cell = 50, split.table = Inf) </code></pre>
 <tbody>
 <tr class="odd">
 <td align="center">SD-5</td>
-<td align="center">Daughters, CyO, father - Daughters, SD, father</td>
-<td align="center">1.2 ( -3.5 to 6.3)</td>
-<td align="center">2.5</td>
-<td align="center">0.3105</td>
-<td align="center"></td>
+<td align="center">Sons, CyO, mother - Daughters, CyO, mother</td>
+<td align="center">-10.7 (-19.4 to -2.0)</td>
+<td align="center">4.5</td>
+<td align="center">0.00825</td>
+<td align="center">*</td>
 </tr>
 <tr class="even">
 <td align="center">SD-5</td>
-<td align="center">Daughters, CyO, mother - Daughters, CyO, father</td>
-<td align="center">-2.5 ( -9.8 to 4.8)</td>
-<td align="center">3.7</td>
-<td align="center">0.2448</td>
-<td align="center"></td>
+<td align="center">Sons, CyO, mother - Sons, CyO, father</td>
+<td align="center">-10.7 (-19.8 to -1.5)</td>
+<td align="center">4.6</td>
+<td align="center">0.0105</td>
+<td align="center">*</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-5</td>
+<td align="center">Sons, SD, mother - Sons, SD, father</td>
+<td align="center">-9.7 (-19.4 to -0.1)</td>
+<td align="center">5.0</td>
+<td align="center">0.02475</td>
+<td align="center">*</td>
+</tr>
+<tr class="even">
+<td align="center">SD-5</td>
+<td align="center">Sons, SD, mother - Daughters, SD, mother</td>
+<td align="center">-9.1 (-18.7 to 0.4)</td>
+<td align="center">4.8</td>
+<td align="center">0.028</td>
+<td align="center">*</td>
 </tr>
 <tr class="odd">
 <td align="center">SD-5</td>
@@ -6246,42 +6290,10 @@ tests_expt2 %&gt;% pander(split.cell = 50, split.table = Inf) </code></pre>
 </tr>
 <tr class="odd">
 <td align="center">SD-5</td>
-<td align="center">Sons, CyO, father - Daughters, CyO, father</td>
-<td align="center">-2.5 (-10.4 to 4.9)</td>
-<td align="center">3.9</td>
-<td align="center">0.2597</td>
-<td align="center"></td>
-</tr>
-<tr class="even">
-<td align="center">SD-5</td>
 <td align="center">Sons, CyO, father - Sons, SD, father</td>
 <td align="center">4.0 ( -1.8 to 10.0)</td>
 <td align="center">3.0</td>
 <td align="center">0.08675</td>
-<td align="center"></td>
-</tr>
-<tr class="odd">
-<td align="center">SD-5</td>
-<td align="center">Sons, CyO, mother - Daughters, CyO, mother</td>
-<td align="center">-10.7 (-19.4 to -2.0)</td>
-<td align="center">4.5</td>
-<td align="center">0.00825</td>
-<td align="center">*</td>
-</tr>
-<tr class="even">
-<td align="center">SD-5</td>
-<td align="center">Sons, CyO, mother - Sons, CyO, father</td>
-<td align="center">-10.7 (-19.8 to -1.5)</td>
-<td align="center">4.6</td>
-<td align="center">0.0105</td>
-<td align="center">*</td>
-</tr>
-<tr class="odd">
-<td align="center">SD-5</td>
-<td align="center">Sons, CyO, mother - Sons, SD, mother</td>
-<td align="center">3.1 ( -2.8 to 9.0)</td>
-<td align="center">3.0</td>
-<td align="center">0.1493</td>
 <td align="center"></td>
 </tr>
 <tr class="even">
@@ -6294,98 +6306,34 @@ tests_expt2 %&gt;% pander(split.cell = 50, split.table = Inf) </code></pre>
 </tr>
 <tr class="odd">
 <td align="center">SD-5</td>
-<td align="center">Sons, SD, mother - Daughters, SD, mother</td>
-<td align="center">-9.1 (-18.7 to 0.4)</td>
-<td align="center">4.8</td>
-<td align="center">0.028</td>
-<td align="center">*</td>
+<td align="center">Sons, CyO, mother - Sons, SD, mother</td>
+<td align="center">3.1 ( -2.8 to 9.0)</td>
+<td align="center">3.0</td>
+<td align="center">0.1493</td>
+<td align="center"></td>
 </tr>
 <tr class="even">
 <td align="center">SD-5</td>
-<td align="center">Sons, SD, mother - Sons, SD, father</td>
-<td align="center">-9.7 (-19.4 to -0.1)</td>
-<td align="center">5.0</td>
-<td align="center">0.02475</td>
-<td align="center">*</td>
-</tr>
-<tr class="odd">
-<td align="center">SD-72</td>
-<td align="center">Daughters, CyO, father - Daughters, SD, father</td>
-<td align="center">0.3 ( -4.4 to 5.0)</td>
-<td align="center">2.4</td>
-<td align="center">0.449</td>
-<td align="center"></td>
-</tr>
-<tr class="even">
-<td align="center">SD-72</td>
 <td align="center">Daughters, CyO, mother - Daughters, CyO, father</td>
-<td align="center">1.2 ( -4.7 to 7.4)</td>
-<td align="center">3.0</td>
-<td align="center">0.3395</td>
+<td align="center">-2.5 ( -9.8 to 4.8)</td>
+<td align="center">3.7</td>
+<td align="center">0.2448</td>
 <td align="center"></td>
 </tr>
 <tr class="odd">
-<td align="center">SD-72</td>
-<td align="center">Daughters, CyO, mother - Daughters, SD, mother</td>
-<td align="center">-2.3 ( -5.9 to 1.1)</td>
-<td align="center">1.8</td>
-<td align="center">0.0875</td>
-<td align="center"></td>
-</tr>
-<tr class="even">
-<td align="center">SD-72</td>
-<td align="center">Daughters, SD, mother - Daughters, SD, father</td>
-<td align="center">3.8 ( -1.6 to 9.9)</td>
-<td align="center">2.9</td>
-<td align="center">0.08525</td>
-<td align="center"></td>
-</tr>
-<tr class="odd">
-<td align="center">SD-72</td>
+<td align="center">SD-5</td>
 <td align="center">Sons, CyO, father - Daughters, CyO, father</td>
-<td align="center">-7.0 (-15.5 to 1.0)</td>
-<td align="center">4.2</td>
-<td align="center">0.04475</td>
-<td align="center">*</td>
-</tr>
-<tr class="even">
-<td align="center">SD-72</td>
-<td align="center">Sons, CyO, father - Sons, SD, father</td>
-<td align="center">-2.2 ( -8.8 to 3.8)</td>
-<td align="center">3.2</td>
-<td align="center">0.2433</td>
-<td align="center"></td>
-</tr>
-<tr class="odd">
-<td align="center">SD-72</td>
-<td align="center">Sons, CyO, mother - Daughters, CyO, mother</td>
-<td align="center">-11.0 (-17.9 to -4.3)</td>
-<td align="center">3.5</td>
-<td align="center">0.00075</td>
-<td align="center">*</td>
-</tr>
-<tr class="even">
-<td align="center">SD-72</td>
-<td align="center">Sons, CyO, mother - Sons, CyO, father</td>
-<td align="center">-2.7 (-11.4 to 6.3)</td>
-<td align="center">4.5</td>
-<td align="center">0.2742</td>
-<td align="center"></td>
-</tr>
-<tr class="odd">
-<td align="center">SD-72</td>
-<td align="center">Sons, CyO, mother - Sons, SD, mother</td>
-<td align="center">-3.4 ( -8.1 to 1.2)</td>
-<td align="center">2.4</td>
-<td align="center">0.074</td>
+<td align="center">-2.5 (-10.4 to 4.9)</td>
+<td align="center">3.9</td>
+<td align="center">0.2597</td>
 <td align="center"></td>
 </tr>
 <tr class="even">
-<td align="center">SD-72</td>
-<td align="center">Sons, SD, father - Daughters, SD, father</td>
-<td align="center">-4.5 (-12.7 to 3.3)</td>
-<td align="center">4.1</td>
-<td align="center">0.1335</td>
+<td align="center">SD-5</td>
+<td align="center">Daughters, CyO, father - Daughters, SD, father</td>
+<td align="center">1.2 ( -3.5 to 6.3)</td>
+<td align="center">2.5</td>
+<td align="center">0.3105</td>
 <td align="center"></td>
 </tr>
 <tr class="odd">
@@ -6398,58 +6346,90 @@ tests_expt2 %&gt;% pander(split.cell = 50, split.table = Inf) </code></pre>
 </tr>
 <tr class="even">
 <td align="center">SD-72</td>
+<td align="center">Sons, CyO, mother - Daughters, CyO, mother</td>
+<td align="center">-11.0 (-17.9 to -4.3)</td>
+<td align="center">3.5</td>
+<td align="center">0.00075</td>
+<td align="center">*</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-72</td>
+<td align="center">Sons, CyO, father - Daughters, CyO, father</td>
+<td align="center">-7.0 (-15.5 to 1.0)</td>
+<td align="center">4.2</td>
+<td align="center">0.04475</td>
+<td align="center">*</td>
+</tr>
+<tr class="even">
+<td align="center">SD-72</td>
+<td align="center">Sons, CyO, mother - Sons, SD, mother</td>
+<td align="center">-3.4 ( -8.1 to 1.2)</td>
+<td align="center">2.4</td>
+<td align="center">0.074</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SD-72</td>
+<td align="center">Daughters, SD, mother - Daughters, SD, father</td>
+<td align="center">3.8 ( -1.6 to 9.9)</td>
+<td align="center">2.9</td>
+<td align="center">0.08525</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SD-72</td>
+<td align="center">Daughters, CyO, mother - Daughters, SD, mother</td>
+<td align="center">-2.3 ( -5.9 to 1.1)</td>
+<td align="center">1.8</td>
+<td align="center">0.0875</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SD-72</td>
+<td align="center">Sons, SD, father - Daughters, SD, father</td>
+<td align="center">-4.5 (-12.7 to 3.3)</td>
+<td align="center">4.1</td>
+<td align="center">0.1335</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SD-72</td>
+<td align="center">Sons, CyO, father - Sons, SD, father</td>
+<td align="center">-2.2 ( -8.8 to 3.8)</td>
+<td align="center">3.2</td>
+<td align="center">0.2433</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SD-72</td>
+<td align="center">Sons, CyO, mother - Sons, CyO, father</td>
+<td align="center">-2.7 (-11.4 to 6.3)</td>
+<td align="center">4.5</td>
+<td align="center">0.2742</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SD-72</td>
+<td align="center">Daughters, CyO, mother - Daughters, CyO, father</td>
+<td align="center">1.2 ( -4.7 to 7.4)</td>
+<td align="center">3.0</td>
+<td align="center">0.3395</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SD-72</td>
 <td align="center">Sons, SD, mother - Sons, SD, father</td>
 <td align="center">-1.5 ( -9.3 to 6.4)</td>
 <td align="center">4.1</td>
 <td align="center">0.354</td>
 <td align="center"></td>
 </tr>
-<tr class="odd">
-<td align="center">SD-Mad</td>
+<tr class="even">
+<td align="center">SD-72</td>
 <td align="center">Daughters, CyO, father - Daughters, SD, father</td>
-<td align="center">-0.8 ( -6.9 to 5.2)</td>
-<td align="center">3.1</td>
-<td align="center">0.4085</td>
-<td align="center"></td>
-</tr>
-<tr class="even">
-<td align="center">SD-Mad</td>
-<td align="center">Daughters, CyO, mother - Daughters, CyO, father</td>
-<td align="center">2.8 ( -4.3 to 10.7)</td>
-<td align="center">3.8</td>
-<td align="center">0.236</td>
-<td align="center"></td>
-</tr>
-<tr class="odd">
-<td align="center">SD-Mad</td>
-<td align="center">Daughters, CyO, mother - Daughters, SD, mother</td>
-<td align="center">5.4 ( 1.2 to 9.9)</td>
-<td align="center">2.2</td>
-<td align="center">0.00675</td>
-<td align="center">*</td>
-</tr>
-<tr class="even">
-<td align="center">SD-Mad</td>
-<td align="center">Daughters, SD, mother - Daughters, SD, father</td>
-<td align="center">-3.4 (-11.0 to 4.9)</td>
-<td align="center">4.0</td>
-<td align="center">0.1965</td>
-<td align="center"></td>
-</tr>
-<tr class="odd">
-<td align="center">SD-Mad</td>
-<td align="center">Sons, CyO, father - Daughters, CyO, father</td>
-<td align="center">1.1 ( -7.8 to 9.8)</td>
-<td align="center">4.5</td>
-<td align="center">0.4127</td>
-<td align="center"></td>
-</tr>
-<tr class="even">
-<td align="center">SD-Mad</td>
-<td align="center">Sons, CyO, father - Sons, SD, father</td>
-<td align="center">2.2 ( -4.1 to 8.7)</td>
-<td align="center">3.2</td>
-<td align="center">0.2318</td>
+<td align="center">0.3 ( -4.4 to 5.0)</td>
+<td align="center">2.4</td>
+<td align="center">0.449</td>
 <td align="center"></td>
 </tr>
 <tr class="odd">
@@ -6462,13 +6442,21 @@ tests_expt2 %&gt;% pander(split.cell = 50, split.table = Inf) </code></pre>
 </tr>
 <tr class="even">
 <td align="center">SD-Mad</td>
+<td align="center">Daughters, CyO, mother - Daughters, SD, mother</td>
+<td align="center">5.4 ( 1.2 to 9.9)</td>
+<td align="center">2.2</td>
+<td align="center">0.00675</td>
+<td align="center">*</td>
+</tr>
+<tr class="odd">
+<td align="center">SD-Mad</td>
 <td align="center">Sons, CyO, mother - Sons, CyO, father</td>
 <td align="center">-7.7 (-15.6 to 0.6)</td>
 <td align="center">4.1</td>
 <td align="center">0.0345</td>
 <td align="center">*</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">SD-Mad</td>
 <td align="center">Sons, CyO, mother - Sons, SD, mother</td>
 <td align="center">-3.0 ( -8.0 to 1.9)</td>
@@ -6476,20 +6464,28 @@ tests_expt2 %&gt;% pander(split.cell = 50, split.table = Inf) </code></pre>
 <td align="center">0.1115</td>
 <td align="center"></td>
 </tr>
+<tr class="odd">
+<td align="center">SD-Mad</td>
+<td align="center">Daughters, SD, mother - Daughters, SD, father</td>
+<td align="center">-3.4 (-11.0 to 4.9)</td>
+<td align="center">4.0</td>
+<td align="center">0.1965</td>
+<td align="center"></td>
+</tr>
 <tr class="even">
 <td align="center">SD-Mad</td>
-<td align="center">Sons, SD, father - Daughters, SD, father</td>
-<td align="center">-1.9 (-10.9 to 6.7)</td>
-<td align="center">4.6</td>
-<td align="center">0.3347</td>
+<td align="center">Sons, CyO, father - Sons, SD, father</td>
+<td align="center">2.2 ( -4.1 to 8.7)</td>
+<td align="center">3.2</td>
+<td align="center">0.2318</td>
 <td align="center"></td>
 </tr>
 <tr class="odd">
 <td align="center">SD-Mad</td>
-<td align="center">Sons, SD, mother - Daughters, SD, mother</td>
-<td align="center">-1.0 ( -8.0 to 6.1)</td>
-<td align="center">3.6</td>
-<td align="center">0.3847</td>
+<td align="center">Daughters, CyO, mother - Daughters, CyO, father</td>
+<td align="center">2.8 ( -4.3 to 10.7)</td>
+<td align="center">3.8</td>
+<td align="center">0.236</td>
 <td align="center"></td>
 </tr>
 <tr class="even">
@@ -6498,6 +6494,38 @@ tests_expt2 %&gt;% pander(split.cell = 50, split.table = Inf) </code></pre>
 <td align="center">-2.5 (-10.3 to 6.3)</td>
 <td align="center">4.1</td>
 <td align="center">0.2578</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SD-Mad</td>
+<td align="center">Sons, SD, father - Daughters, SD, father</td>
+<td align="center">-1.9 (-10.9 to 6.7)</td>
+<td align="center">4.6</td>
+<td align="center">0.3347</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SD-Mad</td>
+<td align="center">Sons, SD, mother - Daughters, SD, mother</td>
+<td align="center">-1.0 ( -8.0 to 6.1)</td>
+<td align="center">3.6</td>
+<td align="center">0.3847</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">SD-Mad</td>
+<td align="center">Daughters, CyO, father - Daughters, SD, father</td>
+<td align="center">-0.8 ( -6.9 to 5.2)</td>
+<td align="center">3.1</td>
+<td align="center">0.4085</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">SD-Mad</td>
+<td align="center">Sons, CyO, father - Daughters, CyO, father</td>
+<td align="center">1.1 ( -7.8 to 9.8)</td>
+<td align="center">4.5</td>
+<td align="center">0.4127</td>
 <td align="center"></td>
 </tr>
 </tbody>
