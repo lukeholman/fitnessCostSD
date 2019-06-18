@@ -343,7 +343,7 @@ div.section {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2019-06-11
+<strong>Last updated:</strong> 2019-06-18
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -422,10 +422,10 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtree7950fbb86a936c050089951e0e2892e9893e0cfftargetblank7950fbba"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/fitnessCostSD/tree/7950fbb86a936c050089951e0e2892e9893e0cff" target="_blank">7950fbb</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtree236bdf88c5a6bcdfcb9371ee8366639964bd11dctargetblank236bdf8a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/fitnessCostSD/tree/236bdf88c5a6bcdfcb9371ee8366639964bd11dc" target="_blank">236bdf8</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtree7950fbb86a936c050089951e0e2892e9893e0cfftargetblank7950fbba" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtree236bdf88c5a6bcdfcb9371ee8366639964bd11dctargetblank236bdf8a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -435,6 +435,7 @@ Ignored files:
     Ignored:    .DS_Store
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
+    Ignored:    analysis/figure/
     Ignored:    data/.DS_Store
     Ignored:    data/SD_k tests_2018_04_05.xlsx
     Ignored:    data/clean_data/.DS_Store
@@ -484,6 +485,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/lukeholman/fitnessCostSD/3244bce7c8190da7e127e4e22ec51aec80a7e83f/docs/simulation.html" target="_blank">3244bce</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2019-06-11
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -2058,7 +2076,7 @@ parameters &lt;- rbind(
     w_hetero_male_paternal = 1,
     w_homo_male = 1,
     w_homo_female = 1,
-    facet = &quot;Cost free&quot;,
+    facet = &quot;Cost-free&quot;,
     SR_bias_in_hetero_males = seq(-0.9, 0.9, length = resolution_y),
     initial_freq_SD = 0.01
   ),
@@ -2110,7 +2128,7 @@ parameters &lt;- rbind(
     w_hetero_male_paternal = 1 - imprint_cost,
     w_homo_male = 1 - imprint_cost,
     w_homo_female = 1 - imprint_cost,
-    facet = &quot;Cost of paternal inheritance (PI)&quot;,
+    facet = &quot;SD is costly if paternally inherited (PI)&quot;,
     SR_bias_in_hetero_males = seq(-0.9, 0.9, length = resolution_y),
     initial_freq_SD = 0.01
   ),
@@ -2162,7 +2180,7 @@ parameters &lt;- rbind(
     w_hetero_male_paternal = 1,
     w_homo_male = 1 - imprint_cost,
     w_homo_female = 1 - imprint_cost,
-    facet = &quot;Cost of maternal inheritance (MI)&quot;,
+    facet = &quot;SD is costly if maternally inherited (MI)&quot;,
     SR_bias_in_hetero_males = seq(-0.9, 0.9, length = resolution_y),
     initial_freq_SD = 0.01
   ),
@@ -2209,11 +2227,17 @@ parameters &lt;- rbind(
 </div>
 <div id="run-the-simulation" class="section level2">
 <h2>Run the simulation</h2>
-<pre class="r"><code>if(!file.exists(&quot;data/simulation_output.rds&quot;)){
+<pre class="r"><code>if(file.exists(&quot;data/simulation_results.rds&quot;)){
+  completed &lt;- readRDS(&quot;data/simulation_results.rds&quot;) %&gt;% select(-genotypes, -prop_SD) %&gt;% select(!! names(parameters))
+  parameters &lt;- parameters[!(apply(parameters, 1, paste0, collapse = &quot;&quot;) %in% apply(completed, 1, paste0, collapse = &quot;&quot;)), ]
+}
+
+if(nrow(parameters) &gt; 0){
   
+  # If it&#39;s big, divide the job into 100 equal-ish chunks so that we can see the % completion as it proceeds
   cores &lt;- 7
-  # Divide the job into 100 equal-ish chunks so that we can see the % completion as it proceeds
-  split_parameters &lt;- split(parameters, sample(1:100, nrow(parameters), replace = TRUE))
+  if(nrow(parameters) &gt; 10000)  split_parameters &lt;- split(parameters, sample(1:100, nrow(parameters), replace = TRUE))
+  else split_parameters &lt;- list(parameters)
   
   for(i in 1:length(split_parameters)){
     print(i)
@@ -2222,44 +2246,21 @@ parameters &lt;- rbind(
     simulation_output &lt;- split(split_parameters[[i]], c(rep(1:(cores-1), each = chunk_size), 
                                                         rep(cores, nrow(split_parameters[[i]]) - chunk_size*(cores-1)))) %&gt;%
       future_lapply(run_many_simulations) %&gt;% do.call(&quot;rbind&quot;, .)
-    saveRDS(simulation_output, paste(&quot;data/simulation_output_&quot;, i, &quot;.rds&quot;, sep = &quot;&quot;))
+    saveRDS(simulation_output, paste(&quot;data/simulation_output_&quot;, sample(9999999999, 1), &quot;.rds&quot;, sep = &quot;&quot;))
   }
   
  simulation_output &lt;- list.files(path = &quot;data&quot;, pattern = &quot;simulation_output_&quot;, full.names = TRUE) %&gt;%
    lapply(readRDS) %&gt;% do.call(&quot;rbind&quot;, .)
- saveRDS(simulation_output, &quot;data/simulation_output.rds&quot;)
+ saveRDS(simulation_output, &quot;data/simulation_results.rds&quot;)
   
-} else {
-  simulation_output &lt;- readRDS(&quot;data/simulation_output.rds&quot;)
-  if(nrow(simulation_output) != nrow(parameters)){
-    pasted_done &lt;- apply(simulation_output[, names(simulation_output) %in% names(parameters)], 1, paste0, collapse = &quot;_&quot;)
-    pasted_to_do &lt;- apply(parameters, 1, paste0, collapse = &quot;_&quot;)
-    trimmed_parameters &lt;- parameters[!(pasted_to_do %in% pasted_done), ]
-
-    cores &lt;- 7
-    # Divide the job into 100 equal-ish chunks so that we can see the % completion as it proceeds
-    split_parameters &lt;- split(trimmed_parameters, sample(1:10, nrow(parameters), replace = TRUE))
-    
-    for(i in 1:length(split_parameters)){
-      print(i)
-      plan(&quot;multicore&quot;)
-      chunk_size &lt;- floor(nrow(split_parameters[[i]]) / cores)
-      simulation_output &lt;- split(split_parameters[[i]], c(rep(1:(cores-1), each = chunk_size), 
-                                                          rep(cores, nrow(split_parameters[[i]]) - chunk_size*(cores-1)))) %&gt;%
-        future_lapply(run_many_simulations) %&gt;% do.call(&quot;rbind&quot;, .)
-      saveRDS(simulation_output, paste(&quot;data/simulation_output_surplus_&quot;, i, &quot;.rds&quot;, sep = &quot;&quot;))
-    }
-    simulation_output &lt;- list.files(path = &quot;data&quot;, pattern = &quot;simulation_output_&quot;, full.names = TRUE) %&gt;%
-      lapply(readRDS) %&gt;% do.call(&quot;rbind&quot;, .)
-    saveRDS(simulation_output, &quot;data/simulation_output.rds&quot;)
-  }
-}
+} 
+simulation_results &lt;- readRDS(&quot;data/simulation_results.rds&quot;)
 # delete individual files
 # unlink(list.files(path = &quot;data&quot;, pattern = &quot;simulation_output_&quot;, full.names = TRUE))</code></pre>
 </div>
 <div id="make-figure-3" class="section level2">
 <h2>Make Figure 3</h2>
-<pre class="r"><code>fig_3 &lt;- simulation_output %&gt;% 
+<pre class="r"><code>fig_3 &lt;- simulation_results %&gt;% 
   mutate(percent_sons = 100 - 100 * (1 + SR_bias_in_hetero_males)/2) %&gt;%
   ggplot(aes(k, percent_sons, fill = prop_SD)) +
   geom_blank() +
@@ -2267,9 +2268,9 @@ parameters &lt;- rbind(
   stat_contour(aes(z = prop_SD), colour = &quot;grey10&quot;) +
   geom_hline(yintercept = 50, colour = &quot;black&quot;, linetype = 3) +
   labs(x = &quot;Strength of segregation distortion (K)&quot;, 
-       y = &quot;Offspring sex ratio when father is an SD heterozygote (% sons)&quot;) +
+       y = &quot;Offspring sex ratio of male SD heterozygotes (% sons)&quot;) +
   facet_wrap(~ facet, labeller = labeller(facet = label_wrap_gen(35))) + 
-  scale_fill_distiller(palette = &quot;YlGnBu&quot;, direction =  1, name = expression(paste(&quot;&quot;, hat(paste(&quot;p&quot;)), &quot; (SD)&quot;)), limits = c(0,1)) +
+  scale_fill_distiller(palette = &quot;PuRd&quot;, direction =  1, name = &quot;Equilibrium frequency of SD&quot;, limits = c(0,1)) +
   scale_x_continuous(expand = c(0, 0), labels = c(0, 0.25, 0.5, 0.75, 1)) + 
   scale_y_continuous(expand = c(0, 0), labels = ) +
   theme(panel.border = element_rect(fill = NA, colour = &quot;black&quot;, size = .8),
@@ -2301,6 +2302,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/lukeholman/fitnessCostSD/blob/3244bce7c8190da7e127e4e22ec51aec80a7e83f/docs/figure/simulation.Rmd/unnamed-chunk-9-1.png" target="_blank">3244bce</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2019-06-11
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/lukeholman/fitnessCostSD/blob/7950fbb86a936c050089951e0e2892e9893e0cff/docs/figure/simulation.Rmd/unnamed-chunk-9-1.png" target="_blank">7950fbb</a>
@@ -2339,7 +2351,7 @@ lukeholman
 </div>
 </div>
 <p><br></br></p>
-<p><strong>Figure 3</strong>: The equilibrium frequency reached by the  allele, <span class="math inline">\(\hat{p}(SD)\)</span>, depends on the strength of segregataion distortion (<span class="math inline">\(K\)</span> = 0 indicates fair meiosis, <span class="math inline">\(K\)</span> = 1 means that heterozygotes transmit only the  allele) and the direction and strength of sex ratio bias in the progeny of  heterozygote males. The four columns make different assumptions about the fitness costs to individuals carrying the  allele (see Results), while the three rows assume either that  has no parent-of-origin-specific effects on fitness (top row), or that  is especially costly when paternally inherited (middle row) or maternally inherited (bottom row).</p>
+<p><strong>Figure 3</strong>: The equilibrium frequency reached by the  allele depends on the strength of segregataion distortion (<span class="math inline">\(K\)</span> = 0 indicates fair meiosis, <span class="math inline">\(K\)</span> = 1 means that heterozygotes transmit only the  allele) and the direction and strength of sex ratio bias in the progeny of  heterozygote males. The four columns make different assumptions about the fitness costs to individuals carrying the  allele (see Results), while the three rows assume either that  has no parent-of-origin-specific effects on fitness (top row), or that  is especially costly when paternally inherited (middle row) or maternally inherited (bottom row).</p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
