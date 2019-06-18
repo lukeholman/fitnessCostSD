@@ -28,6 +28,7 @@ summarise_brms <- function(brmsfit){
 } 
 ```
 
+
 ### Load and clean the data
 This section also saves a copy of the cleaned data in the directory `data/cleaned_data`. If you wish to re-use the data, I suggest you use these cleaned files; the factor and level names are more intuitive than in the original data sheets (however, the actual data are identical).
 ```{r results='hide', message=FALSE, warning=FALSE}
@@ -206,10 +207,10 @@ tab_S2 %>% pander(split.cell = 40, split.table = Inf)
 ```
 
 ### Male fitness data
-**Table S3**: Average relative fitness of adult males for each SD genotype and cross type, expressed as the average proportion of offspring sired. The last two columns give the sample size in terms of number of vials (each of which contained 5 focal males), and number of males.
+**Table S4**: Average relative fitness of adult males for each SD genotype and cross type, expressed as the average proportion of offspring sired. The last two columns give the sample size in terms of number of vials (each of which contained 5 focal males), and number of males.
 ```{r}
 SE <- function(x) sd(x) / sqrt(length(x))
-tab_S3 <- males %>% 
+tab_S4 <- males %>% 
   group_by(SD, copies_of_SD, parent_with_SD) %>% 
   summarise(average_relative_fitness = mean(focal.male.fitness / (focal.male.fitness + rival.male.fitness)),
             SE = SE(focal.male.fitness / (focal.male.fitness + rival.male.fitness)),
@@ -219,14 +220,14 @@ tab_S3 <- males %>%
          SE = format(round(SE, 3), nsmall = 3)) %>%
   tidy_names()
 
-saveRDS(tab_S3, file = "output/tab_S3.rds")
-tab_S3 %>% pander(split.cell = 40, split.table = Inf)
+saveRDS(tab_S4, file = "output/tab_S4.rds")
+tab_S4 %>% pander(split.cell = 40, split.table = Inf)
 ```
 
 ### Female fitness data
-**Table S4**: Average fecundity of adult females for each SD genotype and cross type. The last two columns give the sample size in terms of number of oviposition vials (each of which contained up to 5 focal females), and number of males.
+**Table S3**: Average fecundity of adult females for each SD genotype and cross type. The last two columns give the sample size in terms of number of oviposition vials (each of which contained up to 5 focal females), and number of males.
 ```{r}
-tab_S4 <- females %>% 
+tab_S3 <- females %>% 
   mutate(larvae_per_female = larvae_produced / number_of_laying_females) %>%
   group_by(SD, copies_of_SD, parent_with_SD) %>% 
   summarise(average_fecundity = mean(larvae_per_female),
@@ -237,8 +238,8 @@ tab_S4 <- females %>%
          SE = format(round(SE, 3), nsmall = 3)) %>%
   tidy_names() 
 
-saveRDS(tab_S4, file = "output/tab_S4.rds")
-tab_S4 %>% pander(split.cell = 40, split.table = Inf)
+saveRDS(tab_S3, file = "output/tab_S3.rds")
+tab_S3 %>% pander(split.cell = 40, split.table = Inf)
 ```
 
 ### Experiment 2 larval survival data
@@ -297,12 +298,12 @@ summarise_brms(larvae_brms)
 
 ### Hypothesis testing
 
-**Table S6**: The results of hypothesis tests computed using the model of larval survival in Experiment 1. Each row gives the posterior estimate of a difference in means, such that the estimate is positive if mean 1 is larger than mean 2, and negative otherwise (expressed in % larval survival). The mean 1 and mean 2 columns list the parent which had SD (mother, father, or both), followed by the number of SD alleles present in the offspring (0, 1 or 2). The Posterior probability column gives the probability that the mean with the smaller point estimate is actually larger than the other mean, analagously to a one-tailed p-value. The Evidence ratio (ER) column gives the ratio of evidence, such that ER = 5 means that it is 5 times more likely that the mean with the smaller point estimate really is the smaller one. Asterisks highlight rows where the posterior probability is less than 0.05.
+**Table S6**: The results of hypothesis tests computed using the model of larval survival in Experiment 1. Each row gives the posterior estimate of a difference in means, such that the estimate is positive if mean 1 is larger than mean 2, and negative otherwise (expressed in % larval survival). The mean 1 and mean 2 columns list the parent which had SD (mother, father, or both), followed by the number of SD alleles present in the offspring (0, 1 or 2). The Posterior probability column gives the probability that the mean with the smaller point estimate is actually larger than the other mean, analagously to a one-tailed p-value. Asterisks highlight rows where the posterior probability is less than 0.05.
 <br></br>
 ```{r}
 # Function to compute posterior difference in means, with the posterior_probability of the smaller mean actually being the larger one (plus the larger evidence ratio, e.g. ER = 10 means it's 10x more likely the smaller mean really is smaller not larger, ER=1 means it's equally likely the smaller one is actually larger)
 compare <- function(mean1, mean2){
-  difference <- mean1 - mean2
+  difference <- mean2 - mean1
   prob_less <- hypothesis(data.frame(x = difference), "x < 0")$hypothesis
   prob_more <- hypothesis(data.frame(x = difference), "x > 0")$hypothesis
   hypothesis(data.frame(x = difference), "x = 0")$hypothesis %>% 
@@ -381,7 +382,7 @@ hypothesis_tests <- function(model, dat, SR = FALSE, divisor = NULL){
     two_compare <- data.frame(SD = "SD-Mad", 
                               Mean_1 = "Both parents, 1",
                               Mean_2 = "Both parents, 2", 
-                              compare(SDMad_1SD_both, SDMad_2)) # CONTROLS HERE
+                              compare(SDMad_1SD_both, SDMad_2)) 
   }
   
   if("0 or 1" %in% new$copies_of_SD){  
@@ -487,7 +488,7 @@ summarise_brms(SR_brms)
 
 
 ### Hypothesis testing
-**Table S7**: The results of hypothesis tests computed using the model of adult sex ratio in Experiment 1. Each row gives the posterior estimate of a difference in means, such that the estimate is positive if mean 1 is larger than mean 2, and negative otherwise (expressed in % males). The mean 1 and mean 2 columns list the parent which had SD (mother, father, or both), followed by the number of SD alleles present in the offspring (0, 1 or 2). The Posterior probability column gives the probability that the mean with the smaller point estimate is actually larger than the other mean, analagously to a one-tailed p-value. The Evidence ratio (ER) column gives the ratio of evidence, such that ER = 5 means that it is 5 times more likely that the mean with the smaller point estimate really is the smaller one. Asterisks highlight rows where the posterior probability is less than 0.05.
+**Table S7**: The results of hypothesis tests computed using the model of adult sex ratio in Experiment 1. Each row gives the posterior estimate of a difference in means, such that the estimate is positive if mean 1 is larger than mean 2, and negative otherwise (expressed in % males). The mean 1 and mean 2 columns list the parent which had SD (mother, father, or both), followed by the number of SD alleles present in the offspring (0, 1 or 2). The Posterior probability column gives the probability that the mean with the smaller point estimate is actually larger than the other mean, analagously to a one-tailed p-value. Asterisks highlight rows where the posterior probability is less than 0.05.
 ```{r}
 tests2 <- hypothesis_tests(SR_brms, SR_data) 
 saveRDS(tests2 %>% clean_table(), file = "output/tab_S7.rds")
@@ -525,7 +526,7 @@ summarise_brms(female_brms)
 
 
 ### Hypothesis testing
-**Table S8**: The results of hypothesis tests computed using the model of female fitness in Experiment 1. Each row gives the posterior estimate of a difference in means, such that the estimate is positive if mean 1 is larger than mean 2, and negative otherwise (expressed as the number of offspring produced). The mean 1 and mean 2 columns list the parent which had SD (mother, father, or both), followed by the number of SD alleles present in the offspring (0, 1 or 2). The Posterior probability column gives the probability that the mean with the smaller point estimate is actually larger than the other mean, analagously to a one-tailed p-value. The Evidence ratio (ER) column gives the ratio of evidence, such that ER = 5 means that it is 5 times more likely that the mean with the smaller point estimate really is the smaller one. Asterisks highlight rows where the posterior probability is less than 0.05.
+**Table S8**: The results of hypothesis tests computed using the model of female fitness in Experiment 1. Each row gives the posterior estimate of a difference in means, such that the estimate is positive if mean 1 is larger than mean 2, and negative otherwise (expressed as the number of offspring produced). The mean 1 and mean 2 columns list the parent which had SD (mother, father, or both), followed by the number of SD alleles present in the offspring (0, 1 or 2). The Posterior probability column gives the probability that the mean with the smaller point estimate is actually larger than the other mean, analagously to a one-tailed p-value.  Asterisks highlight rows where the posterior probability is less than 0.05.
 ```{r}
 tests3 <- hypothesis_tests(female_brms, females, divisor = 5) 
 tab_S8 <- tests3 %>% clean_table()
@@ -563,7 +564,7 @@ summarise_brms(male_brms)
 ```
 
 ### Hypothesis testing
-**Table S9**: The results of hypothesis tests computed using the model of male fitness in Experiment 1. Each row gives the posterior estimate of a difference in means, such that the estimate is positive if mean 1 is larger than mean 2, and negative otherwise (expressed in % offspring sired). The mean 1 and mean 2 columns list the parent which had SD (mother, father, or both), followed by the number of SD alleles present in the offspring (0, 1 or 2). The Posterior probability column gives the probability that the mean with the smaller point estimate is actually larger than the other mean, analagously to a one-tailed p-value. The Evidence ratio (ER) column gives the ratio of evidence, such that ER = 5 means that it is 5 times more likely that the mean with the smaller point estimate really is the smaller one. Asterisks highlight rows where the posterior probability is less than 0.05.
+**Table S9**: The results of hypothesis tests computed using the model of male fitness in Experiment 1. Each row gives the posterior estimate of a difference in means, such that the estimate is positive if mean 1 is larger than mean 2, and negative otherwise (expressed in % offspring sired). The mean 1 and mean 2 columns list the parent which had SD (mother, father, or both), followed by the number of SD alleles present in the offspring (0, 1 or 2). The Posterior probability column gives the probability that the mean with the smaller point estimate is actually larger than the other mean, analagously to a one-tailed p-value. Asterisks highlight rows where the posterior probability is less than 0.05.
 ```{r}
 tests4 <- hypothesis_tests(male_brms, males) 
 tab_S9 <- tests4 %>% clean_table()
@@ -667,7 +668,7 @@ table1 <- bind_rows(tests1 %>% mutate(Trait = "Larval survival"),
                     tests2 %>% mutate(Trait = "Sex ratio"),
                     tests3 %>% mutate(Trait = "Female fitness"),
                     tests4 %>% mutate(Trait = "Male fitness")) %>% 
-  arrange(SD, Posterior_probability) %>%
+  arrange(SD, Trait, Posterior_probability) %>%
   filter(Notable == "*") %>% clean_table() %>% 
   select(SD, everything())
 
@@ -833,7 +834,7 @@ fig_S1 %>% grid::grid.draw()
 hypothesis_tests_expt2 <- function(model){
   
   compare <- function(mean1, mean2, SD, Mean_1, Mean_2){
-  difference <- mean1 - mean2
+  difference <- mean2 - mean1
   prob_less <- hypothesis(data.frame(x = difference), "x < 0")$hypothesis
   prob_more <- hypothesis(data.frame(x = difference), "x > 0")$hypothesis
   output <- data.frame(

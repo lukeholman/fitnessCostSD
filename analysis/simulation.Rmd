@@ -254,7 +254,7 @@ parameters <- rbind(
     w_hetero_male_paternal = 1,
     w_homo_male = 1,
     w_homo_female = 1,
-    facet = "Cost free",
+    facet = "Cost-free",
     SR_bias_in_hetero_males = seq(-0.9, 0.9, length = resolution_y),
     initial_freq_SD = 0.01
   ),
@@ -306,7 +306,7 @@ parameters <- rbind(
     w_hetero_male_paternal = 1 - imprint_cost,
     w_homo_male = 1 - imprint_cost,
     w_homo_female = 1 - imprint_cost,
-    facet = "Cost of paternal inheritance (PI)",
+    facet = "SD is costly if paternally inherited (PI)",
     SR_bias_in_hetero_males = seq(-0.9, 0.9, length = resolution_y),
     initial_freq_SD = 0.01
   ),
@@ -358,7 +358,7 @@ parameters <- rbind(
     w_hetero_male_paternal = 1,
     w_homo_male = 1 - imprint_cost,
     w_homo_female = 1 - imprint_cost,
-    facet = "Cost of maternal inheritance (MI)",
+    facet = "SD is costly if maternally inherited (MI)",
     SR_bias_in_hetero_males = seq(-0.9, 0.9, length = resolution_y),
     initial_freq_SD = 0.01
   ),
@@ -407,11 +407,17 @@ parameters <- rbind(
 
 ## Run the simulation
 ```{r}
-if(!file.exists("data/simulation_output.rds")){
+if(file.exists("data/simulation_results.rds")){
+  completed <- readRDS("data/simulation_results.rds") %>% select(-genotypes, -prop_SD) %>% select(!! names(parameters))
+  parameters <- parameters[!(apply(parameters, 1, paste0, collapse = "") %in% apply(completed, 1, paste0, collapse = "")), ]
+}
+
+if(nrow(parameters) > 0){
   
+  # If it's big, divide the job into 100 equal-ish chunks so that we can see the % completion as it proceeds
   cores <- 7
-  # Divide the job into 100 equal-ish chunks so that we can see the % completion as it proceeds
-  split_parameters <- split(parameters, sample(1:100, nrow(parameters), replace = TRUE))
+  if(nrow(parameters) > 10000)  split_parameters <- split(parameters, sample(1:100, nrow(parameters), replace = TRUE))
+  else split_parameters <- list(parameters)
   
   for(i in 1:length(split_parameters)){
     print(i)
@@ -420,38 +426,15 @@ if(!file.exists("data/simulation_output.rds")){
     simulation_output <- split(split_parameters[[i]], c(rep(1:(cores-1), each = chunk_size), 
                                                         rep(cores, nrow(split_parameters[[i]]) - chunk_size*(cores-1)))) %>%
       future_lapply(run_many_simulations) %>% do.call("rbind", .)
-    saveRDS(simulation_output, paste("data/simulation_output_", i, ".rds", sep = ""))
+    saveRDS(simulation_output, paste("data/simulation_output_", sample(9999999999, 1), ".rds", sep = ""))
   }
   
  simulation_output <- list.files(path = "data", pattern = "simulation_output_", full.names = TRUE) %>%
    lapply(readRDS) %>% do.call("rbind", .)
- saveRDS(simulation_output, "data/simulation_output.rds")
+ saveRDS(simulation_output, "data/simulation_results.rds")
   
-} else {
-  simulation_output <- readRDS("data/simulation_output.rds")
-  if(nrow(simulation_output) != nrow(parameters)){
-    pasted_done <- apply(simulation_output[, names(simulation_output) %in% names(parameters)], 1, paste0, collapse = "_")
-    pasted_to_do <- apply(parameters, 1, paste0, collapse = "_")
-    trimmed_parameters <- parameters[!(pasted_to_do %in% pasted_done), ]
-
-    cores <- 7
-    # Divide the job into 100 equal-ish chunks so that we can see the % completion as it proceeds
-    split_parameters <- split(trimmed_parameters, sample(1:10, nrow(parameters), replace = TRUE))
-    
-    for(i in 1:length(split_parameters)){
-      print(i)
-      plan("multicore")
-      chunk_size <- floor(nrow(split_parameters[[i]]) / cores)
-      simulation_output <- split(split_parameters[[i]], c(rep(1:(cores-1), each = chunk_size), 
-                                                          rep(cores, nrow(split_parameters[[i]]) - chunk_size*(cores-1)))) %>%
-        future_lapply(run_many_simulations) %>% do.call("rbind", .)
-      saveRDS(simulation_output, paste("data/simulation_output_surplus_", i, ".rds", sep = ""))
-    }
-    simulation_output <- list.files(path = "data", pattern = "simulation_output_", full.names = TRUE) %>%
-      lapply(readRDS) %>% do.call("rbind", .)
-    saveRDS(simulation_output, "data/simulation_output.rds")
-  }
-}
+} 
+simulation_results <- readRDS("data/simulation_results.rds")
 # delete individual files
 # unlink(list.files(path = "data", pattern = "simulation_output_", full.names = TRUE))
 ```
@@ -459,7 +442,7 @@ if(!file.exists("data/simulation_output.rds")){
 
 ## Make Figure 3
 ```{r fig.height=9, fig.width=9}
-fig_3 <- simulation_output %>% 
+fig_3 <- simulation_results %>% 
   mutate(percent_sons = 100 - 100 * (1 + SR_bias_in_hetero_males)/2) %>%
   ggplot(aes(k, percent_sons, fill = prop_SD)) +
   geom_blank() +
@@ -467,9 +450,9 @@ fig_3 <- simulation_output %>%
   stat_contour(aes(z = prop_SD), colour = "grey10") +
   geom_hline(yintercept = 50, colour = "black", linetype = 3) +
   labs(x = "Strength of segregation distortion (K)", 
-       y = "Offspring sex ratio when father is an SD heterozygote (% sons)") +
+       y = "Offspring sex ratio of male SD heterozygotes (% sons)") +
   facet_wrap(~ facet, labeller = labeller(facet = label_wrap_gen(35))) + 
-  scale_fill_distiller(palette = "YlGnBu", direction =  1, name = expression(paste("", hat(paste("p")), " (SD)")), limits = c(0,1)) +
+  scale_fill_distiller(palette = "PuRd", direction =  1, name = "Equilibrium frequency of SD", limits = c(0,1)) +
   scale_x_continuous(expand = c(0, 0), labels = c(0, 0.25, 0.5, 0.75, 1)) + 
   scale_y_continuous(expand = c(0, 0), labels = ) +
   theme(panel.border = element_rect(fill = NA, colour = "black", size = .8),
@@ -481,4 +464,4 @@ fig_3
 ```
 <br></br>
 
-**Figure 3**: The equilibrium frequency reached by the \textit{SD} allele, $\hat{p}(SD)$, depends on the strength of segregataion distortion ($K$ = 0 indicates fair meiosis, $K$ = 1 means that heterozygotes transmit only the \textit{SD} allele) and the direction and strength of sex ratio bias in the progeny of \textit{SD} heterozygote males. The four columns make different assumptions about the fitness costs to individuals carrying the \textit{SD} allele (see Results), while the three rows assume either that \textit{SD} has no parent-of-origin-specific effects on fitness (top row), or that \textit{SD} is especially costly when paternally inherited (middle row) or maternally inherited (bottom row).
+**Figure 3**: The equilibrium frequency reached by the \textit{SD} allele depends on the strength of segregataion distortion ($K$ = 0 indicates fair meiosis, $K$ = 1 means that heterozygotes transmit only the \textit{SD} allele) and the direction and strength of sex ratio bias in the progeny of \textit{SD} heterozygote males. The four columns make different assumptions about the fitness costs to individuals carrying the \textit{SD} allele (see Results), while the three rows assume either that \textit{SD} has no parent-of-origin-specific effects on fitness (top row), or that \textit{SD} is especially costly when paternally inherited (middle row) or maternally inherited (bottom row).
