@@ -435,8 +435,7 @@ if(nrow(parameters) > 0){
   
 } 
 simulation_results <- readRDS("data/simulation_results.rds")
-# delete individual files
-# unlink(list.files(path = "data", pattern = "simulation_output_", full.names = TRUE))
+unlink(list.files(path = "data", pattern = "simulation_output_", full.names = TRUE)) # delete individual files
 ```
 
 
