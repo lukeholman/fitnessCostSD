@@ -618,14 +618,9 @@ make_plot <- function(model, data, ylab, ylim = NULL){
     geom_errorbar(aes(ymin = Q2.5, ymax = Q97.5), width = 0, position = pd, size = 1.2) + 
     geom_errorbar(aes(ymin = Q25, ymax = Q75), width = 0, position = pd, size = 3) + 
     geom_point(position = pd, size = 2, colour = "black", pch = 21) + 
-    # scale_fill_got(option = "Lady Margaery", name = "Copies of SD", discrete = TRUE) + 
-    # scale_colour_got(option = "Lady Margaery", name = "Copies of SD", discrete = TRUE) + 
-    
     scale_colour_manual(name = "Copies of SD", values = cols,
                         drop = FALSE, 
                         aesthetics = c("colour", "fill")) +
-
-
     facet_wrap(~SD) + 
     xlab("Parent carrying SD") + ylab(ylab) + theme_hc() + theme(axis.ticks.y = element_blank())
   
