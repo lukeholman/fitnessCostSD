@@ -116,8 +116,8 @@ load_and_clean_data <- function(path){
   if(path == "data/messy_data/larval_fitness.csv"){
     
     # Note that for 'Mother has SD' crosses (Cross 2), the 'initial_number' of larvae is the maximum possible.
-    # The real initial number of non-recombinants is probably a bit lower, since the survival rate of the recombinants is probably not 100%
-    # This means the survival rate in Cross 2 is an under-estimate of the true survival rate.
+    # The real initial number of non-recombinant larvae is probably a bit lower, since the survival rate of the recombinants is probably not 100%
+    # This means the larval survival rate in Cross 2 is an under-estimate of the true survival rate.
     # For SD-5, it is a very slight underestimate, since SD-5 does not recombine much.
     # For the other two SDs, it is a larger underestimate. 
     
@@ -243,7 +243,7 @@ tab_S3 %>% pander(split.cell = 40, split.table = Inf)
 ```
 
 ### Experiment 2 larval survival data
-**Table S5**: Number and percentage of L1 larvae surviving to adulthood in Experiment 2, for each SD genotype, cross type, and offspring sex.
+**Table S9**: Number and percentage of L1 larvae surviving to adulthood in Experiment 2, for each SD genotype, cross type, and offspring sex.
 
 ```{r}
 tab_S5 <- expt2 %>%
@@ -261,7 +261,7 @@ tab_S5 <- expt2 %>%
          percent_surviving_CyO_larvae = format(round(percent_surviving_CyO_larvae, 1), nsmall = 1)) %>%
   tidy_names()
 
-saveRDS(tab_S5, file = "output/tab_S5.rds")
+saveRDS(tab_S5, file = "output/tab_S9.rds")
 tab_S5 %>% pander(split.cell = 40, split.table = Inf)
 ```
 
@@ -298,7 +298,7 @@ summarise_brms(larvae_brms)
 
 ### Hypothesis testing
 
-**Table S6**: The results of hypothesis tests computed using the model of larval survival in Experiment 1. Each row gives the posterior estimate of a difference in means, such that the estimate is positive if mean 1 is larger than mean 2, and negative otherwise (expressed in % larval survival). The mean 1 and mean 2 columns list the parent which had SD (mother, father, or both), followed by the number of SD alleles present in the offspring (0, 1 or 2). The Posterior probability column gives the probability that the mean with the smaller point estimate is actually larger than the other mean, analagously to a one-tailed p-value. Asterisks highlight rows where the posterior probability is less than 0.05.
+**Table S5**: The results of hypothesis tests computed using the model of larval survival in Experiment 1. Each row gives the posterior estimate of a difference in means, such that the estimate is positive if mean 1 is larger than mean 2, and negative otherwise (expressed in % larval survival). The mean 1 and mean 2 columns list the parent which had SD (mother, father, or both), followed by the number of SD alleles present in the offspring (0, 1 or 2). The Posterior probability column gives the probability that the mean with the smaller point estimate is actually larger than the other mean, analagously to a one-tailed p-value. Asterisks highlight rows where the posterior probability is less than 0.05.
 <br></br>
 ```{r}
 # Function to compute posterior difference in means, with the posterior_probability of the smaller mean actually being the larger one (plus the larger evidence ratio, e.g. ER = 10 means it's 10x more likely the smaller mean really is smaller not larger, ER=1 means it's equally likely the smaller one is actually larger)
@@ -448,9 +448,9 @@ clean_table <- function(tabl){
 }
 
 tests1 <- hypothesis_tests(larvae_brms, larvae)
-tab_S6 <- tests1 %>% clean_table() 
-saveRDS(tab_S6, file = "output/tab_S6.rds")
-tab_S6 %>% pander(split.cell = 40, split.table = Inf)
+tab_S5 <- tests1 %>% clean_table() 
+saveRDS(tab_S5, file = "output/tab_S5.rds")
+tab_S5 %>% pander(split.cell = 40, split.table = Inf)
 ```
 
 
@@ -488,10 +488,10 @@ summarise_brms(SR_brms)
 
 
 ### Hypothesis testing
-**Table S7**: The results of hypothesis tests computed using the model of adult sex ratio in Experiment 1. Each row gives the posterior estimate of a difference in means, such that the estimate is positive if mean 1 is larger than mean 2, and negative otherwise (expressed in % males). The mean 1 and mean 2 columns list the parent which had SD (mother, father, or both), followed by the number of SD alleles present in the offspring (0, 1 or 2). The Posterior probability column gives the probability that the mean with the smaller point estimate is actually larger than the other mean, analagously to a one-tailed p-value. Asterisks highlight rows where the posterior probability is less than 0.05.
+**Table S6**: The results of hypothesis tests computed using the model of adult sex ratio in Experiment 1. Each row gives the posterior estimate of a difference in means, such that the estimate is positive if mean 1 is larger than mean 2, and negative otherwise (expressed in % males). The mean 1 and mean 2 columns list the parent which had SD (mother, father, or both), followed by the number of SD alleles present in the offspring (0, 1 or 2). The Posterior probability column gives the probability that the mean with the smaller point estimate is actually larger than the other mean, analagously to a one-tailed p-value. Asterisks highlight rows where the posterior probability is less than 0.05.
 ```{r}
 tests2 <- hypothesis_tests(SR_brms, SR_data) 
-saveRDS(tests2 %>% clean_table(), file = "output/tab_S7.rds")
+saveRDS(tests2 %>% clean_table(), file = "output/tab_S6.rds")
 tests2 %>% pander(split.cell = 40, split.table = Inf)
 ```
 
@@ -526,12 +526,12 @@ summarise_brms(female_brms)
 
 
 ### Hypothesis testing
-**Table S8**: The results of hypothesis tests computed using the model of female fitness in Experiment 1. Each row gives the posterior estimate of a difference in means, such that the estimate is positive if mean 1 is larger than mean 2, and negative otherwise (expressed as the number of offspring produced). The mean 1 and mean 2 columns list the parent which had SD (mother, father, or both), followed by the number of SD alleles present in the offspring (0, 1 or 2). The Posterior probability column gives the probability that the mean with the smaller point estimate is actually larger than the other mean, analagously to a one-tailed p-value.  Asterisks highlight rows where the posterior probability is less than 0.05.
+**Table S7**: The results of hypothesis tests computed using the model of female fitness in Experiment 1. Each row gives the posterior estimate of a difference in means, such that the estimate is positive if mean 1 is larger than mean 2, and negative otherwise (expressed as the number of offspring produced). The mean 1 and mean 2 columns list the parent which had SD (mother, father, or both), followed by the number of SD alleles present in the offspring (0, 1 or 2). The Posterior probability column gives the probability that the mean with the smaller point estimate is actually larger than the other mean, analagously to a one-tailed p-value.  Asterisks highlight rows where the posterior probability is less than 0.05.
 ```{r}
 tests3 <- hypothesis_tests(female_brms, females, divisor = 5) 
-tab_S8 <- tests3 %>% clean_table()
-saveRDS(tab_S8, file = "output/tab_S8.rds")
-tab_S8 %>% pander(split.cell = 40, split.table = Inf)
+tab_S7 <- tests3 %>% clean_table()
+saveRDS(tab_S7, file = "output/tab_S7.rds")
+tab_S7 %>% pander(split.cell = 40, split.table = Inf)
 ```
 
 
@@ -564,12 +564,12 @@ summarise_brms(male_brms)
 ```
 
 ### Hypothesis testing
-**Table S9**: The results of hypothesis tests computed using the model of male fitness in Experiment 1. Each row gives the posterior estimate of a difference in means, such that the estimate is positive if mean 1 is larger than mean 2, and negative otherwise (expressed in % offspring sired). The mean 1 and mean 2 columns list the parent which had SD (mother, father, or both), followed by the number of SD alleles present in the offspring (0, 1 or 2). The Posterior probability column gives the probability that the mean with the smaller point estimate is actually larger than the other mean, analagously to a one-tailed p-value. Asterisks highlight rows where the posterior probability is less than 0.05.
+**Table S8**: The results of hypothesis tests computed using the model of male fitness in Experiment 1. Each row gives the posterior estimate of a difference in means, such that the estimate is positive if mean 1 is larger than mean 2, and negative otherwise (expressed in % offspring sired). The mean 1 and mean 2 columns list the parent which had SD (mother, father, or both), followed by the number of SD alleles present in the offspring (0, 1 or 2). The Posterior probability column gives the probability that the mean with the smaller point estimate is actually larger than the other mean, analagously to a one-tailed p-value. Asterisks highlight rows where the posterior probability is less than 0.05.
 ```{r}
 tests4 <- hypothesis_tests(male_brms, males) 
-tab_S9 <- tests4 %>% clean_table()
-saveRDS(tab_S9, file = "output/tab_S9.rds")
-tab_S9 %>% pander(split.cell = 40, split.table = Inf)
+tab_S8 <- tests4 %>% clean_table()
+saveRDS(tab_S8, file = "output/tab_S8.rds")
+tab_S8 %>% pander(split.cell = 40, split.table = Inf)
 ```
 
 
@@ -827,7 +827,7 @@ fig_S1 %>% ggsave(file = "output/fig_S1.pdf", height = 10, width = 9)
 fig_S1 %>% grid::grid.draw()
 ```
 <br></br>
-**Figure S1**: Equivalent plots to Figure 2, under the assumption that meiosis is fair ($k$ = 0.5, top row, same as Figure 2), slightly biased ($k$ = 0.6, middle row), and more strongly biased ($k$ = 0.7, bottom row). Note that the significant results for Figure 2 mostly stay the same or increase in magnitude, suggesting that they are genuine and are not sensitive to our assumptions about the data.
+**Figure S1**: Equivalent plots to Figure 1, under the assumption that meiosis is fair ($k$ = 0.5, top row, same as Figure 1), slightly biased ($k$ = 0.6, middle row), and more strongly biased ($k$ = 0.7, bottom row) in _SD_/_CyO_ males. Note that the significant results for Figure 1 mostly stay the same or increase in magnitude, suggesting that the results are not strongly influenced by our assumptions about the strength of segregation distortion in _SD_/_CyO_ males.
 
 ### Hypothesis testing
 ```{r}
