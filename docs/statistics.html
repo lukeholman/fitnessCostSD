@@ -359,7 +359,7 @@ div.section {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2019-06-18
+<strong>Last updated:</strong> 2019-06-19
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -438,10 +438,10 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtree236bdf88c5a6bcdfcb9371ee8366639964bd11dctargetblank236bdf8a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/fitnessCostSD/tree/236bdf88c5a6bcdfcb9371ee8366639964bd11dc" target="_blank">236bdf8</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtree3ae53f0ce41d7f9bcb9988324aee5080bf98faa2targetblank3ae53f0a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/fitnessCostSD/tree/3ae53f0ce41d7f9bcb9988324aee5080bf98faa2" target="_blank">3ae53f0</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtree236bdf88c5a6bcdfcb9371ee8366639964bd11dctargetblank236bdf8a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtree3ae53f0ce41d7f9bcb9988324aee5080bf98faa2targetblank3ae53f0a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -460,11 +460,9 @@ Ignored files:
     Ignored:    docs/.DS_Store
     Ignored:    docs/figure/SD_costs_analysis.Rmd/
     Ignored:    docs/figure/evolutionary_simulation_SD.Rmd/
+    Ignored:    figures/.DS_Store
     Ignored:    manuscript/.DS_Store
     Ignored:    output/
-
-Unstaged changes:
-    Modified:   figures/fig3.pdf
 
 </code></pre>
 <p>
@@ -503,6 +501,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/lukeholman/fitnessCostSD/blob/3ae53f0ce41d7f9bcb9988324aee5080bf98faa2/analysis/statistics.Rmd" target="_blank">3ae53f0</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2019-06-19
+</td>
+<td>
+Almost done
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/lukeholman/fitnessCostSD/b1e836b6fe863857d29bc2c74081183fb6bf0a09/docs/statistics.html" target="_blank">b1e836b</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2019-06-18
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1038,8 +1070,8 @@ summarise_brms &lt;- function(brmsfit){
   if(path == &quot;data/messy_data/larval_fitness.csv&quot;){
     
     # Note that for &#39;Mother has SD&#39; crosses (Cross 2), the &#39;initial_number&#39; of larvae is the maximum possible.
-    # The real initial number of non-recombinants is probably a bit lower, since the survival rate of the recombinants is probably not 100%
-    # This means the survival rate in Cross 2 is an under-estimate of the true survival rate.
+    # The real initial number of non-recombinant larvae is probably a bit lower, since the survival rate of the recombinants is probably not 100%
+    # This means the larval survival rate in Cross 2 is an under-estimate of the true survival rate.
     # For SD-5, it is a very slight underestimate, since SD-5 does not recombine much.
     # For the other two SDs, it is a larger underestimate. 
     
@@ -1937,7 +1969,7 @@ tab_S3 %&gt;% pander(split.cell = 40, split.table = Inf)</code></pre>
 </div>
 <div id="experiment-2-larval-survival-data" class="section level3">
 <h3>Experiment 2 larval survival data</h3>
-<p><strong>Table S5</strong>: Number and percentage of L1 larvae surviving to adulthood in Experiment 2, for each SD genotype, cross type, and offspring sex.</p>
+<p><strong>Table S9</strong>: Number and percentage of L1 larvae surviving to adulthood in Experiment 2, for each SD genotype, cross type, and offspring sex.</p>
 <pre class="r"><code>tab_S5 &lt;- expt2 %&gt;%
   rename(parent_with_SD = SD_parent, offspring_sex = sex_of_embryos) %&gt;%
   mutate(SD_embryos = SD_offspring + rbinom(n(), Dead_offspring, 0.5),
@@ -1953,7 +1985,7 @@ tab_S3 %&gt;% pander(split.cell = 40, split.table = Inf)</code></pre>
          percent_surviving_CyO_larvae = format(round(percent_surviving_CyO_larvae, 1), nsmall = 1)) %&gt;%
   tidy_names()
 
-saveRDS(tab_S5, file = &quot;output/tab_S5.rds&quot;)
+saveRDS(tab_S5, file = &quot;output/tab_S9.rds&quot;)
 tab_S5 %&gt;% pander(split.cell = 40, split.table = Inf)</code></pre>
 <table style="width:100%;">
 <colgroup>
@@ -2719,7 +2751,7 @@ lukeholman
 </div>
 <div id="hypothesis-testing" class="section level3">
 <h3>Hypothesis testing</h3>
-<p><strong>Table S6</strong>: The results of hypothesis tests computed using the model of larval survival in Experiment 1. Each row gives the posterior estimate of a difference in means, such that the estimate is positive if mean 1 is larger than mean 2, and negative otherwise (expressed in % larval survival). The mean 1 and mean 2 columns list the parent which had SD (mother, father, or both), followed by the number of SD alleles present in the offspring (0, 1 or 2). The Posterior probability column gives the probability that the mean with the smaller point estimate is actually larger than the other mean, analagously to a one-tailed p-value. Asterisks highlight rows where the posterior probability is less than 0.05. <br></br></p>
+<p><strong>Table S5</strong>: The results of hypothesis tests computed using the model of larval survival in Experiment 1. Each row gives the posterior estimate of a difference in means, such that the estimate is positive if mean 1 is larger than mean 2, and negative otherwise (expressed in % larval survival). The mean 1 and mean 2 columns list the parent which had SD (mother, father, or both), followed by the number of SD alleles present in the offspring (0, 1 or 2). The Posterior probability column gives the probability that the mean with the smaller point estimate is actually larger than the other mean, analagously to a one-tailed p-value. Asterisks highlight rows where the posterior probability is less than 0.05. <br></br></p>
 <pre class="r"><code># Function to compute posterior difference in means, with the posterior_probability of the smaller mean actually being the larger one (plus the larger evidence ratio, e.g. ER = 10 means it&#39;s 10x more likely the smaller mean really is smaller not larger, ER=1 means it&#39;s equally likely the smaller one is actually larger)
 compare &lt;- function(mean1, mean2){
   difference &lt;- mean2 - mean1
@@ -2867,9 +2899,9 @@ clean_table &lt;- function(tabl){
 }
 
 tests1 &lt;- hypothesis_tests(larvae_brms, larvae)
-tab_S6 &lt;- tests1 %&gt;% clean_table() 
-saveRDS(tab_S6, file = &quot;output/tab_S6.rds&quot;)
-tab_S6 %&gt;% pander(split.cell = 40, split.table = Inf)</code></pre>
+tab_S5 &lt;- tests1 %&gt;% clean_table() 
+saveRDS(tab_S5, file = &quot;output/tab_S5.rds&quot;)
+tab_S5 %&gt;% pander(split.cell = 40, split.table = Inf)</code></pre>
 <table>
 <colgroup>
 <col width="8%" />
@@ -3663,9 +3695,9 @@ lukeholman
 </div>
 <div id="hypothesis-testing-1" class="section level3">
 <h3>Hypothesis testing</h3>
-<p><strong>Table S7</strong>: The results of hypothesis tests computed using the model of adult sex ratio in Experiment 1. Each row gives the posterior estimate of a difference in means, such that the estimate is positive if mean 1 is larger than mean 2, and negative otherwise (expressed in % males). The mean 1 and mean 2 columns list the parent which had SD (mother, father, or both), followed by the number of SD alleles present in the offspring (0, 1 or 2). The Posterior probability column gives the probability that the mean with the smaller point estimate is actually larger than the other mean, analagously to a one-tailed p-value. Asterisks highlight rows where the posterior probability is less than 0.05.</p>
+<p><strong>Table S6</strong>: The results of hypothesis tests computed using the model of adult sex ratio in Experiment 1. Each row gives the posterior estimate of a difference in means, such that the estimate is positive if mean 1 is larger than mean 2, and negative otherwise (expressed in % males). The mean 1 and mean 2 columns list the parent which had SD (mother, father, or both), followed by the number of SD alleles present in the offspring (0, 1 or 2). The Posterior probability column gives the probability that the mean with the smaller point estimate is actually larger than the other mean, analagously to a one-tailed p-value. Asterisks highlight rows where the posterior probability is less than 0.05.</p>
 <pre class="r"><code>tests2 &lt;- hypothesis_tests(SR_brms, SR_data) 
-saveRDS(tests2 %&gt;% clean_table(), file = &quot;output/tab_S7.rds&quot;)
+saveRDS(tests2 %&gt;% clean_table(), file = &quot;output/tab_S6.rds&quot;)
 tests2 %&gt;% pander(split.cell = 40, split.table = Inf)</code></pre>
 <table>
 <colgroup>
@@ -4427,11 +4459,11 @@ lukeholman
 </div>
 <div id="hypothesis-testing-2" class="section level3">
 <h3>Hypothesis testing</h3>
-<p><strong>Table S8</strong>: The results of hypothesis tests computed using the model of female fitness in Experiment 1. Each row gives the posterior estimate of a difference in means, such that the estimate is positive if mean 1 is larger than mean 2, and negative otherwise (expressed as the number of offspring produced). The mean 1 and mean 2 columns list the parent which had SD (mother, father, or both), followed by the number of SD alleles present in the offspring (0, 1 or 2). The Posterior probability column gives the probability that the mean with the smaller point estimate is actually larger than the other mean, analagously to a one-tailed p-value. Asterisks highlight rows where the posterior probability is less than 0.05.</p>
+<p><strong>Table S7</strong>: The results of hypothesis tests computed using the model of female fitness in Experiment 1. Each row gives the posterior estimate of a difference in means, such that the estimate is positive if mean 1 is larger than mean 2, and negative otherwise (expressed as the number of offspring produced). The mean 1 and mean 2 columns list the parent which had SD (mother, father, or both), followed by the number of SD alleles present in the offspring (0, 1 or 2). The Posterior probability column gives the probability that the mean with the smaller point estimate is actually larger than the other mean, analagously to a one-tailed p-value. Asterisks highlight rows where the posterior probability is less than 0.05.</p>
 <pre class="r"><code>tests3 &lt;- hypothesis_tests(female_brms, females, divisor = 5) 
-tab_S8 &lt;- tests3 %&gt;% clean_table()
-saveRDS(tab_S8, file = &quot;output/tab_S8.rds&quot;)
-tab_S8 %&gt;% pander(split.cell = 40, split.table = Inf)</code></pre>
+tab_S7 &lt;- tests3 %&gt;% clean_table()
+saveRDS(tab_S7, file = &quot;output/tab_S7.rds&quot;)
+tab_S7 %&gt;% pander(split.cell = 40, split.table = Inf)</code></pre>
 <table>
 <colgroup>
 <col width="8%" />
@@ -5079,11 +5111,11 @@ lukeholman
 </div>
 <div id="hypothesis-testing-3" class="section level3">
 <h3>Hypothesis testing</h3>
-<p><strong>Table S9</strong>: The results of hypothesis tests computed using the model of male fitness in Experiment 1. Each row gives the posterior estimate of a difference in means, such that the estimate is positive if mean 1 is larger than mean 2, and negative otherwise (expressed in % offspring sired). The mean 1 and mean 2 columns list the parent which had SD (mother, father, or both), followed by the number of SD alleles present in the offspring (0, 1 or 2). The Posterior probability column gives the probability that the mean with the smaller point estimate is actually larger than the other mean, analagously to a one-tailed p-value. Asterisks highlight rows where the posterior probability is less than 0.05.</p>
+<p><strong>Table S8</strong>: The results of hypothesis tests computed using the model of male fitness in Experiment 1. Each row gives the posterior estimate of a difference in means, such that the estimate is positive if mean 1 is larger than mean 2, and negative otherwise (expressed in % offspring sired). The mean 1 and mean 2 columns list the parent which had SD (mother, father, or both), followed by the number of SD alleles present in the offspring (0, 1 or 2). The Posterior probability column gives the probability that the mean with the smaller point estimate is actually larger than the other mean, analagously to a one-tailed p-value. Asterisks highlight rows where the posterior probability is less than 0.05.</p>
 <pre class="r"><code>tests4 &lt;- hypothesis_tests(male_brms, males) 
-tab_S9 &lt;- tests4 %&gt;% clean_table()
-saveRDS(tab_S9, file = &quot;output/tab_S9.rds&quot;)
-tab_S9 %&gt;% pander(split.cell = 40, split.table = Inf)</code></pre>
+tab_S8 &lt;- tests4 %&gt;% clean_table()
+saveRDS(tab_S8, file = &quot;output/tab_S8.rds&quot;)
+tab_S8 %&gt;% pander(split.cell = 40, split.table = Inf)</code></pre>
 <table>
 <colgroup>
 <col width="8%" />
@@ -6072,7 +6104,7 @@ lukeholman
 </table>
 </div>
 </div>
-<p><br></br> <strong>Figure S1</strong>: Equivalent plots to Figure 2, under the assumption that meiosis is fair (<span class="math inline">\(k\)</span> = 0.5, top row, same as Figure 2), slightly biased (<span class="math inline">\(k\)</span> = 0.6, middle row), and more strongly biased (<span class="math inline">\(k\)</span> = 0.7, bottom row). Note that the significant results for Figure 2 mostly stay the same or increase in magnitude, suggesting that they are genuine and are not sensitive to our assumptions about the data.</p>
+<p><br></br> <strong>Figure S1</strong>: Equivalent plots to Figure 1, under the assumption that meiosis is fair (<span class="math inline">\(k\)</span> = 0.5, top row, same as Figure 1), slightly biased (<span class="math inline">\(k\)</span> = 0.6, middle row), and more strongly biased (<span class="math inline">\(k\)</span> = 0.7, bottom row) in <em>SD</em>/<em>CyO</em> males. Note that the significant results for Figure 1 mostly stay the same or increase in magnitude, suggesting that the results are not strongly influenced by our assumptions about the strength of segregation distortion in <em>SD</em>/<em>CyO</em> males.</p>
 </div>
 <div id="hypothesis-testing-4" class="section level3">
 <h3>Hypothesis testing</h3>
