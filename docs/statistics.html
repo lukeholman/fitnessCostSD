@@ -438,10 +438,10 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtreeb388e226d699c782e84fa384a8926c89d7643fdctargetblankb388e22a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/fitnessCostSD/tree/b388e226d699c782e84fa384a8926c89d7643fdc" target="_blank">b388e22</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtreeee2fecf4538aa0cadd1d016a58a77129d965ad85targetblankee2fecfa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/fitnessCostSD/tree/ee2fecf4538aa0cadd1d016a58a77129d965ad85" target="_blank">ee2fecf</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtreeb388e226d699c782e84fa384a8926c89d7643fdctargetblankb388e22a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtreeee2fecf4538aa0cadd1d016a58a77129d965ad85targetblankee2fecfa" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -501,6 +501,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/lukeholman/fitnessCostSD/blob/ee2fecf4538aa0cadd1d016a58a77129d965ad85/analysis/statistics.Rmd" target="_blank">ee2fecf</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2019-06-19
+</td>
+<td>
+Almost done
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/lukeholman/fitnessCostSD/b19f1be4dbb6853e775880f24cbc0b1b621ad33a/docs/statistics.html" target="_blank">b19f1be</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2019-06-19
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -5350,13 +5384,9 @@ tab_S8 %&gt;% pander(split.cell = 40, split.table = Inf)</code></pre>
     geom_errorbar(aes(ymin = Q2.5, ymax = Q97.5), width = 0, position = pd, size = 1.2) + 
     geom_errorbar(aes(ymin = Q25, ymax = Q75), width = 0, position = pd, size = 3) + 
     geom_point(position = pd, size = 2, colour = &quot;black&quot;, pch = 21) + 
-    # scale_fill_got(option = &quot;Lady Margaery&quot;, name = &quot;Copies of SD&quot;, discrete = TRUE) + 
-    # scale_colour_got(option = &quot;Lady Margaery&quot;, name = &quot;Copies of SD&quot;, discrete = TRUE) + 
-    
     scale_colour_manual(name = &quot;Copies of SD&quot;, values = cols,
                         drop = FALSE, 
                         aesthetics = c(&quot;colour&quot;, &quot;fill&quot;)) +
-
     facet_wrap(~SD) + 
     xlab(&quot;Parent carrying SD&quot;) + ylab(ylab) + theme_hc() + theme(axis.ticks.y = element_blank())
   
