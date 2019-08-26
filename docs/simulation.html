@@ -27,9 +27,8 @@
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="site_libs/font-awesome-5.0.13/css/fa-svg-with-js.css" rel="stylesheet" />
-<script src="site_libs/font-awesome-5.0.13/js/fontawesome-all.min.js"></script>
-<script src="site_libs/font-awesome-5.0.13/js/fa-v4-shims.min.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -77,9 +76,7 @@ h6 {
 </style>
 
 
-</head>
 
-<body>
 
 <style type = "text/css">
 .main-container {
@@ -104,6 +101,9 @@ img {
 button.code-folding-btn:focus {
   outline: none;
 }
+summary {
+  display: list-item;
+}
 </style>
 
 
@@ -118,7 +118,6 @@ body {
   padding-top: 56px;
   margin-top: -56px;
 }
-
 .section h2 {
   padding-top: 56px;
   margin-top: -56px;
@@ -138,6 +137,43 @@ body {
 .section h6 {
   padding-top: 56px;
   margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
 }
 </style>
 
@@ -159,18 +195,75 @@ $(document).ready(function () {
 });
 </script>
 
-
-<div class="container-fluid main-container">
-
 <!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
 });
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
 </script>
 
 <!-- code folding -->
-
 
 
 
@@ -248,8 +341,6 @@ div.tocify {
 
 .tocify-subheader .tocify-item {
   font-size: 0.90em;
-  padding-left: 25px;
-  text-indent: 0;
 }
 
 .tocify .list-group-item {
@@ -258,6 +349,16 @@ div.tocify {
 
 
 </style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
 
 <!-- setup 3col/9col grid for toc_float and main content  -->
 <div class="row-fluid">
@@ -318,7 +419,7 @@ div.section {
 
 
 <h1 class="title toc-ignore">Fitness consequences of the selfish supergene <em>Segregation Distorter</em></h1>
-<h4 class="date"><em>2019-03-12</em></h4>
+<h4 class="date">2019-03-12</h4>
 
 </div>
 
@@ -343,7 +444,7 @@ div.section {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2019-06-18
+<strong>Last updated:</strong> 2019-08-26
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -422,10 +523,10 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtree6f0658da0ce3f085ffbd188783ed248d92ee02a4targetblank6f0658da"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/fitnessCostSD/tree/6f0658da0ce3f085ffbd188783ed248d92ee02a4" target="_blank">6f0658d</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtree75fd5ce9500623e23f097f929239f5a143d328c9targetblank75fd5cea"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/fitnessCostSD/tree/75fd5ce9500623e23f097f929239f5a143d328c9" target="_blank">75fd5ce</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtree6f0658da0ce3f085ffbd188783ed248d92ee02a4targetblank6f0658da" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtree75fd5ce9500623e23f097f929239f5a143d328c9targetblank75fd5cea" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -444,6 +545,7 @@ Ignored files:
     Ignored:    docs/.DS_Store
     Ignored:    docs/figure/SD_costs_analysis.Rmd/
     Ignored:    docs/figure/evolutionary_simulation_SD.Rmd/
+    Ignored:    figures/.DS_Store
     Ignored:    manuscript/.DS_Store
     Ignored:    output/
 
@@ -484,6 +586,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/lukeholman/fitnessCostSD/blob/75fd5ce9500623e23f097f929239f5a143d328c9/analysis/simulation.Rmd" target="_blank">75fd5ce</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2019-08-26
+</td>
+<td>
+JEB edits
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/lukeholman/fitnessCostSD/4e832562e705d7f7448b7ecc401b601ed77c335f/docs/simulation.html" target="_blank">4e83256</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2019-06-18
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -2294,17 +2430,18 @@ unlink(list.files(path = &quot;data&quot;, pattern = &quot;simulation_output_&qu
 <h2>Make Figure 3</h2>
 <pre class="r"><code>fig_3 &lt;- simulation_results %&gt;% 
   mutate(percent_sons = 100 - 100 * (1 + SR_bias_in_hetero_males)/2) %&gt;%
+  mutate(k = 100* (0.5 + k/2)) %&gt;%
   ggplot(aes(k, percent_sons, fill = prop_SD)) +
   geom_blank() +
   geom_raster() + 
   stat_contour(aes(z = prop_SD), colour = &quot;grey10&quot;) +
   geom_hline(yintercept = 50, colour = &quot;black&quot;, linetype = 3) +
-  labs(x = &quot;Strength of segregation distortion (K)&quot;, 
+  labs(x = &quot;% SD offspring when father is heterozygous for SD (k)&quot;, 
        y = &quot;Offspring sex ratio of male SD heterozygotes (% sons)&quot;) +
   facet_wrap(~ facet, labeller = labeller(facet = label_wrap_gen(35))) + 
   scale_fill_distiller(palette = &quot;PuRd&quot;, direction =  1, name = &quot;Equilibrium frequency of SD&quot;, limits = c(0,1)) +
-  scale_x_continuous(expand = c(0, 0), labels = c(0, 0.25, 0.5, 0.75, 1)) + 
-  scale_y_continuous(expand = c(0, 0), labels = ) +
+  scale_x_continuous(expand = c(0, 0)) + 
+  scale_y_continuous(expand = c(0, 0)) +
   theme(panel.border = element_rect(fill = NA, colour = &quot;black&quot;, size = .8),
         strip.background = element_rect(colour = &quot;black&quot;, fill = &quot;grey90&quot;, size = .8),
         legend.position = &quot;bottom&quot;)
@@ -2418,22 +2555,22 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
-[1] ggplot2_3.1.0      kableExtra_0.9.0   future.apply_1.0.1
-[4] future_1.11.1.1    dplyr_0.8.0.1      purrr_0.3.2       
+[1] ggplot2_3.1.0      kableExtra_0.9.0   future.apply_1.3.0
+[4] future_1.14.0      dplyr_0.8.0.1      purrr_0.3.2       
 
 loaded via a namespace (and not attached):
- [1] Rcpp_1.0.1         RColorBrewer_1.1-2 highr_0.8         
+ [1] Rcpp_1.0.2         RColorBrewer_1.1-2 highr_0.8         
  [4] plyr_1.8.4         pillar_1.3.1.9000  compiler_3.5.1    
  [7] git2r_0.23.0       workflowr_1.3.0    tools_3.5.1       
-[10] digest_0.6.18      gtable_0.2.0       viridisLite_0.3.0 
-[13] evaluate_0.13      tibble_2.0.99.9000 pkgconfig_2.0.2   
-[16] rlang_0.3.4        rstudioapi_0.10    yaml_2.2.0        
-[19] parallel_3.5.1     xfun_0.6           withr_2.1.2       
-[22] stringr_1.4.0      httr_1.4.0         knitr_1.22        
+[10] digest_0.6.20      gtable_0.2.0       viridisLite_0.3.0 
+[13] evaluate_0.14      tibble_2.0.99.9000 pkgconfig_2.0.2   
+[16] rlang_0.4.0        rstudioapi_0.10    yaml_2.2.0        
+[19] parallel_3.5.1     xfun_0.8           withr_2.1.2       
+[22] stringr_1.4.0      httr_1.4.0         knitr_1.23        
 [25] xml2_1.2.0         fs_1.3.1           globals_0.12.4    
 [28] hms_0.4.2          grid_3.5.1         rprojroot_1.3-2   
 [31] tidyselect_0.2.5   glue_1.3.1.9000    listenv_0.7.0     
-[34] R6_2.4.0           rmarkdown_1.10     readr_1.1.1       
+[34] R6_2.4.0           rmarkdown_1.13     readr_1.1.1       
 [37] magrittr_1.5       whisker_0.3-2      scales_1.0.0      
 [40] backports_1.1.2    codetools_0.2-15   htmltools_0.3.6   
 [43] assertthat_0.2.1   rvest_0.3.2        colorspace_1.3-2  

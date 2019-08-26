@@ -442,7 +442,7 @@ div.section {
 
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
-<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span>
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 </button>
 </p>
 <div id="workflowr-report" class="collapse">
@@ -451,7 +451,7 @@ div.section {
 <a data-toggle="tab" href="#summary">Summary</a>
 </li>
 <li>
-<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> </a>
+<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -463,7 +463,7 @@ div.section {
 <strong>Last updated:</strong> 2019-08-26
 </p>
 <p>
-<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 5 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 1
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
 </p>
 <p>
 <strong>Knit directory:</strong> <code>fitnessCostSD/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
@@ -479,12 +479,12 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges"> <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted changes </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguncommittedchanges" class="panel-collapse collapse">
+<div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
 <div class="panel-body">
-<p>The R Markdown file has unstaged changes. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
+<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
 </div>
 </div>
 </div>
@@ -539,10 +539,10 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtreefb3414e78f05a197dbdfcd222a3deb67e47273abtargetblankfb3414ea"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/fitnessCostSD/tree/fb3414e78f05a197dbdfcd222a3deb67e47273ab" target="_blank">fb3414e</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtree75fd5ce9500623e23f097f929239f5a143d328c9targetblank75fd5cea"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/fitnessCostSD/tree/75fd5ce9500623e23f097f929239f5a143d328c9" target="_blank">75fd5ce</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtreefb3414e78f05a197dbdfcd222a3deb67e47273abtargetblankfb3414ea" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtree75fd5ce9500623e23f097f929239f5a143d328c9targetblank75fd5cea" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -565,23 +565,8 @@ Ignored files:
     Ignored:    manuscript/.DS_Store
     Ignored:    output/
 
-Untracked files:
-    Untracked:  Response to JEB.docx
-    Untracked:  data/clean_data/measuring_k.csv
-    Untracked:  data/~$SD_k tests_2018_04_05.xlsx
-    Untracked:  manuscript/SD_manuscript.docx
-    Untracked:  manuscript/SD_manuscript.log
-    Untracked:  ~$sponse to JEB.docx
-
 Unstaged changes:
-    Modified:   analysis/simulation.Rmd
-    Modified:   analysis/statistics.Rmd
-    Modified:   figures/Table1.csv
-    Modified:   figures/fig1.pdf
-    Modified:   figures/fig2.pdf
-    Modified:   manuscript/SD_manuscript.Rmd
-    Modified:   manuscript/SD_manuscript.pdf
-    Modified:   manuscript/latex_header.tex
+    Modified:   figures/fig3.pdf
 
 </code></pre>
 <p>
@@ -620,6 +605,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/lukeholman/fitnessCostSD/blob/75fd5ce9500623e23f097f929239f5a143d328c9/analysis/statistics.Rmd" target="_blank">75fd5ce</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2019-08-26
+</td>
+<td>
+JEB edits
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/lukeholman/fitnessCostSD/75fd5ce9500623e23f097f929239f5a143d328c9/docs/statistics.html" target="_blank">75fd5ce</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2019-08-26
+</td>
+<td>
+JEB edits
+</td>
+</tr>
 <tr>
 <td>
 html
@@ -5485,6 +5504,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/lukeholman/fitnessCostSD/blob/75fd5ce9500623e23f097f929239f5a143d328c9/docs/figure/statistics.Rmd/unnamed-chunk-29-1.png" target="_blank">75fd5ce</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2019-08-26
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/lukeholman/fitnessCostSD/blob/437b6d70ef9d4cf0b6d9b4e17c46aefaf754d5e3/docs/figure/statistics.Rmd/unnamed-chunk-29-1.png" target="_blank">437b6d7</a>
 </td>
 <td>
@@ -6098,21 +6128,32 @@ fig_S1 &lt;- make_expt2_multiplot(
 fig_S1 %&gt;% ggsave(file = &quot;output/fig_S1.pdf&quot;, height = 9.5, width = 9)
 fig_S1 %&gt;% grid::grid.draw()</code></pre>
 <p><img src="figure/statistics.Rmd/unnamed-chunk-35-1.png" width="864" style="display: block; margin: auto;" /> <br></br> <strong>Figure S1</strong>: Equivalent plots to Figure 1, under the assumption that meiosis is fair (<span class="math inline">\(k\)</span> = 0.5, top row, same as Figure 1), slightly biased (<span class="math inline">\(k\)</span> = 0.6, middle row), and more strongly biased (<span class="math inline">\(k\)</span> = 0.7, bottom row) in <em>SD</em>/<em>CyO</em> males. Note that the significant results for Figure 1 mostly stay the same or increase in magnitude, suggesting that the results are not strongly influenced by our assumptions about the strength of segregation distortion in <em>SD</em>/<em>CyO</em> males.</p>
+<pre class="r"><code>compare &lt;- function(mean1, mean2){
+  difference &lt;- mean2 - mean1
+  rel_diff &lt;- posterior_summary(mean2 / mean1) %&gt;% round(2) %&gt;% format(nsmall=2)
+  prob_less &lt;- hypothesis(data.frame(x = difference), &quot;x &lt; 0&quot;)$hypothesis
+  prob_more &lt;- hypothesis(data.frame(x = difference), &quot;x &gt; 0&quot;)$hypothesis
+  hypothesis(data.frame(x = difference), &quot;x = 0&quot;)$hypothesis %&gt;% 
+    mutate(
+      Relative_difference = paste(rel_diff[,1], &quot; (&quot;, rel_diff[,3], &quot; to &quot;, rel_diff[,4], &quot;)&quot;, sep = &quot;&quot;),
+      Posterior_probability = min(c(prob_less$Post.Prob, prob_more$Post.Prob)))
+}</code></pre>
 </div>
 <div id="hypothesis-testing-4" class="section level3">
 <h3>Hypothesis testing</h3>
 <pre class="r"><code>hypothesis_tests_expt2 &lt;- function(model){
-  
+
   compare &lt;- function(mean1, mean2, SD, Mean_1, Mean_2){
-  difference &lt;- mean2 - mean1
-  prob_less &lt;- hypothesis(data.frame(x = difference), &quot;x &lt; 0&quot;)$hypothesis
-  prob_more &lt;- hypothesis(data.frame(x = difference), &quot;x &gt; 0&quot;)$hypothesis
-  output &lt;- data.frame(
-    SD, Mean_1, Mean_2,
-    hypothesis(data.frame(x = difference), &quot;x = 0&quot;)$hypothesis %&gt;% 
-    mutate(Posterior_probability = min(c(prob_less$Post.Prob, prob_more$Post.Prob)),
-           Evidence_ratio = max(c(prob_less$Evid.Ratio, prob_more$Evid.Ratio)))
-  )
+    difference &lt;- mean2 - mean1
+    rel_diff &lt;- posterior_summary(mean2 / mean1) %&gt;% round(2) %&gt;% format(nsmall=2)
+    prob_less &lt;- hypothesis(data.frame(x = difference), &quot;x &lt; 0&quot;)$hypothesis
+    prob_more &lt;- hypothesis(data.frame(x = difference), &quot;x &gt; 0&quot;)$hypothesis
+    output &lt;- data.frame(
+      SD, Mean_1, Mean_2,
+      hypothesis(data.frame(x = difference), &quot;x = 0&quot;)$hypothesis %&gt;%
+        mutate(Posterior_probability = min(c(prob_less$Post.Prob, prob_more$Post.Prob)),
+               Relative_difference = paste(rel_diff[,1], &quot; (&quot;, rel_diff[,3], &quot; to &quot;, rel_diff[,4], &quot;)&quot;, sep = &quot;&quot;))
+    )
 }
   preds &lt;- fitted(model, 
                   summary = FALSE, 
@@ -6210,7 +6251,7 @@ tests_expt2 &lt;- hypothesis_tests_expt2(model_list[[1]]) %&gt;%
          Difference = paste(Estimate, &quot; (&quot;, CI.Lower, &quot; to &quot;, CI.Upper, &quot;)&quot;, sep = &quot;&quot;),
          Comparison = paste(Mean_1, &quot;-&quot;, Mean_2),
          Error = Est.Error) %&gt;%
-  select(SD, Comparison, Difference, Error, Posterior_probability, Notable)</code></pre>
+  select(SD, Comparison, Difference, Relative_difference, Posterior_probability, Notable)</code></pre>
 <p><strong>Table 2</strong>: List of the all the notable differences between groups in Experiment 2 (posterior probability $&lt;$0.05; see Table S10 for the remaining results). For each group, we list the sex of the focal larvae, their genotype (<em>SD</em> or <em>CyO</em>), and the parent that carried <em>SD</em> (mother or father). The difference in means is expressed in % larvae surviving; other details are as in Table 1.</p>
 <pre class="r"><code>table2 &lt;- tests_expt2 %&gt;% 
   filter(Notable == &quot;*&quot;) %&gt;% select(-Notable) 
@@ -6220,17 +6261,17 @@ table2 %&gt;% pander(split.cell = 50, split.table = Inf)</code></pre>
 <table>
 <colgroup>
 <col width="7%" />
-<col width="43%" />
-<col width="20%" />
-<col width="7%" />
-<col width="21%" />
+<col width="38%" />
+<col width="18%" />
+<col width="17%" />
+<col width="18%" />
 </colgroup>
 <thead>
 <tr class="header">
 <th align="center">SD</th>
 <th align="center">Comparison</th>
 <th align="center">Difference</th>
-<th align="center">Error</th>
+<th align="center">Relative_difference</th>
 <th align="center">Posterior_probability</th>
 </tr>
 </thead>
@@ -6239,77 +6280,77 @@ table2 %&gt;% pander(split.cell = 50, split.table = Inf)</code></pre>
 <td align="center">SD-5</td>
 <td align="center">Sons, CyO, mother - Daughters, CyO, mother</td>
 <td align="center">10.7 ( 2.0 to 19.4)</td>
-<td align="center">4.5</td>
+<td align="center">1.15 (1.03 to 1.29)</td>
 <td align="center">0.00825</td>
 </tr>
 <tr class="even">
 <td align="center">SD-5</td>
 <td align="center">Sons, CyO, mother - Sons, CyO, father</td>
 <td align="center">10.7 ( 1.5 to 19.8)</td>
-<td align="center">4.6</td>
+<td align="center">1.15 (1.02 to 1.30)</td>
 <td align="center">0.0105</td>
 </tr>
 <tr class="odd">
 <td align="center">SD-5</td>
 <td align="center">Sons, SD, mother - Sons, SD, father</td>
 <td align="center">9.7 ( 0.1 to 19.4)</td>
-<td align="center">5.0</td>
+<td align="center">1.14 (1.00 to 1.31)</td>
 <td align="center">0.02475</td>
 </tr>
 <tr class="even">
 <td align="center">SD-5</td>
 <td align="center">Sons, SD, mother - Daughters, SD, mother</td>
 <td align="center">9.1 ( -0.4 to 18.7)</td>
-<td align="center">4.8</td>
+<td align="center">1.13 (0.99 to 1.30)</td>
 <td align="center">0.028</td>
 </tr>
 <tr class="odd">
 <td align="center">SD-5</td>
 <td align="center">Daughters, CyO, mother - Daughters, SD, mother</td>
 <td align="center">-4.6 (-10.0 to 0.6)</td>
-<td align="center">2.7</td>
+<td align="center">0.94 (0.88 to 1.01)</td>
 <td align="center">0.041</td>
 </tr>
 <tr class="even">
 <td align="center">SD-72</td>
 <td align="center">Sons, SD, mother - Daughters, SD, mother</td>
 <td align="center">9.9 ( 4.2 to 15.8)</td>
-<td align="center">3.0</td>
+<td align="center">1.12 (1.05 to 1.21)</td>
 <td align="center">5e-04</td>
 </tr>
 <tr class="odd">
 <td align="center">SD-72</td>
 <td align="center">Sons, CyO, mother - Daughters, CyO, mother</td>
 <td align="center">11.0 ( 4.3 to 17.9)</td>
-<td align="center">3.5</td>
+<td align="center">1.14 (1.05 to 1.25)</td>
 <td align="center">0.00075</td>
 </tr>
 <tr class="even">
 <td align="center">SD-72</td>
 <td align="center">Sons, CyO, father - Daughters, CyO, father</td>
 <td align="center">7.0 ( -1.0 to 15.5)</td>
-<td align="center">4.2</td>
+<td align="center">1.09 (0.99 to 1.21)</td>
 <td align="center">0.04475</td>
 </tr>
 <tr class="odd">
 <td align="center">SD-Mad</td>
 <td align="center">Sons, CyO, mother - Daughters, CyO, mother</td>
 <td align="center">9.4 ( 2.7 to 16.3)</td>
-<td align="center">3.5</td>
+<td align="center">1.12 (1.03 to 1.22)</td>
 <td align="center">0.00225</td>
 </tr>
 <tr class="even">
 <td align="center">SD-Mad</td>
 <td align="center">Daughters, CyO, mother - Daughters, SD, mother</td>
 <td align="center">-5.4 ( -9.9 to -1.2)</td>
-<td align="center">2.2</td>
+<td align="center">0.94 (0.89 to 0.99)</td>
 <td align="center">0.00675</td>
 </tr>
 <tr class="odd">
 <td align="center">SD-Mad</td>
 <td align="center">Sons, CyO, mother - Sons, CyO, father</td>
 <td align="center">7.7 ( -0.6 to 15.6)</td>
-<td align="center">4.1</td>
+<td align="center">1.10 (0.99 to 1.21)</td>
 <td align="center">0.0345</td>
 </tr>
 </tbody>
@@ -6319,19 +6360,19 @@ table2 %&gt;% pander(split.cell = 50, split.table = Inf)</code></pre>
 tests_expt2 %&gt;% pander(split.cell = 50, split.table = Inf) </code></pre>
 <table>
 <colgroup>
-<col width="7%" />
-<col width="40%" />
-<col width="18%" />
 <col width="6%" />
-<col width="19%" />
-<col width="8%" />
+<col width="36%" />
+<col width="16%" />
+<col width="15%" />
+<col width="17%" />
+<col width="7%" />
 </colgroup>
 <thead>
 <tr class="header">
 <th align="center">SD</th>
 <th align="center">Comparison</th>
 <th align="center">Difference</th>
-<th align="center">Error</th>
+<th align="center">Relative_difference</th>
 <th align="center">Posterior_probability</th>
 <th align="center">Notable</th>
 </tr>
@@ -6341,7 +6382,7 @@ tests_expt2 %&gt;% pander(split.cell = 50, split.table = Inf) </code></pre>
 <td align="center">SD-5</td>
 <td align="center">Sons, CyO, mother - Daughters, CyO, mother</td>
 <td align="center">10.7 ( 2.0 to 19.4)</td>
-<td align="center">4.5</td>
+<td align="center">1.15 (1.03 to 1.29)</td>
 <td align="center">0.00825</td>
 <td align="center">*</td>
 </tr>
@@ -6349,7 +6390,7 @@ tests_expt2 %&gt;% pander(split.cell = 50, split.table = Inf) </code></pre>
 <td align="center">SD-5</td>
 <td align="center">Sons, CyO, mother - Sons, CyO, father</td>
 <td align="center">10.7 ( 1.5 to 19.8)</td>
-<td align="center">4.6</td>
+<td align="center">1.15 (1.02 to 1.30)</td>
 <td align="center">0.0105</td>
 <td align="center">*</td>
 </tr>
@@ -6357,7 +6398,7 @@ tests_expt2 %&gt;% pander(split.cell = 50, split.table = Inf) </code></pre>
 <td align="center">SD-5</td>
 <td align="center">Sons, SD, mother - Sons, SD, father</td>
 <td align="center">9.7 ( 0.1 to 19.4)</td>
-<td align="center">5.0</td>
+<td align="center">1.14 (1.00 to 1.31)</td>
 <td align="center">0.02475</td>
 <td align="center">*</td>
 </tr>
@@ -6365,7 +6406,7 @@ tests_expt2 %&gt;% pander(split.cell = 50, split.table = Inf) </code></pre>
 <td align="center">SD-5</td>
 <td align="center">Sons, SD, mother - Daughters, SD, mother</td>
 <td align="center">9.1 ( -0.4 to 18.7)</td>
-<td align="center">4.8</td>
+<td align="center">1.13 (0.99 to 1.30)</td>
 <td align="center">0.028</td>
 <td align="center">*</td>
 </tr>
@@ -6373,7 +6414,7 @@ tests_expt2 %&gt;% pander(split.cell = 50, split.table = Inf) </code></pre>
 <td align="center">SD-5</td>
 <td align="center">Daughters, CyO, mother - Daughters, SD, mother</td>
 <td align="center">-4.6 (-10.0 to 0.6)</td>
-<td align="center">2.7</td>
+<td align="center">0.94 (0.88 to 1.01)</td>
 <td align="center">0.041</td>
 <td align="center">*</td>
 </tr>
@@ -6381,7 +6422,7 @@ tests_expt2 %&gt;% pander(split.cell = 50, split.table = Inf) </code></pre>
 <td align="center">SD-5</td>
 <td align="center">Daughters, SD, mother - Daughters, SD, father</td>
 <td align="center">5.9 ( -2.5 to 14.6)</td>
-<td align="center">4.2</td>
+<td align="center">1.08 (0.97 to 1.20)</td>
 <td align="center">0.07775</td>
 <td align="center"></td>
 </tr>
@@ -6389,7 +6430,7 @@ tests_expt2 %&gt;% pander(split.cell = 50, split.table = Inf) </code></pre>
 <td align="center">SD-5</td>
 <td align="center">Sons, CyO, father - Sons, SD, father</td>
 <td align="center">-4.0 (-10.0 to 1.8)</td>
-<td align="center">3.0</td>
+<td align="center">0.95 (0.88 to 1.02)</td>
 <td align="center">0.08675</td>
 <td align="center"></td>
 </tr>
@@ -6397,7 +6438,7 @@ tests_expt2 %&gt;% pander(split.cell = 50, split.table = Inf) </code></pre>
 <td align="center">SD-5</td>
 <td align="center">Sons, SD, father - Daughters, SD, father</td>
 <td align="center">5.3 ( -3.7 to 14.5)</td>
-<td align="center">4.5</td>
+<td align="center">1.07 (0.96 to 1.20)</td>
 <td align="center">0.118</td>
 <td align="center"></td>
 </tr>
@@ -6405,7 +6446,7 @@ tests_expt2 %&gt;% pander(split.cell = 50, split.table = Inf) </code></pre>
 <td align="center">SD-5</td>
 <td align="center">Sons, CyO, mother - Sons, SD, mother</td>
 <td align="center">-3.1 ( -9.0 to 2.8)</td>
-<td align="center">3.0</td>
+<td align="center">0.96 (0.88 to 1.04)</td>
 <td align="center">0.1493</td>
 <td align="center"></td>
 </tr>
@@ -6413,7 +6454,7 @@ tests_expt2 %&gt;% pander(split.cell = 50, split.table = Inf) </code></pre>
 <td align="center">SD-5</td>
 <td align="center">Daughters, CyO, mother - Daughters, CyO, father</td>
 <td align="center">2.5 ( -4.8 to 9.8)</td>
-<td align="center">3.7</td>
+<td align="center">1.03 (0.94 to 1.12)</td>
 <td align="center">0.2448</td>
 <td align="center"></td>
 </tr>
@@ -6421,7 +6462,7 @@ tests_expt2 %&gt;% pander(split.cell = 50, split.table = Inf) </code></pre>
 <td align="center">SD-5</td>
 <td align="center">Sons, CyO, father - Daughters, CyO, father</td>
 <td align="center">2.5 ( -4.9 to 10.4)</td>
-<td align="center">3.9</td>
+<td align="center">1.03 (0.94 to 1.13)</td>
 <td align="center">0.2597</td>
 <td align="center"></td>
 </tr>
@@ -6429,7 +6470,7 @@ tests_expt2 %&gt;% pander(split.cell = 50, split.table = Inf) </code></pre>
 <td align="center">SD-5</td>
 <td align="center">Daughters, CyO, father - Daughters, SD, father</td>
 <td align="center">-1.2 ( -6.3 to 3.5)</td>
-<td align="center">2.5</td>
+<td align="center">0.99 (0.93 to 1.04)</td>
 <td align="center">0.3105</td>
 <td align="center"></td>
 </tr>
@@ -6437,7 +6478,7 @@ tests_expt2 %&gt;% pander(split.cell = 50, split.table = Inf) </code></pre>
 <td align="center">SD-72</td>
 <td align="center">Sons, SD, mother - Daughters, SD, mother</td>
 <td align="center">9.9 ( 4.2 to 15.8)</td>
-<td align="center">3.0</td>
+<td align="center">1.12 (1.05 to 1.21)</td>
 <td align="center">5e-04</td>
 <td align="center">*</td>
 </tr>
@@ -6445,7 +6486,7 @@ tests_expt2 %&gt;% pander(split.cell = 50, split.table = Inf) </code></pre>
 <td align="center">SD-72</td>
 <td align="center">Sons, CyO, mother - Daughters, CyO, mother</td>
 <td align="center">11.0 ( 4.3 to 17.9)</td>
-<td align="center">3.5</td>
+<td align="center">1.14 (1.05 to 1.25)</td>
 <td align="center">0.00075</td>
 <td align="center">*</td>
 </tr>
@@ -6453,7 +6494,7 @@ tests_expt2 %&gt;% pander(split.cell = 50, split.table = Inf) </code></pre>
 <td align="center">SD-72</td>
 <td align="center">Sons, CyO, father - Daughters, CyO, father</td>
 <td align="center">7.0 ( -1.0 to 15.5)</td>
-<td align="center">4.2</td>
+<td align="center">1.09 (0.99 to 1.21)</td>
 <td align="center">0.04475</td>
 <td align="center">*</td>
 </tr>
@@ -6461,7 +6502,7 @@ tests_expt2 %&gt;% pander(split.cell = 50, split.table = Inf) </code></pre>
 <td align="center">SD-72</td>
 <td align="center">Sons, CyO, mother - Sons, SD, mother</td>
 <td align="center">3.4 ( -1.2 to 8.1)</td>
-<td align="center">2.4</td>
+<td align="center">1.04 (0.98 to 1.11)</td>
 <td align="center">0.074</td>
 <td align="center"></td>
 </tr>
@@ -6469,7 +6510,7 @@ tests_expt2 %&gt;% pander(split.cell = 50, split.table = Inf) </code></pre>
 <td align="center">SD-72</td>
 <td align="center">Daughters, SD, mother - Daughters, SD, father</td>
 <td align="center">-3.8 ( -9.9 to 1.6)</td>
-<td align="center">2.9</td>
+<td align="center">0.96 (0.89 to 1.02)</td>
 <td align="center">0.08525</td>
 <td align="center"></td>
 </tr>
@@ -6477,7 +6518,7 @@ tests_expt2 %&gt;% pander(split.cell = 50, split.table = Inf) </code></pre>
 <td align="center">SD-72</td>
 <td align="center">Daughters, CyO, mother - Daughters, SD, mother</td>
 <td align="center">2.3 ( -1.1 to 5.9)</td>
-<td align="center">1.8</td>
+<td align="center">1.03 (0.99 to 1.07)</td>
 <td align="center">0.0875</td>
 <td align="center"></td>
 </tr>
@@ -6485,7 +6526,7 @@ tests_expt2 %&gt;% pander(split.cell = 50, split.table = Inf) </code></pre>
 <td align="center">SD-72</td>
 <td align="center">Sons, SD, father - Daughters, SD, father</td>
 <td align="center">4.5 ( -3.3 to 12.7)</td>
-<td align="center">4.1</td>
+<td align="center">1.06 (0.96 to 1.17)</td>
 <td align="center">0.1335</td>
 <td align="center"></td>
 </tr>
@@ -6493,7 +6534,7 @@ tests_expt2 %&gt;% pander(split.cell = 50, split.table = Inf) </code></pre>
 <td align="center">SD-72</td>
 <td align="center">Sons, CyO, father - Sons, SD, father</td>
 <td align="center">2.2 ( -3.8 to 8.8)</td>
-<td align="center">3.2</td>
+<td align="center">1.03 (0.95 to 1.12)</td>
 <td align="center">0.2433</td>
 <td align="center"></td>
 </tr>
@@ -6501,7 +6542,7 @@ tests_expt2 %&gt;% pander(split.cell = 50, split.table = Inf) </code></pre>
 <td align="center">SD-72</td>
 <td align="center">Sons, CyO, mother - Sons, CyO, father</td>
 <td align="center">2.7 ( -6.3 to 11.4)</td>
-<td align="center">4.5</td>
+<td align="center">1.04 (0.92 to 1.16)</td>
 <td align="center">0.2742</td>
 <td align="center"></td>
 </tr>
@@ -6509,7 +6550,7 @@ tests_expt2 %&gt;% pander(split.cell = 50, split.table = Inf) </code></pre>
 <td align="center">SD-72</td>
 <td align="center">Daughters, CyO, mother - Daughters, CyO, father</td>
 <td align="center">-1.2 ( -7.4 to 4.7)</td>
-<td align="center">3.0</td>
+<td align="center">0.99 (0.92 to 1.05)</td>
 <td align="center">0.3395</td>
 <td align="center"></td>
 </tr>
@@ -6517,7 +6558,7 @@ tests_expt2 %&gt;% pander(split.cell = 50, split.table = Inf) </code></pre>
 <td align="center">SD-72</td>
 <td align="center">Sons, SD, mother - Sons, SD, father</td>
 <td align="center">1.5 ( -6.4 to 9.3)</td>
-<td align="center">4.1</td>
+<td align="center">1.02 (0.92 to 1.12)</td>
 <td align="center">0.354</td>
 <td align="center"></td>
 </tr>
@@ -6525,7 +6566,7 @@ tests_expt2 %&gt;% pander(split.cell = 50, split.table = Inf) </code></pre>
 <td align="center">SD-72</td>
 <td align="center">Daughters, CyO, father - Daughters, SD, father</td>
 <td align="center">-0.3 ( -5.0 to 4.4)</td>
-<td align="center">2.4</td>
+<td align="center">1.00 (0.94 to 1.05)</td>
 <td align="center">0.449</td>
 <td align="center"></td>
 </tr>
@@ -6533,7 +6574,7 @@ tests_expt2 %&gt;% pander(split.cell = 50, split.table = Inf) </code></pre>
 <td align="center">SD-Mad</td>
 <td align="center">Sons, CyO, mother - Daughters, CyO, mother</td>
 <td align="center">9.4 ( 2.7 to 16.3)</td>
-<td align="center">3.5</td>
+<td align="center">1.12 (1.03 to 1.22)</td>
 <td align="center">0.00225</td>
 <td align="center">*</td>
 </tr>
@@ -6541,7 +6582,7 @@ tests_expt2 %&gt;% pander(split.cell = 50, split.table = Inf) </code></pre>
 <td align="center">SD-Mad</td>
 <td align="center">Daughters, CyO, mother - Daughters, SD, mother</td>
 <td align="center">-5.4 ( -9.9 to -1.2)</td>
-<td align="center">2.2</td>
+<td align="center">0.94 (0.89 to 0.99)</td>
 <td align="center">0.00675</td>
 <td align="center">*</td>
 </tr>
@@ -6549,7 +6590,7 @@ tests_expt2 %&gt;% pander(split.cell = 50, split.table = Inf) </code></pre>
 <td align="center">SD-Mad</td>
 <td align="center">Sons, CyO, mother - Sons, CyO, father</td>
 <td align="center">7.7 ( -0.6 to 15.6)</td>
-<td align="center">4.1</td>
+<td align="center">1.10 (0.99 to 1.21)</td>
 <td align="center">0.0345</td>
 <td align="center">*</td>
 </tr>
@@ -6557,7 +6598,7 @@ tests_expt2 %&gt;% pander(split.cell = 50, split.table = Inf) </code></pre>
 <td align="center">SD-Mad</td>
 <td align="center">Sons, CyO, mother - Sons, SD, mother</td>
 <td align="center">3.0 ( -1.9 to 8.0)</td>
-<td align="center">2.5</td>
+<td align="center">1.04 (0.98 to 1.10)</td>
 <td align="center">0.1115</td>
 <td align="center"></td>
 </tr>
@@ -6565,7 +6606,7 @@ tests_expt2 %&gt;% pander(split.cell = 50, split.table = Inf) </code></pre>
 <td align="center">SD-Mad</td>
 <td align="center">Daughters, SD, mother - Daughters, SD, father</td>
 <td align="center">3.4 ( -4.9 to 11.0)</td>
-<td align="center">4.0</td>
+<td align="center">1.04 (0.94 to 1.14)</td>
 <td align="center">0.1965</td>
 <td align="center"></td>
 </tr>
@@ -6573,7 +6614,7 @@ tests_expt2 %&gt;% pander(split.cell = 50, split.table = Inf) </code></pre>
 <td align="center">SD-Mad</td>
 <td align="center">Sons, CyO, father - Sons, SD, father</td>
 <td align="center">-2.2 ( -8.7 to 4.1)</td>
-<td align="center">3.2</td>
+<td align="center">0.98 (0.90 to 1.05)</td>
 <td align="center">0.2318</td>
 <td align="center"></td>
 </tr>
@@ -6581,7 +6622,7 @@ tests_expt2 %&gt;% pander(split.cell = 50, split.table = Inf) </code></pre>
 <td align="center">SD-Mad</td>
 <td align="center">Daughters, CyO, mother - Daughters, CyO, father</td>
 <td align="center">-2.8 (-10.7 to 4.3)</td>
-<td align="center">3.8</td>
+<td align="center">0.97 (0.88 to 1.05)</td>
 <td align="center">0.236</td>
 <td align="center"></td>
 </tr>
@@ -6589,7 +6630,7 @@ tests_expt2 %&gt;% pander(split.cell = 50, split.table = Inf) </code></pre>
 <td align="center">SD-Mad</td>
 <td align="center">Sons, SD, mother - Sons, SD, father</td>
 <td align="center">2.5 ( -6.3 to 10.3)</td>
-<td align="center">4.1</td>
+<td align="center">1.03 (0.93 to 1.13)</td>
 <td align="center">0.2578</td>
 <td align="center"></td>
 </tr>
@@ -6597,7 +6638,7 @@ tests_expt2 %&gt;% pander(split.cell = 50, split.table = Inf) </code></pre>
 <td align="center">SD-Mad</td>
 <td align="center">Sons, SD, father - Daughters, SD, father</td>
 <td align="center">1.9 ( -6.7 to 10.9)</td>
-<td align="center">4.6</td>
+<td align="center">1.02 (0.92 to 1.14)</td>
 <td align="center">0.3347</td>
 <td align="center"></td>
 </tr>
@@ -6605,7 +6646,7 @@ tests_expt2 %&gt;% pander(split.cell = 50, split.table = Inf) </code></pre>
 <td align="center">SD-Mad</td>
 <td align="center">Sons, SD, mother - Daughters, SD, mother</td>
 <td align="center">1.0 ( -6.1 to 8.0)</td>
-<td align="center">3.6</td>
+<td align="center">1.01 (0.93 to 1.10)</td>
 <td align="center">0.3847</td>
 <td align="center"></td>
 </tr>
@@ -6613,7 +6654,7 @@ tests_expt2 %&gt;% pander(split.cell = 50, split.table = Inf) </code></pre>
 <td align="center">SD-Mad</td>
 <td align="center">Daughters, CyO, father - Daughters, SD, father</td>
 <td align="center">0.8 ( -5.2 to 6.9)</td>
-<td align="center">3.1</td>
+<td align="center">1.01 (0.94 to 1.09)</td>
 <td align="center">0.4085</td>
 <td align="center"></td>
 </tr>
@@ -6621,7 +6662,7 @@ tests_expt2 %&gt;% pander(split.cell = 50, split.table = Inf) </code></pre>
 <td align="center">SD-Mad</td>
 <td align="center">Sons, CyO, father - Daughters, CyO, father</td>
 <td align="center">-1.1 ( -9.8 to 7.8)</td>
-<td align="center">4.5</td>
+<td align="center">0.99 (0.89 to 1.09)</td>
 <td align="center">0.4127</td>
 <td align="center"></td>
 </tr>
