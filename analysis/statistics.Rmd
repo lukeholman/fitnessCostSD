@@ -16,7 +16,9 @@ opts_chunk$set(warning = FALSE, message = FALSE)
 ### Load R packages
 ```{r results='hide', message=FALSE, warning=FALSE}
 packages <- c("dplyr", "brms", "ggplot2", "reshape2", "Cairo", "knitr", "pander", "lazerhawk",
-              "grid", "gridExtra", "ggthemes", "readr", "tibble", "stringr", "gameofthrones")
+              "purrr", "tidyr", "grid", "gridExtra", "ggthemes",
+              "readr", "tibble", "stringr", "gameofthrones")
+
 shh <- suppressMessages(lapply(packages, library, character.only = TRUE, quietly = TRUE))
 nCores <- 1
 
@@ -28,6 +30,106 @@ summarise_brms <- function(brmsfit){
 } 
 ```
 
+
+## Pilot study to confirm that _SD_ is capable of gene drive
+
+In this simple experiment, we crossed _bw_/_bw_ females to _SD_/_bw_ males, and counted the proportion of offspring with red as opposed to brown eyes (indicated that they received _SD_ rather than _bw_ from the father). This was performed for 45 crosses (n = 14-6 per _SD_ variant), and we scored the eye colour phenotype of all of the 4016 resulting progeny. We then fit a Bayesian binomial GLMM with the _SD_ variant, offspring sex, and their interaction as fixed effects, family ID as a random effect, and the eye colour phenotype of the offspring as the response variable. We then used the model to get the posterior estimate of the % adult offspring carrying _SD_, for the 3 _SD_ variants, and the 2 offspring sexes. 
+
+```{r message=FALSE, warning=FALSE,results='hide'}
+k_data <- read_csv("data/clean_data/measuring_k.csv") %>%
+  mutate(id = 1:n()) %>%
+  gather(progeny_type, n, -SD, -id) %>%
+  mutate(split = strsplit(progeny_type, split = "_"),
+         genotype = map_chr(split, ~ .x[1]),
+         sex = map_chr(split, ~ .x[2])) %>%
+  select(id, SD, genotype, sex, n) %>%
+  rename(SD_variant = SD) %>%
+  spread(genotype, n) %>% 
+  mutate(total = bw + SD)
+
+if(!file.exists("output/k_model_no_sex.rds")){
+  k_model_with_sex <- brm(SD | trials(total) ~ SD_variant * sex + (1 | id), family = "binomial",
+                          prior = c(set_prior("normal(1,3)", class = "Intercept"), # it's almost certainly >>50% based on past work, so use a positive mean for prior
+                                    set_prior("normal(0,3)", class = "b")),
+                          iter = 5000, chains = 4, seed = 123,
+                          data = k_data)
+  
+  k_model_no_sex <- brm(SD | trials(total) ~ SD_variant + (1 | id), family = "binomial",
+                        prior = c(set_prior("normal(1,3)", class = "Intercept"),
+                                  set_prior("normal(0,3)", class = "b")),
+                        iter = 5000, chains = 4, seed = 123,
+                        data = k_data)  
+  saveRDS(k_model_with_sex, "output/k_model_with_sex.rds")
+  saveRDS(k_model_no_sex, "output/k_model_no_sex.rds")
+} else {
+  k_model_with_sex <- readRDS("output/k_model_with_sex.rds")  
+  k_model_no_sex <- readRDS("output/k_model_no_sex.rds")  
+}
+
+
+p <- bayestestR::p_direction(k_model_with_sex)  %>% as.numeric()
+
+model_results_sex <- fixef(k_model_with_sex) %>% as.data.frame() %>% 
+  rownames_to_column("Parameter") %>% as_tibble() %>% mutate(p= (100-p)/100)
+
+p <- bayestestR::p_direction(k_model_no_sex)  %>% as.numeric()
+
+model_results_no_sex <- fixef(k_model_no_sex) %>% as.data.frame() %>% 
+  rownames_to_column("Parameter") %>% as_tibble() %>% mutate(p= (100-p)/100)
+
+new <- expand.grid(total = 100, SD_variant = unique(k_data$SD_variant))
+
+estimated_k <- fitted(k_model_no_sex, newdata = new, re_formula = NA, summary = FALSE) %>% as.data.frame()
+names(estimated_k) <- new$SD_variant
+estimated_k <- gather(estimated_k) %>% 
+  rename(SD_variant = key,
+         k = value) %>%
+  mutate(SD_variant = gsub("SD", "SD-", SD_variant))
+
+k_estimates <-  estimated_k %>%
+  group_by(SD_variant) %>%
+  summarise(x = list(posterior_summary(k)))
+k_estimates <- data.frame(SD_variant = k_estimates$SD_variant, do.call("rbind", k_estimates$x)) %>%
+  mutate_if(is.numeric, ~ format(round(.x,2), nsmall = 2)) 
+
+
+fig_S2 <- ggplot(estimated_k, aes(x = k, fill = SD_variant)) +
+  geom_density(alpha = 0.5) +
+  facet_wrap(~ SD_variant, ncol = 1) + 
+  xlab("% adult offspring carrying SD\nCross: SD/bw male x bw/bw female") + 
+  ylab("Posterior density") + 
+  scale_fill_brewer(palette = "Set1", name = "") + 
+  theme_minimal() + 
+  theme(legend.position = "none",
+        strip.text = element_text(hjust = 1))
+
+ggsave(fig_S2, filename = "output/fig_S2.pdf", height = 4, width = 4)
+```
+
+```{r}
+fig_S2
+```
+<br></br>
+**Figure S2**: Posterior estimates of the percentage of adult progeny that carried _SD_ in the pilot experiment, which crossed _SD_/_bw_ males and _bw_/_bw_ females. All estimates are well above the 50% expected under Mendelian inheritance, and the estimate for _SD-Mad_ is significantly lower than the other two. Note that the elevated percentage of _SD_ progeny is the net result of segregation distortion and pre-adult mortality, and so the strength of segregation distortion might be stronger than suggested by these estimates if _SD_ progeny are less likely to survive to adulthood.
+
+### Estimates of % progeny carrying _SD_ in the pilot study
+```{r}
+k_estimates %>% pander()
+```
+
+### `brms` model results from the pilot study {.tabset}
+
+#### Best-fitting model: SD variant only
+
+```{r}
+model_results_no_sex %>% pander()
+```
+
+#### Full model: SD variant, offspring sex, and their interaction
+
+```{r}
+model_results_sex %>% pander()
+```
 
 ### Load and clean the data
 This section also saves a copy of the cleaned data in the directory `data/cleaned_data`. If you wish to re-use the data, I suggest you use these cleaned files; the factor and level names are more intuitive than in the original data sheets (however, the actual data are identical).
@@ -246,7 +348,7 @@ tab_S3 %>% pander(split.cell = 40, split.table = Inf)
 **Table S9**: Number and percentage of L1 larvae surviving to adulthood in Experiment 2, for each SD genotype, cross type, and offspring sex.
 
 ```{r}
-tab_S5 <- expt2 %>%
+tab_S9 <- expt2 %>%
   rename(parent_with_SD = SD_parent, offspring_sex = sex_of_embryos) %>%
   mutate(SD_embryos = SD_offspring + rbinom(n(), Dead_offspring, 0.5),
          CyO_embryos = starting_number_focal_sex - SD_embryos,
@@ -261,8 +363,8 @@ tab_S5 <- expt2 %>%
          percent_surviving_CyO_larvae = format(round(percent_surviving_CyO_larvae, 1), nsmall = 1)) %>%
   tidy_names()
 
-saveRDS(tab_S5, file = "output/tab_S9.rds")
-tab_S5 %>% pander(split.cell = 40, split.table = Inf)
+saveRDS(tab_S9, file = "output/tab_S9.rds")
+tab_S9 %>% pander(split.cell = 40, split.table = Inf)
 ```
 
 
@@ -304,11 +406,13 @@ summarise_brms(larvae_brms)
 # Function to compute posterior difference in means, with the posterior_probability of the smaller mean actually being the larger one (plus the larger evidence ratio, e.g. ER = 10 means it's 10x more likely the smaller mean really is smaller not larger, ER=1 means it's equally likely the smaller one is actually larger)
 compare <- function(mean1, mean2){
   difference <- mean2 - mean1
+  rel_diff <- posterior_summary(mean2 / mean1) %>% round(2) %>% format(nsmall=2)
   prob_less <- hypothesis(data.frame(x = difference), "x < 0")$hypothesis
   prob_more <- hypothesis(data.frame(x = difference), "x > 0")$hypothesis
   hypothesis(data.frame(x = difference), "x = 0")$hypothesis %>% 
-    mutate(Posterior_probability = min(c(prob_less$Post.Prob, prob_more$Post.Prob)),
-           Evidence_ratio = max(c(prob_less$Evid.Ratio, prob_more$Evid.Ratio)))
+    mutate(
+      Relative_difference = paste(rel_diff[,1], " (", rel_diff[,3], " to ", rel_diff[,4], ")", sep = ""),
+      Posterior_probability = min(c(prob_less$Post.Prob, prob_more$Post.Prob)))
 }
 
 hypothesis_tests <- function(model, dat, SR = FALSE, divisor = NULL){
@@ -429,22 +533,20 @@ hypothesis_tests <- function(model, dat, SR = FALSE, divisor = NULL){
 }
 
 clean_table <- function(tabl){
-  cols <- c("Trait", "SD", "Comparison", "Difference", "Error", "Posterior_probability")
+  cols <- c("Trait", "SD", "Comparison", "Difference", "Relative_difference", "Posterior_probability")
   if(!("Trait" %in% names(tabl))){
     cols <- cols[cols != "Trait"]
   }
-  
-  tabl <- mutate(tabl, 
+  mutate(tabl, 
                  Estimate = format(round(Estimate, 1), nsmall = 1),  
                  Est.Error = format(round(Est.Error, 1), nsmall = 1),
                  CI.Lower = format(round(CI.Lower, 1), nsmall = 1),
                  CI.Upper = format(round(CI.Upper, 1), nsmall = 1), 
-                 Evidence_ratio = format(round(Evidence_ratio, 1), nsmall = 1), 
                  Difference = paste(Estimate, " (", CI.Lower, " to ", CI.Upper, ")", sep = ""),
                  Comparison = paste(Mean_1, "-", Mean_2),
                  Error = Est.Error) %>%
-    select(!! cols)
-  tabl %>% tidy_names()
+    select(!! cols) %>%
+    rename_all(~ gsub("_", " ", .x))
 }
 
 tests1 <- hypothesis_tests(larvae_brms, larvae)
@@ -490,8 +592,8 @@ summarise_brms(SR_brms)
 ### Hypothesis testing
 **Table S6**: The results of hypothesis tests computed using the model of adult sex ratio in Experiment 1. Each row gives the posterior estimate of a difference in means, such that the estimate is positive if mean 1 is larger than mean 2, and negative otherwise (expressed in % males). The mean 1 and mean 2 columns list the parent which had SD (mother, father, or both), followed by the number of SD alleles present in the offspring (0, 1 or 2). The Posterior probability column gives the probability that the mean with the smaller point estimate is actually larger than the other mean, analagously to a one-tailed p-value. Asterisks highlight rows where the posterior probability is less than 0.05.
 ```{r}
-tests2 <- hypothesis_tests(SR_brms, SR_data) 
-saveRDS(tests2 %>% clean_table(), file = "output/tab_S6.rds")
+tests2 <- hypothesis_tests(SR_brms, SR_data) %>% clean_table()
+saveRDS(tests2, file = "output/tab_S6.rds")
 tests2 %>% pander(split.cell = 40, split.table = Inf)
 ```
 
@@ -653,7 +755,7 @@ fig1 <- make_expt1_multiplot(
 )
 ggsave(fig1, file = "figures/fig1.pdf", height = 7, width = 11)
 ```
-**Figure 1**: Posterior estimates of the group means for the four different response variables in Experiment 1, for each type of cross (x-axis), _SD_ variant (panels), and genotype (colours). Juvenile fitness was measured as % L1 larva-to-adult survival, adult sex ratio refers to the number of males and females among the individuals that reached adulthood, female fitness is the estimated number of progeny produced per female, and male fitness as the siring success relative to competitior males. The thicker inner bar shows the region containing 50% of the posterior, the outer bar covers 95% of the posterior, and the circle marks the median. Tables S6-S9 give the accompanying statistcal results. Points labelled as carrying ``0 or 1'' _SD_ allele refer to cases where the genotype of the offspring could not be ascertained due to the brown eye marker not being expressed in larvae; most of these individuals probably carried 1 _SD_ allele because of segregation distortion.
+**Figure 1**: Posterior estimates of the group means for the four different response variables in Experiment 1, for each type of cross (x-axis), _SD_ variant (panels), and genotype (colours). Juvenile fitness was measured as % L1 larva-to-adult survival, adult sex ratio refers to the number of males and females among the individuals that reached adulthood, female fitness is the estimated number of progeny produced per female, and male fitness as the siring success relative to competitior males. The thicker inner bar shows the region containing 50% of the posterior, the outer bar covers 95% of the posterior, and the circle marks the median. Tables S6-S9 give the accompanying statistical results. Points labelled as carrying ``0 or 1'' _SD_ allele refer to cases where the genotype of the offspring could not be ascertained due to the brown eye marker not being expressed in larvae; most of these individuals probably carried 1 _SD_ allele because of segregation distortion.
 
 ## Making Table 1
 
@@ -824,20 +926,35 @@ fig_S1 %>% grid::grid.draw()
 <br></br>
 **Figure S1**: Equivalent plots to Figure 1, under the assumption that meiosis is fair ($k$ = 0.5, top row, same as Figure 1), slightly biased ($k$ = 0.6, middle row), and more strongly biased ($k$ = 0.7, bottom row) in _SD_/_CyO_ males. Note that the significant results for Figure 1 mostly stay the same or increase in magnitude, suggesting that the results are not strongly influenced by our assumptions about the strength of segregation distortion in _SD_/_CyO_ males.
 
+```{r}
+compare <- function(mean1, mean2){
+  difference <- mean2 - mean1
+  rel_diff <- posterior_summary(mean2 / mean1) %>% round(2) %>% format(nsmall=2)
+  prob_less <- hypothesis(data.frame(x = difference), "x < 0")$hypothesis
+  prob_more <- hypothesis(data.frame(x = difference), "x > 0")$hypothesis
+  hypothesis(data.frame(x = difference), "x = 0")$hypothesis %>% 
+    mutate(
+      Relative_difference = paste(rel_diff[,1], " (", rel_diff[,3], " to ", rel_diff[,4], ")", sep = ""),
+      Posterior_probability = min(c(prob_less$Post.Prob, prob_more$Post.Prob)))
+}
+```
+
+
 ### Hypothesis testing
 ```{r}
 hypothesis_tests_expt2 <- function(model){
-  
+
   compare <- function(mean1, mean2, SD, Mean_1, Mean_2){
-  difference <- mean2 - mean1
-  prob_less <- hypothesis(data.frame(x = difference), "x < 0")$hypothesis
-  prob_more <- hypothesis(data.frame(x = difference), "x > 0")$hypothesis
-  output <- data.frame(
-    SD, Mean_1, Mean_2,
-    hypothesis(data.frame(x = difference), "x = 0")$hypothesis %>% 
-    mutate(Posterior_probability = min(c(prob_less$Post.Prob, prob_more$Post.Prob)),
-           Evidence_ratio = max(c(prob_less$Evid.Ratio, prob_more$Evid.Ratio)))
-  )
+    difference <- mean2 - mean1
+    rel_diff <- posterior_summary(mean2 / mean1) %>% round(2) %>% format(nsmall=2)
+    prob_less <- hypothesis(data.frame(x = difference), "x < 0")$hypothesis
+    prob_more <- hypothesis(data.frame(x = difference), "x > 0")$hypothesis
+    output <- data.frame(
+      SD, Mean_1, Mean_2,
+      hypothesis(data.frame(x = difference), "x = 0")$hypothesis %>%
+        mutate(Posterior_probability = min(c(prob_less$Post.Prob, prob_more$Post.Prob)),
+               Relative_difference = paste(rel_diff[,1], " (", rel_diff[,3], " to ", rel_diff[,4], ")", sep = ""))
+    )
 }
   preds <- fitted(model, 
                   summary = FALSE, 
@@ -935,7 +1052,7 @@ tests_expt2 <- hypothesis_tests_expt2(model_list[[1]]) %>%
          Difference = paste(Estimate, " (", CI.Lower, " to ", CI.Upper, ")", sep = ""),
          Comparison = paste(Mean_1, "-", Mean_2),
          Error = Est.Error) %>%
-  select(SD, Comparison, Difference, Error, Posterior_probability, Notable)
+  select(SD, Comparison, Difference, Relative_difference, Posterior_probability, Notable)
 ```
 
 **Table 2**: List of the all the notable differences between groups in Experiment 2 (posterior probability $<$0.05; see Table S10 for the remaining results). For each group, we list the sex of the focal larvae, their genotype (_SD_ or _CyO_), and the parent that carried _SD_ (mother or father). The difference in means is expressed in % larvae surviving; other details are as in Table 1.
@@ -952,4 +1069,3 @@ table2 %>% pander(split.cell = 50, split.table = Inf)
 saveRDS(tests_expt2 %>% tidy_names() %>% select(-Notable), file = "output/tab_S10.rds")
 tests_expt2 %>% pander(split.cell = 50, split.table = Inf) 
 ```
-

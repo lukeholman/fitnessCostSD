@@ -1,12 +1,12 @@
-SD,Comparison,Difference,Error,p
-SD-5,"Sons, CyO, mother - Daughters, CyO, mother",10.7 (  2.0 to 19.4),4.5,0.00825
-SD-5,"Sons, CyO, mother - Sons, CyO, father",10.7 (  1.5 to 19.8),4.6,0.010499999999999999
-SD-5,"Sons, SD, mother - Sons, SD, father", 9.7 (  0.1 to 19.4),5.0,0.024749999999999998
-SD-5,"Sons, SD, mother - Daughters, SD, mother", 9.1 ( -0.4 to 18.7),4.8,0.028
-SD-5,"Daughters, CyO, mother - Daughters, SD, mother",-4.6 (-10.0 to  0.6),2.7,0.041
-SD-72,"Sons, SD, mother - Daughters, SD, mother", 9.9 (  4.2 to 15.8),3.0,4.999999999999999e-4
-SD-72,"Sons, CyO, mother - Daughters, CyO, mother",11.0 (  4.3 to 17.9),3.5,7.500000000000001e-4
-SD-72,"Sons, CyO, father - Daughters, CyO, father", 7.0 ( -1.0 to 15.5),4.2,0.044750000000000005
-SD-Mad,"Sons, CyO, mother - Daughters, CyO, mother", 9.4 (  2.7 to 16.3),3.5,0.0022500000000000003
-SD-Mad,"Daughters, CyO, mother - Daughters, SD, mother",-5.4 ( -9.9 to -1.2),2.2,0.00675
-SD-Mad,"Sons, CyO, mother - Sons, CyO, father", 7.7 ( -0.6 to 15.6),4.1,0.0345
+SD,Comparison,Difference,Relative_difference,p
+SD-5,"Sons, CyO, mother - Daughters, CyO, mother",10.7 (  2.0 to 19.4),1.15 (1.03 to 1.29),0.00825
+SD-5,"Sons, CyO, mother - Sons, CyO, father",10.7 (  1.5 to 19.8),1.15 (1.02 to 1.30),0.010499999999999999
+SD-5,"Sons, SD, mother - Sons, SD, father", 9.7 (  0.1 to 19.4),1.14 (1.00 to 1.31),0.024749999999999998
+SD-5,"Sons, SD, mother - Daughters, SD, mother", 9.1 ( -0.4 to 18.7),1.13 (0.99 to 1.30),0.028
+SD-5,"Daughters, CyO, mother - Daughters, SD, mother",-4.6 (-10.0 to  0.6),0.94 (0.88 to 1.01),0.041
+SD-72,"Sons, SD, mother - Daughters, SD, mother", 9.9 (  4.2 to 15.8),1.12 (1.05 to 1.21),4.999999999999999e-4
+SD-72,"Sons, CyO, mother - Daughters, CyO, mother",11.0 (  4.3 to 17.9),1.14 (1.05 to 1.25),7.500000000000001e-4
+SD-72,"Sons, CyO, father - Daughters, CyO, father", 7.0 ( -1.0 to 15.5),1.09 (0.99 to 1.21),0.044750000000000005
+SD-Mad,"Sons, CyO, mother - Daughters, CyO, mother", 9.4 (  2.7 to 16.3),1.12 (1.03 to 1.22),0.0022500000000000003
+SD-Mad,"Daughters, CyO, mother - Daughters, SD, mother",-5.4 ( -9.9 to -1.2),0.94 (0.89 to 0.99),0.00675
+SD-Mad,"Sons, CyO, mother - Sons, CyO, father", 7.7 ( -0.6 to 15.6),1.10 (0.99 to 1.21),0.0345
