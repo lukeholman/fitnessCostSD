@@ -128,7 +128,7 @@ model_results_no_sex %>% pander()
 #### Full model: SD variant, offspring sex, and their interaction
 
 ```{r}
-model_results_sex %>% pander()
+model_results_sex %>% pander() 
 ```
 
 ### Load and clean the data
