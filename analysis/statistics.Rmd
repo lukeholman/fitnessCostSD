@@ -103,12 +103,18 @@ fig_S3 <- ggplot(estimated_k, aes(x = k, fill = SD_variant)) +
   theme(legend.position = "none",
         strip.text = element_text(hjust = 1))
 
+ggsave(fig_S3, filename = "output/fig_S3.png", height = 4, width = 4)
 ggsave(fig_S3, filename = "output/fig_S3.pdf", height = 4, width = 4)
 ```
 
-![](output/fig_S3.pdf)
+![](output/fig_S3.png)
 <br></br>
 **Figure S3**: Posterior estimates of the percentage of adult progeny that carried _SD_ in the pilot experiment, which crossed _SD_/_bw_ males and _bw_/_bw_ females. All estimates are well above the 50% expected under Mendelian inheritance, and the estimate for _SD-Mad_ is significantly lower than the other two. Note that the elevated percentage of _SD_ progeny is the net result of segregation distortion and pre-adult mortality, and so the strength of segregation distortion might be stronger than suggested by these estimates if _SD_ progeny are less likely to survive to adulthood.
+
+```{r echo=FALSE}
+unlink("output/fig_S3.png")
+```
+
 
 ### Estimates of % progeny carrying _SD_ in the pilot study
 ```{r}
