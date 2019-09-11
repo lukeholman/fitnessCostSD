@@ -460,17 +460,17 @@ div.section {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2019-08-26
+<strong>Last updated:</strong> 2019-09-11
 </p>
 <p>
-<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
 </p>
 <p>
 <strong>Knit directory:</strong> <code>fitnessCostSD/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
 </p>
 <p>
 This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis was created with <a
-  href="https://github.com/jdblischak/workflowr">workflowr</a> (version 1.3.0). The <em>Checks</em> tab describes the reproducibility checks that were applied when the results were created. The <em>Past versions</em> tab lists the development history.
+  href="https://github.com/jdblischak/workflowr">workflowr</a> (version 1.4.0). The <em>Checks</em> tab describes the reproducibility checks that were applied when the results were created. The <em>Past versions</em> tab lists the development history.
 </p>
 <hr>
 </div>
@@ -539,10 +539,22 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtree0670217a3050e9ed5239dbdfc4936ac6850d850etargetblank0670217a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/fitnessCostSD/tree/0670217a3050e9ed5239dbdfc4936ac6850d850e" target="_blank">0670217</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongrelative"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>File paths:</strong> relative </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtree0670217a3050e9ed5239dbdfc4936ac6850d850etargetblank0670217a" class="panel-collapse collapse">
+<div id="strongFilepathsstrongrelative" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Using relative paths to the files within your workflowr project makes it easier to run your code on other machines.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtree8fddd832f6733f192e1d1cd15dda0cf5308f6290targetblank8fddd83a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/fitnessCostSD/tree/8fddd832f6733f192e1d1cd15dda0cf5308f6290" target="_blank">8fddd83</a> </a>
+</p>
+</div>
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanfitnessCostSDtree8fddd832f6733f192e1d1cd15dda0cf5308f6290targetblank8fddd83a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -564,6 +576,9 @@ Ignored files:
     Ignored:    figures/.DS_Store
     Ignored:    manuscript/.DS_Store
     Ignored:    output/
+
+Unstaged changes:
+    Deleted:    ~$sponse to JEB.docx
 
 </code></pre>
 <p>
@@ -602,6 +617,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/lukeholman/fitnessCostSD/554fed52c5ecd88eb7649f3b9728a21e781d9e78/docs/statistics.html" target="_blank">554fed5</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2019-08-26
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1300,7 +1332,7 @@ k_estimates &lt;- data.frame(SD_variant = k_estimates$SD_variant, do.call(&quot;
   mutate_if(is.numeric, ~ format(round(.x,2), nsmall = 2)) 
 
 
-fig_S2 &lt;- ggplot(estimated_k, aes(x = k, fill = SD_variant)) +
+fig_S3 &lt;- ggplot(estimated_k, aes(x = k, fill = SD_variant)) +
   geom_density(alpha = 0.5) +
   facet_wrap(~ SD_variant, ncol = 1) + 
   xlab(&quot;% adult offspring carrying SD\nCross: SD/bw male x bw/bw female&quot;) + 
@@ -1310,9 +1342,9 @@ fig_S2 &lt;- ggplot(estimated_k, aes(x = k, fill = SD_variant)) +
   theme(legend.position = &quot;none&quot;,
         strip.text = element_text(hjust = 1))
 
-ggsave(fig_S2, filename = &quot;output/fig_S2.pdf&quot;, height = 4, width = 4)</code></pre>
-<pre class="r"><code>fig_S2</code></pre>
-<p><img src="figure/statistics.Rmd/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /> <br></br> <strong>Figure S2</strong>: Posterior estimates of the percentage of adult progeny that carried <em>SD</em> in the pilot experiment, which crossed <em>SD</em>/<em>bw</em> males and <em>bw</em>/<em>bw</em> females. All estimates are well above the 50% expected under Mendelian inheritance, and the estimate for <em>SD-Mad</em> is significantly lower than the other two. Note that the elevated percentage of <em>SD</em> progeny is the net result of segregation distortion and pre-adult mortality, and so the strength of segregation distortion might be stronger than suggested by these estimates if <em>SD</em> progeny are less likely to survive to adulthood.</p>
+ggsave(fig_S3, filename = &quot;output/fig_S3.pdf&quot;, height = 4, width = 4)</code></pre>
+<pre class="r"><code>fig_S3</code></pre>
+<p><img src="figure/statistics.Rmd/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /> <br></br> <strong>Figure S3</strong>: Posterior estimates of the percentage of adult progeny that carried <em>SD</em> in the pilot experiment, which crossed <em>SD</em>/<em>bw</em> males and <em>bw</em>/<em>bw</em> females. All estimates are well above the 50% expected under Mendelian inheritance, and the estimate for <em>SD-Mad</em> is significantly lower than the other two. Note that the elevated percentage of <em>SD</em> progeny is the net result of segregation distortion and pre-adult mortality, and so the strength of segregation distortion might be stronger than suggested by these estimates if <em>SD</em> progeny are less likely to survive to adulthood.</p>
 <div id="estimates-of-progeny-carrying-sd-in-the-pilot-study" class="section level3">
 <h3>Estimates of % progeny carrying <em>SD</em> in the pilot study</h3>
 <pre class="r"><code>k_estimates %&gt;% pander()</code></pre>
@@ -6151,14 +6183,14 @@ fig2</code></pre>
                  heights = unit.c(unit(1, &quot;npc&quot;) - lheight, lheight))
   }
 
-fig_S1 &lt;- make_expt2_multiplot(
+fig_S2 &lt;- make_expt2_multiplot(
   plot_expt2(model_list[[1]]) + theme(axis.text.x = element_blank(), axis.ticks.x = element_blank()) + xlab(NULL) + ylab(NULL),
   plot_expt2(model_list[[2]]) + theme(axis.text.x = element_blank(), axis.ticks.x = element_blank()) + xlab(NULL),
   plot_expt2(model_list[[3]]) + ylab(NULL))
 
-fig_S1 %&gt;% ggsave(file = &quot;output/fig_S1.pdf&quot;, height = 9.5, width = 9)
-fig_S1 %&gt;% grid::grid.draw()</code></pre>
-<p><img src="figure/statistics.Rmd/unnamed-chunk-35-1.png" width="864" style="display: block; margin: auto;" /> <br></br> <strong>Figure S1</strong>: Equivalent plots to Figure 1, under the assumption that meiosis is fair (<span class="math inline">\(k\)</span> = 0.5, top row, same as Figure 1), slightly biased (<span class="math inline">\(k\)</span> = 0.6, middle row), and more strongly biased (<span class="math inline">\(k\)</span> = 0.7, bottom row) in <em>SD</em>/<em>CyO</em> males. Note that the significant results for Figure 1 mostly stay the same or increase in magnitude, suggesting that the results are not strongly influenced by our assumptions about the strength of segregation distortion in <em>SD</em>/<em>CyO</em> males.</p>
+fig_S2 %&gt;% ggsave(file = &quot;output/fig_S2.pdf&quot;, height = 9.5, width = 9)
+fig_S2 %&gt;% grid::grid.draw()</code></pre>
+<p><img src="figure/statistics.Rmd/unnamed-chunk-35-1.png" width="864" style="display: block; margin: auto;" /> <br></br> <strong>Figure S2</strong>: Equivalent plots to Figure 2, under the assumption that meiosis is fair (<span class="math inline">\(k\)</span> = 0.5, top row, same as Figure 1), slightly biased (<span class="math inline">\(k\)</span> = 0.6, middle row), and more strongly biased (<span class="math inline">\(k\)</span> = 0.7, bottom row) in <em>SD</em>/<em>CyO</em> males. Note that the significant results for Figure 2 mostly stay the same or increase in magnitude, suggesting that the results are not strongly influenced by our assumptions about the strength of segregation distortion in <em>SD</em>/<em>CyO</em> males.</p>
 <pre class="r"><code>compare &lt;- function(mean1, mean2){
   difference &lt;- mean2 - mean1
   rel_diff &lt;- posterior_summary(mean2 / mean1) %&gt;% round(2) %&gt;% format(nsmall=2)
@@ -6723,12 +6755,12 @@ attached base packages:
 [8] base     
 
 other attached packages:
- [1] gameofthrones_1.0.0 stringr_1.4.0       tibble_2.0.99.9000 
+ [1] gameofthrones_1.0.0 stringr_1.4.0       tibble_2.1.3       
  [4] readr_1.1.1         ggthemes_4.0.1      gridExtra_2.3      
  [7] tidyr_0.8.2         purrr_0.3.2         lazerhawk_0.2.4    
 [10] pander_0.6.2        Cairo_1.5-9         reshape2_1.4.3     
 [13] ggplot2_3.1.0       brms_2.9.0          Rcpp_1.0.2         
-[16] dplyr_0.8.0.1       knitr_1.23         
+[16] dplyr_0.8.3         knitr_1.23         
 
 loaded via a namespace (and not attached):
  [1] nlme_3.1-137         matrixStats_0.54.0   fs_1.3.1            
@@ -6759,7 +6791,7 @@ loaded via a namespace (and not attached):
 [76] assertthat_0.2.1     xfun_0.8             mime_0.7            
 [79] xtable_1.8-4         colortools_0.1.5     coda_0.19-2         
 [82] later_0.8.0          rsconnect_0.8.8      shinythemes_1.1.1   
-[85] memoise_1.1.0        workflowr_1.3.0      bridgesampling_0.4-0</code></pre>
+[85] memoise_1.1.0        workflowr_1.4.0      bridgesampling_0.4-0</code></pre>
 </div>
 </div>
 </div>
