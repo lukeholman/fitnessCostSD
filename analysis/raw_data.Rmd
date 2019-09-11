@@ -8,21 +8,40 @@ output: workflowr::wflow_html
 library(knitr)
 library(kableExtra)
 library(dplyr)
+library(tidyr)
+library(purrr)
 opts_chunk$set(warning = FALSE, message = FALSE, echo = FALSE)
 ```
 
 
 ```{r}
+k_data <- read.csv("data/clean_data/measuring_k.csv") %>%
+  mutate(id = 1:n()) %>%
+  gather(progeny_type, n, -SD, -id) %>%
+  mutate(split = strsplit(progeny_type, split = "_"),
+         genotype = map_chr(split, ~ .x[1]),
+         sex = map_chr(split, ~ .x[2])) %>%
+  select(id, SD, genotype, sex, n) %>%
+  rename(SD_variant = SD,
+         Family_ID = id) %>%
+  spread(genotype, n) %>% 
+  mutate(total = bw + SD) %>%
+  rename(bw_offspring = bw,
+         SD_offspring = SD)
+
 larvae  <- read.csv("data/clean_data/larval_fitness.csv") %>% 
   select(-SD, -MotherHasSD, -FatherHasSD, -SD_from_mum, -SD_from_dad, -parent_with_SD, -vial, -total, -larval_density) %>%
   select(mum_genotype, dad_genotype, copies_of_SD, block, number_larvae_in_vial, initial_number, everything()) %>%
   rename(initial_number_focal_larvae = initial_number)
+
 males   <- read.csv("data/clean_data/male_fitness.csv") %>% 
   select(-SD, -MotherHasSD, -FatherHasSD, -SD_from_mum, -SD_from_dad, -parent_with_SD, -vial, -total, -focal.male.fitness, -rival.male.fitness) %>%
   select(mum_genotype, dad_genotype, copies_of_SD, block, everything())
+
 females <- read.csv("data/clean_data/female_fitness.csv") %>% 
   select(-SD, -MotherHasSD, -FatherHasSD, -SD_from_mum, -SD_from_dad, -parent_with_SD, -vial) %>%
   select(mum_genotype, dad_genotype, copies_of_SD, block, everything())
+
 expt2   <- read.csv("data/clean_data/experiment2.csv") %>%
   select(SD, SD_parent, sex_of_embryos, block, everything()) %>%
   select(-vial, -SD_embryos, -CyO_embryos) %>%
@@ -31,6 +50,18 @@ expt2   <- read.csv("data/clean_data/experiment2.csv") %>%
   rename(surviving_CyO_offspring = CyO_offspring) %>%
   arrange(SD, SD_parent, sex_of_embryos, block)
 ```
+
+# Raw data from the pilot study showing biased inheritance of _SD_
+
+The table shows the number of sons and daughters expressing either the _bw_ brown-eye mutation, or normal red eye (inferred to carry _SD_). Each family (i.e. a _bw_ female mated to a _SD_/_CyO_ male) is represented over two rows: one showing phenotype counts among the daughters, and one for the sons. 
+
+```{r}
+k_data %>%
+  kable() %>% kable_styling() %>%
+  scroll_box(height = "1000px", width = "800px")
+```
+
+
 
 # Raw data from Experiment 1: larval survival and sex ratio
 
